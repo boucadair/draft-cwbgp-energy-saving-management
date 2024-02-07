@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: OPS
-workgroup: WG Working Group
+area: "Operations and Management"
+workgroup: "Network Inventory YANG"
 keyword:
  - xxx
  - xxx
