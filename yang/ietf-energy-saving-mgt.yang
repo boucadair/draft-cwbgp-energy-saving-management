@@ -66,7 +66,7 @@ module ietf-energy-saving-mgt {
     description "Energy saving mode.";
   }
 
-  typedef energy-saving-method-name { <=== Med: be defined as identities
+  typedef energy-saving-method-name { // Med: be defined as identities
     type enumeration {
       enum "zone-based-fan-speed-adjustment" {
         value 1;
@@ -155,7 +155,7 @@ module ietf-energy-saving-mgt {
   }
 
 
-  typedef energy-saving-oper-state { <=== Med: be defined as identities
+  typedef energy-saving-oper-state { // Med: be defined as identities
     type enumeration {
       enum energy-saving-mode {
         value 1;
