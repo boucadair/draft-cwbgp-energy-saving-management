@@ -343,7 +343,7 @@ Table of Contents
        description "Energy saving mode.";
      }
 
-     typedef energy-saving-method-name { <=== Med: be defined as \
+     typedef energy-saving-method-name { // Med: be defined as \
                                                               identities
        type enumeration {
          enum "zone-based-fan-speed-adjustment" {
@@ -470,8 +470,7 @@ Table of Contents
      }
 
 
-     typedef energy-saving-oper-state { <=== Med: be defined as \
-                                                              identities
+     typedef energy-saving-oper-state { // Med: be defined as identities
        type enumeration {
          enum energy-saving-mode {
            value 1;
