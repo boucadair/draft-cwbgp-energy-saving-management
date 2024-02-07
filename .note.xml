@@ -1,0 +1,7 @@
+<note title="Discussion Venues" removeInRFC="true">
+<t>Discussion of this document takes place on the
+    Network Inventory YANG Working Group mailing list (inventory-yang@ietf.org),
+    which is archived at <eref target="https://mailarchive.ietf.org/arch/browse/inventory-yang/"/>.</t>
+<t>Source for this draft and an issue tracker can be found at
+    <eref target="https://github.com/boucadair/draft-cwbgp-energy-saving-management"/>.</t>
+</note>
