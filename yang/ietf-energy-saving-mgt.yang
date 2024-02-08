@@ -52,7 +52,6 @@ module ietf-energy-saving-mgt {
       "RFC XXXX: A YANG Data Model for Energy Saving Management";
   }
 
-
   feature energy-saving {
     description
       "Specifies support of energy saving management.";
@@ -239,6 +238,35 @@ module ietf-energy-saving-mgt {
     }
     description
       "Energy saving operator.";
+  }
+
+  grouping network-element-ref {
+    description
+      "Contains the information necessary to reference a network
+       element.";
+    leaf ne-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element/ni:ne-id";
+      require-instance false;
+      }
+      description
+        "Used to reference a network element.";
+    }
+  }
+
+  grouping component-ref {
+    description
+      "Contains the information necessary to reference a component.";
+    leaf node-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element[ni:ne-id=current()/../"+
+          "ne-ref]/ni:components/ni:component/ni:component-id";
+        require-instance false;
+      }
+      description
+        "Used to reference a component.";
+    }
+    uses network-element-ref;
   }
 
   grouping energy-consumption-data {
@@ -472,8 +500,9 @@ module ietf-energy-saving-mgt {
         type boolean;
         default "true";
         description
-          "Enable/disable : the energy-saving state
-           of the component.";
+          "Controls whether the energy-saving state
+           of the component is enabled (when set to true)
+           or disabled (set to false).";
       }
       leaf oper-state {
         type identityref {
@@ -483,14 +512,11 @@ module ietf-energy-saving-mgt {
           "The device energy saving operator state.";
       }
     }
-    leaf inventory-component-ref {
-      type leafref {
-        path "/ni:network-elements/ni:network-element"
-           + "/ni:components/ni:component/ni:name";
-      }
+    container inventory-component-ref {
       description
         "The reference of the port component from which this
          termination point is abstracted.";
+      uses component-ref;
     }
   }
 }
