@@ -1,0 +1,45 @@
+module: ietf-energy-saving-mgt
+  +--rw component-energy-monitoring
+     +--ro energy-consumption
+     |  +--ro average-power?     yang:gauge64
+     |  +--ro saved-power?       yang:gauge64
+     |  +--ro current-power?     yang:gauge64
+     |  +--ro current-volts?     int32
+     |  +--ro current-amperes?   int32
+     |  +--ro temperature?       int32
+     +--ro energy-saving
+     |  +--ro enabled?      boolean
+     |  +--ro oper-state?   identityref
+     +--ro inventory-component-ref?   leafref
+
+  augment /nw:networks/nw:network/nw:node:
+    +--ro energy-power-consumption
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--rw energy-saving-modes
+       +--rw energy-saving-mode* [mode]
+          +--rw mode       identityref
+          +--rw methods
+             +--rw method* [method-name]
+                +--rw method-name    identityref
+  augment /ni:network-elements/ni:network-element:
+    +--rw energy-management
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode       identityref
+             +--ro methods
+                +--ro method* [method-name]
+                   +--ro method-name    identityref
+  augment /ni:network-elements/ni:network-element/ni:components
+            /ni:component:
+    +--ro temperature-upper-bound?    int32
+    +--ro temperature-middle-bound?   int32
+    +--ro temperature-lower-bound?    int32
+    +--ro rated-power?                yang:gauge64
+    +--ro expected-volts?             int32
+    +--ro low-volts-bound?            int32
+    +--ro low-volts-fatal?            int32
+    +--ro high-volts-bound?           int32
+    +--ro high-volts-fatal?           int32
