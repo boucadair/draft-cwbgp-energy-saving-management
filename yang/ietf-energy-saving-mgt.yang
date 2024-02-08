@@ -8,11 +8,6 @@ module ietf-energy-saving-mgt {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-  import iana-hardware {
-    prefix ianahw;
-    reference
-      "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
-  }
   import ietf-yang-types {
     prefix yang;
     reference
@@ -55,14 +50,6 @@ module ietf-energy-saving-mgt {
       "Initial revision.";
     reference
       "RFC XXXX: A YANG Data Model for Energy Saving Management";
-  }
-
-  identity channel {
-    base ianahw:hardware-class;
-    description
-      "This identity is applicable if the hardware class is some sort
-       of networking channel capable of receiving and/or transmitting
-       networking traffic.";
   }
 
   identity energy-saving-mode {
