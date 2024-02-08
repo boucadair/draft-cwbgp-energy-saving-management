@@ -136,7 +136,7 @@ informative:
 
 # Energy Saving Management Data Model Overview
 
-   As described in {{!I-D.ietf-network-inventory-yang}}, the Network
+   As described in {{!I-D.ietf-ivy-network-inventory-yang}}, the Network
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-management", which augments network element of the
