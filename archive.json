@@ -1,0 +1,98 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-02-08T00:42:39.205154+00:00",
+  "repo": "boucadair/draft-cwbgp-energy-saving-management",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOLPL1Dc5-isOK",
+      "title": "Overall design",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/1",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Please find attached some quick comments/inputs about the draft. I embedded some comments directly in the file, with items that I think are easy to fix: use identities rather than enumeration, 64 instead of 32, gauge, etc.\r\n\r\nNow for the design, I\u2019m not comfortable to graft the energy optimization directly into the inventory. I suggest to split the design into two parts: energy saving capabilities that can be stored in an inventory and another set of features to tweak those while taking into account topology matters",
+      "createdAt": "2024-02-07T13:19:56Z",
+      "updatedAt": "2024-02-07T13:19:56Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOLPL1Dc5mSPrU",
+      "title": "Some changes",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/2",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-07T16:49:03Z",
+      "updatedAt": "2024-02-07T16:49:03Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "fb9026ae6104c59c15a2ad7b8c6e02156924993e",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "5ce5c44ecc01ade371090490878da8db41ccd4f9",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
