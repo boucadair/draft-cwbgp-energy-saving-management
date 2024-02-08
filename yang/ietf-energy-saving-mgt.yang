@@ -8,6 +8,7 @@ module ietf-energy-saving-mgt {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
+
   import iana-hardware {
     prefix ianahw;
      reference
@@ -23,7 +24,6 @@ module ietf-energy-saving-mgt {
     reference
        "RFC 8345: A YANG Data Model for Network Topologies";
    }
-   
   organization
     "IETF IVY Working Group.";
   contact
@@ -32,7 +32,6 @@ module ietf-energy-saving-mgt {
      Author:   Gen Chen  <mailto:chengen@huawei.com>
      Author:   Qin Wu <mailto:bill.wu@huawei.com>
      Author:   Mohamed Boucadair <mailto:mohamed.boucadair@huawei.com>";
-     
   description
     "This module contains a collection of YANG definitions for power
      and energy management of devices.";
@@ -74,8 +73,8 @@ module ietf-energy-saving-mgt {
    base energy-saving-mode;
    description
       "Deep energy saving mode.  In this mode, the system
-       will extend standard engery saving mode with more advanced
-       system level engergy saving features, e.g., board
+       will extend standard energy saving mode with more advanced
+       system level energy saving features, e.g., board
        scheduling.";
   }
   identity energy-saving-method {
@@ -243,88 +242,12 @@ module ietf-energy-saving-mgt {
       description "The current temperature of the component.";
     }
     description
-      "Statistics of the energy monitoring.";
+      "Grouping for Statistics of the energy monitoring.";
   }
   
-   container component-energy-monitoring {
-    description "Energy monitoring data for components.";
-    container energy-consumption {
-      config false;
-      description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description "Configure : Statistics of component about
-                   energy monitoring.";
-      leaf enabled {
-        type boolean;
-          default "true";
-        description "Enable/disable : the energy-saving state
-                     of the component.";
-      }
-
-      leaf oper-state {
-        type identityref {
-		base energy-saving-oper-state;
-		}
-        config false;
-        description "The device energy saving operator state.";
-      }
-    }
-	leaf inventory-component-ref {
-       type leafref {
-         path "/ni:network-elements/ni:network-element/"
-            + "ni:components/ni:component/ni:name";
-         }
-        config false;
-        description
-           "The reference of the port component from which this
-            termination point is abstracted.";
-    }
-  }
-  augment "/nw:networks/nw:network/nw:node"
-   {
-   description "Energy monitoring data for network element.";
-   container energy-power-consumption {
-      config false;
-      description
-        "Statistics data about energy and power monitoring.";
-	leaf total-energy-consumption {
-      type uint64;
-      units "Wh";
-      description
-        "Accumulated energy consumption of equipment.";
-    }
-    leaf saved-energy {
-      type uint64;
-      units "Wh";
-      description
-        "Saved energy consumption of equipment.";
-    }
-	leaf eer {
-       type decimal64 {
-         fraction-digits 18;
-       }
-      units "Gbps/Watt";
-      description "The energy efficiency rating (EER) is a metric
-      generally defined as a functional unit divided by the energy
-      used. Various types of equipment have their own EER definitions.";
-     }
-    }
-  }
-  augment "/ni:network-elements/ni:network-element" {
-  container energy-management {
-    description
-      "Statistics of the energy management.";
-      leaf energy-monitoring-capability {
-        config false;
-        type boolean;
-        description
-          "Indicates whether monitoring can be performed.";
-      }
-
-      container energy-saving-modes {
+  grouping energy-saving-modes {
+        container energy-saving-modes {
+		config false;
         description "List of the energy saving mode.";
         list energy-saving-mode {
           key mode;
@@ -350,15 +273,99 @@ module ietf-energy-saving-mgt {
           description "Configure the energy saving mode.";
         }
       }
+    description "Grouping for energy saving mode configuration.";
+  }
+   container component-energy-monitoring {
+    description "Energy monitoring data for components.";
+    container energy-consumption {
+      config false;
+      description
+        "Statistics of component about energy monitoring.";
+      uses energy-consumption-data;
+    }
+    container energy-saving {
+	  config false;
+      description 
+	     "Configure : Statistics of component about
+          energy monitoring.";
+      leaf enabled {
+        type boolean;
+          default "true";
+        description "Enable/disable : the energy-saving state
+                     of the component.";
+      }
+
+      leaf oper-state {
+        type identityref {
+		base energy-saving-oper-state;
+		}
+        description "The device energy saving operator state.";
+      }
+    }
+	leaf inventory-component-ref {
+       type leafref {
+         path "/ni:network-elements/ni:network-element/"
+            + "ni:components/ni:component/ni:name";
+         }
+        config false;
+        description
+           "The reference of the port component from which this
+            termination point is abstracted.";
+    }
+  }
+  augment "/nw:networks/nw:network/nw:node"
+   {
+   description "Energy monitoring data for network element.";
+   container energy-power-consumption {
+      config false;
+      description
+        "Statistics data about energy and power monitoring.";
+	leaf total-energy-consumption {
+      type yang:gauge64;
+      units "Wh";
+      description
+        "Accumulated energy consumption of equipment.";
+    }
+    leaf saved-energy {
+      type yang:gauge64;
+      units "Wh";
+      description
+        "Saved energy consumption of equipment.";
+    }
+	leaf eer {
+       type decimal64 {
+         fraction-digits 18;
+       }
+      units "Gbps/Watt";
+      description "The energy efficiency rating (EER) is a metric
+      generally defined as a functional unit divided by the energy
+      used. Various types of equipment have their own EER definitions.";
+     }
+    }
+	uses energy-saving-modes;
+  }
+  augment "/ni:network-elements/ni:network-element" {
+  description "Energy management static data for network element.";
+  container energy-management {
+    description
+      "Statistics of the energy management.";
+      leaf energy-monitoring-capability {
+        type boolean;
+		config false;
+        description
+          "Indicates whether monitoring can be performed.";
+      }
+      uses energy-saving-modes;
   }
  }
  
   augment "/ni:network-elements/ni:network-element/ni:components/ni:component"
    {
-    description "Energy management static data for components.";
+    description "Energy management static data for component.";
 	leaf temperature-upper-bound {
       type int32;
       units "0.01 C";
+	  config false;
       description 
 	     "The upper bound overheat temperature of the component. 
 		 Upon the upper bound is exceeded, the alarm will be triggered
@@ -367,6 +374,7 @@ module ietf-energy-saving-mgt {
     leaf temperature-middle-bound {
       type int32;
       units "0.01 C";
+	  config false;
       description 
 	    "The middle bound overheat temperature of the component. 
 		 Upon the middle bound is exceeded, the alarm will be 
@@ -375,6 +383,7 @@ module ietf-energy-saving-mgt {
 	leaf temperature-lower-bound {
       type int32;
       units "0.01 C";
+	  config false;
       description 
 	     "The lower bound overheat temperature of the component. 
 		 Upon the lower bound is exceeded, the alarm will be 
@@ -383,17 +392,20 @@ module ietf-energy-saving-mgt {
 	leaf rated-power {
       type yang:gauge64;
       units "mW";
+	  config false;
       description "The rated power of monitoring class.";
     }
 	leaf expected-volts {
       type int32;
       units "mV";
+	  config false;
       description
         "The expected volts of monitoring class.";
     }
     leaf low-volts-bound {
       type int32;
       units "mV";
+	  config false;
       description
         "The lower volts bound of monitoring class which
 		might cause equipment abnormality or damage.";
@@ -401,6 +413,7 @@ module ietf-energy-saving-mgt {
 	leaf low-volts-fatal {
       type int32;
       units "mV";
+	  config false;
       description
         "The lowest volts bound of monitoring class which
 		might cause equipment fatal damage.";
@@ -408,6 +421,7 @@ module ietf-energy-saving-mgt {
 	leaf high-volts-bound {
       type int32;
       units "mV";
+	  config false;
       description
         "The higher volts bound of monitoring class which
 		will trigger alarm.";
@@ -415,6 +429,7 @@ module ietf-energy-saving-mgt {
     leaf high-volts-fatal {
       type int32;
       units "mV";
+	  config false;
       description
         "The highest volts bound of monitoring class which
 		will cause fatal failure.";
