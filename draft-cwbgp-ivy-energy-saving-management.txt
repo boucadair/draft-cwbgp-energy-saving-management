@@ -566,6 +566,8 @@ module: ietf-energy-saving-mgt
      }
 
      grouping energy-consumption-data {
+       description
+         "Grouping for Statistics of the energy monitoring.";
        leaf average-power {
          type yang:gauge64;
          units "mW";
@@ -602,13 +604,15 @@ module: ietf-energy-saving-mgt
          description
            "The current temperature of the component.";
        }
-       description
-         "Grouping for Statistics of the energy monitoring.";
      }
 
      grouping energy-saving-modes {
+       description
+         "Grouping for energy saving mode configuration.";
        list energy-saving-mode {
          key "mode";
+         description
+           "Configure the energy saving mode.";
          leaf mode {
            type identityref {
              base energy-saving-mode;
@@ -621,6 +625,8 @@ module: ietf-energy-saving-mgt
              "List of the energy saving method.";
            list method {
              key "method-name";
+             description
+               "Configuration of the energy saving method.";
              leaf method-name {
                type identityref {
                  base energy-saving-method;
@@ -628,57 +634,11 @@ module: ietf-energy-saving-mgt
                description
                  "The energy saving method name.";
              }
-             description
-               "Configuration of the energy saving method.";
            }
          }
-         description
-           "Configure the energy saving mode.";
        }
-       description
-         "Grouping for energy saving mode configuration.";
      }
 
-     container component-energy-monitoring {
-       description
-         "Energy monitoring data for components.";
-       container energy-consumption {
-         config false;
-         description
-           "Statistics of component about energy monitoring.";
-         uses energy-consumption-data;
-       }
-       container energy-saving {
-         config false;
-         description
-           "Configure : Statistics of component about
-               energy monitoring.";
-         leaf enabled {
-           type boolean;
-           default "true";
-           description
-             "Enable/disable : the energy-saving state
-              of the component.";
-         }
-         leaf oper-state {
-           type identityref {
-             base energy-saving-oper-state;
-           }
-           description
-             "The device energy saving operator state.";
-         }
-       }
-       leaf inventory-component-ref {
-         type leafref {
-           path "/ni:network-elements/ni:network-element/ni:components/\
-                                                  ni:component/ni:name";
-         }
-         config false;
-         description
-           "The reference of the port component from which this
-            termination point is abstracted.";
-       }
-     }
      augment "/nw:networks/nw:network/nw:node" {
        description
          "Energy monitoring data for network element.";
@@ -717,6 +677,7 @@ module: ietf-energy-saving-mgt
          uses energy-saving-modes;
        }
      }
+
      augment "/ni:network-elements/ni:network-element" {
        description
          "Energy management static data for network element.";
@@ -737,6 +698,7 @@ module: ietf-energy-saving-mgt
          }
        }
      }
+
      augment "/ni:network-elements/ni:network-element/ni:components/ni:\
                                                             component" {
        description
@@ -816,8 +778,48 @@ module: ietf-energy-saving-mgt
             will cause fatal failure.";
        }
      }
-   }
 
+     container component-energy-monitoring {
+       description
+         "Energy monitoring data for components.";
+       container energy-consumption {
+         config false;
+         description
+           "Statistics of component about energy monitoring.";
+         uses energy-consumption-data;
+       }
+       container energy-saving {
+         config false;
+         description
+           "Configure : Statistics of component about
+               energy monitoring.";
+         leaf enabled {
+           type boolean;
+           default "true";
+           description
+             "Enable/disable : the energy-saving state
+              of the component.";
+         }
+         leaf oper-state {
+           type identityref {
+             base energy-saving-oper-state;
+           }
+           description
+             "The device energy saving operator state.";
+         }
+       }
+       leaf inventory-component-ref {
+         type leafref {
+           path "/ni:network-elements/ni:network-element/ni:components/\
+                                                  ni:component/ni:name";
+         }
+         config false;
+         description
+           "The reference of the port component from which this
+            termination point is abstracted.";
+       }
+     }
+   }
    <CODE ENDS>
 
 6.1.  Security Considerations
