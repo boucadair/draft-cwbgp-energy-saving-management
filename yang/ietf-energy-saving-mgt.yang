@@ -8,11 +8,6 @@ module ietf-energy-saving-mgt {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-  import iana-hardware {
-    prefix ianahw;
-    reference
-      "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
-  }
   import ietf-yang-types {
     prefix yang;
     reference
@@ -57,12 +52,9 @@ module ietf-energy-saving-mgt {
       "RFC XXXX: A YANG Data Model for Energy Saving Management";
   }
 
-  identity channel {
-    base ianahw:hardware-class;
+  feature energy-saving {
     description
-      "This identity is applicable if the hardware class is some sort
-       of networking channel capable of receiving and/or transmitting
-       networking traffic.";
+      "Specifies support of energy saving management.";
   }
 
   identity energy-saving-mode {
@@ -110,6 +102,7 @@ module ietf-energy-saving-mgt {
       "The system collects information about the
        temperatures of the service boards in the chassis
        and the zones where the service boards reside.
+
        According to the current temperature and target
        temperature of each board, the system implements
        stepless speed adjustment in different zones.";
@@ -246,9 +239,38 @@ module ietf-energy-saving-mgt {
       "Energy saving operator.";
   }
 
+  grouping network-element-ref {
+    description
+      "Contains the information necessary to reference a network
+       element.";
+    leaf ne-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element/ni:ne-id";
+      require-instance false;
+      }
+      description
+        "Used to reference a network element.";
+    }
+  }
+
+  grouping component-ref {
+    description
+      "Contains the information necessary to reference a component.";
+    leaf node-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element[ni:ne-id=current()/../"+
+          "ne-ref]/ni:components/ni:component/ni:component-id";
+        require-instance false;
+      }
+      description
+        "Used to reference a component.";
+    }
+    uses network-element-ref;
+  }
+
   grouping energy-consumption-data {
     description
-      "Grouping for Statistics of the energy monitoring.";
+      "Grouping for energy monitoring.";
     leaf average-power {
       type yang:gauge64;
       units "mW";
@@ -293,7 +315,7 @@ module ietf-energy-saving-mgt {
     list energy-saving-mode {
       key "mode";
       description
-        "Configure the energy saving mode.";
+        "Specifies the energy saving mode.";
       leaf mode {
         type identityref {
           base energy-saving-mode;
@@ -320,7 +342,77 @@ module ietf-energy-saving-mgt {
     }
   }
 
+  grouping energy-parameters {
+    description
+      "Grouping for energy paramters.";
+    leaf temperature-upper-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The upper bound overheat temperature of the component.
+         Upon the upper bound is exceeded, the alarm will be triggered
+         to indicate fatal failure.";
+    }
+    leaf temperature-middle-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The middle bound overheat temperature of the component.
+         Upon the middle bound is exceeded, the alarm will be
+         triggered.";
+    }
+    leaf temperature-lower-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The lower bound overheat temperature of the component.
+         Upon the lower bound is exceeded, the alarm will be
+         triggered.";
+    }
+    leaf rated-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The rated power of monitoring class.";
+    }
+    leaf expected-volts {
+      type int32;
+      units "mV";
+      description
+        "The expected volts of monitoring class.";
+    }
+    leaf low-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The lower volts bound of monitoring class which
+         might cause equipment abnormality or damage.";
+    }
+    leaf low-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The lowest volts bound of monitoring class which
+         might cause equipment fatal damage.";
+    }
+    leaf high-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The higher volts bound of monitoring class which
+         will trigger alarm.";
+    }
+    leaf high-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The highest volts bound of monitoring class which
+         will cause fatal failure.";
+    }
+  }
+
   augment "/nw:networks/nw:network/nw:node" {
+    if-feature "energy-saving";
     description
       "Energy monitoring data for network element.";
     container energy-power-consumption {
@@ -358,19 +450,19 @@ module ietf-energy-saving-mgt {
   }
 
   augment "/ni:network-elements/ni:network-element" {
+    if-feature "energy-saving";
     description
       "Energy management static data for network element.";
     container energy-management {
+      config false;
       description
         "Statistics of the energy management.";
       leaf energy-monitoring-capability {
         type boolean;
-        config false;
         description
           "Indicates whether monitoring can be performed.";
       }
       container energy-saving-modes {
-        config false;
         description
           "List of the energy saving mode.";
         uses energy-saving-modes;
@@ -378,81 +470,16 @@ module ietf-energy-saving-mgt {
     }
   }
 
-  augment "/ni:network-elements/ni:network-element/ni:components/ni:component" {
+  augment "/ni:network-elements/ni:network-element/ni:components"
+        + "/ni:component" {
+    if-feature "energy-saving";
     description
       "Energy management static data for component.";
-    leaf temperature-upper-bound {
-      type int32;
-      units "0.01 C";
+    container energy-parameters {
       config false;
       description
-        "The upper bound overheat temperature of the component.
-         Upon the upper bound is exceeded, the alarm will be triggered
-         to indicate fatal failure.";
-    }
-    leaf temperature-middle-bound {
-      type int32;
-      units "0.01 C";
-      config false;
-      description
-        "The middle bound overheat temperature of the component.
-         Upon the middle bound is exceeded, the alarm will be
-         triggered.";
-    }
-    leaf temperature-lower-bound {
-      type int32;
-      units "0.01 C";
-      config false;
-      description
-        "The lower bound overheat temperature of the component.
-         Upon the lower bound is exceeded, the alarm will be
-         triggered.";
-    }
-    leaf rated-power {
-      type yang:gauge64;
-      units "mW";
-      config false;
-      description
-        "The rated power of monitoring class.";
-    }
-    leaf expected-volts {
-      type int32;
-      units "mV";
-      config false;
-      description
-        "The expected volts of monitoring class.";
-    }
-    leaf low-volts-bound {
-      type int32;
-      units "mV";
-      config false;
-      description
-        "The lower volts bound of monitoring class which
-         might cause equipment abnormality or damage.";
-    }
-    leaf low-volts-fatal {
-      type int32;
-      units "mV";
-      config false;
-      description
-        "The lowest volts bound of monitoring class which
-         might cause equipment fatal damage.";
-    }
-    leaf high-volts-bound {
-      type int32;
-      units "mV";
-      config false;
-      description
-        "The higher volts bound of monitoring class which
-         will trigger alarm.";
-    }
-    leaf high-volts-fatal {
-      type int32;
-      units "mV";
-      config false;
-      description
-        "The highest volts bound of monitoring class which
-         will cause fatal failure.";
+        "Energy parameter monitoring.";
+      uses energy-parameters;
     }
   }
 
@@ -460,13 +487,11 @@ module ietf-energy-saving-mgt {
     description
       "Energy monitoring data for components.";
     container energy-consumption {
-      config false;
       description
         "Statistics of component about energy monitoring.";
       uses energy-consumption-data;
     }
     container energy-saving {
-      config false;
       description
         "Configure : Statistics of component about
             energy monitoring.";
@@ -474,8 +499,9 @@ module ietf-energy-saving-mgt {
         type boolean;
         default "true";
         description
-          "Enable/disable : the energy-saving state
-           of the component.";
+          "Controls whether the energy-saving state
+           of the component is enabled (when set to true)
+           or disabled (set to false).";
       }
       leaf oper-state {
         type identityref {
@@ -485,14 +511,11 @@ module ietf-energy-saving-mgt {
           "The device energy saving operator state.";
       }
     }
-    leaf inventory-component-ref {
-      type leafref {
-        path "/ni:network-elements/ni:network-element/ni:components/ni:component/ni:name";
-      }
-      config false;
+    container inventory-component-ref {
       description
         "The reference of the port component from which this
          termination point is abstracted.";
+      uses component-ref;
     }
   }
 }
