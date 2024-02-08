@@ -172,19 +172,25 @@ informative:
 ~~~~
   augment /nw:networks/nw:network/nw:node:
     +--ro energy-power-consumption
-       +--ro total-energy-consumption?   uint64
-       +--ro saved-energy?               uint64
-       +--ro eer?                        decimal64
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--ro energy-saving-modes
+       +--ro energy-saving-mode* [mode]
+          +--ro mode       identityref
+          +--ro methods
+             +--ro method* [method-name]
 
   augment /ni:network-elements/ni:network-element:
     +--rw energy-management
        +--ro energy-monitoring-capability?   boolean
-       +--rw energy-saving-modes
-          +--rw energy-saving-mode* [mode]
-             +--rw mode       identityref
-             +--rw methods
-                +--rw method* [method-name]
-                   +--rw method-name    identityref
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode       identityref
+             +--ro methods
+                +--ro method* [method-name]
+                   +--ro method-name    identityref
+
 ~~~~
 {: #ne-tree title="Network Element Specific Energy Tree Structure"}
 
@@ -205,20 +211,20 @@ module: ietf-energy-saving-mgt
      |  +--ro current-amperes?   int32
      |  +--ro temperature?       int32
      +--rw energy-saving
-     |  +--rw enabled?      boolean
+     |  +--ro enabled?      boolean
      |  +--ro oper-state?   identityref
      +--ro inventory-component-ref?   -> /ni:network-elements/network-element/components/component/name
 
   augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-    +--rw temperature-upper-bound?    int32
-    +--rw temperature-middle-bound?   int32
-    +--rw temperature-lower-bound?    int32
-    +--rw rated-power?                yang:gauge64
-    +--rw expected-volts?             int32
-    +--rw low-volts-bound?            int32
-    +--rw low-volts-fatal?            int32
-    +--rw high-volts-bound?           int32
-    +--rw high-volts-fatal?           int32
+    +--ro temperature-upper-bound?    int32
+    +--ro temperature-middle-bound?   int32
+    +--ro temperature-lower-bound?    int32
+    +--ro rated-power?                yang:gauge64
+    +--ro expected-volts?             int32
+    +--ro low-volts-bound?            int32
+    +--ro low-volts-fatal?            int32
+    +--ro high-volts-bound?           int32
+    +--ro high-volts-fatal?           int32
 ~~~~
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
@@ -237,37 +243,41 @@ module: ietf-energy-saving-mgt
      |  +--ro current-volts?     int32
      |  +--ro current-amperes?   int32
      |  +--ro temperature?       int32
-     +--rw energy-saving
-     |  +--rw enabled?      boolean
+     +--ro energy-saving
+     |  +--ro enabled?      boolean
      |  +--ro oper-state?   identityref
      +--ro inventory-component-ref?   -> /ni:network-elements/network-element/components/component/name
 
   augment /nw:networks/nw:network/nw:node:
     +--ro energy-power-consumption
-       +--ro total-energy-consumption?   uint64
-       +--ro saved-energy?               uint64
-       +--ro eer?                        decimal64
-
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--ro energy-saving-modes
+       +--ro energy-saving-mode* [mode]
+          +--ro mode       identityref
+          +--ro methods
+             +--ro method* [method-name]
+                +--ro method-name    identityref
   augment /ni:network-elements/ni:network-element:
     +--rw energy-management
        +--ro energy-monitoring-capability?   boolean
-       +--rw energy-saving-modes
-          +--rw energy-saving-mode* [mode]
-             +--rw mode       identityref
-             +--rw methods
-                +--rw method* [method-name]
-                   +--rw method-name    identityref
-
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode       identityref
+             +--ro methods
+                +--ro method* [method-name]
+                   +--ro method-name    identityref
   augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-    +--rw temperature-upper-bound?    int32
-    +--rw temperature-middle-bound?   int32
-    +--rw temperature-lower-bound?    int32
-    +--rw rated-power?                yang:gauge64
-    +--rw expected-volts?             int32
-    +--rw low-volts-bound?            int32
-    +--rw low-volts-fatal?            int32
-    +--rw high-volts-bound?           int32
-    +--rw high-volts-fatal?           int32
+    +--ro temperature-upper-bound?    int32
+    +--ro temperature-middle-bound?   int32
+    +--ro temperature-lower-bound?    int32
+    +--ro rated-power?                yang:gauge64
+    +--ro expected-volts?             int32
+    +--ro low-volts-bound?            int32
+    +--ro low-volts-fatal?            int32
+    +--ro high-volts-bound?           int32
+    +--ro high-volts-fatal?           int32
 
 ~~~~
 {: #e-tree title="Energy Saving Management Tree Structure"}
