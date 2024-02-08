@@ -16,7 +16,7 @@ module ietf-energy-saving-mgt {
   import ietf-yang-types {
     prefix yang;
     reference
-      "RFC6021: Common YANG Types";
+      "RFC 6021: Common YANG Types";
   }
   import ietf-network {
     prefix nw;
@@ -34,7 +34,21 @@ module ietf-energy-saving-mgt {
      Author:   Mohamed Boucadair <mailto:mohamed.boucadair@huawei.com>";
   description
     "This module contains a collection of YANG definitions for power
-     and energy management of devices.";
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
 
   revision 2024-01-23 {
     description
@@ -59,26 +73,30 @@ module ietf-energy-saving-mgt {
   identity basic {
     base energy-saving-mode;
     description
-      "Basic energy saving mode. In this mode, the system
-       will shut down idle modules and put them in sleep mode.";
+      "Basic energy saving mode.
+
+       In this mode, the system will shut down idle modules
+       and put them in a sleep mode.";
   }
 
   identity standard {
     base energy-saving-mode;
     description
-      "Standard energy saving mode. In this mode, the system
-       will extend basic energy saving mode with more advanced
-       Lossless energy saving features, e.g., power module
-       schedule.";
+      "Standard energy saving mode.
+
+       In this mode, the system extends basic energy saving
+       mode with more advanced Lossless energy saving features,
+       e.g., power module schedule.";
   }
 
   identity deep {
     base energy-saving-mode;
     description
-      "Deep energy saving mode.  In this mode, the system
-       will extend standard energy saving mode with more advanced
-       system level energy saving features, e.g., board
-       scheduling.";
+      "Deep energy saving mode.
+
+       In this mode, the system extends standard energy saving
+       mode with more advanced system level energy saving features,
+       e.g., board scheduling.";
   }
 
   identity energy-saving-method {
@@ -89,7 +107,7 @@ module ietf-energy-saving-mgt {
   identity zone-based-fan-speed-adjustment {
     base energy-saving-method;
     description
-      "The system will collect information about the
+      "The system collects information about the
        temperatures of the service boards in the chassis
        and the zones where the service boards reside.
        According to the current temperature and target
@@ -101,9 +119,10 @@ module ietf-energy-saving-mgt {
     base energy-saving-method;
     description
       "When detecting an unused high-speed interface, the
-       system automatically or manually shuts down the
-       interface to reduce power consumption of the interface
-       circuits. When the interface needs to run service, the
+       system shuts down the interface to reduce power consumption
+       of the interface circuits. 
+
+       When the interface needs to run service, the
        system will automatically wake up the interface and
        restore the interface to the normal working state.";
   }
@@ -125,11 +144,12 @@ module ietf-energy-saving-mgt {
     description
       "When detecting an unused board, the system automatically
        shuts down the power supply of the board,ensuring zero
-       power consumption of an unused board. When detecting that
-       the board needs to run service,the system automatically
-       powers on the board and restores the board to the normal
-       running state, without affecting application of the whole
-       product.";
+       power consumption of an unused board.
+
+       When detecting that the board needs to run service, the system
+       automatically powers on the board and restores the board
+       to the normalrunning state, without affecting application of 
+       the whole device.";
   }
 
   identity dynamic-frequency-adjustment {
@@ -138,7 +158,7 @@ module ietf-energy-saving-mgt {
       "When detecting that a service board is carrying a small
        service load, the system automatically reduces the working
        frequency of the service processing module of the board
-       while maintaining the service quality. In this way, power
+       while maintaining the service quality. In doing so, power
        consumption of the service processing module is reduced.
        When the service load of the board increases, the system
        automatically increases the working frequency of the service
@@ -159,7 +179,8 @@ module ietf-energy-saving-mgt {
       "Power modules intelligently schedule internal power supply
        based on the power load. When the power load decreases,
        some power supply are automatically disabled.
-       When the power load increases, the disabled power supply
+
+       When the power load increases, the disabled power supplies
        are enabled again. ";
   }
 
@@ -170,6 +191,7 @@ module ietf-energy-saving-mgt {
        based on the service load. When the service load decreases,
        some forwarding resources are automatically disabled or the
        working frequency of the forwarding resources is reduced.
+
        When the service load increases, the disabled forwarding
        resources are enabled again or the working frequency of
        forwarding resources is improved. In the case of burst
@@ -185,7 +207,7 @@ module ietf-energy-saving-mgt {
   identity energy-saving {
     base energy-saving-oper-state;
     description
-      "Indicates that the device supports energy-saving mode.";
+      "Identity to indicate support of energy-saving mode.";
   }
 
   identity energy-none-saving {
