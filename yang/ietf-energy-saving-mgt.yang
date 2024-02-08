@@ -8,7 +8,6 @@ module ietf-energy-saving-mgt {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-
   import iana-hardware {
     prefix ianahw;
      reference
@@ -24,6 +23,7 @@ module ietf-energy-saving-mgt {
     reference
        "RFC 8345: A YANG Data Model for Network Topologies";
    }
+   
   organization
     "IETF IVY Working Group.";
   contact
@@ -32,6 +32,7 @@ module ietf-energy-saving-mgt {
      Author:   Gen Chen  <mailto:chengen@huawei.com>
      Author:   Qin Wu <mailto:bill.wu@huawei.com>
      Author:   Mohamed Boucadair <mailto:mohamed.boucadair@huawei.com>";
+     
   description
     "This module contains a collection of YANG definitions for power
      and energy management of devices.";
