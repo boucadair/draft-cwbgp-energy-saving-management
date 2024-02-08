@@ -188,7 +188,7 @@ informative:
 ~~~~
      augment /ni:network-elements/ni:network-element/ni:components/ni:component:
        +--ro energy-consumption
-       |  +--ro total-energy-consumption?   uint64 <--- udpate the module
+       |  +--ro total-energy-consumption?   uint64 <--- update the module
        |  +--ro saved-energy                unit64
        |  +--ro average-power?              gauge64 <--- udpate the module
        |  +--ro current-power?              gauge64
