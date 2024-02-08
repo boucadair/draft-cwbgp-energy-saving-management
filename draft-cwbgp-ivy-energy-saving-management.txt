@@ -231,7 +231,10 @@ Table of Contents
         +--rw energy-saving
         |  +--rw enabled?      boolean
         |  +--rw oper-state?   identityref
-        +--rw inventory-component-ref?   leafref
+        +--rw inventory-component-ref
+           +--rw node-ref?   leafref
+           +--rw ne-ref?
+                   -> /ni:network-elements/network-element/ne-id
 
      augment /nw:networks/nw:network/nw:node:
        +--ro energy-power-consumption {energy-saving}?
