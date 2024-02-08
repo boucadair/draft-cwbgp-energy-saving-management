@@ -170,12 +170,27 @@ informative:
    element list node as shown in{{ne-tree}}.
 
 ~~~~
-      augment /ni:network-elements/ni:network-element:
-      +--rw energy-management
-         +--ro energy-monitoring-capability?   boolean
-         +--rw energy-saving-mode?             energy-saving-mode-name
-         +--ro method-name?                    energy-saving-method-name
-         +--ro eer?                            decimal64
+  augment /nw:networks/nw:network/nw:node:
+    +--ro energy-power-consumption
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--ro energy-saving-modes
+       +--ro energy-saving-mode* [mode]
+          +--ro mode       identityref
+          +--ro methods
+             +--ro method* [method-name]
+
+  augment /ni:network-elements/ni:network-element:
+    +--rw energy-management
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode       identityref
+             +--ro methods
+                +--ro method* [method-name]
+                   +--ro method-name    identityref
+
 ~~~~
 {: #ne-tree title="Network Element Specific Energy Tree Structure"}
 
@@ -186,20 +201,30 @@ informative:
    node as shown in Figure 2.
 
 ~~~~
-     augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-       +--ro energy-consumption
-       |  +--ro total-energy-consumption?   uint64 <--- udpate the module
-       |  +--ro saved-energy                unit64
-       |  +--ro average-power?              gauge64 <--- udpate the module
-       |  +--ro current-power?              gauge64
-       |  +--ro saved-power?                int64
-       |  +--ro rated-power?                int64
-       |  +--ro instant-voltage?            int64
-       |  +--ro instant-current?            int64 <--- what this about?
-       |  +--ro temperature?                int32
-       +--rw energy-saving
-          +--rw enabled?      boolean
-          +--ro oper-state?   energy-saving-oper-state
+module: ietf-energy-saving-mgt
+  +--rw component-energy-monitoring
+     +--ro energy-consumption
+     |  +--ro average-power?     yang:gauge64
+     |  +--ro saved-power?       yang:gauge64
+     |  +--ro current-power?     yang:gauge64
+     |  +--ro current-volts?     int32
+     |  +--ro current-amperes?   int32
+     |  +--ro temperature?       int32
+     +--rw energy-saving
+     |  +--ro enabled?      boolean
+     |  +--ro oper-state?   identityref
+     +--ro inventory-component-ref?   -> /ni:network-elements/network-element/components/component/name
+
+  augment /ni:network-elements/ni:network-element/ni:components/ni:component:
+    +--ro temperature-upper-bound?    int32
+    +--ro temperature-middle-bound?   int32
+    +--ro temperature-lower-bound?    int32
+    +--ro rated-power?                yang:gauge64
+    +--ro expected-volts?             int32
+    +--ro low-volts-bound?            int32
+    +--ro low-volts-fatal?            int32
+    +--ro high-volts-bound?           int32
+    +--ro high-volts-fatal?           int32
 ~~~~
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
@@ -209,28 +234,51 @@ informative:
    module "ietf-energy-saving-management" (Section 6).
 
 ~~~~
-    module: ietf-energy-saving-management
-     augment /ni:network-elements/ni:network-element:
-     +--rw energy-management
-        +--ro energy-monitoring-capability?   boolean
-        +--rw energy-saving-mode?             energy-saving-mode-name
-        +--ro method-name?                    energy-saving-method-name
-        +--ro eer?                            decimal64
+module: ietf-energy-saving-mgt
+  +--rw component-energy-monitoring
+     +--ro energy-consumption
+     |  +--ro average-power?     yang:gauge64
+     |  +--ro saved-power?       yang:gauge64
+     |  +--ro current-power?     yang:gauge64
+     |  +--ro current-volts?     int32
+     |  +--ro current-amperes?   int32
+     |  +--ro temperature?       int32
+     +--ro energy-saving
+     |  +--ro enabled?      boolean
+     |  +--ro oper-state?   identityref
+     +--ro inventory-component-ref?   -> /ni:network-elements/network-element/components/component/name
 
-     augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-       +--ro energy-consumption
-       |  +--ro total-energy-consumption?   uint32
-       |  +--ro saved-power                 unint32
-       |  +--ro average-power?              int32
-       |  +--ro saved-power?                int32
-       |  +--ro current-power?              int32
-       |  +--ro rated-power?                int32
-       |  +--ro instant-voltage?            int32
-       |  +--ro instant-current             int32
-       |  +--ro temperature?                int32
-       +--rw energy-saving
-          +--rw mode-enabled? boolean
-          +--ro oper-state?   energy-saving-oper-state
+  augment /nw:networks/nw:network/nw:node:
+    +--ro energy-power-consumption
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--rw energy-saving-modes
+       +--ro energy-saving-mode* [mode]
+          +--rw mode       identityref
+          +--rw methods
+             +--rw method* [method-name]
+                +--rw method-name    identityref
+  augment /ni:network-elements/ni:network-element:
+    +--rw energy-management
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode       identityref
+             +--ro methods
+                +--ro method* [method-name]
+                   +--ro method-name    identityref
+  augment /ni:network-elements/ni:network-element/ni:components/ni:component:
+    +--ro temperature-upper-bound?    int32
+    +--ro temperature-middle-bound?   int32
+    +--ro temperature-lower-bound?    int32
+    +--ro rated-power?                yang:gauge64
+    +--ro expected-volts?             int32
+    +--ro low-volts-bound?            int32
+    +--ro low-volts-fatal?            int32
+    +--ro high-volts-bound?           int32
+    +--ro high-volts-fatal?           int32
+
 ~~~~
 {: #e-tree title="Energy Saving Management Tree Structure"}
 
