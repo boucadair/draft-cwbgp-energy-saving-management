@@ -706,9 +706,9 @@ Table of Contents
        description
          "Energy management static data for network element.";
        container energy-management {
+         config false;
          description
            "Statistics of the energy management.";
-         config false;
          leaf energy-monitoring-capability {
            type boolean;
            description
@@ -722,8 +722,8 @@ Table of Contents
        }
      }
 
-     augment "/ni:network-elements/ni:network-element/ni:components/ni:\
-                                                            component" {
+     augment "/ni:network-elements/ni:network-element/ni:components"
+           + "/ni:component" {
        if-feature "energy-saving";
        description
          "Energy management static data for component.";
@@ -764,8 +764,8 @@ Table of Contents
        }
        leaf inventory-component-ref {
          type leafref {
-           path "/ni:network-elements/ni:network-element/ni:components/\
-                                                  ni:component/ni:name";
+           path "/ni:network-elements/ni:network-element"
+              + "/ni:components/ni:component/ni:name";
          }
          description
            "The reference of the port component from which this
