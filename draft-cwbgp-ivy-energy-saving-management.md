@@ -253,12 +253,12 @@ module: ietf-energy-saving-mgt
     |  +--ro total-energy-consumption?   yang:gauge64
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
-    +--ro energy-saving-modes
+    +--rw energy-saving-modes
        +--ro energy-saving-mode* [mode]
-          +--ro mode       identityref
-          +--ro methods
-             +--ro method* [method-name]
-                +--ro method-name    identityref
+          +--rw mode       identityref
+          +--rw methods
+             +--rw method* [method-name]
+                +--rw method-name    identityref
   augment /ni:network-elements/ni:network-element:
     +--rw energy-management
        +--ro energy-monitoring-capability?   boolean
