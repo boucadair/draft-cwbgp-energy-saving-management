@@ -425,9 +425,9 @@ module ietf-energy-saving-mgt {
     description
       "Energy management static data for network element.";
     container energy-management {
+      config false;
       description
         "Statistics of the energy management.";
-      config false;
       leaf energy-monitoring-capability {
         type boolean;
         description
@@ -441,7 +441,8 @@ module ietf-energy-saving-mgt {
     }
   }
 
-  augment "/ni:network-elements/ni:network-element/ni:components/ni:component" {
+  augment "/ni:network-elements/ni:network-element/ni:components"
+        + "/ni:component" {
     if-feature "energy-saving";
     description
       "Energy management static data for component.";
@@ -482,7 +483,8 @@ module ietf-energy-saving-mgt {
     }
     leaf inventory-component-ref {
       type leafref {
-        path "/ni:network-elements/ni:network-element/ni:components/ni:component/ni:name";
+        path "/ni:network-elements/ni:network-element"
+           + "/ni:components/ni:component/ni:name";
       }
       description
         "The reference of the port component from which this
