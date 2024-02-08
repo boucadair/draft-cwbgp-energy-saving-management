@@ -57,6 +57,7 @@ module ietf-energy-saving-mgt {
       "Specifies support of energy saving management.";
   }
 
+
   identity energy-saving-mode {
     description
       "Base identity for energy saving mode.";
