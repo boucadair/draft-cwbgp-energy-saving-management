@@ -1374,27 +1374,7 @@ connections.<a href="#section-2-4.10.1" class="pilcrow">¶</a></p>
 <figure id="figure-1">
           <div class="alignLeft art-text artwork" id="section-4.1-2.1">
 <pre>
-  augment /nw:networks/nw:network/nw:node:
-    +--ro energy-power-consumption
-    |  +--ro total-energy-consumption?   yang:gauge64
-    |  +--ro saved-energy?               yang:gauge64
-    |  +--ro eer?                        decimal64
-    +--ro energy-saving-modes
-       +--ro energy-saving-mode* [mode]
-          +--ro mode       identityref
-          +--ro methods
-             +--ro method* [method-name]
-
-  augment /ni:network-elements/ni:network-element:
-    +--rw energy-management
-       +--ro energy-monitoring-capability?   boolean
-       +--ro energy-saving-modes
-          +--ro energy-saving-mode* [mode]
-             +--ro mode       identityref
-             +--ro methods
-                +--ro method* [method-name]
-                   +--ro method-name    identityref
-
+TBC
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
@@ -1414,30 +1394,7 @@ connections.<a href="#section-2-4.10.1" class="pilcrow">¶</a></p>
 <figure id="figure-2">
           <div class="alignLeft art-text artwork" id="section-4.2-2.1">
 <pre>
-module: ietf-energy-saving-mgt
-  +--rw component-energy-monitoring
-     +--ro energy-consumption
-     |  +--ro average-power?     yang:gauge64
-     |  +--ro saved-power?       yang:gauge64
-     |  +--ro current-power?     yang:gauge64
-     |  +--ro current-volts?     int32
-     |  +--ro current-amperes?   int32
-     |  +--ro temperature?       int32
-     +--rw energy-saving
-     |  +--ro enabled?      boolean
-     |  +--ro oper-state?   identityref
-     +--ro inventory-component-ref?   -&gt; /ni:network-elements/network-element/components/component/name
-
-  augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-    +--ro temperature-upper-bound?    int32
-    +--ro temperature-middle-bound?   int32
-    +--ro temperature-lower-bound?    int32
-    +--ro rated-power?                yang:gauge64
-    +--ro expected-volts?             int32
-    +--ro low-volts-bound?            int32
-    +--ro low-volts-fatal?            int32
-    +--ro high-volts-bound?           int32
-    +--ro high-volts-fatal?           int32
+TBC
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1454,38 +1411,38 @@ module: ietf-energy-saving-mgt
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-energy-saving-management-tr" class="section-name selfRef">Energy Saving Management Tree Diagram</a>
       </h2>
 <p id="section-5-1"><a href="#e-tree" class="auto internal xref">Figure 3</a> shows the tree diagram of the YANG data model defined in
-   module "ietf-energy-saving-management" (Section 6).<a href="#section-5-1" class="pilcrow">¶</a></p>
+   module "ietf-energy-saving-management" (<a href="#sec-module" class="auto internal xref">Section 6</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
 <span id="name-energy-saving-management-tre"></span><div id="e-tree">
 <figure id="figure-3">
         <div class="alignLeft art-text artwork" id="section-5-2.1">
 <pre>
 module: ietf-energy-saving-mgt
   +--rw component-energy-monitoring
-     +--ro energy-consumption
-     |  +--ro average-power?     yang:gauge64
-     |  +--ro saved-power?       yang:gauge64
-     |  +--ro current-power?     yang:gauge64
-     |  +--ro current-volts?     int32
-     |  +--ro current-amperes?   int32
-     |  +--ro temperature?       int32
-     +--ro energy-saving
-     |  +--ro enabled?      boolean
-     |  +--ro oper-state?   identityref
-     +--ro inventory-component-ref?   -&gt; /ni:network-elements/network-element/components/component/name
+     +--rw energy-consumption
+     |  +--rw average-power?     yang:gauge64
+     |  +--rw saved-power?       yang:gauge64
+     |  +--rw current-power?     yang:gauge64
+     |  +--rw current-volts?     int32
+     |  +--rw current-amperes?   int32
+     |  +--rw temperature?       int32
+     +--rw energy-saving
+     |  +--rw enabled?      boolean
+     |  +--rw oper-state?   identityref
+     +--rw inventory-component-ref?   leafref
 
   augment /nw:networks/nw:network/nw:node:
-    +--ro energy-power-consumption
+    +--ro energy-power-consumption {energy-saving}?
     |  +--ro total-energy-consumption?   yang:gauge64
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
-    +--rw energy-saving-modes
-       +--ro energy-saving-mode* [mode]
+    +--rw energy-saving-modes {energy-saving}?
+       +--rw energy-saving-mode* [mode]
           +--rw mode       identityref
           +--rw methods
              +--rw method* [method-name]
                 +--rw method-name    identityref
   augment /ni:network-elements/ni:network-element:
-    +--rw energy-management
+    +--ro energy-management {energy-saving}?
        +--ro energy-monitoring-capability?   boolean
        +--ro energy-saving-modes
           +--ro energy-saving-mode* [mode]
@@ -1493,17 +1450,18 @@ module: ietf-energy-saving-mgt
              +--ro methods
                 +--ro method* [method-name]
                    +--ro method-name    identityref
-  augment /ni:network-elements/ni:network-element/ni:components/ni:component:
-    +--ro temperature-upper-bound?    int32
-    +--ro temperature-middle-bound?   int32
-    +--ro temperature-lower-bound?    int32
-    +--ro rated-power?                yang:gauge64
-    +--ro expected-volts?             int32
-    +--ro low-volts-bound?            int32
-    +--ro low-volts-fatal?            int32
-    +--ro high-volts-bound?           int32
-    +--ro high-volts-fatal?           int32
-
+  augment /ni:network-elements/ni:network-element/ni:components
+            /ni:component:
+    +--ro energy-parameters {energy-saving}?
+       +--ro temperature-upper-bound?    int32
+       +--ro temperature-middle-bound?   int32
+       +--ro temperature-lower-bound?    int32
+       +--ro rated-power?                yang:gauge64
+       +--ro expected-volts?             int32
+       +--ro low-volts-bound?            int32
+       +--ro low-volts-fatal?            int32
+       +--ro high-volts-bound?           int32
+       +--ro high-volts-fatal?           int32
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
@@ -1512,7 +1470,7 @@ module: ietf-energy-saving-mgt
 </div>
 </section>
 </div>
-<div id="energy-saving-yang-module">
+<div id="sec-module">
 <section id="section-6">
       <h2 id="name-energy-saving-yang-module">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-energy-saving-yang-module" class="section-name selfRef">Energy Saving YANG Module</a>
