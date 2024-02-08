@@ -330,10 +330,12 @@ Table of Contents
          "RFC XXXX: A YANG Data Model for Energy Saving Management";
      }
 
+
      feature energy-saving {
        description
          "Specifies support of energy saving management.";
      }
+
 
      identity energy-saving-mode {
        description
