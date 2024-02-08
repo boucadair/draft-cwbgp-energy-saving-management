@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 10 August 2024                                     M. Boucadair
+Expires: 11 August 2024                                     M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                         7 February 2024
+                                                         8 February 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 August 2024.
+   This Internet-Draft will expire on 11 August 2024.
 
 Copyright Notice
 
@@ -317,80 +317,75 @@ Table of Contents
           networking traffic.";
      }
 
-     typedef energy-saving-mode-name { <=== Med: be defined as \
-                                                              identities
-       type enumeration {
-         enum "basic" {
-           value 1;
-           description
-              "Basic energy saving mode. In this mode, the system
-               will shut down idle modules and put them in sleep mode.";
-         }
-         enum "standard" {
-           value 2;
-           description
-              "Standard energy saving mode. In this mode, the system
-               will extend basic energy saving model with more \
-                                                              advanced
-               Lossless energy saving features, e.g., power module
-               schedule.";
-         }
-         enum "deep" {
-           value 3;
-           description "Deep energy saving mode.";
-         }
-       }
-       description "Energy saving mode.";
+     identity energy-saving-mode {
+       description
+         "Energy saving mode.";
      }
 
-     typedef energy-saving-method-name { // Med: be defined as \
-                                                              identities
-       type enumeration {
-         enum "zone-based-fan-speed-adjustment" {
-           value 1;
-           description "The system will collect information about the
-                       temperatures of the service boards in the chassis
-                       and the zones where the service boards reside.
-                       According to the current temperature and target
-                       temperature of each board, the system implements
-                       stepless speed adjustment in different zones.";
-         }
+     identity basic {
+       base energy-saving-mode;
+       description
+         "Basic energy saving mode. In this mode, the system
+          will shut down idle modules and put them in sleep mode.";
+     }
 
-         enum "unused-high-speed-interface-shutdown" {
-           value 2;
-           description "When detecting an unused high-speed interface, \
-                                                                    the
-                        system automatically or manually shuts down the
-                        interface to reduce power consumption of the \
-                                                              interface
-                        circuits. When the interface needs to run \
-                                                           service, the
-                        system will automatically wake up the \
-                                                          interface and
-                        restore the interface to the normal working \
-                                                                state.";
-         }
+     identity standard {
+       base energy-saving-mode;
+       description
+         "Standard energy saving mode. In this mode, the system
+          will extend basic energy saving model with more advanced
+          Lossless energy saving features, e.g., power module
+          schedule.";
+      }
 
-         enum "unused-port-shutdown" {
-           value 3;
-           description "When detecting an unused user port, the system \
-                                                          automatically
-                        or manually shuts down the interface circuits \
-                                                            and optical
-                        module of the port to reduce port power \
-                                                      consumption. When
-                        detecting that the port needs to run service, \
-                                                             the system
-                        automatically enables the port and restores \
-                                                        the port to the
-                        normal running state, without affecting \
-                                                     application of the
-                        board.";
-         }
+     identity deep {
+       base energy-saving-mode;
+       description
+         "Deep energy saving mode.";
+     }
 
-         enum "unused-board-shutdown" {
-           value 4;
-           description "When detecting an unused board, the system \
+     identity energy-saving-method {
+       description
+         "Energy saving method.";
+     }
+
+     identity zone-based-fan-speed-adjustment {
+       base energy-saving-method;
+       description
+         "The system will collect information about the
+          temperatures of the service boards in the chassis
+          and the zones where the service boards reside.
+          According to the current temperature and target
+          temperature of each board, the system implements
+          stepless speed adjustment in different zones.";
+     }
+
+     identity unused-high-speed-interface-shutdown {
+       base energy-saving-method;
+       description
+         "When detecting an unused high-speed interface, the
+          system automatically or manually shuts down the
+          interface to reduce power consumption of the interface
+          circuits. When the interface needs to run service, the
+          system will automatically wake up the interface and
+         restore the interface to the normal working state.";
+     }
+
+     identity unused-port-shutdown {
+       base energy-saving-method;
+       description
+         "When detecting an unused user port, the system automatically
+          or manually shuts down the interface circuits and optical
+          module of the port to reduce port power consumption. When
+          detecting that the port needs to run service, the system
+          automatically enables the port and restores the port to the
+          normal running state, without affecting application of the
+          board.";
+     }
+
+     identity unused-board-shutdown {
+       base energy-saving-method;
+       description "When detecting an unused board, the system \
                                                           automatically
                         shuts down the power supply of the board,\
                                                           ensuring zero
@@ -403,12 +398,12 @@ Table of Contents
                         running state, without affecting application \
                                                            of the whole
                         product.";
-         }
+     }
 
-         enum "dynamic-frequency-adjustment" {
-           value 5;
-           description "When detecting that a service board is \
-                                                       carrying a small
+     identity dynamic-frequency-adjustment {
+       base energy-saving-method;
+       description "When detecting that a service board is carrying a \
+                                                                  small
                         service load, the system automatically reduces \
                                                             the working
                         frequency of the service processing module of \
@@ -422,33 +417,33 @@ Table of Contents
                         automatically increases the working frequency \
                                                          of the service
                         processing module to meet service needs.";
-         }
+      }
 
-         enum "unused-channel-shutdown" {
-           value 6;
-           description "When an unused channel is detected, the unused \
+     identity unused-channel-shutdown {
+       base energy-saving-method;
+       description "When an unused channel is detected, the unused \
                                                              channel is
-                        closed. Dynamically open the channel when \
+                    closed. Dynamically open the channel when \
                                                          detecting that
-                        there are services on the channel.";
-         }
+                    there are services on the channel.";
+     }
 
-         enum "intelligent-power-module-scheduling" {
-           value 7;
-           description "Power modules intelligently schedule internal \
+     identity intelligent-power-module-scheduling {
+       base energy-saving-method;
+       description "Power modules intelligently schedule internal \
                                                            power supply
-                        based on the power load. When the power load \
+                    based on the power load. When the power load \
                                                              decreases,
-                        some power supply are automatically disabled.
-                        When the power load increases, the disabled \
-                                                            power supply
-                        are enabled again. ";
-         }
+                    some power supply are automatically disabled.
+                    When the power load increases, the disabled power \
+                                                                  supply
+                    are enabled again. ";
+      }
 
-         enum "intelligent-board-scheduling" {
-           value 8;
-           description "Boards intelligently schedule internal \
-                                                   forwarding resources
+     identity intelligent-board-scheduling {
+       base energy-saving-method;
+       description "Boards intelligently schedule internal forwarding \
+                                                              resources
                         based on the service load. When the service \
                                                         load decreases,
                         some forwarding resources are automatically \
@@ -464,41 +459,38 @@ Table of Contents
                         traffic, packet forwarding may be delayed, but \
                                                                 packets
                         will not be lost.";
-         }
-       }
-       description "Energy saving methods.";
      }
 
+     identity energy-saving-oper-state {
+       description
+         "he device energy saving operator state.";
+     }
 
-     typedef energy-saving-oper-state { // Med: be defined as identities
-       type enumeration {
-         enum energy-saving-mode {
-           value 1;
-           description "Indicates that the device supports energy-\
-                                                          saving mode.";
-         }
+     identity intelligent-board-scheduling {
+       base energy-saving-oper-state;
+       description "Indicates that the device supports energy-saving \
+                                                                 mode.";
+     }
 
-         enum energy-none-saving-mode {
-           value 2;
+     identity energy-none-saving-mode {
+       base energy-saving-oper-state;
            description "Indicates that the device does not support \
                                                           energy-saving
                        mode or does not have enough resources.";
-         }
+     }
 
-         enum energy-saving-deactivated {
-           value 3;
-           description "Indicates that the device in no energy-saving \
+     identity energy-saving-deactivated {
+       base energy-saving-oper-state;
+       description "Indicates that the device in no energy-saving \
                                                                status.";
-         }
+     }
 
-         enum energy-saving-activated {
-           value 4;
+     identity energy-saving-activated {
+       base energy-saving-oper-state;
            description "Indicates that the device in energy-saving \
                                                        running status.";
-         }
-       }
-       description "The device energy saving operator state.";
      }
+
 
      typedef energy-saving-operator {
        type enumeration {
@@ -515,7 +507,7 @@ Table of Contents
        description "Energy saving operator.";
      }
 
-     grouping energy-consumption-data{
+     grouping energy-consumption-data {
        leaf total-energy-consumption {
          type uint64;
          units "Wh";
@@ -540,12 +532,12 @@ Table of Contents
          description "The saved power of monitoring class.";
        }
        leaf current-power {
-         type int32;
+         type int64;
          units "mW";
          description "The current power of monitoring class.";
        }
        leaf rated-power {
-         type int32;
+         type int64;
          units "mW";
          description "The rated power of monitoring class.";
        }
@@ -569,6 +561,7 @@ Table of Contents
        description
          "Statistics of the energy monitoring.";
      }
+
      augment "/ni:network-elements/ni:network-element" {
      container energy-management {
        description
@@ -579,27 +572,33 @@ Table of Contents
            description
              "Indicates whether monitoring can be performed.";
          }
-       leaf energy-saving-mode {
-          type energy-saving-mode-name;
+       leaf saving-mode {
+         type identityref {
+           base em:energy-saving-mode;
+         }
           description "The energy saving mode.";
        }
 
       leaf method-name {
           config false;
-          type energy-saving-method-name;
-          description "The energy saving method name.";
+         type identityref {
+           base em:energy-saving-method;
+         }
+         description "The energy saving method name.";
        }
       leaf eer {
           type decimal64 {
             fraction-digits 18;
           }
          units "Gbps/Watt";
-         description "The energy efficiency rating (EER) is a metric
-         generally defined as a functional unit divided by the energy
-         used. Various types of equipment have their own EER \
+         description
+           "The energy efficiency rating (EER) is a metric
+             generally defined as a functional unit divided by the \
+                                                                 energy
+             used. Various types of equipment have their own EER \
                                                           definitions.";
+       }
       }
-     }
     }
 
      augment "/ni:network-elements/ni:network-element/ni:components/ni:\
@@ -619,13 +618,15 @@ Table of Contents
                       energy monitoring.";
          leaf enabled {
            type boolean;
-             default "true";
+           default "true";
            description "Enable/disable : the energy-saving state
                         of the component.";
          }
 
          leaf oper-state {
-           type energy-saving-oper-state;
+         type identityref {
+           base em:energy-saving-oper-state;
+         }
            config false;
            description "The device energy saving operator state.";
          }
