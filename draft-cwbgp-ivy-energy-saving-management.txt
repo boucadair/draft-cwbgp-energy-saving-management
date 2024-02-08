@@ -276,8 +276,6 @@ Table of Contents
    The module imports XXX and uses types defined in XXX.
 
    <CODE BEGINS> file "ietf-energy-saving-mgt@2024-01-23.yang"
-   =============== NOTE: '\' line wrapping per RFC 8792 ================
-
    module ietf-energy-saving-mgt {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt";
@@ -304,10 +302,13 @@ Table of Contents
      contact
        "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
         WG List:  <mailto:opsawg@ietf.org>
-        Author:   Gen Chen  <mailto:chengen@huawei.com>
-        Author:   Qin Wu <mailto:bill.wu@huawei.com>
-        Author:   Mohamed Boucadair <mailto:mohamed.boucadair@huawei.\
-                                                                  com>";
+
+        Author:   Gen Chen
+                  <mailto:chengen@huawei.com>
+        Author:   Qin Wu
+                  <mailto:bill.wu@huawei.com>
+        Author:   Mohamed Boucadair
+                  <mailto:mohamed.boucadair@huawei.com>";
      description
        "This module contains a collection of YANG definitions for power
         and energy management of devices. It also augments both the
@@ -540,9 +541,9 @@ Table of Contents
          "Contains the information necessary to reference a component.";
        leaf node-ref {
          type leafref {
-           path "/ni:network-elements/ni:network-element[ni:ne-id=\
-                                                         current()/../"+
-             "ne-ref]/ni:components/ni:component/ni:component-id";
+           path "/ni:network-elements/ni:network-element[ni:ne-id="
+             + "current()/../ne-ref]/ni:components/ni:component"
+             + "/ni:component-id";
            require-instance false;
          }
          description
@@ -633,9 +634,8 @@ Table of Contents
          units "0.01 C";
          description
            "The upper bound overheat temperature of the component.
-            Upon the upper bound is exceeded, the alarm will be \
-                                                               triggered
-            to indicate fatal failure.";
+            Upon the upper bound is exceeded, the alarm will be
+            triggered to indicate fatal failure.";
        }
        leaf temperature-middle-bound {
          type int32;
@@ -722,10 +722,8 @@ Table of Contents
            units "Gbps/Watt";
            description
              "The energy efficiency rating (EER) is a metric
-              generally defined as a functional unit divided by the \
-                                                                  energy
-              used. Various types of equipment have their own EER \
-                                                          definitions.";
+              generally defined as a functional unit divided by
+              the energy used.";
          }
        }
        container energy-saving-modes {
