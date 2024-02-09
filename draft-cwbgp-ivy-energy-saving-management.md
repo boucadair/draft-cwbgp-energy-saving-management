@@ -196,7 +196,7 @@ TBC
 ##  Component Specific Information
 
    Component-specific attributes can be defined under the component list
-   node as shown in {{cs-tre}}.
+   node as shown in {{cs-tree}}.
 
 ~~~~
 TBC
