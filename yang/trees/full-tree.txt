@@ -1,49 +1,514 @@
-module: ietf-energy-saving-mgt
-  +--rw component-energy-monitoring
-     +--rw energy-consumption
-     |  +--rw average-power?     yang:gauge64
-     |  +--rw saved-power?       yang:gauge64
-     |  +--rw current-power?     yang:gauge64
-     |  +--rw current-volts?     int32
-     |  +--rw current-amperes?   int32
-     |  +--rw temperature?       int32
-     +--rw energy-saving
-     |  +--rw enabled?      boolean
-     |  +--rw oper-state?   identityref
-     +--rw inventory-component-ref
-        +--rw node-ref?   leafref
-        +--rw ne-ref?
-                -> /ni:network-elements/network-element/ne-id
+module ietf-energy-saving-mgt {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt";
+  prefix em;
 
-  augment /nw:networks/nw:network/nw:node:
-    +--ro energy-power-consumption {energy-saving}?
-    |  +--ro total-energy-consumption?   yang:gauge64
-    |  +--ro saved-energy?               yang:gauge64
-    |  +--ro eer?                        decimal64
-    +--rw energy-saving-modes {energy-saving}?
-       +--rw energy-saving-mode* [mode]
-          +--rw mode       identityref
-          +--rw methods
-             +--rw method* [name]
-                +--rw name    identityref
-  augment /ni:network-elements/ni:network-element:
-    +--ro energy-management {energy-saving}?
-       +--ro energy-monitoring-capability?   boolean
-       +--ro energy-saving-modes
-          +--ro energy-saving-mode* [mode]
-             +--ro mode       identityref
-             +--ro methods
-                +--ro method* [name]
-                   +--ro name    identityref
-  augment /ni:network-elements/ni:network-element/ni:components
-            /ni:component:
-    +--ro energy-parameters {energy-saving}?
-       +--ro temperature-upper-bound?    int32
-       +--ro temperature-middle-bound?   int32
-       +--ro temperature-lower-bound?    int32
-       +--ro rated-power?                yang:gauge64
-       +--ro expected-volts?             int32
-       +--ro low-volts-bound?            int32
-       +--ro low-volts-fatal?            int32
-       +--ro high-volts-bound?           int32
-       +--ro high-volts-fatal?           int32
+  import ietf-network-inventory {
+    prefix ni;
+    reference
+      "RFC IIII: A YANG Data Model for Network Inventory";
+  }
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6021: Common YANG Types";
+  }
+  import ietf-network {
+    prefix nw;
+    reference
+      "RFC 8345: A YANG Data Model for Network Topologies";
+  }
+
+  organization
+    "IETF IVY Working Group.";
+  contact
+    "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
+     WG List:  <mailto:opsawg@ietf.org>
+
+     Author:   Gen Chen 
+               <mailto:chengen@huawei.com>
+     Author:   Qin Wu
+               <mailto:bill.wu@huawei.com>
+     Author:   Mohamed Boucadair
+               <mailto:mohamed.boucadair@huawei.com>";
+  description
+    "This module contains a collection of YANG definitions for power
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2024-01-23 {
+    description
+      "Initial revision.";
+    reference
+      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+  }
+
+  feature energy-saving {
+    description
+      "Specifies support of energy saving management.";
+  }
+
+
+  identity energy-saving-mode {
+    description
+      "Base identity for energy saving mode.";
+  }
+
+  identity basic {
+    base energy-saving-mode;
+    description
+      "Basic energy saving mode.
+
+       In this mode, the system will shut down idle modules
+       and put them in a sleep mode.";
+  }
+
+  identity standard {
+    base energy-saving-mode;
+    description
+      "Standard energy saving mode.
+
+       In this mode, the system extends basic energy saving
+       mode with more advanced Lossless energy saving features,
+       e.g., power module schedule.";
+  }
+
+  identity deep {
+    base energy-saving-mode;
+    description
+      "Deep energy saving mode.
+
+       In this mode, the system extends standard energy saving
+       mode with more advanced system level energy saving features,
+       e.g., board scheduling.";
+  }
+
+  identity energy-saving-method {
+    description
+      "Base identity for energy saving method.";
+  }
+
+  identity zone-based-fan-speed-adjustment {
+    base energy-saving-method;
+    description
+      "The system collects information about the
+       temperatures of the service boards in the chassis
+       and the zones where the service boards reside.
+
+       According to the current temperature and target
+       temperature of each board, the system implements
+       stepless speed adjustment in different zones.";
+  }
+
+  identity unused-high-speed-interface-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused high-speed interface, the
+       system shuts down the interface to reduce power consumption
+       of the interface circuits.
+
+       When the interface needs to run service, the
+       system will automatically wake up the interface and
+       restore the interface to the normal working state.";
+  }
+
+  identity unused-port-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused user port, the system automatically
+       or manually shuts down the interface circuits and optical
+       module of the port to reduce port power consumption. When
+       detecting that the port needs to run service, the system
+       automatically enables the port and restores the port to the
+       normal running state, without affecting application of the
+       board.";
+  }
+
+  identity unused-board-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused board, the system automatically
+       shuts down the power supply of the board,ensuring zero
+       power consumption of an unused board.
+
+       When detecting that the board needs to run service, the system
+       automatically powers on the board and restores the board
+       to the normalrunning state, without affecting application of
+       the whole device.";
+  }
+
+  identity dynamic-frequency-adjustment {
+    base energy-saving-method;
+    description
+      "When detecting that a service board is carrying a small
+       service load, the system automatically reduces the working
+       frequency of the service processing module of the board
+       while maintaining the service quality. In doing so, power
+       consumption of the service processing module is reduced.
+       When the service load of the board increases, the system
+       automatically increases the working frequency of the service
+       processing module to meet service needs.";
+  }
+
+  identity unused-channel-shutdown {
+    base energy-saving-method;
+    description
+      "When an unused channel is detected, the unused channel is
+       closed. Dynamically open the channel when detecting that
+       there are services on the channel.";
+  }
+
+  identity load-based-power-module-scheduling {
+    base energy-saving-method;
+    description
+      "Power modules intelligently schedule internal power supply
+       based on the power load. When the power load decreases,
+       some power supply are automatically disabled.
+
+       When the power load increases, the disabled power supplies
+       are enabled again. ";
+  }
+
+  identity load-based-board-scheduling {
+    base energy-saving-method;
+    description
+      "Boards intelligently schedule internal forwarding resources
+       based on the service load. When the service load decreases,
+       some forwarding resources are automatically disabled or the
+       working frequency of the forwarding resources is reduced.
+
+       When the service load increases, the disabled forwarding
+       resources are enabled again or the working frequency of
+       forwarding resources is improved. In the case of burst
+       traffic, packet forwarding may be delayed, but packets
+       will not be lost.";
+  }
+
+  identity energy-saving-oper-state {
+    description
+      "Base identity for energy-saving-oper-state.";
+  }
+
+  identity energy-saving {
+    base energy-saving-oper-state;
+    description
+      "Identity to indicate support of energy-saving mode.";
+  }
+
+  identity unsupported {
+    base energy-saving-oper-state;
+    description
+      "Indicates that the device does not support energy-saving
+       mode or does not have enough resources.";
+  }
+
+  identity deactivated {
+    base energy-saving-oper-state;
+    description
+      "Indicates teh saving mode is deactivated.";
+  }
+
+  identity activated {
+    base energy-saving-oper-state;
+    description
+      "Indicates that the energy saving is running.";
+  }
+
+  typedef energy-saving-operator {
+    type enumeration {
+      enum on {
+        value 1;
+        description
+          "Power-on for energy saving.";
+      }
+      enum off {
+        value 2;
+        description
+          "Power-off for energy saving.";
+      }
+    }
+    description
+      "Energy saving operator.";
+  }
+
+  grouping network-element-ref {
+    description
+      "Contains the information necessary to reference a network
+       element.";
+    leaf ne-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element/ni:ne-id";
+      require-instance false;
+      }
+      description
+        "Used to reference a network element.";
+    }
+  }
+
+  grouping component-ref {
+    description
+      "Contains the information necessary to reference a component.";
+    leaf node-ref {
+      type leafref {
+        path "/ni:network-elements/ni:network-element[ni:ne-id="
+          + "current()/../ne-ref]/ni:components/ni:component"
+          + "/ni:component-id";
+        require-instance false;
+      }
+      description
+        "Used to reference a component.";
+    }
+    uses network-element-ref;
+  }
+
+  grouping energy-consumption-data {
+    description
+      "Grouping for energy monitoring.";
+    leaf average-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The average consumed power.";
+    }
+    leaf saved-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The saved power.";
+    }
+    leaf current-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The current observed consumed power.";
+    }
+    leaf current-volts {
+      type int32;
+      units "mV";
+      description
+        "The current volts.";
+    }
+    leaf current-amperes {
+      type int32;
+      units "mA";
+      description
+        "The current amperes.";
+    }
+    leaf temperature {
+      type int32;
+      units "0.01 C";
+      description
+        "The current temperature of the component.";
+    }
+  }
+
+  grouping energy-saving-modes {
+    description
+      "Grouping for energy saving mode and methods.";
+    leaf-list energy-saving-mode {
+      type identityref {
+        base energy-saving-mode;
+      }
+      description
+        "The energy saving mode.";
+    }
+    leaf-list energy-saving-method {
+      type identityref {
+        base energy-saving-method;
+      }
+      description
+        "The energy saving method.";
+    }
+  }
+
+  grouping energy-parameters {
+    description
+      "Grouping for energy paramters.";
+    leaf temperature-upper-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The upper bound overheat temperature of the component.
+
+         Upon the upper bound is exceeded, an alarm will be
+         triggered to indicate fatal failure.";
+    }
+    leaf temperature-middle-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The middle bound overheat temperature of the component.
+
+         Upon the middle bound is exceeded, an alarm will be
+         triggered.";
+    }
+    leaf temperature-lower-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The lower bound overheat temperature of the component.
+
+         Upon the lower bound is exceeded, the alarm will be
+         triggered.";
+    }
+    leaf rated-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The rated power.";
+    }
+    leaf expected-volts {
+      type int32;
+      units "mV";
+      description
+        "The expected volts.";
+    }
+    leaf low-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The lower volts bound which might cause equipment 
+         misbehavior or even damage.";
+    }
+    leaf low-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The lowest volts bound which might cause equipment fatal
+         damage.";
+    }
+    leaf high-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The higher volts bound which should trigger an alarm.";
+    }
+    leaf high-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The highest volts bound of monitoring class which
+         will cause fatal failure.";
+    }
+  }
+
+  augment "/nw:networks/nw:network/nw:node" {
+    if-feature "energy-saving";
+    description
+      "Energy monitoring data for network element.";
+    container energy-power-consumption {
+      config false;
+      description
+        "Statistics data about energy and power monitoring.";
+      leaf total-energy-consumption {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Accumulated energy consumption of equipment.";
+      }
+      leaf saved-energy {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Saved energy consumption of equipment.";
+      }
+      leaf eer {
+        type decimal64 {
+          fraction-digits 18;
+        }
+        units "Gbps/Watt";
+        description
+          "The energy efficiency rating (EER) is a metric
+           generally defined as a functional unit divided by
+           the energy used.";
+      }
+    }
+    container energy-saving-modes {
+      description
+        "List of the energy saving mode.";
+      uses energy-saving-modes;
+    }
+  }
+
+  augment "/ni:network-elements/ni:network-element" {
+    if-feature "energy-saving";
+    description
+      "Energy management static data for network element.";
+    container energy-management {
+      config false;
+      description
+        "Statistics of the energy management.";
+      leaf energy-monitoring-capability {
+        type boolean;
+        description
+          "Indicates whether monitoring can be performed.";
+      }
+      container energy-saving-modes {
+        description
+          "List of supported energy saving modes.";
+        uses energy-saving-modes;
+      }
+    }
+  }
+
+  augment "/ni:network-elements/ni:network-element/ni:components"
+        + "/ni:component" {
+    if-feature "energy-saving";
+    description
+      "Energy management static data for component.";
+    container energy-parameters {
+      config false;
+      description
+        "Energy parameter monitoring.";
+      uses energy-parameters;
+    }
+  }
+
+  container component-energy-monitoring {
+    description
+      "Energy monitoring data for components.";
+    container energy-consumption {
+      description
+        "Statistics of component about energy monitoring.";
+      uses energy-consumption-data;
+    }
+    container energy-saving {
+      description
+        "Controls energy saving parameters of a component.";
+      leaf enabled {
+        type boolean;
+        default "true";
+        description
+          "Controls whether the energy-saving 
+           of the component is enabled (when set to true)
+           or disabled (set to false).";
+      }
+      leaf oper-state {
+        type identityref {
+          base energy-saving-oper-state;
+        }
+        description
+          "The device energy saving operator state.";
+      }
+    }
+    container inventory-component-ref {
+      description
+        "The reference of the component from which this
+         termination point is abstracted.";
+      uses component-ref;
+    }
+  }
+}
