@@ -140,7 +140,7 @@ informative:
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-management", which augments network element of the
-   network Inventory base model with energy saving modes and also
+   network Inventory base model with energy saving modes and 
    augments the component of the network inventory base model with
    energy consumption and energy saving attributes.
 
@@ -161,7 +161,7 @@ informative:
    methods to reach the energy saving target level.
 
    At the component level, the data model includes a set of monitoring
-   statistics for energy consumption and also energy saving operator
+   statistics for energy consumption and energy saving operator
    state of each component within the network device.
 
 ## Network Element Specific Information
@@ -220,7 +220,7 @@ The module imports XXX and uses types defined in XXX.
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
-   There are a number of data nodes defined in this YANG module that are
+   There are several data nodes defined in this YANG module that are
    writable/creatable/deletable (i.e., config true, which is the
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
@@ -276,7 +276,7 @@ The module imports XXX and uses types defined in XXX.
 
    This work has benefited from the discussions of Sustainable
    Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
-   particular, {{?I-D.cx-opsawg-green-metrics}} assess a number of
+   particular, {{?I-D.cx-opsawg-green-metrics}} assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a

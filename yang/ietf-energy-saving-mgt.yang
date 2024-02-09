@@ -141,7 +141,7 @@ module ietf-energy-saving-mgt {
     base energy-saving-method;
     description
       "When detecting an unused board, the system automatically
-       shuts down the power supply of the board,ensuring zero
+       shuts down the power supply of the board, ensuring zero
        power consumption of an unused board.
 
        When detecting that the board needs to run service, the system
@@ -176,7 +176,7 @@ module ietf-energy-saving-mgt {
     description
       "Power modules intelligently schedule internal power supply
        based on the power load. When the power load decreases,
-       some power supply are automatically disabled.
+       some power supplies are automatically disabled.
 
        When the power load increases, the disabled power supplies
        are enabled again. ";
