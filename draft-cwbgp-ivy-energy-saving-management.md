@@ -61,7 +61,7 @@ informative:
 
    With the growth of networks and the increase of awareness about the
    environmental impact, it is important to ensure energy efficiency in
-   the operation of network infrastructure.  Operators are thus seeking
+   the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
    and the contribution of involved nodes.  However, there are no
    standard mechanisms to report and control power usage of different
@@ -79,6 +79,15 @@ informative:
    routers, switches, security gateways, hosts, or servers.  Where
    applicable, device monitoring extends to the individual components of
    the device.
+
+   The document augments both "ietf-network" {{!RFC8345}} and
+   "ietf-network-inventory" {{!I-D.ietf-ivy-network-inventory-yang}} with the following rationale:
+
+   * Parameters that reflect the saving modes and methods are considered
+     as capabilities, and are thus maintained in the inventory.
+   * Required parameters to control and adjust nodes and components behaviors
+     are added to the network topology as this allows operator to better assess
+     the implications on node-specific action on the overall network.
 
 # Conventions and Definitions
 
@@ -140,7 +149,7 @@ informative:
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-management", which augments network element of the
-   network Inventory base model with energy saving modes and 
+   network Inventory base model with energy saving modes and
    augments the component of the network inventory base model with
    energy consumption and energy saving attributes.
 
@@ -164,6 +173,15 @@ informative:
    statistics for energy consumption and energy saving operator
    state of each component within the network device.
 
+##  Energy Saving Management Tree Diagram
+
+  {{e-tree}} shows the tree diagram of the YANG data model defined in {{sec-module}}.
+
+~~~~
+{::include-fold ./yang/trees/full-tree.txt}
+~~~~
+{: #e-tree title="Energy Saving Management Tree Structure"}
+
 ## Network Element Specific Information
 
    Network element specific attributes can be defined in the network
@@ -178,22 +196,14 @@ TBC
 ##  Component Specific Information
 
    Component-specific attributes can be defined under the component list
-   node as shown in Figure 2.
+   node as shown in {{cs-tree}}.
 
 ~~~~
 TBC
 ~~~~
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
-#  Energy Saving Management Tree Diagram
 
-  {{e-tree}} shows the tree diagram of the YANG data model defined in
-   module "ietf-energy-saving-management" ({{sec-module}}).
-
-~~~~
-{::include-fold ./yang/trees/full-tree.txt}
-~~~~
-{: #e-tree title="Energy Saving Management Tree Structure"}
 
 # Energy Saving YANG Module {#sec-module}
 
