@@ -317,34 +317,20 @@ module ietf-energy-saving-mgt {
 
   grouping energy-saving-modes {
     description
-      "Grouping for energy saving mode configuration.";
-    list energy-saving-mode {
-      key "mode";
+      "Grouping for energy saving mode and methods.";
+    leaf-list energy-saving-mode {
+      type identityref {
+        base energy-saving-mode;
+      }
       description
-        "Specifies the energy saving mode.";
-      leaf mode {
-        type identityref {
-          base energy-saving-mode;
-        }
-        description
-          "The energy saving mode.";
+        "The energy saving mode.";
+    }
+    leaf-list energy-saving-method {
+      type identityref {
+        base energy-saving-method;
       }
-      container methods {
-        description
-          "List of the energy saving method.";
-        list method {
-          key "name";
-          description
-            "Configuration of the energy saving method.";
-          leaf name {
-            type identityref {
-              base energy-saving-method;
-            }
-            description
-              "Specifies the name of the energy saving method.";
-          }
-        }
-      }
+      description
+        "The energy saving method.";
     }
   }
 
