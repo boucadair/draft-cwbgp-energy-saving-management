@@ -24,8 +24,8 @@ module: ietf-energy-saving-mgt
        +--rw energy-saving-mode* [mode]
           +--rw mode       identityref
           +--rw methods
-             +--rw method* [method-name]
-                +--rw method-name    identityref
+             +--rw method* [name]
+                +--rw name    identityref
   augment /ni:network-elements/ni:network-element:
     +--ro energy-management {energy-saving}?
        +--ro energy-monitoring-capability?   boolean
@@ -33,8 +33,8 @@ module: ietf-energy-saving-mgt
           +--ro energy-saving-mode* [mode]
              +--ro mode       identityref
              +--ro methods
-                +--ro method* [method-name]
-                   +--ro method-name    identityref
+                +--ro method* [name]
+                   +--ro name    identityref
   augment /ni:network-elements/ni:network-element/ni:components
             /ni:component:
     +--ro energy-parameters {energy-saving}?
