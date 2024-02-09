@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Chen, et al.</td>
-<td class="center">Expires 11 August 2024</td>
+<td class="center">Expires 12 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-cwbgp-ivy-energy-saving-management-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-08" class="published">8 February 2024</time>
+<time datetime="2024-02-09" class="published">9 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-11">11 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-12">12 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1116,7 +1116,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1655,7 +1655,7 @@ module ietf-energy-saving-mgt {
        there are services on the channel.";
   }
 
-  identity intelligent-power-module-scheduling {
+  identity load-based-power-module-scheduling {
     base energy-saving-method;
     description
       "Power modules intelligently schedule internal power supply
@@ -1666,7 +1666,7 @@ module ietf-energy-saving-mgt {
        are enabled again. ";
   }
 
-  identity intelligent-board-scheduling {
+  identity load-based-board-scheduling {
     base energy-saving-method;
     description
       "Boards intelligently schedule internal forwarding resources
@@ -1692,33 +1692,33 @@ module ietf-energy-saving-mgt {
       "Identity to indicate support of energy-saving mode.";
   }
 
-  identity energy-none-saving {
+  identity unsupported {
     base energy-saving-oper-state;
     description
       "Indicates that the device does not support energy-saving
        mode or does not have enough resources.";
   }
 
-  identity energy-saving-deactivated {
+  identity deactivated {
     base energy-saving-oper-state;
     description
-      "Indicates that the device in no energy-saving status.";
+      "Indicates teh saving mode is deactivated.";
   }
 
-  identity energy-saving-activated {
+  identity activated {
     base energy-saving-oper-state;
     description
-      "Indicates that the device in energy-saving running status.";
+      "Indicates that the energy saving is running.";
   }
 
   typedef energy-saving-operator {
     type enumeration {
-      enum power-on {
+      enum on {
         value 1;
         description
           "Power-on for energy saving.";
       }
-      enum power-off {
+      enum off {
         value 2;
         description
           "Power-off for energy saving.";
@@ -1765,31 +1765,31 @@ module ietf-energy-saving-mgt {
       type yang:gauge64;
       units "mW";
       description
-        "The average power of monitoring class.";
+        "The average consumed power.";
     }
     leaf saved-power {
       type yang:gauge64;
       units "mW";
       description
-        "The saved power of monitoring class.";
+        "The saved power.";
     }
     leaf current-power {
       type yang:gauge64;
       units "mW";
       description
-        "The current power of monitoring class.";
+        "The current observed consumed power.";
     }
     leaf current-volts {
       type int32;
       units "mV";
       description
-        "The current volts of monitoring class.";
+        "The current volts.";
     }
     leaf current-amperes {
       type int32;
       units "mA";
       description
-        "The current amperes of monitoring class.";
+        "The current amperes.";
     }
     leaf temperature {
       type int32;
@@ -1817,15 +1817,15 @@ module ietf-energy-saving-mgt {
         description
           "List of the energy saving method.";
         list method {
-          key "method-name";
+          key "name";
           description
             "Configuration of the energy saving method.";
-          leaf method-name {
+          leaf name {
             type identityref {
               base energy-saving-method;
             }
             description
-              "The energy saving method name.";
+              "Specifies the name of the energy saving method.";
           }
         }
       }
@@ -1840,7 +1840,8 @@ module ietf-energy-saving-mgt {
       units "0.01 C";
       description
         "The upper bound overheat temperature of the component.
-         Upon the upper bound is exceeded, the alarm will be
+
+         Upon the upper bound is exceeded, an alarm will be
          triggered to indicate fatal failure.";
     }
     leaf temperature-middle-bound {
@@ -1848,7 +1849,8 @@ module ietf-energy-saving-mgt {
       units "0.01 C";
       description
         "The middle bound overheat temperature of the component.
-         Upon the middle bound is exceeded, the alarm will be
+
+         Upon the middle bound is exceeded, an alarm will be
          triggered.";
     }
     leaf temperature-lower-bound {
@@ -1856,6 +1858,7 @@ module ietf-energy-saving-mgt {
       units "0.01 C";
       description
         "The lower bound overheat temperature of the component.
+
          Upon the lower bound is exceeded, the alarm will be
          triggered.";
     }
@@ -1863,34 +1866,33 @@ module ietf-energy-saving-mgt {
       type yang:gauge64;
       units "mW";
       description
-        "The rated power of monitoring class.";
+        "The rated power.";
     }
     leaf expected-volts {
       type int32;
       units "mV";
       description
-        "The expected volts of monitoring class.";
+        "The expected volts.";
     }
     leaf low-volts-bound {
       type int32;
       units "mV";
       description
-        "The lower volts bound of monitoring class which
-         might cause equipment abnormality or damage.";
+        "The lower volts bound which might cause equipment
+         misbehavior or even damage.";
     }
     leaf low-volts-fatal {
       type int32;
       units "mV";
       description
-        "The lowest volts bound of monitoring class which
-         might cause equipment fatal damage.";
+        "The lowest volts bound which might cause equipment fatal
+         damage.";
     }
     leaf high-volts-bound {
       type int32;
       units "mV";
       description
-        "The higher volts bound of monitoring class which
-         will trigger alarm.";
+        "The higher volts bound which should trigger an alarm.";
     }
     leaf high-volts-fatal {
       type int32;
@@ -1954,7 +1956,7 @@ module ietf-energy-saving-mgt {
       }
       container energy-saving-modes {
         description
-          "List of the energy saving mode.";
+          "List of supported energy saving modes.";
         uses energy-saving-modes;
       }
     }
@@ -1983,13 +1985,12 @@ module ietf-energy-saving-mgt {
     }
     container energy-saving {
       description
-        "Configure : Statistics of component about
-            energy monitoring.";
+        "Controls energy saving parameters of a component.";
       leaf enabled {
         type boolean;
         default "true";
         description
-          "Controls whether the energy-saving state
+          "Controls whether the energy-saving
            of the component is enabled (when set to true)
            or disabled (set to false).";
       }
@@ -2003,7 +2004,7 @@ module ietf-energy-saving-mgt {
     }
     container inventory-component-ref {
       description
-        "The reference of the port component from which this
+        "The reference of the component from which this
          termination point is abstracted.";
       uses component-ref;
     }
