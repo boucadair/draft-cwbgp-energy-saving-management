@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-08T00:42:39.205154+00:00",
+  "timestamp": "2024-02-11T00:47:02.889962+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -65,6 +65,92 @@
       "updatedAt": "2024-02-07T13:19:56Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOLPL1Dc5-rU9w",
+      "title": "broken ref as there are list of components under a list of elements.",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/7",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/9d1bf100bb9aa88c3124dc2b03af0802a753cdbd/yang/ietf-energy-saving-mgt.yang#L485",
+      "createdAt": "2024-02-08T14:16:53Z",
+      "updatedAt": "2024-02-09T14:05:18Z",
+      "closedAt": "2024-02-08T14:56:17Z",
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The path should be changed into \r\n/ni:network-elements/ni:network-element/ni:components/ni:component/ni:component-id\r\nSee snippet in  https://datatracker.ietf.org/doc/draft-ietf-ivy-network-inventory-yang/\r\n+--rw components\r\n         +--rw component* [component-id]\r\n           +--rw component-id            string\r\n           +--rw uuid?                   yang:uuid\r\nCan you help fix this in the yang module code.",
+          "createdAt": "2024-02-08T14:39:12Z",
+          "updatedAt": "2024-02-08T14:39:12Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Done in #8 ",
+          "createdAt": "2024-02-08T14:54:25Z",
+          "updatedAt": "2024-02-08T14:54:25Z"
+        },
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks!",
+          "createdAt": "2024-02-09T14:05:18Z",
+          "updatedAt": "2024-02-09T14:05:18Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOLPL1Dc5-wtjF",
+      "title": "Position vs rfc6988 and rfc7460",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/10",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-09T08:41:28Z",
+      "updatedAt": "2024-02-09T08:41:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOLPL1Dc5-wuFZ",
+      "title": "Alrams + RFC 8632 ",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/11",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The description of some nodes mentions \"alarm\" but without elaborating how these alarms are generated/identified/etc.\r\n\r\nI suggest we simply point to RFC 8632  to leverage the alarm framework.",
+      "createdAt": "2024-02-09T08:43:11Z",
+      "updatedAt": "2024-02-09T08:43:11Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOLPL1Dc5-wuM_",
+      "title": "More references for the various parameters",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/12",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-09T08:43:34Z",
+      "updatedAt": "2024-02-09T08:43:34Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -73,24 +159,543 @@
       "id": "PR_kwDOLPL1Dc5mSPrU",
       "title": "Some changes",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/2",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-02-07T16:49:03Z",
-      "updatedAt": "2024-02-07T16:49:03Z",
+      "updatedAt": "2024-02-08T09:28:05Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "fb9026ae6104c59c15a2ad7b8c6e02156924993e",
       "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "headRefName": "boucadair-patch-1",
       "headRefOid": "5ce5c44ecc01ade371090490878da8db41ccd4f9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-02-08T09:28:04Z",
+      "mergedAt": "2024-02-08T09:28:04Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "48ecf7b9af3b53b3487e0e2d83ba08b631a81cc5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOLPL1Dc5mWWRe",
+      "title": "Change module structure and YANG module source code in two different files",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/3",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "These changes are used to address your comments raised in the issue ticket, the main change includes moving dynamic data out of network inventory model extension.",
+      "createdAt": "2024-02-08T09:09:48Z",
+      "updatedAt": "2024-02-08T12:46:33Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "48ecf7b9af3b53b3487e0e2d83ba08b631a81cc5",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "main",
+      "headRefOid": "d8b004ff2d647bbaa4ffcc7ae1167fccf9ddf597",
+      "closedAt": "2024-02-08T12:46:33Z",
+      "mergedAt": "2024-02-08T12:46:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "4bd06ddac22428348507f71a594694d9ee82d287"
+      },
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "#1 ",
+          "createdAt": "2024-02-08T09:11:30Z",
+          "updatedAt": "2024-02-08T09:11:30Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc5vcM2W",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-02-08T09:34:52Z",
+          "updatedAt": "2024-02-08T09:37:10Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "I suggest we also add the following under a node to control it\r\n\r\n       +--rw energy-saving-modes\r\n          +--rw energy-saving-mode* [mode]\r\n             +--rw mode       identityref\r\n             +--rw methods\r\n                +--rw method* [method-name]\r\n                   +--rw method-name    identityref\r\n",
+              "createdAt": "2024-02-08T09:34:52Z",
+              "updatedAt": "2024-02-08T09:37:10Z"
+            },
+            {
+              "originalPosition": 19,
+              "body": "I suggest that all the following be \"ro\" as this is part of the inventory\r\n\r\n      +--rw energy-saving-modes\r\n          +--rw energy-saving-mode* [mode]\r\n             +--rw mode       identityref\r\n             +--rw methods\r\n                +--rw method* [method-name]\r\n                   +--rw method-name    identityref",
+              "createdAt": "2024-02-08T09:35:33Z",
+              "updatedAt": "2024-02-08T09:37:10Z"
+            },
+            {
+              "originalPosition": 60,
+              "body": "Why do we need those to be \"rw\" in the invenrory?",
+              "createdAt": "2024-02-08T09:36:42Z",
+              "updatedAt": "2024-02-08T09:37:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vcZbg",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T09:57:37Z",
+          "updatedAt": "2024-02-08T09:57:37Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "yes, all of those can be read only, especially dynamic data, but energy saving mode, maybe we should still allow \"rw\", allow the clients control the energy daving mode they can select.",
+              "createdAt": "2024-02-08T09:57:37Z",
+              "updatedAt": "2024-02-08T09:57:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vcZv_",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T09:58:16Z",
+          "updatedAt": "2024-02-08T09:58:16Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "Okay",
+              "createdAt": "2024-02-08T09:58:16Z",
+              "updatedAt": "2024-02-08T09:58:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vcZ73",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T09:58:38Z",
+          "updatedAt": "2024-02-08T09:58:38Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Sounds reasonable to me.",
+              "createdAt": "2024-02-08T09:58:38Z",
+              "updatedAt": "2024-02-08T09:58:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vca1O",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T10:00:16Z",
+          "updatedAt": "2024-02-08T10:00:16Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "> yes, all of those can be read only, especially dynamic data, but energy saving mode, maybe we should still allow \"rw\", allow the clients control the energy daving mode they can select.\r\n\r\nThe control should not be at the inventory level, but the network level.",
+              "createdAt": "2024-02-08T10:00:16Z",
+              "updatedAt": "2024-02-08T10:00:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vcuSq",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T10:39:31Z",
+          "updatedAt": "2024-02-08T10:39:31Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "So the node level is also readonly, like this:\r\n  augment /nw:networks/nw:network/nw:node:\r\n    +--ro energy-power-consumption\r\n    |  +--ro total-energy-consumption?   yang:gauge64\r\n    |  +--ro saved-energy?               yang:gauge64\r\n    |  +--ro eer?                        decimal64\r\n    +--ro energy-saving-modes\r\n       +--ro energy-saving-mode* [mode]\r\n          +--ro mode       identityref\r\n          +--ro methods\r\n             +--ro method* [method-name]\r\n                +--ro method-name    identityref\r\n",
+              "createdAt": "2024-02-08T10:39:31Z",
+              "updatedAt": "2024-02-08T10:39:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vcws0",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T10:43:03Z",
+          "updatedAt": "2024-02-08T10:43:03Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "We can leave relevant data nodes as rw in nw:node, I guess.",
+              "createdAt": "2024-02-08T10:43:03Z",
+              "updatedAt": "2024-02-08T10:43:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vc1N0",
+          "commit": {
+            "abbreviatedOid": "499d8fc"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T10:52:12Z",
+          "updatedAt": "2024-02-08T10:52:13Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "This is not generally recommended for reusable groupings. Let's delete this statement here and refine under the level where the grouping is resued.",
+              "createdAt": "2024-02-08T10:52:12Z",
+              "updatedAt": "2024-02-08T10:52:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vc59p",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T11:01:29Z",
+          "updatedAt": "2024-02-08T11:01:29Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "Since energy-saving-modes have been used in two different place, one is set as rw, the other place is set as ro, I am wondering whether we can define one grouping, reuses in two places, it looks hard. I am a little bit struggling about this.\r\nAlternatively we don't define grouping, Just define energy saving modes container  in two places, but it seems clumsy. ",
+              "createdAt": "2024-02-08T11:01:29Z",
+              "updatedAt": "2024-02-08T11:01:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vc8DQ",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T11:04:16Z",
+          "updatedAt": "2024-02-08T11:04:17Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "Yes, we can. Just remove config false from the grouping and refine it when called as appropriate",
+              "createdAt": "2024-02-08T11:04:17Z",
+              "updatedAt": "2024-02-08T11:04:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vc-DT",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T11:07:18Z",
+          "updatedAt": "2024-02-08T11:07:19Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "can you give an example on how to refine? ",
+              "createdAt": "2024-02-08T11:07:18Z",
+              "updatedAt": "2024-02-08T11:07:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vc-1S",
+          "commit": {
+            "abbreviatedOid": "499d8fc"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T11:09:00Z",
+          "updatedAt": "2024-02-08T11:09:00Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Yes, that is what I am looking for.",
+              "createdAt": "2024-02-08T11:09:00Z",
+              "updatedAt": "2024-02-08T11:09:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vdL9b",
+          "commit": {
+            "abbreviatedOid": "499d8fc"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T11:26:10Z",
+          "updatedAt": "2024-02-08T11:26:10Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "I have fixed reusable grouping issue, the idea is to remove top level container from grouping, define such top level container at the place where the grouping is used and refine it with ro or rw.",
+              "createdAt": "2024-02-08T11:26:10Z",
+              "updatedAt": "2024-02-08T11:26:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vdrZv",
+          "commit": {
+            "abbreviatedOid": "7dbdec5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T12:08:29Z",
+          "updatedAt": "2024-02-08T12:08:29Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "Here is an example from the AC spec for example: \r\n\r\n           uses bgp-svc {\r\n             refine \"peer-groups/peer-group/local-address\" {\r\n               config false;\r\n             }\r\n             refine \"neighbor/local-address\" {\r\n               config false;\r\n             }\r\n           }",
+              "createdAt": "2024-02-08T12:08:29Z",
+              "updatedAt": "2024-02-08T12:08:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5vdvFy",
+          "commit": {
+            "abbreviatedOid": "499d8fc"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-08T12:14:38Z",
+          "updatedAt": "2024-02-08T12:14:38Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Works as well. Thanks",
+              "createdAt": "2024-02-08T12:14:38Z",
+              "updatedAt": "2024-02-08T12:14:38Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOLPL1Dc5mYG_z",
+      "title": "canonical yang",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/4",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-08T13:21:51Z",
+      "updatedAt": "2024-02-08T13:22:43Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "87275d41448b1c347dfc6a4180d034afa17610b6",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "22bd70ebbcd02e773371351df8cd6cfd40830ce9",
+      "closedAt": "2024-02-08T13:22:42Z",
+      "mergedAt": "2024-02-08T13:22:42Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "834a347b37dcd37fd40faa8c418d2ee624fad81b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOLPL1Dc5mYMSj",
+      "title": "no need to define a new hw-identity",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/5",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-08T13:34:40Z",
+      "updatedAt": "2024-02-08T14:53:13Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "daece9ec196c6477b28f2b67a7aef4371952fdc8",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "219c171793a62409bfbf858d895ea5780a79ea44",
+      "closedAt": "2024-02-08T14:53:13Z",
+      "mergedAt": "2024-02-08T14:53:13Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7023f7df9a8881c80f2a5b2a18ccb0e576502d6d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOLPL1Dc5mYYmH",
+      "title": "add a feature to control the various augmentations",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/6",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-08T14:04:15Z",
+      "updatedAt": "2024-02-08T14:54:10Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "7023f7df9a8881c80f2a5b2a18ccb0e576502d6d",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "5926a9fdaa09e9a042aac2cce592c35901d5e980",
+      "closedAt": "2024-02-08T14:54:09Z",
+      "mergedAt": "2024-02-08T14:54:09Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fb700b357427f19e59194d2cfb88d827157ff1b4"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLPL1Dc5mYufh",
+      "title": "fix referencing issue",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/8",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-08T14:52:39Z",
+      "updatedAt": "2024-02-08T14:56:17Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "fb700b357427f19e59194d2cfb88d827157ff1b4",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "ee7b845dd154eb8055f3806dae3777d7333a4237",
+      "closedAt": "2024-02-08T14:56:16Z",
+      "mergedAt": "2024-02-08T14:56:16Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "e547f3e0b2cfb7671116f631c39ca511e22f22df"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOLPL1Dc5mdQ_k",
+      "title": "simplify structure of capabilities",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/9",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-09T08:34:00Z",
+      "updatedAt": "2024-02-09T18:05:28Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "f91068aaeb5d75f76306a0629ea32e3ce36c07e5",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "ca167bd7e2e0e44039a05bee1a7909d44e630987",
+      "closedAt": "2024-02-09T18:05:28Z",
+      "mergedAt": "2024-02-09T18:05:28Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b47f5b3ab57da1c262db5ad6d5a9eb91f29143e3"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOLPL1Dc5mgdpN",
+      "title": "rationale for augmenting both inventory and network topology",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/13",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-09T18:03:29Z",
+      "updatedAt": "2024-02-09T18:07:41Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "13193d6da058dc4fb4d9421b41e3d63fc0860f9c",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "aae850695d631ce00ac851759162171a7930e074",
+      "closedAt": "2024-02-09T18:07:40Z",
+      "mergedAt": "2024-02-09T18:07:40Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "c39ecdd380f9c57657bc3cbddc6b3bce0f6e8435"
+      },
       "comments": [],
       "reviews": []
     }
