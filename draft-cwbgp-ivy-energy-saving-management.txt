@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 12 August 2024                                     M. Boucadair
+Expires: 15 August 2024                                     M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                         9 February 2024
+                                                        12 February 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 August 2024.
+   This Internet-Draft will expire on 15 August 2024.
 
 Copyright Notice
 
