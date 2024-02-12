@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 12 August 2024                                     M. Boucadair
+Expires: 15 August 2024                                     M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                         9 February 2024
+                                                        12 February 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 August 2024.
+   This Internet-Draft will expire on 15 August 2024.
 
 Copyright Notice
 
@@ -70,17 +70,17 @@ Table of Contents
    2.  Conventions and Definitions
    3.  YANG Prefixes
    4.  Energy Saving Management Data Model Overview
-     4.1.  Network Element Specific Information
-     4.2.  Component Specific Information
-   5.  Energy Saving Management Tree Diagram
-   6.  Energy Saving YANG Module
-     6.1.  Security Considerations
-   7.  IANA Considerations
-     7.1.  The "IETF XML" Registry
-     7.2.  The "YANG Module Names" Registry
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+     4.1.  Energy Saving Management Tree Diagram
+     4.2.  Network Element Specific Information
+     4.3.  Component Specific Information
+   5.  Energy Saving YANG Module
+     5.1.  Security Considerations
+   6.  IANA Considerations
+     6.1.  The "IETF XML" Registry
+     6.2.  The "YANG Module Names" Registry
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -88,7 +88,7 @@ Table of Contents
 
    With the growth of networks and the increase of awareness about the
    environmental impact, it is important to ensure energy efficiency in
-   the operation of network infrastructure.  Operators are thus seeking
+   the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
    and the contribution of involved nodes.  However, there are no
    standard mechanisms to report and control power usage of different
@@ -106,6 +106,19 @@ Table of Contents
    routers, switches, security gateways, hosts, or servers.  Where
    applicable, device monitoring extends to the individual components of
    the device.
+
+   The document augments both "ietf-network" [RFC8345] and "ietf-
+   network-inventory" [I-D.ietf-ivy-network-inventory-yang] with the
+   following rationale:
+
+   *  Parameters that reflect the saving modes and methods are
+      considered as capabilities, and are thus maintained in the
+      inventory.
+
+   *  Required parameters to control and adjust nodes and components
+      behaviors are added to the network topology as this allows
+      operator to better assess the implications on node-specific action
+      on the overall network.
 
 2.  Conventions and Definitions
 
@@ -172,9 +185,9 @@ Table of Contents
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-management", which augments network element of the
-   network Inventory base model with energy saving modes and also
-   augments the component of the network inventory base model with
-   energy consumption and energy saving attributes.
+   network Inventory base model with energy saving modes and augments
+   the component of the network inventory base model with energy
+   consumption and energy saving attributes.
 
    At the network element level, the data model covers configuration of
    the energy saving mode and a set of related parameters to manage
@@ -193,31 +206,13 @@ Table of Contents
    methods to reach the energy saving target level.
 
    At the component level, the data model includes a set of monitoring
-   statistics for energy consumption and also energy saving operator
-   state of each component within the network device.
+   statistics for energy consumption and energy saving operator state of
+   each component within the network device.
 
-4.1.  Network Element Specific Information
+4.1.  Energy Saving Management Tree Diagram
 
-   Network element specific attributes can be defined in the network
-   element list node as shown inFigure 1.
-
-   TBC
-
-          Figure 1: Network Element Specific Energy Tree Structure
-
-4.2.  Component Specific Information
-
-   Component-specific attributes can be defined under the component list
-   node as shown in Figure 2.
-
-   TBC
-
-             Figure 2: Component-Specifc Energy Tree Structure
-
-5.  Energy Saving Management Tree Diagram
-
-   Figure 3 shows the tree diagram of the YANG data model defined in
-   module "ietf-energy-saving-management" (Section 6).
+   Figure 1 shows the tree diagram of the YANG data model defined in
+   Section 5.
 
    module: ietf-energy-saving-mgt
      +--rw component-energy-monitoring
@@ -263,9 +258,27 @@ Table of Contents
           +--ro high-volts-bound?           int32
           +--ro high-volts-fatal?           int32
 
-             Figure 3: Energy Saving Management Tree Structure
+             Figure 1: Energy Saving Management Tree Structure
 
-6.  Energy Saving YANG Module
+4.2.  Network Element Specific Information
+
+   Network element specific attributes can be defined in the network
+   element list node as shown inFigure 2.
+
+   TBC
+
+          Figure 2: Network Element Specific Energy Tree Structure
+
+4.3.  Component Specific Information
+
+   Component-specific attributes can be defined under the component list
+   node as shown in Figure 3.
+
+   TBC
+
+             Figure 3: Component-Specifc Energy Tree Structure
+
+5.  Energy Saving YANG Module
 
    The module imports XXX and uses types defined in XXX.
 
@@ -413,7 +426,7 @@ Table of Contents
        base energy-saving-method;
        description
          "When detecting an unused board, the system automatically
-          shuts down the power supply of the board,ensuring zero
+          shuts down the power supply of the board, ensuring zero
           power consumption of an unused board.
 
           When detecting that the board needs to run service, the system
@@ -448,7 +461,7 @@ Table of Contents
        description
          "Power modules intelligently schedule internal power supply
           based on the power load. When the power load decreases,
-          some power supply are automatically disabled.
+          some power supplies are automatically disabled.
 
           When the power load increases, the disabled power supplies
           are enabled again. ";
@@ -786,7 +799,7 @@ Table of Contents
    }
    <CODE ENDS>
 
-6.1.  Security Considerations
+5.1.  Security Considerations
 
    The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
@@ -801,7 +814,7 @@ Table of Contents
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
-   There are a number of data nodes defined in this YANG module that are
+   There are several data nodes defined in this YANG module that are
    writable/creatable/deletable (i.e., config true, which is the
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
@@ -823,9 +836,9 @@ Table of Contents
 
       'TBC':  ....
 
-7.  IANA Considerations
+6.  IANA Considerations
 
-7.1.  The "IETF XML" Registry
+6.1.  The "IETF XML" Registry
 
    This document registers one XML namespace URN in the 'IETF XML
    registry', following the format defined in [RFC3688].
@@ -834,7 +847,7 @@ Table of Contents
       Registrant Contact: The IESG.
       XML: N/A, the requested URIs are XML namespaces.
 
-7.2.  The "YANG Module Names" Registry
+6.2.  The "YANG Module Names" Registry
 
    This document registers one module name in the 'YANG Module Names'
    registry, defined in [RFC6020].
@@ -845,9 +858,9 @@ Table of Contents
       Maintained by IANA? N
       Reference: RFC XXXX
 
-8.  References
+7.  References
 
-8.1.  Normative References
+7.1.  Normative References
 
    [I-D.ietf-ivy-network-inventory-yang]
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
@@ -893,11 +906,16 @@ Table of Contents
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
 
+   [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
+              Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
+              Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
+              2018, <https://www.rfc-editor.org/rfc/rfc8345>.
+
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8446>.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [I-D.cx-opsawg-green-metrics]
               Clemm, A., Dong, L., Mirsky, G., Ciavaglia, L., Tantsura,
@@ -922,7 +940,7 @@ Acknowledgments
 
    This work has benefited from the discussions of Sustainable
    Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
-   particular, [I-D.cx-opsawg-green-metrics] assess a number of
+   particular, [I-D.cx-opsawg-green-metrics] assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a
