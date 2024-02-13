@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-11T00:47:02.889962+00:00",
+  "timestamp": "2024-02-13T00:43:29.859114+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -695,6 +695,34 @@
       "mergedBy": "boucadair",
       "mergeCommit": {
         "oid": "c39ecdd380f9c57657bc3cbddc6b3bce0f6e8435"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOLPL1Dc5mnDG1",
+      "title": "add yang checks",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/14",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-12T08:48:02Z",
+      "updatedAt": "2024-02-12T08:48:29Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "c3d47cdc4543f81092da449efa9e52a64f4c6019",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "0cb4ac4502bbe7ebb6a8443e57b90bfea8ef2960",
+      "closedAt": "2024-02-12T08:48:28Z",
+      "mergedAt": "2024-02-12T08:48:28Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "ffbb52adde7e7a5324119cc6516217787dcf27fb"
       },
       "comments": [],
       "reviews": []
