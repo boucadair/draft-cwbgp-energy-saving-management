@@ -30,7 +30,7 @@ module ietf-energy-saving-mgt {
      Author:   Qin Wu
                <mailto:bill.wu@huawei.com>
      Author:   Mohamed Boucadair
-               <mailto:mohamed.boucadair@huawei.com>";
+               <mailto:mohamed.boucadair@orange.com>";
   description
     "This module contains a collection of YANG definitions for power
      and energy management of devices. It also augments both the
@@ -60,7 +60,6 @@ module ietf-energy-saving-mgt {
     description
       "Specifies support of energy saving management.";
   }
-
 
   identity energy-saving-mode {
     description
