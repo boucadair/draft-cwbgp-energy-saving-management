@@ -11,8 +11,8 @@
 <meta content="Oscar Gonzales de Dios" name="author">
 <meta content="Carlos Pignataro" name="author">
 <meta content="
-       This document defines a YANG module for power and energy management
-   of devices. 
+       This document defines a YANG module for power and energy management.
+   The document covers both device and network levels. 
     " name="description">
 <meta content="xml2rfc 3.19.2" name="generator">
 <meta content="xxx" name="keyword">
@@ -1083,8 +1083,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">A YANG Data Model for Energy Saving Management</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines a YANG module for power and energy management
-   of devices.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines a YANG module for power and energy management.
+   The document covers both device and network levels.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1277,7 +1277,7 @@ modules, fan modules, and various types of boards and cards
 <dt id="section-2-4.5">Network Element:</dt>
         <dd style="margin-left: 1.5em" id="section-2-4.6">
           <p id="section-2-4.6.1">A manageable network entity that contains hardware
-and software units, e.g. a network device installed on one or
+and software units, e.g., a network device installed on one or
 several chassis <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
@@ -2009,42 +2009,43 @@ module ietf-energy-saving-mgt {
         <h3 id="name-security-considerations">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
         </h3>
-<p id="section-5.1-1">The YANG modules specified in this document define a schema for data
+<p id="section-5.1-1">This section uses the template described in Section 3.7 of <span>[<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-2">The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
    as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  The lowest NETCONF layer
    is the secure transport layer, and the mandatory-to-implement secure
    transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>.  The lowest RESTCONF layer
    is HTTPS, and the mandatory-to-implement secure transport is TLS
-   <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.1-2">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
+   <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.1-3">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
    provides the means to restrict access for particular NETCONF or
    RESTCONF users to a preconfigured subset of all available NETCONF or
-   RESTCONF protocol operations and content.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
-<p id="section-5.1-3">There are several data nodes defined in this YANG module that are
+   RESTCONF protocol operations and content.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.1-4">There are several data nodes defined in this YANG module that are
    writable/creatable/deletable (i.e., config true, which is the
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
    to these data nodes without proper protection can have a negative
-   effect on network operations.  These are the subtrees and data nodes
-   and their sensitivity/vulnerability:<a href="#section-5.1-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-5.1-4">
-          <dt id="section-5.1-4.1">/em:energy-management/em:energy-saving-mode:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.2">
-            <p id="section-5.1-4.2.1">This leaf specifies the energy saving mode set globally on a device.<a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
+   effect on network operations. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:<a href="#section-5.1-4" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.1-5">
+          <dt id="section-5.1-5.1">/em:energy-management/em:energy-saving-mode:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.1-5.2">
+            <p id="section-5.1-5.2.1">This leaf specifies the energy saving mode set globally on a device.<a href="#section-5.1-5.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-5.1-4.3">/em:energy-saving/em:enable:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.4">
-            <p id="section-5.1-4.4.1">This leaf enable/disables energy saving state of specific component.<a href="#section-5.1-4.4.1" class="pilcrow">¶</a></p>
-<p id="section-5.1-4.4.2">Some of the readable data nodes in this YANG module may be considered
+<dt id="section-5.1-5.3">/em:energy-saving/em:enable:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.1-5.4">
+            <p id="section-5.1-5.4.1">This leaf enable/disables energy saving state of specific component.<a href="#section-5.1-5.4.1" class="pilcrow">¶</a></p>
+<p id="section-5.1-5.4.2">Some of the readable data nodes in this YANG module may be considered
 sensitive or vulnerable in some network environments.  It is thus
 important to control read access (e.g., via get, get-config, or
-notification) to these data nodes.  These are the subtrees and data
-nodes and their sensitivity/vulnerability:<a href="#section-5.1-4.4.2" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-5.1-4.4.3">
-              <dt id="section-5.1-4.4.3.1">'TBC':</dt>
-              <dd style="margin-left: 1.5em" id="section-5.1-4.4.3.2">
-                <p id="section-5.1-4.4.3.2.1">....<a href="#section-5.1-4.4.3.2.1" class="pilcrow">¶</a></p>
+notification) to these data nodes. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:<a href="#section-5.1-5.4.2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.1-5.4.3">
+              <dt id="section-5.1-5.4.3.1">'TBC':</dt>
+              <dd style="margin-left: 1.5em" id="section-5.1-5.4.3.2">
+                <p id="section-5.1-5.4.3.2.1">....<a href="#section-5.1-5.4.3.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 </dl>
@@ -2065,8 +2066,8 @@ nodes and their sensitivity/vulnerability:<a href="#section-5.1-4.4.2" class="pi
         <h3 id="name-the-ietf-xml-registry">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-the-ietf-xml-registry" class="section-name selfRef">The "IETF XML" Registry</a>
         </h3>
-<p id="section-6.1-1">This document registers one XML namespace URN in the 'IETF XML
-   registry', following the format defined in <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">This document requests IANA to register the following URI
+in the "ns" subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6.1-2">
 <pre>
    URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
@@ -2081,8 +2082,9 @@ nodes and their sensitivity/vulnerability:<a href="#section-5.1-4.4.2" class="pi
         <h3 id="name-the-yang-module-names-regis">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-the-yang-module-names-regis" class="section-name selfRef">The "YANG Module Names" Registry</a>
         </h3>
-<p id="section-6.2-1">This document registers one module name in the 'YANG Module Names'
-   registry, defined in <span>[<a href="#RFC6020" class="cite xref">RFC6020</a>]</span>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">This document requests IANA to register the following YANG module
+   in the "YANG Module Names" registry <span>[<a href="#RFC6020" class="cite xref">RFC6020</a>]</span> within
+   the "YANG Parameters" registry group.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6.2-2">
 <pre>
    name: ietf-energy-saving-management
@@ -2163,6 +2165,10 @@ nodes and their sensitivity/vulnerability:<a href="#section-5.1-4.4.2" class="pi
         <dd>
 <span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Dong, L.</span>, <span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Ciavaglia, L.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Odini, M.</span>, <span class="refAuthor">Schooler, E.</span>, <span class="refAuthor">Rezaki, A.</span>, and <span class="refAuthor">C. Pignataro</span>, <span class="refTitle">"Green Networking Metrics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cx-opsawg-green-metrics-01</span>, <time datetime="2023-12-15" class="refDate">15 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cx-opsawg-green-metrics-01">https://datatracker.ietf.org/doc/html/draft-cx-opsawg-green-metrics-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.ietf-netmod-rfc8407bis">[I-D.ietf-netmod-rfc8407bis]</dt>
+        <dd>
+<span class="refAuthor">Boucadair, M.</span> and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-07</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-07">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.manral-bmwg-power-usage">[I-D.manral-bmwg-power-usage]</dt>
         <dd>
 <span class="refAuthor">Manral, V.</span>, <span class="refAuthor">Sharma, P.</span>, <span class="refAuthor">Banerjee, S.</span>, and <span class="refAuthor">Y. Ping</span>, <span class="refTitle">"Benchmarking Power usage of networking devices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-manral-bmwg-power-usage-04</span>, <time datetime="2013-03-12" class="refDate">12 March 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04">https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04</a>&gt;</span>. </dd>
@@ -2180,14 +2186,14 @@ nodes and their sensitivity/vulnerability:<a href="#section-5.1-4.4.2" class="pi
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">This work has benefited from the discussions of Sustainable
-   Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
+<p id="appendix-A-1">This work has benefited from the discussions that occured during the Sustainable
+   Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
    particular, <span>[<a href="#I-D.cx-opsawg-green-metrics" class="cite xref">I-D.cx-opsawg-green-metrics</a>]</span> assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a
    set of metrics that provide network observability and can be used to
-   optimize a network's "greenness" . <span>[<a href="#I-D.manral-bmwg-power-usage" class="cite xref">I-D.manral-bmwg-power-usage</a>]</span>
+   optimize a network's "greenness". <span>[<a href="#I-D.manral-bmwg-power-usage" class="cite xref">I-D.manral-bmwg-power-usage</a>]</span>
    provides suggestions for measuring power usage of live networks under
    different traffic loads and various switch router configuration
    settings.<a href="#appendix-A-1" class="pilcrow">¶</a></p>

@@ -19,8 +19,8 @@ Expires: 16 August 2024                                     M. Boucadair
 
 Abstract
 
-   This document defines a YANG module for power and energy management
-   of devices.
+   This document defines a YANG module for power and energy management.
+   The document covers both device and network levels.
 
 Discussion Venues
 
@@ -142,7 +142,7 @@ Table of Contents
       [I-D.ietf-ivy-network-inventory-yang].
 
    Network Element:  A manageable network entity that contains hardware
-      and software units, e.g. a network device installed on one or
+      and software units, e.g., a network device installed on one or
       several chassis [I-D.ietf-ivy-network-inventory-yang].
 
    Board and Card:  A pluggable equipment can be inserted into one or
@@ -800,6 +800,9 @@ Table of Contents
 
 5.1.  Security Considerations
 
+   This section uses the template described in Section 3.7 of
+   [I-D.ietf-netmod-rfc8407bis].
+
    The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
    as NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF layer
@@ -818,8 +821,8 @@ Table of Contents
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
    to these data nodes without proper protection can have a negative
-   effect on network operations.  These are the subtrees and data nodes
-   and their sensitivity/vulnerability:
+   effect on network operations.  Specifically, the following subtrees
+   and data nodes have particular sensitivities/vulnerabilities:
 
    /em:energy-management/em:energy-saving-mode:  This leaf specifies the
       energy saving mode set globally on a device.
@@ -830,8 +833,9 @@ Table of Contents
       Some of the readable data nodes in this YANG module may be
       considered sensitive or vulnerable in some network environments.
       It is thus important to control read access (e.g., via get, get-
-      config, or notification) to these data nodes.  These are the
-      subtrees and data nodes and their sensitivity/vulnerability:
+      config, or notification) to these data nodes.  Specifically, the
+      following subtrees and data nodes have particular sensitivities/
+      vulnerabilities:
 
       'TBC':  ....
 
@@ -839,8 +843,8 @@ Table of Contents
 
 6.1.  The "IETF XML" Registry
 
-   This document registers one XML namespace URN in the 'IETF XML
-   registry', following the format defined in [RFC3688].
+   This document requests IANA to register the following URI in the "ns"
+   subregistry within the "IETF XML Registry" [RFC3688]:
 
       URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
       Registrant Contact: The IESG.
@@ -848,8 +852,9 @@ Table of Contents
 
 6.2.  The "YANG Module Names" Registry
 
-   This document registers one module name in the 'YANG Module Names'
-   registry, defined in [RFC6020].
+   This document requests IANA to register the following YANG module in
+   the "YANG Module Names" registry [RFC6020] within the "YANG
+   Parameters" registry group.
 
       name: ietf-energy-saving-management
       prefix: em
@@ -924,6 +929,14 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-cx-opsawg-
               green-metrics-01>.
 
+   [I-D.ietf-netmod-rfc8407bis]
+              Boucadair, M. and Q. Wu, "Guidelines for Authors and
+              Reviewers of Documents Containing YANG Data Models", Work
+              in Progress, Internet-Draft, draft-ietf-netmod-rfc8407bis-
+              07, 9 February 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
+              rfc8407bis-07>.
+
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
               "Benchmarking Power usage of networking devices", Work in
@@ -937,14 +950,14 @@ Table of Contents
 
 Acknowledgments
 
-   This work has benefited from the discussions of Sustainable
-   Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
-   particular, [I-D.cx-opsawg-green-metrics] assess several
-   sustainability-related attributes such as power consumption, energy
-   efficiency, and carbon footprint associated with a network, its
-   equipment, and the services that are provided over it and suggest a
-   set of metrics that provide network observability and can be used to
-   optimize a network's "greenness" . [I-D.manral-bmwg-power-usage]
+   This work has benefited from the discussions that occured during the
+   Sustainable Networking Side Meeting in IETF#117 and the "e-impact"
+   IAB workshop.  In particular, [I-D.cx-opsawg-green-metrics] assess
+   several sustainability-related attributes such as power consumption,
+   energy efficiency, and carbon footprint associated with a network,
+   its equipment, and the services that are provided over it and suggest
+   a set of metrics that provide network observability and can be used
+   to optimize a network's "greenness".  [I-D.manral-bmwg-power-usage]
    provides suggestions for measuring power usage of live networks under
    different traffic loads and various switch router configuration
    settings.
