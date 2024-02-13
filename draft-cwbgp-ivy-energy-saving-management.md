@@ -51,9 +51,8 @@ informative:
 
 --- abstract
 
-   This document defines a YANG module for power and energy management
-   of devices.
-
+   This document defines a YANG module for power and energy management.
+   The document covers both device and network levels.
 
 --- middle
 
@@ -110,7 +109,7 @@ informative:
 
    Network Element:
    :  A manageable network entity that contains hardware
-      and software units, e.g. a network device installed on one or
+      and software units, e.g., a network device installed on one or
       several chassis {{!I-D.ietf-ivy-network-inventory-yang}}.
 
    Board and Card:
@@ -204,7 +203,6 @@ TBC
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
 
-
 # Energy Saving YANG Module {#sec-module}
 
 The module imports XXX and uses types defined in XXX.
@@ -216,6 +214,8 @@ The module imports XXX and uses types defined in XXX.
 ~~~~
 
 ## Security Considerations
+
+  This section uses the template described in Section 3.7 of {{?I-D.ietf-netmod-rfc8407bis}}.
 
    The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
@@ -235,8 +235,8 @@ The module imports XXX and uses types defined in XXX.
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
    to these data nodes without proper protection can have a negative
-   effect on network operations.  These are the subtrees and data nodes
-   and their sensitivity/vulnerability:
+   effect on network operations. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:
 
  /em:energy-management/em:energy-saving-mode:
  : This leaf specifies the energy saving mode set globally on a device.
@@ -247,8 +247,8 @@ The module imports XXX and uses types defined in XXX.
    Some of the readable data nodes in this YANG module may be considered
    sensitive or vulnerable in some network environments.  It is thus
    important to control read access (e.g., via get, get-config, or
-   notification) to these data nodes.  These are the subtrees and data
-   nodes and their sensitivity/vulnerability:
+   notification) to these data nodes. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:
 
    'TBC':
    : ....
@@ -257,8 +257,8 @@ The module imports XXX and uses types defined in XXX.
 
 ## The "IETF XML" Registry
 
-   This document registers one XML namespace URN in the 'IETF XML
-   registry', following the format defined in {{!RFC3688}}.
+This document requests IANA to register the following URI
+in the "ns" subregistry within the "IETF XML Registry" {{!RFC3688}}:
 
 ~~~~
    URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
@@ -268,8 +268,9 @@ The module imports XXX and uses types defined in XXX.
 
 ##  The "YANG Module Names" Registry
 
-   This document registers one module name in the 'YANG Module Names'
-   registry, defined in {{!RFC6020}}.
+   This document requests IANA to register the following YANG module
+   in the "YANG Module Names" registry {{!RFC6020}} within
+   the "YANG Parameters" registry group.
 
 ~~~~
    name: ietf-energy-saving-management
@@ -284,14 +285,14 @@ The module imports XXX and uses types defined in XXX.
 # Acknowledgments
 {:numbered="false"}
 
-   This work has benefited from the discussions of Sustainable
-   Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
+   This work has benefited from the discussions that occured during the Sustainable
+   Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
    particular, {{?I-D.cx-opsawg-green-metrics}} assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a
    set of metrics that provide network observability and can be used to
-   optimize a network's "greenness" . {{?I-D.manral-bmwg-power-usage}}
+   optimize a network's "greenness". {{?I-D.manral-bmwg-power-usage}}
    provides suggestions for measuring power usage of live networks under
    different traffic loads and various switch router configuration
    settings.
