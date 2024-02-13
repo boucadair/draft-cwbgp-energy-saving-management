@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 15 August 2024                                     M. Boucadair
+Expires: 16 August 2024                                     M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                        12 February 2024
+                                                        13 February 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2024.
+   This Internet-Draft will expire on 16 August 2024.
 
 Copyright Notice
 
@@ -315,7 +315,7 @@ Table of Contents
         Author:   Qin Wu
                   <mailto:bill.wu@huawei.com>
         Author:   Mohamed Boucadair
-                  <mailto:mohamed.boucadair@huawei.com>";
+                  <mailto:mohamed.boucadair@orange.com>";
      description
        "This module contains a collection of YANG definitions for power
         and energy management of devices. It also augments both the
@@ -345,7 +345,6 @@ Table of Contents
        description
          "Specifies support of energy saving management.";
      }
-
 
      identity energy-saving-mode {
        description
