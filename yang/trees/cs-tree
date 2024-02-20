@@ -26,4 +26,4 @@ augment /ni:network-elements/ni:network-element/ni:components/ni:component:
       +--ro low-volts-fatal?            int32
       +--ro high-volts-bound?           int32
       +--ro high-volts-fatal?           int32
-
+...
