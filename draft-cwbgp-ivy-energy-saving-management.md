@@ -62,7 +62,7 @@ informative:
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes. As described in {{RFC6988}}, 
+   and the contribution of involved nodes. As described in {{!RFC6988}},
    monitoring energy, power can be required for purposes such as:
     o build close loops that save energy
     o investigating energy-saving potential
@@ -159,10 +159,10 @@ informative:
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-mgt", which augments network element of the
    network Inventory base model with energy saving modes, associated 
-   energy saving methods and augments the component of the network 
-   inventory base model with capability related power attributes. In 
-   addition, "ietf-energy-saving-mgt" also augments the node of asbstract 
-   network model defined in {{！RFC8345}} with energy consumption and 
+   energy saving methods and augments the component of the network
+   inventory base model with capability related power attributes. In
+   addition, "ietf-energy-saving-mgt" also augments the node of asbstract
+   network model defined in {{!RFC8345}} with energy consumption and
    power usage related attributes.
 
    At the network element level, the data model covers configuration of
