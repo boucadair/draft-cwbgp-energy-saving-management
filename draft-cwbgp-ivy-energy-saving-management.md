@@ -62,15 +62,25 @@ informative:
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes.  However, there are no
-   standard mechanisms to report and control power usage of different
-   networking equipment under different network configuration and
-   conditions.  For example, in 'tidal network' in which traffic volume
-   undergoes significant fluctuations at different times, various energy
-   management methods might be envisaged to optimize the energy
-   efficiency at the network scale, e.g., by selectively disabling ports
-   or cards on specific network nodes based on (forecast) traffic
-   patterns.
+   and the contribution of involved nodes. As described in {{RFC6988}}, 
+   monitoring energy, power can be required for purposes such as:
+    o build close loops that save energy
+    o investigating energy-saving potential
+    o evaluating the effectiveness of energy-saving policies and
+      measures
+    o accounting for the total power received and provided by an entity,
+      a network, or a service
+    o predicting an entity's reliability based on power usage
+    o choosing the time of the next maintenance cycle for an entity
+   
+   However, there are no standard mechanisms to report and control power 
+   usage or energy consumption of different networking equipment under 
+   different network configuration and conditions.  For example, in 
+   'tidal network' in which traffic volume undergoes significant 
+   fluctuations at different times, various energy management methods 
+   might be envisaged to optimize the energy efficiency at the network 
+   scale, e.g., by selectively disabling ports or cards on specific network 
+   nodes based on (forecast) traffic patterns.
 
    This document defines a YANG data model for use in energy management
    of network devices.  Such model can be used for monitoring the energy
@@ -147,10 +157,13 @@ informative:
    As described in {{!I-D.ietf-ivy-network-inventory-yang}}, the Network
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
-   energy-saving-management", which augments network element of the
-   network Inventory base model with energy saving modes and
-   augments the component of the network inventory base model with
-   energy consumption and energy saving attributes.
+   energy-saving-mgt", which augments network element of the
+   network Inventory base model with energy saving modes, associated 
+   energy saving methods and augments the component of the network 
+   inventory base model with capability related power attributes. In 
+   addition, "ietf-energy-saving-mgt" also augments the node of asbstract 
+   network model defined in {{！RFC8345}} with energy consumption and 
+   power usage related attributes.
 
    At the network element level, the data model covers configuration of
    the energy saving mode and a set of related parameters to manage
@@ -164,13 +177,14 @@ informative:
    scheduled events).
 
    The data model defines energy saving modes representing some energy
-   consumption levels, which are basic, standard, deep, optimal and
-   custom.  For each consumption level, there is a combination of
-   methods to reach the energy saving target level.
+   consumption levels, which are basic, standard, deep.  For each 
+   consumption level, there is a combination of methods to reach the energy 
+   saving target level.
 
    At the component level, the data model includes a set of monitoring
-   statistics for energy consumption and energy saving operator
-   state of each component within the network device.
+   statistics for energy consumption and energy saving operational
+   state of each component within the network device. It also includes threshold
+   related power parameters such as rated power, expected volts.
 
 ##  Energy Saving Management Tree Diagram
 
