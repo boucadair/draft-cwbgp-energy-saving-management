@@ -73,13 +73,13 @@ informative:
     o predicting an entity's reliability based on power usage
     o choosing the time of the next maintenance cycle for an entity
    
-   However, there are no standard mechanisms to report and control power 
-   usage or energy consumption of different networking equipment under 
-   different network configuration and conditions.  For example, in 
-   'tidal network' in which traffic volume undergoes significant 
-   fluctuations at different times, various energy management methods 
-   might be envisaged to optimize the energy efficiency at the network 
-   scale, e.g., by selectively disabling ports or cards on specific network 
+   However, there are no standard mechanisms to report and control power
+   usage or energy consumption of different networking equipment under
+   different network configuration and conditions.  For example, in
+   'tidal network' in which traffic volume undergoes significant
+   fluctuations at different times, various energy management methods
+   might be envisaged to optimize the energy efficiency at the network
+   scale, e.g., by selectively disabling ports or cards on specific network
    nodes based on (forecast) traffic patterns.
 
    This document defines a YANG data model for use in energy management
@@ -158,7 +158,7 @@ informative:
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
    energy-saving-mgt", which augments network element of the
-   network Inventory base model with energy saving modes, associated 
+   network Inventory base model with energy saving modes, associated
    energy saving methods and augments the component of the network
    inventory base model with capability related power attributes. In
    addition, "ietf-energy-saving-mgt" also augments the node of asbstract
@@ -177,8 +177,8 @@ informative:
    scheduled events).
 
    The data model defines energy saving modes representing some energy
-   consumption levels, which are basic, standard, deep.  For each 
-   consumption level, there is a combination of methods to reach the energy 
+   consumption levels, which are basic, standard, deep.  For each
+   consumption level, there is a combination of methods to reach the energy
    saving target level.
 
    At the component level, the data model includes a set of monitoring
