@@ -72,7 +72,7 @@ informative:
       a network, or a service
     o predicting an entity's reliability based on power usage
     o choosing the time of the next maintenance cycle for an entity
-   
+
    However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
    different network configuration and conditions.  For example, in
