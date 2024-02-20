@@ -3,13 +3,13 @@ module: ietf-energy-saving-mgt
      +--rw energy-consumption
      |  +--rw average-power?     yang:gauge64
      |  +--rw saved-power?       yang:gauge64
-     |  +--rw current-power?     yang:gauge64
-     |  +--rw current-volts?     int32
-     |  +--rw current-amperes?   int32
-     |  +--rw temperature?       int32
+     |  +--rw real-power?        yang:gauge64
+     |  +--rw actual-volts?      int32
+     |  +--rw actual-amperes?    int32
+     |  +--rw actual-celsius?    int32
      +--rw energy-saving
      |  +--rw enabled?      boolean
-     |  +--rw oper-state?   identityref
+     |  +--rw power-state?   identityref
      +--rw inventory-component-ref
         +--rw node-ref?   leafref
         +--rw ne-ref?
@@ -21,17 +21,21 @@ module: ietf-energy-saving-mgt
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
     +--rw energy-saving-modes {energy-saving}?
-       +--rw energy-saving-mode*     identityref
-       +--rw energy-saving-method*   identityref
+       +--rw energy-saving-mode* [mode]
+          +--rw mode                    identityref
+          +--rw energy-saving-method*   identityref
+
   augment /ni:network-elements/ni:network-element:
     +--ro energy-management {energy-saving}?
        +--ro energy-monitoring-capability?   boolean
-       +--ro energy-saving-modes
-          +--ro energy-saving-mode*     identityref
-          +--ro energy-saving-method*   identityref
+       +--rw energy-saving-modes
+          +--rw energy-saving-mode* [mode]
+             +--rw mode                    identityref
+             +--rw energy-saving-method*   identityref
+
   augment /ni:network-elements/ni:network-element/ni:components
             /ni:component:
-    +--ro energy-parameters {energy-saving}?
+    +--ro power-parameters {energy-saving}?
        +--ro temperature-upper-bound?    int32
        +--ro temperature-middle-bound?   int32
        +--ro temperature-lower-bound?    int32
