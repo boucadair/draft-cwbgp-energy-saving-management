@@ -238,7 +238,8 @@ module ietf-energy-saving-mgt {
     description
       "Indicates that all components with energy management support are available
 	and may use maximum power.";
-	reference "RFC7326: Energy Management Framework";
+	reference 
+	  "RFC 7326: Energy Management Framework";
   }
 
   typedef energy-saving-operator {
