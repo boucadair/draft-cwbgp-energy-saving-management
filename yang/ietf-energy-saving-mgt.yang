@@ -200,7 +200,7 @@ module ietf-energy-saving-mgt {
 
   identity energy-saving-power-state {
     description
-      "Base identity for energy-saving-power-state.";
+      "Base identity for power state.";
 	reference 
 	  "RFC 7326: Energy Management Framework";
   }
