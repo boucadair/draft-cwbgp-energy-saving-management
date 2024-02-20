@@ -210,7 +210,8 @@ module ietf-energy-saving-mgt {
     description
       "Indicates that the component typically 
 	   requires a complete boot when awakened.";
-	reference "RFC7326: Energy Management Framework";
+	reference 
+	  "RFC 7326: Energy Management Framework";
   }
 
   identity sleep-state {
