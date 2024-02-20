@@ -220,7 +220,8 @@ module ietf-energy-saving-mgt {
       "Indicates that a component with energy management support 
 	   are not functional but immediately available such as wake up 
 	   mechanism.";
-	reference "RFC7326: Energy Management Framework";
+	reference
+	  "RFC 7326: Energy Management Framework";
   }
 
   identity low-power-state {
