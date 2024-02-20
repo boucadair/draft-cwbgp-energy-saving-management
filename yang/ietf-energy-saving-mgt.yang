@@ -229,7 +229,8 @@ module ietf-energy-saving-mgt {
     description
       "Indicates that some components with energy management support are not available
 	   and these components can take measures to use less energy.";
-	reference "RFC7326: Energy Management Framework";
+	reference
+	  "RFC 7326: Energy Management Framework";
   }
 
   identity full-power-state {
