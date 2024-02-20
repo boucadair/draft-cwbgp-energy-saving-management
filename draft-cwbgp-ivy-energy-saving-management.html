@@ -1391,13 +1391,13 @@ module: ietf-energy-saving-mgt
      +--rw energy-consumption
      |  +--rw average-power?     yang:gauge64
      |  +--rw saved-power?       yang:gauge64
-     |  +--rw current-power?     yang:gauge64
-     |  +--rw current-volts?     int32
-     |  +--rw current-amperes?   int32
-     |  +--rw temperature?       int32
+     |  +--rw real-power?        yang:gauge64
+     |  +--rw actual-volts?      int32
+     |  +--rw actual-amperes?    int32
+     |  +--rw actual-celsius?    int32
      +--rw energy-saving
      |  +--rw enabled?      boolean
-     |  +--rw oper-state?   identityref
+     |  +--rw power-state?   identityref
      +--rw inventory-component-ref
         +--rw node-ref?   leafref
         +--rw ne-ref?
@@ -1409,17 +1409,21 @@ module: ietf-energy-saving-mgt
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
     +--rw energy-saving-modes {energy-saving}?
-       +--rw energy-saving-mode*     identityref
-       +--rw energy-saving-method*   identityref
+       +--rw energy-saving-mode* [mode]
+          +--rw mode                    identityref
+          +--rw energy-saving-method*   identityref
+
   augment /ni:network-elements/ni:network-element:
     +--ro energy-management {energy-saving}?
        +--ro energy-monitoring-capability?   boolean
-       +--ro energy-saving-modes
-          +--ro energy-saving-mode*     identityref
-          +--ro energy-saving-method*   identityref
+       +--rw energy-saving-modes
+          +--rw energy-saving-mode* [mode]
+             +--rw mode                    identityref
+             +--rw energy-saving-method*   identityref
+
   augment /ni:network-elements/ni:network-element/ni:components
             /ni:component:
-    +--ro energy-parameters {energy-saving}?
+    +--ro power-parameters {energy-saving}?
        +--ro temperature-upper-bound?    int32
        +--ro temperature-middle-bound?   int32
        +--ro temperature-lower-bound?    int32
@@ -1443,12 +1447,27 @@ module: ietf-energy-saving-mgt
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-network-element-specific-in" class="section-name selfRef">Network Element Specific Information</a>
         </h3>
 <p id="section-4.2-1">Network element specific attributes can be defined in the network
-   element list node as shown in<a href="#ne-tree" class="auto internal xref">Figure 2</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+   element list node as shown in <a href="#ne-tree" class="auto internal xref">Figure 2</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <span id="name-network-element-specific-en"></span><div id="ne-tree">
 <figure id="figure-2">
           <div class="alignLeft art-text artwork" id="section-4.2-2.1">
 <pre>
-TBC
+  augment /nw:networks/nw:network/nw:node:
+    +--ro energy-power-consumption {energy-saving}?
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--rw energy-saving-modes {energy-saving}?
+       +--rw energy-saving-mode* [mode]
+          +--rw mode                    identityref
+          +--rw energy-saving-method*   identityref
+  augment /ni:network-elements/ni:network-element:
+    +--ro energy-management {energy-saving}?
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode                    identityref
+             +--ro energy-saving-method*   identityref
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1468,7 +1487,38 @@ TBC
 <figure id="figure-3">
           <div class="alignLeft art-text artwork" id="section-4.3-2.1">
 <pre>
-TBC
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+module: ietf-energy-saving-mgt
+  +--rw component-energy-monitoring
+     +--rw energy-consumption
+     |  +--rw average-power?    yang:gauge64
+     |  +--rw saved-power?      yang:gauge64
+     |  +--rw real-power?       yang:gauge64
+     |  +--rw actual-volts?     int32
+     |  +--rw actual-amperes?   int32
+     |  +--rw actual-celsius?   int32
+     +--rw energy-saving
+     |  +--rw enabled?       boolean
+     |  +--rw power-state?   identityref
+     +--rw inventory-component-ref
+        +--rw node-ref?      leafref
+        +--rw ne-ref?
+        -&gt; /ni:network-elements/network-element/ne-id
+
+augment /ni:network-elements/ni:network-element/ni:components/ni:\
+                                                           component:
+  +--ro power-parameters {energy-saving}?
+      +--ro temperature-upper-bound?    int32
+      +--ro temperature-middle-bound?   int32
+      +--ro temperature-lower-bound?    int32
+      +--ro rated-power?                yang:gauge64
+      +--ro expected-volts?             int32
+      +--ro low-volts-bound?            int32
+      +--ro low-volts-fatal?            int32
+      +--ro high-volts-bound?           int32
+      +--ro high-volts-fatal?           int32
+...
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
