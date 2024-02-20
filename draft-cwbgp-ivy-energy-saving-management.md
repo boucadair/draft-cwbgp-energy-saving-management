@@ -64,6 +64,7 @@ informative:
    for more information to reflect the power consumption of a network
    and the contribution of involved nodes. As described in {{Section 3.4 of ?RFC6988}},
    monitoring energy, power can be required for purposes such as:
+   
     o build close loops that save energy
     o investigating energy-saving potential
     o evaluating the effectiveness of energy-saving policies and
