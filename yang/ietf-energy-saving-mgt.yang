@@ -237,7 +237,7 @@ module ietf-energy-saving-mgt {
     base energy-saving-power-state;
     description
       "Indicates that all components with energy management support are available
-	   all components are in normal operation and may use maximum power.";
+	and may use maximum power.";
 	reference "RFC7326: Energy Management Framework";
   }
 
