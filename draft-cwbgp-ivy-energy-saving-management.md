@@ -184,7 +184,7 @@ informative:
 ## Network Element Specific Information
 
    Network element specific attributes can be defined in the network
-   element list node as shown in{{ne-tree}}.
+   element list node as shown in {{ne-tree}}.
 
 ~~~~
 {::include-fold ./yang/trees/ne-tree.txt}
