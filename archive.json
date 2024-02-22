@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-20T00:42:08.963419+00:00",
+  "timestamp": "2024-02-22T00:42:38.941729+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -116,9 +116,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-02-09T08:41:28Z",
-      "updatedAt": "2024-02-09T08:41:28Z",
+      "updatedAt": "2024-02-20T03:21:15Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "address in PR #15 #16 #17 ",
+          "createdAt": "2024-02-20T03:21:14Z",
+          "updatedAt": "2024-02-20T03:21:14Z"
+        }
+      ]
     },
     {
       "number": 11,
@@ -132,9 +140,17 @@
       "labels": [],
       "body": "The description of some nodes mentions \"alarm\" but without elaborating how these alarms are generated/identified/etc.\r\n\r\nI suggest we simply point to RFC 8632  to leverage the alarm framework.",
       "createdAt": "2024-02-09T08:43:11Z",
-      "updatedAt": "2024-02-09T08:43:11Z",
+      "updatedAt": "2024-02-20T03:28:19Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Address in PR #21 ",
+          "createdAt": "2024-02-20T03:28:18Z",
+          "updatedAt": "2024-02-20T03:28:18Z"
+        }
+      ]
     },
     {
       "number": 12,
@@ -148,9 +164,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-02-09T08:43:34Z",
-      "updatedAt": "2024-02-09T08:43:34Z",
+      "updatedAt": "2024-02-20T03:29:15Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Fix this in PR #16",
+          "createdAt": "2024-02-20T03:29:14Z",
+          "updatedAt": "2024-02-20T03:29:14Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -724,6 +748,358 @@
       "mergeCommit": {
         "oid": "ffbb52adde7e7a5324119cc6516217787dcf27fb"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOLPL1Dc5nV8yY",
+      "title": "Update full-tree.txt",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/15",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "distint power attributes from energy consumption parameters,  redesign energy saving modes to make each mode corresponding to multiple energy saving method.",
+      "createdAt": "2024-02-20T02:07:51Z",
+      "updatedAt": "2024-02-20T08:02:19Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-1",
+      "headRefOid": "da4cd01fe60b8b4b510d1ef14f9e81ac1b233708",
+      "closedAt": "2024-02-20T08:02:19Z",
+      "mergedAt": "2024-02-20T08:02:19Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "3da3a08c670c478558c93d4e4c2f51439e9b4b23"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOLPL1Dc5nV93U",
+      "title": "Update ietf-energy-saving-mgt.yang",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/16",
+      "state": "OPEN",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Align with full tree update, separate power attributes from energy consumption parameters.",
+      "createdAt": "2024-02-20T02:14:26Z",
+      "updatedAt": "2024-02-20T08:52:57Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-2",
+      "headRefOid": "634a3c185432ebe7b38975dfb66a3413894a4868",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "#10 rename oper-state to power state, rename power related attributes to align with RFC6966 and rfc7460, add reference to rfc6988 and rfc7460, ",
+          "createdAt": "2024-02-20T02:19:20Z",
+          "updatedAt": "2024-02-20T02:19:20Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc5wolfG",
+          "commit": {
+            "abbreviatedOid": "c0a5139"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-02-20T07:46:24Z",
+          "updatedAt": "2024-02-20T07:53:25Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "```suggestion\r\n\treference \r\n\t  \"RFC 7326: Energy Management Framework\";\r\n```",
+              "createdAt": "2024-02-20T07:46:25Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\n      \"Base identity for power state.\";\r\n```",
+              "createdAt": "2024-02-20T07:47:34Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 29,
+              "body": "```suggestion\r\n      \"Indicates that the component typically \r\n```",
+              "createdAt": "2024-02-20T07:48:35Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\n\treference \r\n\t  \"RFC 7326: Energy Management Framework\";\r\n```",
+              "createdAt": "2024-02-20T07:48:43Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "```suggestion\r\n      \"Indicates that a component with energy management support \r\n```",
+              "createdAt": "2024-02-20T07:49:18Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\n\t   is not functional but immediately available such as wake up \r\n```",
+              "createdAt": "2024-02-20T07:49:35Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 44,
+              "body": "```suggestion\r\n\treference\r\n\t  \"RFC 7326: Energy Management Framework\";\r\n```",
+              "createdAt": "2024-02-20T07:49:44Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 55,
+              "body": "```suggestion\r\n\treference\r\n\t  \"RFC 7326: Energy Management Framework\";\r\n```",
+              "createdAt": "2024-02-20T07:50:37Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "```suggestion\r\n\tand may use maximum power.\";\r\n```",
+              "createdAt": "2024-02-20T07:51:47Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            },
+            {
+              "originalPosition": 66,
+              "body": "```suggestion\r\n\treference \r\n\t  \"RFC 7326: Energy Management Framework\";\r\n```",
+              "createdAt": "2024-02-20T07:51:56Z",
+              "updatedAt": "2024-02-20T07:53:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5wo0Lz",
+          "commit": {
+            "abbreviatedOid": "c0a5139"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-20T08:21:54Z",
+          "updatedAt": "2024-02-20T08:21:54Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "I think we should use \"are\" instead of 'is' since 'components' are plural.",
+              "createdAt": "2024-02-20T08:21:54Z",
+              "updatedAt": "2024-02-20T08:33:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5wpDDK",
+          "commit": {
+            "abbreviatedOid": "c0a5139"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-20T08:52:57Z",
+          "updatedAt": "2024-02-20T08:52:57Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "As currently written, the identity applies only to a device while I think we should not have that restriction to cover devices, entities, components, etc.  The full description is to be updated, I'm afraid. Thanks.",
+              "createdAt": "2024-02-20T08:52:57Z",
+              "updatedAt": "2024-02-20T08:52:57Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOLPL1Dc5nWAHd",
+      "title": "Update draft-cwbgp-ivy-energy-saving-management.md",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/17",
+      "state": "OPEN",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update introduction section and model overview section, Add reference to RFC6988 and RFC8345.",
+      "createdAt": "2024-02-20T02:28:47Z",
+      "updatedAt": "2024-02-20T08:30:04Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-3",
+      "headRefOid": "83f5f5a3bb413c961bec31a51b8d6dc746665e5f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc5woo-S",
+          "commit": {
+            "abbreviatedOid": "729517d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-02-20T07:55:11Z",
+          "updatedAt": "2024-02-20T07:58:43Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "```suggestion\r\n   and the contribution of involved nodes. As described in {{Section 3.4 of ?RFC6988}},\r\n```",
+              "createdAt": "2024-02-20T07:55:11Z",
+              "updatedAt": "2024-02-20T07:58:43Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n   monitoring energy, power can be required for purposes such as:\r\n   \r\n```",
+              "createdAt": "2024-02-20T07:55:18Z",
+              "updatedAt": "2024-02-20T07:58:43Z"
+            },
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\n    o designing control loops for energy saving\r\n```",
+              "createdAt": "2024-02-20T07:56:03Z",
+              "updatedAt": "2024-02-20T07:58:43Z"
+            },
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\n    o planning for the next maintenance cycle for an entity\r\n```",
+              "createdAt": "2024-02-20T07:56:56Z",
+              "updatedAt": "2024-02-20T07:58:43Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOLPL1Dc5nWG2N",
+      "title": "Create ne-tree",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/18",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add ne-tree snippet",
+      "createdAt": "2024-02-20T03:08:27Z",
+      "updatedAt": "2024-02-20T07:59:13Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-4",
+      "headRefOid": "99cc6155fd7705b22d9937b53f6433bbfd41605b",
+      "closedAt": "2024-02-20T07:59:13Z",
+      "mergedAt": "2024-02-20T07:59:13Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "bccdcf0b9bec8d0175dbebaaf745e9ad96cd40a3"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOLPL1Dc5nWIWY",
+      "title": "Create cs-tree",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/19",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-20T03:12:22Z",
+      "updatedAt": "2024-02-20T08:00:15Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-5",
+      "headRefOid": "4806b946f25cc0deddc064f3aff5bed5020301e0",
+      "closedAt": "2024-02-20T08:00:15Z",
+      "mergedAt": "2024-02-20T08:00:15Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2e54548c69798f0880db5684b99e901d8575baff"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOLPL1Dc5nWJmR",
+      "title": "Update draft-cwbgp-ivy-energy-saving-management.md",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/20",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Include ne-tree and cs-tree artifacts",
+      "createdAt": "2024-02-20T03:16:34Z",
+      "updatedAt": "2024-02-20T08:00:46Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-6",
+      "headRefOid": "bb263d6ea43e7aaa50c1ec6c95e1d2848ce53282",
+      "closedAt": "2024-02-20T08:00:46Z",
+      "mergedAt": "2024-02-20T08:00:46Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7f771e856a29a72c4d2a30497564c29e7a0c3001"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOLPL1Dc5nWL7T",
+      "title": "Update ietf-energy-saving-mgt.yang",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/21",
+      "state": "OPEN",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fix Alarm reference issue",
+      "createdAt": "2024-02-20T03:27:24Z",
+      "updatedAt": "2024-02-20T03:27:24Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-7",
+      "headRefOid": "d35beeea76d2567f7fbb2715e5bec6d25fb6e6e2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
