@@ -25,14 +25,14 @@ module ietf-energy-saving-mgt {
     "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
      WG List:  <mailto:opsawg@ietf.org>
 
-     Author:   Gen Chen 
+     Author:   Gen Chen
                <mailto:chengen@huawei.com>
-     Author:   Qin Wu
+     Editor:   Qin Wu
                <mailto:bill.wu@huawei.com>
-     Author:   Mohamed Boucadair
+     Editor:   Mohamed Boucadair
                <mailto:mohamed.boucadair@orange.com>
      Author:   Carlos Pignataro
-	           <mailto:cpignata@gmail.com>";
+               <mailto:cpignata@gmail.com>";
   description
     "This module contains a collection of YANG definitions for power
      and energy management of devices. It also augments both the
@@ -201,46 +201,46 @@ module ietf-energy-saving-mgt {
   identity energy-saving-power-state {
     description
       "Base identity for power state.";
-  	reference 
-	    "RFC 7326: Energy Management Framework";
+    reference
+      "RFC 7326: Energy Management Framework";
   }
 
   identity off-state {
     base energy-saving-power-state;
     description
-      "Indicates that the component typically 
-  	   requires a complete boot when awakened.";
-	  reference 
-	    "RFC 7326: Energy Management Framework";
+      "Indicates that the component typically
+             requires a complete boot when awakened.";
+    reference
+      "RFC 7326: Energy Management Framework";
   }
 
   identity sleep-state {
     base energy-saving-power-state;
     description
-      "Indicates that a component with energy management support 
-  	   is not functional but immediately available such as wake up 
-	     mechanism.";
-	  reference
-	    "RFC 7326: Energy Management Framework";
+      "Indicates that a component with energy management support
+             is not functional but immediately available such as wake up
+             mechanism.";
+    reference
+      "RFC 7326: Energy Management Framework";
   }
 
   identity low-power-state {
     base energy-saving-power-state;
     description
       "Indicates that some components with energy management support
-	     are not available and these components can take measures to
+             are not available and these components can take measures to
        use less energy.";
-   	reference
-	    "RFC 7326: Energy Management Framework";
+    reference
+      "RFC 7326: Energy Management Framework";
   }
 
   identity full-power-state {
     base energy-saving-power-state;
     description
       "Indicates that all components with energy management support are available
- 	     and may use maximum power.";
-	  reference 
-	    "RFC 7326: Energy Management Framework";
+              and may use maximum power.";
+    reference
+      "RFC 7326: Energy Management Framework";
   }
 
   typedef energy-saving-operator {
@@ -267,7 +267,7 @@ module ietf-energy-saving-mgt {
     leaf ne-ref {
       type leafref {
         path "/ni:network-elements/ni:network-element/ni:ne-id";
-      require-instance false;
+        require-instance false;
       }
       description
         "Used to reference a network element.";
@@ -280,8 +280,8 @@ module ietf-energy-saving-mgt {
     leaf node-ref {
       type leafref {
         path "/ni:network-elements/ni:network-element[ni:ne-id="
-          + "current()/../ne-ref]/ni:components/ni:component"
-          + "/ni:component-id";
+           + "current()/../ne-ref]/ni:components/ni:component"
+           + "/ni:component-id";
         require-instance false;
       }
       description
@@ -310,24 +310,24 @@ module ietf-energy-saving-mgt {
       units "mW";
       description
         "The actual observed consumed power.";
-	  reference
-	    "RFC 6988: Requirements for Energy Management";
+      reference
+        "RFC 6988: Requirements for Energy Management";
     }
     leaf actual-volts {
       type int32;
       units "mV";
       description
         "The actual observed voltage.";
-	  reference
-	    "RFC 6988: Requirements for Energy Management";
+      reference
+        "RFC 6988: Requirements for Energy Management";
     }
     leaf actual-amperes {
       type int32;
       units "mA";
       description
         "The actual observed current.";
-	  reference
-	    "RFC 6988: Requirements for Energy Management";
+      reference
+        "RFC 6988: Requirements for Energy Management";
     }
     leaf actual-celsius {
       type int32;
@@ -341,22 +341,23 @@ module ietf-energy-saving-mgt {
     description
       "Grouping for energy saving mode and methods.";
     list energy-saving-mode {
-	  key "mode";
-	  leaf mode {
-        type identityref {
-          base energy-saving-mode;
-      }
-	  description "The energy saving mode.";
-	  }
-	  leaf-list energy-saving-method {
-        type identityref {
-          base energy-saving-method;
-      }
-      description
-        "The energy saving method.";
-    }
+      key "mode";
       description
         "The energy saving mode.";
+      leaf mode {
+        type identityref {
+          base energy-saving-mode;
+        }
+        description
+          "The energy saving mode.";
+      }
+      leaf-list energy-saving-method {
+        type identityref {
+          base energy-saving-method;
+        }
+        description
+          "The energy saving method.";
+      }
     }
   }
 
@@ -370,8 +371,8 @@ module ietf-energy-saving-mgt {
         "The upper bound overheat temperature of the component.
          Upon the upper bound is exceeded, an alarm will be
          triggered to indicate fatal failure.";
-	  reference 
-	    "RFC8632: A YANG Data Model for Alarm Management";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
     }
     leaf temperature-middle-bound {
       type int32;
@@ -380,8 +381,8 @@ module ietf-energy-saving-mgt {
         "The middle bound overheat temperature of the component.
          Upon the middle bound is exceeded, an alarm will be
          triggered.";
-	  reference 
-	    "RFC8632: A YANG Data Model for Alarm Management";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
     }
     leaf temperature-lower-bound {
       type int32;
@@ -390,8 +391,8 @@ module ietf-energy-saving-mgt {
         "The lower bound overheat temperature of the component.
          Upon the lower bound is exceeded, the alarm will be
          triggered.";
-	  reference 
-	    "RFC8632: A YANG Data Model for Alarm Management";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
     }
     leaf rated-power {
       type yang:gauge64;
@@ -409,7 +410,7 @@ module ietf-energy-saving-mgt {
       type int32;
       units "mV";
       description
-        "The lower volts bound which might cause equipment 
+        "The lower volts bound which might cause equipment
          misbehavior or even damage.";
     }
     leaf low-volts-fatal {
@@ -424,8 +425,8 @@ module ietf-energy-saving-mgt {
       units "mV";
       description
         "The higher volts bound which should trigger an alarm.";
-	  reference 
-	    "RFC8632: A YANG Data Model for Alarm Management";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
     }
     leaf high-volts-fatal {
       type int32;
@@ -523,7 +524,7 @@ module ietf-energy-saving-mgt {
         type boolean;
         default "true";
         description
-          "Controls whether the energy-saving 
+          "Controls whether the energy-saving
            of the component is enabled (when set to true)
            or disabled (set to false).";
       }
