@@ -184,10 +184,10 @@ informative:
 ## Network Element Specific Information
 
    Network element specific attributes can be defined in the network
-   element list node as shown in{{ne-tree}}.
+   element list node as shown in {{ne-tree}}.
 
 ~~~~
-TBC
+{::include-fold ./yang/trees/ne-tree.txt}
 ~~~~
 {: #ne-tree title="Network Element Specific Energy Tree Structure"}
 
@@ -198,7 +198,7 @@ TBC
    node as shown in {{cs-tree}}.
 
 ~~~~
-TBC
+{::include-fold ./yang/trees/cs-tree.txt}
 ~~~~
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
