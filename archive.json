@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-22T00:42:38.941729+00:00",
+  "timestamp": "2024-02-25T00:46:39.613439+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -133,15 +133,15 @@
       "id": "I_kwDOLPL1Dc5-wuFZ",
       "title": "Alrams + RFC 8632 ",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/11",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "The description of some nodes mentions \"alarm\" but without elaborating how these alarms are generated/identified/etc.\r\n\r\nI suggest we simply point to RFC 8632  to leverage the alarm framework.",
       "createdAt": "2024-02-09T08:43:11Z",
-      "updatedAt": "2024-02-20T03:28:19Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-22T14:49:37Z",
+      "closedAt": "2024-02-22T14:49:37Z",
       "comments": [
         {
           "author": "billwuqin",
@@ -784,24 +784,26 @@
       "id": "PR_kwDOLPL1Dc5nV93U",
       "title": "Update ietf-energy-saving-mgt.yang",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/16",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "billwuqin",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Align with full tree update, separate power attributes from energy consumption parameters.",
       "createdAt": "2024-02-20T02:14:26Z",
-      "updatedAt": "2024-02-20T08:52:57Z",
+      "updatedAt": "2024-02-22T14:39:53Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
       "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
       "headRefName": "patch-2",
-      "headRefOid": "634a3c185432ebe7b38975dfb66a3413894a4868",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "466db0b38b16acdfd2daeb5c742469c280881d13",
+      "closedAt": "2024-02-22T14:39:53Z",
+      "mergedAt": "2024-02-22T14:39:52Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "73ca0bc50d9aff4c82cb622b6504c6eeb52ba671"
+      },
       "comments": [
         {
           "author": "billwuqin",
@@ -925,6 +927,39 @@
               "updatedAt": "2024-02-20T08:52:57Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5w-ML-",
+          "commit": {
+            "abbreviatedOid": "c0a5139"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-22T09:28:46Z",
+          "updatedAt": "2024-02-22T09:28:47Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "OK, I agree with your proposed change, just point out small nit. It is okay now, I can accept your commit suggestion.",
+              "createdAt": "2024-02-22T09:28:46Z",
+              "updatedAt": "2024-02-22T09:28:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5xAyQx",
+          "commit": {
+            "abbreviatedOid": "466db0b"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-22T14:39:48Z",
+          "updatedAt": "2024-02-22T14:39:48Z",
+          "comments": []
         }
       ]
     },
@@ -933,24 +968,26 @@
       "id": "PR_kwDOLPL1Dc5nWAHd",
       "title": "Update draft-cwbgp-ivy-energy-saving-management.md",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/17",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "billwuqin",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Update introduction section and model overview section, Add reference to RFC6988 and RFC8345.",
       "createdAt": "2024-02-20T02:28:47Z",
-      "updatedAt": "2024-02-20T08:30:04Z",
+      "updatedAt": "2024-02-22T14:49:37Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
       "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
       "headRefName": "patch-3",
       "headRefOid": "83f5f5a3bb413c961bec31a51b8d6dc746665e5f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-02-22T14:49:36Z",
+      "mergedAt": "2024-02-22T14:49:36Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "648509d68119551e74a00074ef63e8a229f32b90"
+      },
       "comments": [],
       "reviews": [
         {
@@ -990,6 +1027,19 @@
               "updatedAt": "2024-02-20T07:58:43Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5xA4MP",
+          "commit": {
+            "abbreviatedOid": "83f5f5a"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-22T14:48:56Z",
+          "updatedAt": "2024-02-22T14:48:56Z",
+          "comments": []
         }
       ]
     },
@@ -1082,24 +1132,26 @@
       "id": "PR_kwDOLPL1Dc5nWL7T",
       "title": "Update ietf-energy-saving-mgt.yang",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/21",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "billwuqin",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Fix Alarm reference issue",
       "createdAt": "2024-02-20T03:27:24Z",
-      "updatedAt": "2024-02-20T03:27:24Z",
+      "updatedAt": "2024-02-22T14:49:08Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
-      "baseRefOid": "a653b1ad62ccab83438cb7d131c374a34bdff087",
+      "baseRefOid": "73ca0bc50d9aff4c82cb622b6504c6eeb52ba671",
       "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
       "headRefName": "patch-7",
-      "headRefOid": "d35beeea76d2567f7fbb2715e5bec6d25fb6e6e2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "d911a58f1e00ddb51fc2a1282284a06d1083bb72",
+      "closedAt": "2024-02-22T14:49:08Z",
+      "mergedAt": "2024-02-22T14:49:08Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9c0f9512d4d26516e4a99176bc4603788ae0f8cf"
+      },
       "comments": [],
       "reviews": []
     }
