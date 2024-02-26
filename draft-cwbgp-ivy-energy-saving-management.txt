@@ -310,8 +310,6 @@ Table of Contents
    Component-specific attributes can be defined under the component list
    node as shown in Figure 3.
 
-   =============== NOTE: '\' line wrapping per RFC 8792 ================
-
    module: ietf-energy-saving-mgt
      +--rw component-energy-monitoring
         +--rw energy-consumption
@@ -329,8 +327,8 @@ Table of Contents
            +--rw ne-ref?
            -> /ni:network-elements/network-element/ne-id
 
-   augment /ni:network-elements/ni:network-element/ni:components/ni:\
-                                                              component:
+   augment /ni:network-elements/ni:network-element/ni:components
+           /ni:component:
      +--ro power-parameters {energy-saving}?
          +--ro temperature-upper-bound?    int32
          +--ro temperature-middle-bound?   int32
