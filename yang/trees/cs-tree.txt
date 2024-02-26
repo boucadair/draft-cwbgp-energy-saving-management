@@ -15,7 +15,8 @@ module: ietf-energy-saving-mgt
         +--rw ne-ref?     
         -> /ni:network-elements/network-element/ne-id
 
-augment /ni:network-elements/ni:network-element/ni:components/ni:component:
+augment /ni:network-elements/ni:network-element/ni:components
+        /ni:component:
   +--ro power-parameters {energy-saving}?
       +--ro temperature-upper-bound?    int32
       +--ro temperature-middle-bound?   int32
