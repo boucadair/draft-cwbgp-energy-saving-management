@@ -218,8 +218,8 @@ module ietf-energy-saving-mgt {
     base energy-saving-power-state;
     description
       "Indicates that a component with energy management support
-             is not functional but immediately available such as wake up
-             mechanism.";
+       is not functional but immediately available such as
+       wake up mechanism.";
     reference
       "RFC 7326: Energy Management Framework";
   }
@@ -227,9 +227,9 @@ module ietf-energy-saving-mgt {
   identity low-power-state {
     base energy-saving-power-state;
     description
-      "Indicates that some components with energy management support
-             are not available and these components can take measures to
-       use less energy.";
+      "Indicates that some components with energy management 
+       support are not available and these components can
+       take measures to use less energy.";
     reference
       "RFC 7326: Energy Management Framework";
   }
@@ -237,8 +237,8 @@ module ietf-energy-saving-mgt {
   identity full-power-state {
     base energy-saving-power-state;
     description
-      "Indicates that all components with energy management support are available
-              and may use maximum power.";
+      "Indicates that all components with energy management
+       support are available and may use maximum power.";
     reference
       "RFC 7326: Energy Management Framework";
   }
