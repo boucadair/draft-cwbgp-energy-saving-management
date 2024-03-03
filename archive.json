@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T00:42:30.584683+00:00",
+  "timestamp": "2024-03-03T00:45:30.877872+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -1153,6 +1153,47 @@
         "oid": "9c0f9512d4d26516e4a99176bc4603788ae0f8cf"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOLPL1Dc5oRAMH",
+      "title": "identity low-power-state definition update",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/22",
+      "state": "OPEN",
+      "author": "billwuqin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-29T08:48:54Z",
+      "updatedAt": "2024-03-01T09:30:33Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "b8d699d7f69755beb1b851564f2b3d14aea3b958",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-8",
+      "headRefOid": "83ebaf9d516c16b52afeefe6bc2610797ce22369",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "One minor change based on internal review. ",
+          "createdAt": "2024-03-01T03:48:20Z",
+          "updatedAt": "2024-03-01T03:48:20Z"
+        },
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Med, can you help merge this minor change into main repo?",
+          "createdAt": "2024-03-01T09:30:31Z",
+          "updatedAt": "2024-03-01T09:30:31Z"
+        }
+      ],
       "reviews": []
     }
   ]
