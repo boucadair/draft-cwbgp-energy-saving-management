@@ -228,8 +228,8 @@ module ietf-energy-saving-mgt {
     base energy-saving-power-state;
     description
       "Indicates that some components with energy management 
-       support are not available and these components can
-       take measures to use less energy.";
+       support are available and can take measures to use 
+       less energy.";
     reference
       "RFC 7326: Energy Management Framework";
   }
