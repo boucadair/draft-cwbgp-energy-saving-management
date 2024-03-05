@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-03T00:45:30.877872+00:00",
+  "timestamp": "2024-03-05T00:42:46.016593+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -1160,24 +1160,26 @@
       "id": "PR_kwDOLPL1Dc5oRAMH",
       "title": "identity low-power-state definition update",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/22",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "billwuqin",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-02-29T08:48:54Z",
-      "updatedAt": "2024-03-01T09:30:33Z",
+      "updatedAt": "2024-03-04T10:46:26Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "b8d699d7f69755beb1b851564f2b3d14aea3b958",
       "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
       "headRefName": "patch-8",
       "headRefOid": "83ebaf9d516c16b52afeefe6bc2610797ce22369",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-03-04T10:46:25Z",
+      "mergedAt": "2024-03-04T10:46:25Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "0a89119b9551231573c43e4fdddefb0949e5c5ce"
+      },
       "comments": [
         {
           "author": "billwuqin",
@@ -1195,6 +1197,73 @@
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOLPL1Dc5okskI",
+      "title": "Revert \"identity low-power-state definition update\"",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/23",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Reverts boucadair/draft-cwbgp-energy-saving-management#22",
+      "createdAt": "2024-03-04T10:47:49Z",
+      "updatedAt": "2024-03-04T10:49:37Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "0a89119b9551231573c43e4fdddefb0949e5c5ce",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "revert-22-patch-8",
+      "headRefOid": "5b7fc1a9d911ff14539ce96fc35699980a36d322",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc5yFUYC",
+          "commit": {
+            "abbreviatedOid": "5b7fc1a"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-04T10:49:10Z",
+          "updatedAt": "2024-03-04T10:49:11Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "I'm having troubles with this. What components that are not available can take measures?",
+              "createdAt": "2024-03-04T10:49:10Z",
+              "updatedAt": "2024-03-04T10:49:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc5yFUqT",
+          "commit": {
+            "abbreviatedOid": "5b7fc1a"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-04T10:49:37Z",
+          "updatedAt": "2024-03-04T10:49:37Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "@billwuqin, please double check the description. Thanks",
+              "createdAt": "2024-03-04T10:49:37Z",
+              "updatedAt": "2024-03-04T10:49:37Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
