@@ -1,6 +1,5 @@
 YANGDIR ?= yang
 
-STDYANGDIR ?= tools/yang
 $(STDYANGDIR):
 	git clone --depth 10 -b main https://github.com/YangModels/yang $@
 
@@ -14,7 +13,7 @@ YANG=$(wildcard $(YANGDIR)/*.yang)
 STDYANG=$(wildcard $(YANGDIR)/ietf-*.yang)
 TXT=$(patsubst $(YANGDIR)/%.yang,%-diagram.txt,$(YANG))
 
-.PHONY: yang-lint yang-gen-diagram yang-clean
+.PHONY: yang-gen-diagram yang-clean
 
 pyang-lint: $(STDYANG) $(STDYANGDIR)
 	pyang -V --ietf -f tree --tree-line-length=70 --tree-print-groupings -p $(YANG_PATH) $(STDYANG)	
