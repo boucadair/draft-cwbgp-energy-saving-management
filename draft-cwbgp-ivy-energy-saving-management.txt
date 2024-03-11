@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 5 September 2024                                   M. Boucadair
+Expires: 12 September 2024                                  M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                            4 March 2024
+                                                           11 March 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 12 September 2024.
 
 Copyright Notice
 
@@ -1023,9 +1023,9 @@ Table of Contents
               Clemm, A., Dong, L., Mirsky, G., Ciavaglia, L., Tantsura,
               J., Odini, M., Schooler, E., Rezaki, A., and C. Pignataro,
               "Green Networking Metrics", Work in Progress, Internet-
-              Draft, draft-cx-opsawg-green-metrics-01, 15 December 2023,
+              Draft, draft-cx-opsawg-green-metrics-02, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-cx-opsawg-
-              green-metrics-01>.
+              green-metrics-02>.
 
    [I-D.ietf-netmod-rfc8407bis]
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
