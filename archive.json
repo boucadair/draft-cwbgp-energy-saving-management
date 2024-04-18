@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-16T00:43:41.449022+00:00",
+  "timestamp": "2024-04-18T00:43:33.678184+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -173,6 +173,30 @@
           "body": "Fix this in PR #16",
           "createdAt": "2024-02-20T03:29:14Z",
           "updatedAt": "2024-02-20T03:29:14Z"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOLPL1Dc6F29md",
+      "title": "Differentiation of inventory data vs monitoring data",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/24",
+      "state": "OPEN",
+      "author": "oscargdd",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In my view, the yang model augmenting the inventory should contain only \"static\" information, That is, the capabilities of the device or the components to save energy, For example,  the part of +--rw energy-saving-modes {energy-saving}? is clear resides in the inventory.\r\n\r\nHowever, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\n",
+      "createdAt": "2024-04-16T11:13:36Z",
+      "updatedAt": "2024-04-17T01:38:30Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "williamchern",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi, Oscar, as discussed with Qinwu, it is the goal to keep only static information in the inventory, while other metrics goes to other models. Could you please give a more concrete example here, thanks. ",
+          "createdAt": "2024-04-17T01:38:28Z",
+          "updatedAt": "2024-04-17T01:38:28Z"
         }
       ]
     }
