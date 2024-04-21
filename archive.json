@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-18T00:43:33.678184+00:00",
+  "timestamp": "2024-04-21T00:49:04.081449+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -188,7 +188,7 @@
       "labels": [],
       "body": "In my view, the yang model augmenting the inventory should contain only \"static\" information, That is, the capabilities of the device or the components to save energy, For example,  the part of +--rw energy-saving-modes {energy-saving}? is clear resides in the inventory.\r\n\r\nHowever, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\n",
       "createdAt": "2024-04-16T11:13:36Z",
-      "updatedAt": "2024-04-17T01:38:30Z",
+      "updatedAt": "2024-04-18T15:15:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -197,6 +197,13 @@
           "body": "Hi, Oscar, as discussed with Qinwu, it is the goal to keep only static information in the inventory, while other metrics goes to other models. Could you please give a more concrete example here, thanks. ",
           "createdAt": "2024-04-17T01:38:28Z",
           "updatedAt": "2024-04-17T01:38:28Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "> However, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\nCurrently those are sperate in the module: e.g., augment \"/ni:network-elements/ni:network-element\" vs. augment \"/nw:networks/nw:network/nw:node\"\r\n\r\nI guess your comment is to keep only augments to ni in one module and nw augments in a separate module.\r\n\r\nthat's would be cleaner and easy to do.",
+          "createdAt": "2024-04-18T15:15:57Z",
+          "updatedAt": "2024-04-18T15:15:57Z"
         }
       ]
     }
