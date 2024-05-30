@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 12 September 2024                                  M. Boucadair
+Expires: 1 December 2024                                    M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                           11 March 2024
+                                                             30 May 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 September 2024.
+   This Internet-Draft will expire on 1 December 2024.
 
 Copyright Notice
 
@@ -1031,9 +1031,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-09, 28 February 2024,
+              netmod-rfc8407bis-11, 18 April 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-09>.
+              rfc8407bis-11>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
