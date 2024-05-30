@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 15 August 2024                                     M. Boucadair
+Expires: 1 December 2024                                    M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                        12 February 2024
+                                                             30 May 2024
 
 
              A YANG Data Model for Energy Saving Management
@@ -19,8 +19,8 @@ Expires: 15 August 2024                                     M. Boucadair
 
 Abstract
 
-   This document defines a YANG module for power and energy management
-   of devices.
+   This document defines a YANG module for power and energy management.
+   The document covers both device and network levels.
 
 Discussion Venues
 
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2024.
+   This Internet-Draft will expire on 1 December 2024.
 
 Copyright Notice
 
@@ -90,15 +90,27 @@ Table of Contents
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes.  However, there are no
-   standard mechanisms to report and control power usage of different
-   networking equipment under different network configuration and
-   conditions.  For example, in 'tidal network' in which traffic volume
-   undergoes significant fluctuations at different times, various energy
-   management methods might be envisaged to optimize the energy
-   efficiency at the network scale, e.g., by selectively disabling ports
-   or cards on specific network nodes based on (forecast) traffic
-   patterns.
+   and the contribution of involved nodes.  As described in Section 3.4
+   of [RFC6988], monitoring energy, power can be required for purposes
+   such as:
+
+   o designing control loops for energy saving
+   o investigating energy-saving potential
+   o evaluating the effectiveness of energy-saving policies and
+     measures
+   o accounting for the total power received and provided by an entity,
+     a network, or a service
+   o predicting an entity's reliability based on power usage
+   o planning for the next maintenance cycle for an entity
+
+   However, there are no standard mechanisms to report and control power
+   usage or energy consumption of different networking equipment under
+   different network configuration and conditions.  For example, in
+   'tidal network' in which traffic volume undergoes significant
+   fluctuations at different times, various energy management methods
+   might be envisaged to optimize the energy efficiency at the network
+   scale, e.g., by selectively disabling ports or cards on specific
+   network nodes based on (forecast) traffic patterns.
 
    This document defines a YANG data model for use in energy management
    of network devices.  Such model can be used for monitoring the energy
@@ -142,7 +154,7 @@ Table of Contents
       [I-D.ietf-ivy-network-inventory-yang].
 
    Network Element:  A manageable network entity that contains hardware
-      and software units, e.g. a network device installed on one or
+      and software units, e.g., a network device installed on one or
       several chassis [I-D.ietf-ivy-network-inventory-yang].
 
    Board and Card:  A pluggable equipment can be inserted into one or
@@ -184,10 +196,13 @@ Table of Contents
    As described in [I-D.ietf-ivy-network-inventory-yang], the Network
    Inventory YANG data model is used to maintain the base network
    inventory information.  This document defines the YANG module "ietf-
-   energy-saving-management", which augments network element of the
-   network Inventory base model with energy saving modes and augments
-   the component of the network inventory base model with energy
-   consumption and energy saving attributes.
+   energy-saving-mgt", which augments network element of the network
+   Inventory base model with energy saving modes, associated energy
+   saving methods and augments the component of the network inventory
+   base model with capability related power attributes.  In addition,
+   "ietf-energy-saving-mgt" also augments the node of asbstract network
+   model defined in [RFC8345] with energy consumption and power usage
+   related attributes.
 
    At the network element level, the data model covers configuration of
    the energy saving mode and a set of related parameters to manage
@@ -201,13 +216,15 @@ Table of Contents
    scheduled events).
 
    The data model defines energy saving modes representing some energy
-   consumption levels, which are basic, standard, deep, optimal and
-   custom.  For each consumption level, there is a combination of
-   methods to reach the energy saving target level.
+   consumption levels, which are basic, standard, deep.  For each
+   consumption level, there is a combination of methods to reach the
+   energy saving target level.
 
    At the component level, the data model includes a set of monitoring
-   statistics for energy consumption and energy saving operator state of
-   each component within the network device.
+   statistics for energy consumption and energy saving operational state
+   of each component within the network device.  It also includes
+   threshold related power parameters such as rated power, expected
+   volts.
 
 4.1.  Energy Saving Management Tree Diagram
 
@@ -219,13 +236,13 @@ Table of Contents
         +--rw energy-consumption
         |  +--rw average-power?     yang:gauge64
         |  +--rw saved-power?       yang:gauge64
-        |  +--rw current-power?     yang:gauge64
-        |  +--rw current-volts?     int32
-        |  +--rw current-amperes?   int32
-        |  +--rw temperature?       int32
+        |  +--rw real-power?        yang:gauge64
+        |  +--rw actual-volts?      int32
+        |  +--rw actual-amperes?    int32
+        |  +--rw actual-celsius?    int32
         +--rw energy-saving
         |  +--rw enabled?      boolean
-        |  +--rw oper-state?   identityref
+        |  +--rw power-state?   identityref
         +--rw inventory-component-ref
            +--rw node-ref?   leafref
            +--rw ne-ref?
@@ -237,17 +254,21 @@ Table of Contents
        |  +--ro saved-energy?               yang:gauge64
        |  +--ro eer?                        decimal64
        +--rw energy-saving-modes {energy-saving}?
-          +--rw energy-saving-mode*     identityref
-          +--rw energy-saving-method*   identityref
+          +--rw energy-saving-mode* [mode]
+             +--rw mode                    identityref
+             +--rw energy-saving-method*   identityref
+
      augment /ni:network-elements/ni:network-element:
        +--ro energy-management {energy-saving}?
           +--ro energy-monitoring-capability?   boolean
-          +--ro energy-saving-modes
-             +--ro energy-saving-mode*     identityref
-             +--ro energy-saving-method*   identityref
+          +--rw energy-saving-modes
+             +--rw energy-saving-mode* [mode]
+                +--rw mode                    identityref
+                +--rw energy-saving-method*   identityref
+
      augment /ni:network-elements/ni:network-element/ni:components
                /ni:component:
-       +--ro energy-parameters {energy-saving}?
+       +--ro power-parameters {energy-saving}?
           +--ro temperature-upper-bound?    int32
           +--ro temperature-middle-bound?   int32
           +--ro temperature-lower-bound?    int32
@@ -263,9 +284,24 @@ Table of Contents
 4.2.  Network Element Specific Information
 
    Network element specific attributes can be defined in the network
-   element list node as shown inFigure 2.
+   element list node as shown in Figure 2.
 
-   TBC
+     augment /nw:networks/nw:network/nw:node:
+       +--ro energy-power-consumption {energy-saving}?
+       |  +--ro total-energy-consumption?   yang:gauge64
+       |  +--ro saved-energy?               yang:gauge64
+       |  +--ro eer?                        decimal64
+       +--rw energy-saving-modes {energy-saving}?
+          +--rw energy-saving-mode* [mode]
+             +--rw mode                    identityref
+             +--rw energy-saving-method*   identityref
+     augment /ni:network-elements/ni:network-element:
+       +--ro energy-management {energy-saving}?
+          +--ro energy-monitoring-capability?   boolean
+          +--ro energy-saving-modes
+             +--ro energy-saving-mode* [mode]
+                +--ro mode                    identityref
+                +--ro energy-saving-method*   identityref
 
           Figure 2: Network Element Specific Energy Tree Structure
 
@@ -274,7 +310,36 @@ Table of Contents
    Component-specific attributes can be defined under the component list
    node as shown in Figure 3.
 
-   TBC
+   module: ietf-energy-saving-mgt
+     +--rw component-energy-monitoring
+        +--rw energy-consumption
+        |  +--rw average-power?    yang:gauge64
+        |  +--rw saved-power?      yang:gauge64
+        |  +--rw real-power?       yang:gauge64
+        |  +--rw actual-volts?     int32
+        |  +--rw actual-amperes?   int32
+        |  +--rw actual-celsius?   int32
+        +--rw energy-saving
+        |  +--rw enabled?       boolean
+        |  +--rw power-state?   identityref
+        +--rw inventory-component-ref
+           +--rw node-ref?      leafref
+           +--rw ne-ref?
+           -> /ni:network-elements/network-element/ne-id
+
+   augment /ni:network-elements/ni:network-element/ni:components
+           /ni:component:
+     +--ro power-parameters {energy-saving}?
+         +--ro temperature-upper-bound?    int32
+         +--ro temperature-middle-bound?   int32
+         +--ro temperature-lower-bound?    int32
+         +--ro rated-power?                yang:gauge64
+         +--ro expected-volts?             int32
+         +--ro low-volts-bound?            int32
+         +--ro low-volts-fatal?            int32
+         +--ro high-volts-bound?           int32
+         +--ro high-volts-fatal?           int32
+   ...
 
              Figure 3: Component-Specifc Energy Tree Structure
 
@@ -312,10 +377,12 @@ Table of Contents
 
         Author:   Gen Chen
                   <mailto:chengen@huawei.com>
-        Author:   Qin Wu
+        Editor:   Qin Wu
                   <mailto:bill.wu@huawei.com>
-        Author:   Mohamed Boucadair
-                  <mailto:mohamed.boucadair@huawei.com>";
+        Editor:   Mohamed Boucadair
+                  <mailto:mohamed.boucadair@orange.com>
+        Author:   Carlos Pignataro
+                  <mailto:cpignata@gmail.com>";
      description
        "This module contains a collection of YANG definitions for power
         and energy management of devices. It also augments both the
@@ -345,7 +412,6 @@ Table of Contents
        description
          "Specifies support of energy saving management.";
      }
-
 
      identity energy-saving-mode {
        description
@@ -482,34 +548,49 @@ Table of Contents
           will not be lost.";
      }
 
-     identity energy-saving-oper-state {
+     identity energy-saving-power-state {
        description
-         "Base identity for energy-saving-oper-state.";
+         "Base identity for power state.";
+       reference
+         "RFC 7326: Energy Management Framework";
      }
 
-     identity energy-saving {
-       base energy-saving-oper-state;
+     identity off-state {
+       base energy-saving-power-state;
        description
-         "Identity to indicate support of energy-saving mode.";
+         "Indicates that the component typically
+                requires a complete boot when awakened.";
+       reference
+         "RFC 7326: Energy Management Framework";
      }
 
-     identity unsupported {
-       base energy-saving-oper-state;
+     identity sleep-state {
+       base energy-saving-power-state;
        description
-         "Indicates that the device does not support energy-saving
-          mode or does not have enough resources.";
+         "Indicates that a component with energy management support
+          is not functional but immediately available such as
+          wake up mechanism.";
+       reference
+         "RFC 7326: Energy Management Framework";
      }
 
-     identity deactivated {
-       base energy-saving-oper-state;
+     identity low-power-state {
+       base energy-saving-power-state;
        description
-         "Indicates teh saving mode is deactivated.";
+         "Indicates that some components with energy management
+          support are available and can take measures to use
+          less energy.";
+       reference
+         "RFC 7326: Energy Management Framework";
      }
 
-     identity activated {
-       base energy-saving-oper-state;
+     identity full-power-state {
+       base energy-saving-power-state;
        description
-         "Indicates that the energy saving is running.";
+         "Indicates that all components with energy management
+          support are available and may use maximum power.";
+       reference
+         "RFC 7326: Energy Management Framework";
      }
 
      typedef energy-saving-operator {
@@ -536,7 +617,7 @@ Table of Contents
        leaf ne-ref {
          type leafref {
            path "/ni:network-elements/ni:network-element/ni:ne-id";
-         require-instance false;
+           require-instance false;
          }
          description
            "Used to reference a network element.";
@@ -549,8 +630,8 @@ Table of Contents
        leaf node-ref {
          type leafref {
            path "/ni:network-elements/ni:network-element[ni:ne-id="
-             + "current()/../ne-ref]/ni:components/ni:component"
-             + "/ni:component-id";
+              + "current()/../ne-ref]/ni:components/ni:component"
+              + "/ni:component-id";
            require-instance false;
          }
          description
@@ -574,52 +655,63 @@ Table of Contents
          description
            "The saved power.";
        }
-       leaf current-power {
+       leaf real-power {
          type yang:gauge64;
          units "mW";
          description
-           "The current observed consumed power.";
+           "The actual observed consumed power.";
+         reference
+           "RFC 6988: Requirements for Energy Management";
        }
-       leaf current-volts {
+       leaf actual-volts {
          type int32;
          units "mV";
          description
-           "The current volts.";
+           "The actual observed voltage.";
+         reference
+           "RFC 6988: Requirements for Energy Management";
        }
-       leaf current-amperes {
+       leaf actual-amperes {
          type int32;
          units "mA";
          description
-           "The current amperes.";
+           "The actual observed current.";
+         reference
+           "RFC 6988: Requirements for Energy Management";
        }
-       leaf temperature {
+       leaf actual-celsius {
          type int32;
          units "0.01 C";
          description
-           "The current temperature of the component.";
+           "The actual observed temperature.";
        }
      }
 
      grouping energy-saving-modes {
        description
          "Grouping for energy saving mode and methods.";
-       leaf-list energy-saving-mode {
-         type identityref {
-           base energy-saving-mode;
-         }
+       list energy-saving-mode {
+         key "mode";
          description
            "The energy saving mode.";
-       }
-       leaf-list energy-saving-method {
-         type identityref {
-           base energy-saving-method;
+         leaf mode {
+           type identityref {
+             base energy-saving-mode;
+           }
+           description
+             "The energy saving mode.";
          }
-         description
-           "The energy saving method.";
+         leaf-list energy-saving-method {
+           type identityref {
+             base energy-saving-method;
+           }
+           description
+             "The energy saving method.";
+         }
        }
      }
 
-     grouping energy-parameters {
+     grouping power-parameters {
        description
          "Grouping for energy paramters.";
        leaf temperature-upper-bound {
@@ -627,27 +719,30 @@ Table of Contents
          units "0.01 C";
          description
            "The upper bound overheat temperature of the component.
-
             Upon the upper bound is exceeded, an alarm will be
             triggered to indicate fatal failure.";
+         reference
+           "RFC 8632: A YANG Data Model for Alarm Management";
        }
        leaf temperature-middle-bound {
          type int32;
          units "0.01 C";
          description
            "The middle bound overheat temperature of the component.
-
             Upon the middle bound is exceeded, an alarm will be
             triggered.";
+         reference
+           "RFC 8632: A YANG Data Model for Alarm Management";
        }
        leaf temperature-lower-bound {
          type int32;
          units "0.01 C";
          description
            "The lower bound overheat temperature of the component.
-
             Upon the lower bound is exceeded, the alarm will be
             triggered.";
+         reference
+           "RFC 8632: A YANG Data Model for Alarm Management";
        }
        leaf rated-power {
          type yang:gauge64;
@@ -680,6 +775,8 @@ Table of Contents
          units "mV";
          description
            "The higher volts bound which should trigger an alarm.";
+         reference
+           "RFC 8632: A YANG Data Model for Alarm Management";
        }
        leaf high-volts-fatal {
          type int32;
@@ -754,11 +851,11 @@ Table of Contents
        if-feature "energy-saving";
        description
          "Energy management static data for component.";
-       container energy-parameters {
+       container power-parameters {
          config false;
          description
-           "Energy parameter monitoring.";
-         uses energy-parameters;
+           "Power parameter monitoring.";
+         uses power-parameters;
        }
      }
 
@@ -781,9 +878,9 @@ Table of Contents
               of the component is enabled (when set to true)
               or disabled (set to false).";
          }
-         leaf oper-state {
+         leaf power-state {
            type identityref {
-             base energy-saving-oper-state;
+             base energy-saving-power-state;
            }
            description
              "The device energy saving operator state.";
@@ -800,6 +897,9 @@ Table of Contents
    <CODE ENDS>
 
 5.1.  Security Considerations
+
+   This section uses the template described in Section 3.7 of
+   [I-D.ietf-netmod-rfc8407bis].
 
    The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
@@ -819,8 +919,8 @@ Table of Contents
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
    to these data nodes without proper protection can have a negative
-   effect on network operations.  These are the subtrees and data nodes
-   and their sensitivity/vulnerability:
+   effect on network operations.  Specifically, the following subtrees
+   and data nodes have particular sensitivities/vulnerabilities:
 
    /em:energy-management/em:energy-saving-mode:  This leaf specifies the
       energy saving mode set globally on a device.
@@ -831,8 +931,9 @@ Table of Contents
       Some of the readable data nodes in this YANG module may be
       considered sensitive or vulnerable in some network environments.
       It is thus important to control read access (e.g., via get, get-
-      config, or notification) to these data nodes.  These are the
-      subtrees and data nodes and their sensitivity/vulnerability:
+      config, or notification) to these data nodes.  Specifically, the
+      following subtrees and data nodes have particular sensitivities/
+      vulnerabilities:
 
       'TBC':  ....
 
@@ -840,8 +941,8 @@ Table of Contents
 
 6.1.  The "IETF XML" Registry
 
-   This document registers one XML namespace URN in the 'IETF XML
-   registry', following the format defined in [RFC3688].
+   This document requests IANA to register the following URI in the "ns"
+   subregistry within the "IETF XML Registry" [RFC3688]:
 
       URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
       Registrant Contact: The IESG.
@@ -849,8 +950,9 @@ Table of Contents
 
 6.2.  The "YANG Module Names" Registry
 
-   This document registers one module name in the 'YANG Module Names'
-   registry, defined in [RFC6020].
+   This document requests IANA to register the following YANG module in
+   the "YANG Module Names" registry [RFC6020] within the "YANG
+   Parameters" registry group.
 
       name: ietf-energy-saving-management
       prefix: em
@@ -866,9 +968,9 @@ Table of Contents
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
               Bedard, "A YANG Data Model for Network Inventory", Work in
               Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-yang-00, 5 December 2023,
+              inventory-yang-01, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-yang-00>.
+              network-inventory-yang-01>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -921,9 +1023,17 @@ Table of Contents
               Clemm, A., Dong, L., Mirsky, G., Ciavaglia, L., Tantsura,
               J., Odini, M., Schooler, E., Rezaki, A., and C. Pignataro,
               "Green Networking Metrics", Work in Progress, Internet-
-              Draft, draft-cx-opsawg-green-metrics-01, 15 December 2023,
+              Draft, draft-cx-opsawg-green-metrics-02, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-cx-opsawg-
-              green-metrics-01>.
+              green-metrics-02>.
+
+   [I-D.ietf-netmod-rfc8407bis]
+              Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
+              Authors and Reviewers of Documents Containing YANG Data
+              Models", Work in Progress, Internet-Draft, draft-ietf-
+              netmod-rfc8407bis-11, 18 April 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
+              rfc8407bis-11>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
@@ -932,20 +1042,25 @@ Table of Contents
               04, 12 March 2013, <https://datatracker.ietf.org/doc/html/
               draft-manral-bmwg-power-usage-04>.
 
+   [RFC6988]  Quittek, J., Ed., Chandramouli, M., Winter, R., Dietz, T.,
+              and B. Claise, "Requirements for Energy Management",
+              RFC 6988, DOI 10.17487/RFC6988, September 2013,
+              <https://www.rfc-editor.org/rfc/rfc6988>.
+
    [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
               BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8340>.
 
 Acknowledgments
 
-   This work has benefited from the discussions of Sustainable
-   Networking Side Meeting in IETF117 and e-impact IAB workshop.  In
-   particular, [I-D.cx-opsawg-green-metrics] assess several
-   sustainability-related attributes such as power consumption, energy
-   efficiency, and carbon footprint associated with a network, its
-   equipment, and the services that are provided over it and suggest a
-   set of metrics that provide network observability and can be used to
-   optimize a network's "greenness" . [I-D.manral-bmwg-power-usage]
+   This work has benefited from the discussions that occured during the
+   Sustainable Networking Side Meeting in IETF#117 and the "e-impact"
+   IAB workshop.  In particular, [I-D.cx-opsawg-green-metrics] assess
+   several sustainability-related attributes such as power consumption,
+   energy efficiency, and carbon footprint associated with a network,
+   its equipment, and the services that are provided over it and suggest
+   a set of metrics that provide network observability and can be used
+   to optimize a network's "greenness".  [I-D.manral-bmwg-power-usage]
    provides suggestions for measuring power usage of live networks under
    different traffic loads and various switch router configuration
    settings.
