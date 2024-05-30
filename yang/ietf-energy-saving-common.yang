@@ -396,4 +396,31 @@ module ietf-energy-saving-common {
          will cause fatal failure.";
     }
   } 
+
+    grouping energy-power-consumption-stats {
+      description
+        "Statistics data about energy and power monitoring.";
+      leaf total-energy-consumption {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Accumulated energy consumption of equipment.";
+      }
+      leaf saved-energy {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Saved energy consumption of equipment.";
+      }
+      leaf eer {
+        type decimal64 {
+          fraction-digits 18;
+        }
+        units "Gbps/Watt";
+        description
+          "The energy efficiency rating (EER) is a metric
+           generally defined as a functional unit divided by
+           the energy used.";
+      }
+    }
 }
