@@ -1,0 +1,113 @@
+module ietf-ntw-energy-saving {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving";
+  prefix esm-ntw;
+
+  import ietf-energy-saving-common {
+    prefix esm-common;
+    reference
+      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+  }
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6021: Common YANG Types";
+  }
+  import ietf-network {
+    prefix nw;
+    reference
+      "RFC 8345: A YANG Data Model for Network Topologies";
+  }
+
+  organization
+    "IETF IVY Working Group.";
+  contact
+    "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
+     WG List:  <mailto:opsawg@ietf.org>
+
+     Author:   Gen Chen
+               <mailto:chengen@huawei.com>
+     Editor:   Qin Wu
+               <mailto:bill.wu@huawei.com>
+     Editor:   Mohamed Boucadair
+               <mailto:mohamed.boucadair@orange.com>
+     Author:   Carlos Pignataro
+               <mailto:cpignata@gmail.com>";
+  description
+    "This module contains a collection of YANG definitions for power
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2024-01-23 {
+    description
+      "Initial revision.";
+    reference
+      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+  }
+
+  augment "/nw:networks/nw:network/nw:node" {
+    if-feature "esm-common:energy-saving";
+    description
+      "Energy monitoring data for network elements.";
+    container energy-power-consumption {
+      config false;
+      description
+        "Statistics data about energy and power monitoring.";
+      uses esm-common:energy-power-consumption-stats;
+    }
+    container energy-saving-modes {
+      description
+        "List of the energy saving mode.";
+      uses esm-common:energy-saving-modes;
+    }
+  }
+
+/*
+  container component-energy-monitoring {
+    description
+      "Energy monitoring data for components.";
+    container energy-consumption {
+      description
+        "Statistics of component about energy monitoring.";
+      uses energy-consumption-data;
+    }
+    container energy-saving {
+      description
+        "Controls energy saving parameters of a component.";
+      leaf enabled {
+        type boolean;
+        default "true";
+        description
+          "Controls whether the energy-saving
+           of the component is enabled (when set to true)
+           or disabled (set to false).";
+      }
+      leaf power-state {
+        type identityref {
+          base energy-saving-power-state;
+        }
+        description
+          "The device energy saving operator state.";
+      }
+    }
+    container inventory-component-ref {
+      description
+        "The reference of the component from which this
+         termination point is abstracted.";
+      uses component-ref;
+    }
+  }*/
+}
