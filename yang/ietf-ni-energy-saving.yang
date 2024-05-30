@@ -13,11 +13,11 @@ module ietf-ni-energy-saving {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-  import ietf-yang-types {
+  /*import ietf-yang-types {
     prefix yang;
     reference
       "RFC 6021: Common YANG Types";
-  }
+  }*/
 
   organization
     "IETF IVY Working Group.";
@@ -86,23 +86,6 @@ module ietf-ni-energy-saving {
         "Used to reference a component.";
     }
     uses network-element-ref;
-  }
-
-  augment "/nw:networks/nw:network/nw:node" {
-    if-feature "esm-common:energy-saving";
-    description
-      "Energy monitoring data for network element.";
-    container energy-power-consumption {
-      config false;
-      description
-        "Statistics data about energy and power monitoring.";
-      uses esm-common:energy-power-consumption-stats;
-    }
-    container energy-saving-modes {
-      description
-        "List of the energy saving mode.";
-      uses esm-common:energy-saving-modes;
-    }
   }
 
   augment "/ni:network-elements/ni:network-element" {
