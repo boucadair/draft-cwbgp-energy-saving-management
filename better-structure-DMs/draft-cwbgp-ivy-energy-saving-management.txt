@@ -796,11 +796,11 @@ Table of Contents
        reference
          "RFC XXXX: A YANG Data Model for Energy Saving Management";
      }
-     import ietf-yang-types {
+     /*import ietf-yang-types {
        prefix yang;
        reference
          "RFC 6021: Common YANG Types";
-     }
+     }*/
      import ietf-network {
        prefix nw;
        reference
