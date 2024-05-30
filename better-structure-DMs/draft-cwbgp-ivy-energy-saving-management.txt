@@ -906,6 +906,8 @@ Table of Contents
    The module imports XXX and uses types defined in XXX.
 
    <CODE BEGINS> file "ietf-ni-energy-saving@2024-01-23.yang"
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
    module ietf-ni-energy-saving {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving";
@@ -972,7 +974,8 @@ Table of Contents
           element.";
        leaf ne-ref {
          type leafref {
-           path "/ni:network-elements/ni:network-element/ni:ne-id";
+           path "/ni:network-inventory/ni:network-elements/ni:network-\
+                                                      element/ni:ne-id";
            require-instance false;
          }
          description
@@ -985,7 +988,8 @@ Table of Contents
          "Contains the information necessary to reference a component.";
        leaf node-ref {
          type leafref {
-           path "/ni:network-elements/ni:network-element[ni:ne-id="
+           path "/ni:network-inventory/ni:network-elements/ni:network-\
+                                                      element[ni:ne-id="
               + "current()/../ne-ref]/ni:components/ni:component"
               + "/ni:component-id";
            require-instance false;
@@ -996,7 +1000,8 @@ Table of Contents
        uses network-element-ref;
      }
 
-     augment "/ni:network-elements/ni:network-element" {
+     augment "/ni:network-inventory/ni:network-elements"
+           + "/ni:network-element" {
        if-feature "esm-common:energy-saving";
        description
          "Energy management static data for network element.";
@@ -1017,8 +1022,8 @@ Table of Contents
        }
      }
 
-     augment "/ni:network-elements/ni:network-element/ni:components"
-           + "/ni:component" {
+     augment "/ni:network-inventory/ni:network-elements"
+           + "/ni:network-element/ni:components/ni:component" {
        if-feature "esm-common:energy-saving";
        description
          "Energy management static data for component.";
