@@ -96,28 +96,7 @@ module ietf-ni-energy-saving {
       config false;
       description
         "Statistics data about energy and power monitoring.";
-      leaf total-energy-consumption {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Accumulated energy consumption of equipment.";
-      }
-      leaf saved-energy {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Saved energy consumption of equipment.";
-      }
-      leaf eer {
-        type decimal64 {
-          fraction-digits 18;
-        }
-        units "Gbps/Watt";
-        description
-          "The energy efficiency rating (EER) is a metric
-           generally defined as a functional unit divided by
-           the energy used.";
-      }
+      uses esm-common:energy-power-consumption-stats;
     }
     container energy-saving-modes {
       description
@@ -127,7 +106,7 @@ module ietf-ni-energy-saving {
   }
 
   augment "/ni:network-elements/ni:network-element" {
-    if-feature "energy-saving";
+    if-feature "esm-common:energy-saving";
     description
       "Energy management static data for network element.";
     container energy-management {
@@ -149,7 +128,7 @@ module ietf-ni-energy-saving {
 
   augment "/ni:network-elements/ni:network-element/ni:components"
         + "/ni:component" {
-    if-feature "energy-saving";
+    if-feature "esm-common:energy-saving";
     description
       "Energy management static data for component.";
     container power-parameters {
