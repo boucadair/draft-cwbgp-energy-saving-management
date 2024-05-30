@@ -187,7 +187,7 @@ informative:
    state of each component within the network device. It also includes threshold
    related power parameters such as rated power, expected volts.
 
-##  Energy Saving Management Tree Diagram
+##  Energy Saving Management Module Structure
 
   {{e-tree}} shows the tree diagram of the YANG data model defined in {{sec-module}}.
 
@@ -217,14 +217,35 @@ informative:
 ~~~~
 {: #cs-tree title="Component-Specifc Energy Tree Structure"}
 
+# YANG Modules {#sec-module}
 
-# Energy Saving YANG Module {#sec-module}
+## Common Module {#sec-common}
 
 The module imports XXX and uses types defined in XXX.
 
 ~~~~ yang
-<CODE BEGINS> file "ietf-energy-saving-mgt@2024-01-23.yang"
-{::include-fold ./yang/ietf-energy-saving-mgt.yang}
+<CODE BEGINS> file "ietf-energy-saving-common@2024-01-23.yang"
+{::include-fold ./yang/ietf-energy-saving-common.yang}
+<CODE ENDS>
+~~~~
+
+## Network Module {#sec-ntw}
+
+The module imports XXX and uses types defined in XXX.
+
+~~~~ yang
+<CODE BEGINS> file "ietf-ntw-energy-saving@2024-01-23.yang"
+{::include-fold ./yang/ietf-ntw-energy-saving.yang}
+<CODE ENDS>
+~~~~
+
+## Network Inventory Module {#sec-ni}
+
+The module imports XXX and uses types defined in XXX.
+
+~~~~ yang
+<CODE BEGINS> file "ietf-ni-energy-saving@2024-01-23.yang"
+{::include-fold ./yang/ietf-ni-energy-saving.yang}
 <CODE ENDS>
 ~~~~
 
