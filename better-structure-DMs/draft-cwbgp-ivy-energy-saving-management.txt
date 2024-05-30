@@ -70,11 +70,14 @@ Table of Contents
    2.  Conventions and Definitions
    3.  YANG Prefixes
    4.  Energy Saving Management Data Model Overview
-     4.1.  Energy Saving Management Tree Diagram
+     4.1.  Energy Saving Management Module Structure
      4.2.  Network Element Specific Information
      4.3.  Component Specific Information
-   5.  Energy Saving YANG Module
-     5.1.  Security Considerations
+   5.  YANG Modules
+     5.1.  Common Module
+     5.2.  Network Module
+     5.3.  Network Inventory Module
+     5.4.  Security Considerations
    6.  IANA Considerations
      6.1.  The "IETF XML" Registry
      6.2.  The "YANG Module Names" Registry
@@ -226,7 +229,7 @@ Table of Contents
    threshold related power parameters such as rated power, expected
    volts.
 
-4.1.  Energy Saving Management Tree Diagram
+4.1.  Energy Saving Management Module Structure
 
    Figure 1 shows the tree diagram of the YANG data model defined in
    Section 5.
@@ -343,30 +346,22 @@ Table of Contents
 
              Figure 3: Component-Specifc Energy Tree Structure
 
-5.  Energy Saving YANG Module
+5.  YANG Modules
+
+5.1.  Common Module
 
    The module imports XXX and uses types defined in XXX.
 
-   <CODE BEGINS> file "ietf-energy-saving-mgt@2024-01-23.yang"
-   module ietf-energy-saving-mgt {
+   <CODE BEGINS> file "ietf-energy-saving-common@2024-01-23.yang"
+   module ietf-energy-saving-common {
      yang-version 1.1;
-     namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt";
-     prefix em;
+     namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-common";
+     prefix esm-common;
 
-     import ietf-network-inventory {
-       prefix ni;
-       reference
-         "RFC IIII: A YANG Data Model for Network Inventory";
-     }
      import ietf-yang-types {
        prefix yang;
        reference
          "RFC 6021: Common YANG Types";
-     }
-     import ietf-network {
-       prefix nw;
-       reference
-         "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
      organization
@@ -405,7 +400,7 @@ Table of Contents
        description
          "Initial revision.";
        reference
-         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+         "RFC XXXX: YANG Data Models for Energy Saving Management";
      }
 
      feature energy-saving {
@@ -610,36 +605,6 @@ Table of Contents
          "Energy saving operator.";
      }
 
-     grouping network-element-ref {
-       description
-         "Contains the information necessary to reference a network
-          element.";
-       leaf ne-ref {
-         type leafref {
-           path "/ni:network-elements/ni:network-element/ni:ne-id";
-           require-instance false;
-         }
-         description
-           "Used to reference a network element.";
-       }
-     }
-
-     grouping component-ref {
-       description
-         "Contains the information necessary to reference a component.";
-       leaf node-ref {
-         type leafref {
-           path "/ni:network-elements/ni:network-element[ni:ne-id="
-              + "current()/../ne-ref]/ni:components/ni:component"
-              + "/ni:component-id";
-           require-instance false;
-         }
-         description
-           "Used to reference a component.";
-       }
-       uses network-element-ref;
-     }
-
      grouping energy-consumption-data {
        description
          "Grouping for energy monitoring.";
@@ -787,12 +752,7 @@ Table of Contents
        }
      }
 
-     augment "/nw:networks/nw:network/nw:node" {
-       if-feature "energy-saving";
-       description
-         "Energy monitoring data for network element.";
-       container energy-power-consumption {
-         config false;
+       grouping energy-power-consumption-stats {
          description
            "Statistics data about energy and power monitoring.";
          leaf total-energy-consumption {
@@ -818,47 +778,92 @@ Table of Contents
               the energy used.";
          }
        }
+   }
+   <CODE ENDS>
+
+5.2.  Network Module
+
+   The module imports XXX and uses types defined in XXX.
+
+   <CODE BEGINS> file "ietf-ntw-energy-saving@2024-01-23.yang"
+   module ietf-ntw-energy-saving {
+     yang-version 1.1;
+     namespace "urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving";
+     prefix esm-ntw;
+
+     import ietf-energy-saving-common {
+       prefix esm-common;
+       reference
+         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+     }
+     import ietf-yang-types {
+       prefix yang;
+       reference
+         "RFC 6021: Common YANG Types";
+     }
+     import ietf-network {
+       prefix nw;
+       reference
+         "RFC 8345: A YANG Data Model for Network Topologies";
+     }
+
+     organization
+       "IETF IVY Working Group.";
+     contact
+       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
+        WG List:  <mailto:opsawg@ietf.org>
+
+        Author:   Gen Chen
+                  <mailto:chengen@huawei.com>
+        Editor:   Qin Wu
+                  <mailto:bill.wu@huawei.com>
+        Editor:   Mohamed Boucadair
+                  <mailto:mohamed.boucadair@orange.com>
+        Author:   Carlos Pignataro
+                  <mailto:cpignata@gmail.com>";
+     description
+       "This module contains a collection of YANG definitions for power
+        and energy management of devices. It also augments both the
+        network topology and inventory models.
+
+        Copyright (c) 2024 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices.";
+
+     revision 2024-01-23 {
+       description
+         "Initial revision.";
+       reference
+         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+     }
+
+     augment "/nw:networks/nw:network/nw:node" {
+       if-feature "esm-common:energy-saving";
+       description
+         "Energy monitoring data for network elements.";
+       container energy-power-consumption {
+         config false;
+         description
+           "Statistics data about energy and power monitoring.";
+         uses esm-common:energy-power-consumption-stats;
+       }
        container energy-saving-modes {
          description
            "List of the energy saving mode.";
-         uses energy-saving-modes;
+         uses esm-common:energy-saving-modes;
        }
      }
 
-     augment "/ni:network-elements/ni:network-element" {
-       if-feature "energy-saving";
-       description
-         "Energy management static data for network element.";
-       container energy-management {
-         config false;
-         description
-           "Statistics of the energy management.";
-         leaf energy-monitoring-capability {
-           type boolean;
-           description
-             "Indicates whether monitoring can be performed.";
-         }
-         container energy-saving-modes {
-           description
-             "List of supported energy saving modes.";
-           uses energy-saving-modes;
-         }
-       }
-     }
-
-     augment "/ni:network-elements/ni:network-element/ni:components"
-           + "/ni:component" {
-       if-feature "energy-saving";
-       description
-         "Energy management static data for component.";
-       container power-parameters {
-         config false;
-         description
-           "Power parameter monitoring.";
-         uses power-parameters;
-       }
-     }
-
+   /*
      container component-energy-monitoring {
        description
          "Energy monitoring data for components.";
@@ -892,11 +897,215 @@ Table of Contents
             termination point is abstracted.";
          uses component-ref;
        }
-     }
+     }*/
    }
    <CODE ENDS>
 
-5.1.  Security Considerations
+5.3.  Network Inventory Module
+
+   The module imports XXX and uses types defined in XXX.
+
+   <CODE BEGINS> file "ietf-ni-energy-saving@2024-01-23.yang"
+   module ietf-ni-energy-saving {
+     yang-version 1.1;
+     namespace "urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving";
+     prefix esm-ni;
+
+     import ietf-energy-saving-common {
+       prefix esm-common;
+       reference
+         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+     }
+     import ietf-network-inventory {
+       prefix ni;
+       reference
+         "RFC IIII: A YANG Data Model for Network Inventory";
+     }
+     import ietf-yang-types {
+       prefix yang;
+       reference
+         "RFC 6021: Common YANG Types";
+     }
+
+     organization
+       "IETF IVY Working Group.";
+     contact
+       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
+        WG List:  <mailto:opsawg@ietf.org>
+
+        Author:   Gen Chen
+                  <mailto:chengen@huawei.com>
+        Editor:   Qin Wu
+                  <mailto:bill.wu@huawei.com>
+        Editor:   Mohamed Boucadair
+                  <mailto:mohamed.boucadair@orange.com>
+        Author:   Carlos Pignataro
+                  <mailto:cpignata@gmail.com>";
+     description
+       "This module contains a collection of YANG definitions for power
+        and energy management of devices. It also augments both the
+        network topology and inventory models.
+
+        Copyright (c) 2024 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices.";
+
+     revision 2024-01-23 {
+       description
+         "Initial revision.";
+       reference
+         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+     }
+
+     grouping network-element-ref {
+       description
+         "Contains the information necessary to reference a network
+          element.";
+       leaf ne-ref {
+         type leafref {
+           path "/ni:network-elements/ni:network-element/ni:ne-id";
+           require-instance false;
+         }
+         description
+           "Used to reference a network element.";
+       }
+     }
+
+     grouping component-ref {
+       description
+         "Contains the information necessary to reference a component.";
+       leaf node-ref {
+         type leafref {
+           path "/ni:network-elements/ni:network-element[ni:ne-id="
+              + "current()/../ne-ref]/ni:components/ni:component"
+              + "/ni:component-id";
+           require-instance false;
+         }
+         description
+           "Used to reference a component.";
+       }
+       uses network-element-ref;
+     }
+
+     augment "/nw:networks/nw:network/nw:node" {
+       if-feature "esm-common:energy-saving";
+       description
+         "Energy monitoring data for network element.";
+       container energy-power-consumption {
+         config false;
+         description
+           "Statistics data about energy and power monitoring.";
+         leaf total-energy-consumption {
+           type yang:gauge64;
+           units "Wh";
+           description
+             "Accumulated energy consumption of equipment.";
+         }
+         leaf saved-energy {
+           type yang:gauge64;
+           units "Wh";
+           description
+             "Saved energy consumption of equipment.";
+         }
+         leaf eer {
+           type decimal64 {
+             fraction-digits 18;
+           }
+           units "Gbps/Watt";
+           description
+             "The energy efficiency rating (EER) is a metric
+              generally defined as a functional unit divided by
+              the energy used.";
+         }
+       }
+       container energy-saving-modes {
+         description
+           "List of the energy saving mode.";
+         uses esm-common:energy-saving-modes;
+       }
+     }
+
+     augment "/ni:network-elements/ni:network-element" {
+       if-feature "energy-saving";
+       description
+         "Energy management static data for network element.";
+       container energy-management {
+         config false;
+         description
+           "Statistics of the energy management.";
+         leaf energy-monitoring-capability {
+           type boolean;
+           description
+             "Indicates whether monitoring can be performed.";
+         }
+         container energy-saving-modes {
+           description
+             "List of supported energy saving modes.";
+           uses esm-common:energy-saving-modes;
+         }
+       }
+     }
+
+     augment "/ni:network-elements/ni:network-element/ni:components"
+           + "/ni:component" {
+       if-feature "energy-saving";
+       description
+         "Energy management static data for component.";
+       container power-parameters {
+         config false;
+         description
+           "Power parameter monitoring.";
+         uses esm-common:power-parameters;
+       }
+     }
+
+   /*  container component-energy-monitoring {
+       description
+         "Energy monitoring data for components.";
+       container energy-consumption {
+         description
+           "Statistics of component about energy monitoring.";
+         uses energy-consumption-data;
+       }
+       container energy-saving {
+         description
+           "Controls energy saving parameters of a component.";
+         leaf enabled {
+           type boolean;
+           default "true";
+           description
+             "Controls whether the energy-saving
+              of the component is enabled (when set to true)
+              or disabled (set to false).";
+         }
+         leaf power-state {
+           type identityref {
+             base energy-saving-power-state;
+           }
+           description
+             "The device energy saving operator state.";
+         }
+       }
+       container inventory-component-ref {
+         description
+           "The reference of the component from which this
+            termination point is abstracted.";
+         uses component-ref;
+       }
+     }*/
+   }
+   <CODE ENDS>
+
+5.4.  Security Considerations
 
    This section uses the template described in Section 3.7 of
    [I-D.ietf-netmod-rfc8407bis].
