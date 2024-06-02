@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-30T00:48:05.209485+00:00",
+  "timestamp": "2024-06-02T00:52:28.657449+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -62,9 +62,17 @@
       "labels": [],
       "body": "Please find attached some quick comments/inputs about the draft. I embedded some comments directly in the file, with items that I think are easy to fix: use identities rather than enumeration, 64 instead of 32, gauge, etc.\r\n\r\nNow for the design, I\u2019m not comfortable to graft the energy optimization directly into the inventory. I suggest to split the design into two parts: energy saving capabilities that can be stored in an inventory and another set of features to tweak those while taking into account topology matters",
       "createdAt": "2024-02-07T13:19:56Z",
-      "updatedAt": "2024-02-07T13:19:56Z",
+      "updatedAt": "2024-05-30T14:15:15Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "See also #27 ",
+          "createdAt": "2024-05-30T14:15:14Z",
+          "updatedAt": "2024-05-30T14:15:14Z"
+        }
+      ]
     },
     {
       "number": 7,
@@ -109,15 +117,15 @@
       "id": "I_kwDOLPL1Dc5-wtjF",
       "title": "Position vs rfc6988 and rfc7460",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/10",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-02-09T08:41:28Z",
-      "updatedAt": "2024-02-20T03:21:15Z",
-      "closedAt": null,
+      "updatedAt": "2024-05-30T14:14:41Z",
+      "closedAt": "2024-05-30T14:14:41Z",
       "comments": [
         {
           "author": "billwuqin",
@@ -157,15 +165,15 @@
       "id": "I_kwDOLPL1Dc5-wuM_",
       "title": "More references for the various parameters",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-02-09T08:43:34Z",
-      "updatedAt": "2024-02-20T03:29:15Z",
-      "closedAt": null,
+      "updatedAt": "2024-05-30T14:14:31Z",
+      "closedAt": "2024-05-30T14:14:31Z",
       "comments": [
         {
           "author": "billwuqin",
@@ -183,12 +191,12 @@
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/24",
       "state": "OPEN",
       "author": "oscargdd",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In my view, the yang model augmenting the inventory should contain only \"static\" information, That is, the capabilities of the device or the components to save energy, For example,  the part of +--rw energy-saving-modes {energy-saving}? is clear resides in the inventory.\r\n\r\nHowever, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\n",
       "createdAt": "2024-04-16T11:13:36Z",
-      "updatedAt": "2024-04-18T15:15:59Z",
+      "updatedAt": "2024-05-30T14:04:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -204,8 +212,47 @@
           "body": "> However, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\nCurrently those are sperate in the module: e.g., augment \"/ni:network-elements/ni:network-element\" vs. augment \"/nw:networks/nw:network/nw:node\"\r\n\r\nI guess your comment is to keep only augments to ni in one module and nw augments in a separate module.\r\n\r\nthat's would be cleaner and easy to do.",
           "createdAt": "2024-04-18T15:15:57Z",
           "updatedAt": "2024-04-18T15:15:57Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Please see #27 for a proposal to split the module into three main areas:\r\n* common\r\n* ntw augmentation\r\n* ni augmentation\r\n\r\nI'm not sure yet how/where to put the component container",
+          "createdAt": "2024-05-30T14:04:27Z",
+          "updatedAt": "2024-05-30T14:04:27Z"
         }
       ]
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOLPL1Dc6KmeI8",
+      "title": "Power Distribution Units Use Case",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/25",
+      "state": "OPEN",
+      "author": "oscargdd",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I would like to add the use case of Power Distribution Units (PDUs) to the document:\r\n\r\nhttps://www.rfc-editor.org/rfc/rfc7603 describes the use of PDU \r\n\r\n> ower Distribution Units (PDUs) can have built-in meters for each\r\n   socket and can measure the power supplied to each device in an\r\n   equipment rack.  PDUs typically have remote management capabilities\r\n   that can report and possibly control the power supply of each outlet.\r\n\r\nThe proposal is to be able to model the relationship between a PDU and a network device. This way, the model can report energy measurements/KPIs from PDU and device, or just from PDU if the device is not reporting. \r\n\r\nIn my view, the PDU could be modeled as a device in the inventory. The \"relationship\", that is the physical \"eletrical\" connection from PDU to network device could be modeled as a link in a network (e.g. a network of type \"electrical\" that models cables..)\r\n\r\n",
+      "createdAt": "2024-05-30T10:44:56Z",
+      "updatedAt": "2024-05-30T10:44:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOLPL1Dc6KoGVf",
+      "title": "Fix errors in the base inventory model",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/28",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://github.com/ietf-ivy-wg/network-inventory-yang/pull/49",
+      "createdAt": "2024-05-30T14:03:01Z",
+      "updatedAt": "2024-05-30T14:03:01Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -1234,24 +1281,26 @@
       "id": "PR_kwDOLPL1Dc5okskI",
       "title": "Revert \"identity low-power-state definition update\"",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/23",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Reverts boucadair/draft-cwbgp-energy-saving-management#22",
       "createdAt": "2024-03-04T10:47:49Z",
-      "updatedAt": "2024-03-04T10:49:37Z",
+      "updatedAt": "2024-05-30T13:21:26Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "0a89119b9551231573c43e4fdddefb0949e5c5ce",
       "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "headRefName": "revert-22-patch-8",
       "headRefOid": "5b7fc1a9d911ff14539ce96fc35699980a36d322",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-05-30T13:21:25Z",
+      "mergedAt": "2024-05-30T13:21:25Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "0efccc59157d483050c0621af1a3a6f98f4f0351"
+      },
       "comments": [],
       "reviews": [
         {
@@ -1295,6 +1344,60 @@
           ]
         }
       ]
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOLPL1Dc5xAuxV",
+      "title": "Create lint.yml",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/26",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-30T13:16:02Z",
+      "updatedAt": "2024-05-30T13:17:18Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "26b4f0179d69faf470944f60a34b4ed2a7dd5fb7",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "ae82193000d48eea3c2f87430b81d34a4d663c5a",
+      "closedAt": "2024-05-30T13:17:18Z",
+      "mergedAt": "2024-05-30T13:17:18Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "03164a9d9a1b0fe47146a43c8f8a6838f6b1d22c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOLPL1Dc5xAz-o",
+      "title": "split the module into three modules",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/27",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-30T13:27:48Z",
+      "updatedAt": "2024-05-30T14:07:47Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "0efccc59157d483050c0621af1a3a6f98f4f0351",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "better-structure-DMs",
+      "headRefOid": "e02611faae1c33038162a3910555ec816d162dd7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
