@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-04T00:49:40.375918+00:00",
+  "timestamp": "2024-06-06T00:48:40.454472+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -234,9 +234,17 @@
       "labels": [],
       "body": "I would like to add the use case of Power Distribution Units (PDUs) to the document:\r\n\r\nhttps://www.rfc-editor.org/rfc/rfc7603 describes the use of PDU \r\n\r\n> ower Distribution Units (PDUs) can have built-in meters for each\r\n   socket and can measure the power supplied to each device in an\r\n   equipment rack.  PDUs typically have remote management capabilities\r\n   that can report and possibly control the power supply of each outlet.\r\n\r\nThe proposal is to be able to model the relationship between a PDU and a network device. This way, the model can report energy measurements/KPIs from PDU and device, or just from PDU if the device is not reporting. \r\n\r\nIn my view, the PDU could be modeled as a device in the inventory. The \"relationship\", that is the physical \"eletrical\" connection from PDU to network device could be modeled as a link in a network (e.g. a network of type \"electrical\" that models cables..)\r\n\r\n",
       "createdAt": "2024-05-30T10:44:56Z",
-      "updatedAt": "2024-05-30T10:44:56Z",
+      "updatedAt": "2024-06-04T10:08:38Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "williamchern",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It's possible that the interconnections between devices for Energy Management is different from the physical connection, could modeling PDU as device and electrical connection as link be the general case here? ",
+          "createdAt": "2024-06-04T10:08:37Z",
+          "updatedAt": "2024-06-04T10:08:37Z"
+        }
+      ]
     },
     {
       "number": 28,
