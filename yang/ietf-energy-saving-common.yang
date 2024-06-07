@@ -1,22 +1,12 @@
-module ietf-energy-saving-mgt {
+module ietf-energy-saving-common {
   yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt";
-  prefix em;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-common";
+  prefix esm-common;
 
-  import ietf-network-inventory {
-    prefix ni;
-    reference
-      "RFC IIII: A YANG Data Model for Network Inventory";
-  }
   import ietf-yang-types {
     prefix yang;
     reference
       "RFC 6021: Common YANG Types";
-  }
-  import ietf-network {
-    prefix nw;
-    reference
-      "RFC 8345: A YANG Data Model for Network Topologies";
   }
 
   organization
@@ -55,7 +45,7 @@ module ietf-energy-saving-mgt {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
 
   feature energy-saving {
@@ -260,36 +250,6 @@ module ietf-energy-saving-mgt {
       "Energy saving operator.";
   }
 
-  grouping network-element-ref {
-    description
-      "Contains the information necessary to reference a network
-       element.";
-    leaf ne-ref {
-      type leafref {
-        path "/ni:network-elements/ni:network-element/ni:ne-id";
-        require-instance false;
-      }
-      description
-        "Used to reference a network element.";
-    }
-  }
-
-  grouping component-ref {
-    description
-      "Contains the information necessary to reference a component.";
-    leaf node-ref {
-      type leafref {
-        path "/ni:network-elements/ni:network-element[ni:ne-id="
-           + "current()/../ne-ref]/ni:components/ni:component"
-           + "/ni:component-id";
-        require-instance false;
-      }
-      description
-        "Used to reference a component.";
-    }
-    uses network-element-ref;
-  }
-
   grouping energy-consumption-data {
     description
       "Grouping for energy monitoring.";
@@ -435,14 +395,9 @@ module ietf-energy-saving-mgt {
         "The highest volts bound of monitoring class which
          will cause fatal failure.";
     }
-  }
+  } 
 
-  augment "/nw:networks/nw:network/nw:node" {
-    if-feature "energy-saving";
-    description
-      "Energy monitoring data for network element.";
-    container energy-power-consumption {
-      config false;
+    grouping energy-power-consumption-stats {
       description
         "Statistics data about energy and power monitoring.";
       leaf total-energy-consumption {
@@ -468,79 +423,4 @@ module ietf-energy-saving-mgt {
            the energy used.";
       }
     }
-    container energy-saving-modes {
-      description
-        "List of the energy saving mode.";
-      uses energy-saving-modes;
-    }
-  }
-
-  augment "/ni:network-elements/ni:network-element" {
-    if-feature "energy-saving";
-    description
-      "Energy management static data for network element.";
-    container energy-management {
-      config false;
-      description
-        "Statistics of the energy management.";
-      leaf energy-monitoring-capability {
-        type boolean;
-        description
-          "Indicates whether monitoring can be performed.";
-      }
-      container energy-saving-modes {
-        description
-          "List of supported energy saving modes.";
-        uses energy-saving-modes;
-      }
-    }
-  }
-
-  augment "/ni:network-elements/ni:network-element/ni:components"
-        + "/ni:component" {
-    if-feature "energy-saving";
-    description
-      "Energy management static data for component.";
-    container power-parameters {
-      config false;
-      description
-        "Power parameter monitoring.";
-      uses power-parameters;
-    }
-  }
-
-  container component-energy-monitoring {
-    description
-      "Energy monitoring data for components.";
-    container energy-consumption {
-      description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description
-        "Controls energy saving parameters of a component.";
-      leaf enabled {
-        type boolean;
-        default "true";
-        description
-          "Controls whether the energy-saving
-           of the component is enabled (when set to true)
-           or disabled (set to false).";
-      }
-      leaf power-state {
-        type identityref {
-          base energy-saving-power-state;
-        }
-        description
-          "The device energy saving operator state.";
-      }
-    }
-    container inventory-component-ref {
-      description
-        "The reference of the component from which this
-         termination point is abstracted.";
-      uses component-ref;
-    }
-  }
 }
