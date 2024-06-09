@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-06T00:48:40.454472+00:00",
+  "timestamp": "2024-06-09T00:54:17.570442+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -196,7 +196,7 @@
       "labels": [],
       "body": "In my view, the yang model augmenting the inventory should contain only \"static\" information, That is, the capabilities of the device or the components to save energy, For example,  the part of +--rw energy-saving-modes {energy-saving}? is clear resides in the inventory.\r\n\r\nHowever, the metrics (raw or cooked in some form of KPI), should go to a different model. The base structure of nodes could be similar, but I expect quite a different usage.\r\n\r\n",
       "createdAt": "2024-04-16T11:13:36Z",
-      "updatedAt": "2024-05-30T14:04:28Z",
+      "updatedAt": "2024-06-07T09:40:45Z",
       "closedAt": null,
       "comments": [
         {
@@ -219,6 +219,13 @@
           "body": "Please see #27 for a proposal to split the module into three main areas:\r\n* common\r\n* ntw augmentation\r\n* ni augmentation\r\n\r\nI'm not sure yet how/where to put the component container",
           "createdAt": "2024-05-30T14:04:27Z",
           "updatedAt": "2024-05-30T14:04:27Z"
+        },
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The proposed split make sense to me, the only comment I have is you remove Energy efficiency ratio from energy-consumption-data grouping, which is also a metric or dyanmic data we need to incorporate in.",
+          "createdAt": "2024-06-07T09:40:44Z",
+          "updatedAt": "2024-06-07T09:40:44Z"
         }
       ]
     },
@@ -1386,26 +1393,136 @@
       "id": "PR_kwDOLPL1Dc5xAz-o",
       "title": "split the module into three modules",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/27",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-05-30T13:27:48Z",
-      "updatedAt": "2024-05-30T14:07:47Z",
+      "updatedAt": "2024-06-07T11:21:57Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "0efccc59157d483050c0621af1a3a6f98f4f0351",
       "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "headRefName": "better-structure-DMs",
       "headRefOid": "e02611faae1c33038162a3910555ec816d162dd7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2024-06-07T11:21:56Z",
+      "mergedAt": "2024-06-07T11:21:56Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "3d4641a6c5e5ee71ed0ae31b32d4aa739b800af0"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "> I have compiled tree split YANG modules, found some compilation errors, please fix it before incorproate PRs.\r\n\r\nI don't see any error in https://github.com/boucadair/draft-cwbgp-energy-saving-management/actions/runs/9303980217/job/25607513453?pr=27",
+          "createdAt": "2024-06-07T09:58:09Z",
+          "updatedAt": "2024-06-07T09:58:09Z"
+        },
+        {
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "okay, maybe the 3 yang files I dowloaded is not latest one, if get resolved, I am happy with it. thanks for clarification.",
+          "createdAt": "2024-06-07T11:04:06Z",
+          "updatedAt": "2024-06-07T11:04:06Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc59acu5",
+          "commit": {
+            "abbreviatedOid": "e02611f"
+          },
+          "author": "billwuqin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I have compiled tree split YANG modules, found some compilation errors, please fix it before  incorproate PRs.",
+          "createdAt": "2024-06-07T09:28:39Z",
+          "updatedAt": "2024-06-07T09:33:13Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "you need import ietf-network.yang defined in RFC8345\r\n  import ietf-network {\r\n    prefix nw;\r\n    reference\r\n      \"RFC 8345: A YANG Data Model for Network Topologies\";\r\n  }",
+              "createdAt": "2024-06-07T09:28:39Z",
+              "updatedAt": "2024-06-07T09:33:13Z"
+            },
+            {
+              "originalPosition": 69,
+              "body": "there is no grouping called energy-power-consumption-stats, are you referred to energy-power-consumption-data?\r\nPlease make sure referenced grouping is correct.",
+              "createdAt": "2024-06-07T09:30:14Z",
+              "updatedAt": "2024-06-07T09:33:13Z"
+            },
+            {
+              "originalPosition": 62,
+              "body": "There is definiton for feature \"esm-common:energy-saving\",\r\nthe proposed change to ietf-energy-saving-common.yang is:\r\n  feature energy-saving {\r\n    description\r\n      \"Specifies support of energy saving management.\";\r\n  }",
+              "createdAt": "2024-06-07T09:32:11Z",
+              "updatedAt": "2024-06-07T09:33:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc59ao6C",
+          "commit": {
+            "abbreviatedOid": "e02611f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-07T09:55:01Z",
+          "updatedAt": "2024-06-07T09:55:02Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "That's already imported. Please check https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/better-structure-DMs/yang/ietf-ntw-energy-saving.yang",
+              "createdAt": "2024-06-07T09:55:01Z",
+              "updatedAt": "2024-06-07T09:55:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc59apKa",
+          "commit": {
+            "abbreviatedOid": "e02611f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-07T09:55:38Z",
+          "updatedAt": "2024-06-07T09:55:38Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "Please see the grouping in https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/better-structure-DMs/yang/ietf-energy-saving-common.yang",
+              "createdAt": "2024-06-07T09:55:38Z",
+              "updatedAt": "2024-06-07T09:55:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc59ap32",
+          "commit": {
+            "abbreviatedOid": "e02611f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-07T09:57:14Z",
+          "updatedAt": "2024-06-07T09:57:14Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "No sure to see the proposed change. Can you please use OLD/NEW? Thanks.",
+              "createdAt": "2024-06-07T09:57:14Z",
+              "updatedAt": "2024-06-07T09:57:14Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
