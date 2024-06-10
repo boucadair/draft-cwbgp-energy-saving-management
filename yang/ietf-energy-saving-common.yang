@@ -233,6 +233,11 @@ module ietf-energy-saving-common {
       "RFC 7326: Energy Management Framework";
   }
 
+ identify energy-measurement-source {
+  description
+     "Base identity to describe the sources of energy measures"
+}
+
   typedef energy-saving-operator {
     type enumeration {
       enum on {
@@ -404,8 +409,28 @@ module ietf-energy-saving-common {
         type yang:gauge64;
         units "Wh";
         description
-          "Accumulated energy consumption of equipment.";
+          "Accumulated energy consumption of equipment
+          since a reference time.";
       }
+      leaf energy-consumption-source {
+        type identityref {
+            base energy-measurement-source;
+        }
+        description
+          "Source of information of the energy consumption measure:
+          e.g. device or power distribution unit"
+      }
+
+      leaf accuracy {
+        description
+          "Accuracy of the energy measurements.";
+      }
+      leaf energy-measurement-start-time {
+        description
+          "Time when the energy consumption measure started. The
+          collected statistics are valid from this point.";
+      }
+
       leaf saved-energy {
         type yang:gauge64;
         units "Wh";
