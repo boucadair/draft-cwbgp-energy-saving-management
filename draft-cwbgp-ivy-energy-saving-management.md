@@ -249,7 +249,7 @@ The module imports XXX and uses types defined in XXX.
 <CODE ENDS>
 ~~~~
 
-## Security Considerations
+# Security Considerations
 
   This section uses the template described in Section 3.7 of {{?I-D.ietf-netmod-rfc8407bis}}.
 
@@ -293,25 +293,45 @@ sensitivities/vulnerabilities:
 
 ## The "IETF XML" Registry
 
-This document requests IANA to register the following URI
+This document requests IANA to register the following URIs
 in the "ns" subregistry within the "IETF XML Registry" {{!RFC3688}}:
 
 ~~~~
-   URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
+   URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
+   Registrant Contact: The IESG.
+   XML: N/A, the requested URIs are XML namespaces.
+
+   URI: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
+   Registrant Contact: The IESG.
+   XML: N/A, the requested URIs are XML namespaces.
+
+   URI: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
    Registrant Contact: The IESG.
    XML: N/A, the requested URIs are XML namespaces.
 ~~~~
 
 ##  The "YANG Module Names" Registry
 
-   This document requests IANA to register the following YANG module
+   This document requests IANA to register the following YANG modules
    in the "YANG Module Names" registry {{!RFC6020}} within
    the "YANG Parameters" registry group.
 
 ~~~~
-   name: ietf-energy-saving-management
-   prefix: em
-   namespace: urn:ietf:params:xml:ns:yang:ietf-energy-saving-mgt
+   name: ietf-energy-saving-common
+   prefix: esm-common
+   namespace: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
+   Maintained by IANA? N
+   Reference: RFC XXXX
+
+   name: ietf-ntw-energy-saving
+   prefix: esm-ntw
+   namespace: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
+   Maintained by IANA? N
+   Reference: RFC XXXX
+
+   name: ietf-ni-energy-saving
+   prefix: esm-ni
+   namespace: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
    Maintained by IANA? N
    Reference: RFC XXXX
 ~~~~
