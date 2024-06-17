@@ -1,5 +1,5 @@
 ---
-title: "A YANG Data Model for Energy Saving Management"
+title: "YANG Data Models for Energy Saving Management"
 abbrev: "Energy Saving Management"
 category: std
 
@@ -51,8 +51,9 @@ informative:
 
 --- abstract
 
-   This document defines a YANG module for power and energy management.
-   The document covers both device and network levels.
+   This document defines YANG modules for energy saving management.
+   The document covers both device and network levels. Also, the document specifies
+   a common module that is used independent of the model layer.
 
 --- middle
 
