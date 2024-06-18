@@ -1,0 +1,7 @@
+module: ietf-ni-energy-saving
+
+  grouping network-element-ref:
+    +-- ne-ref?   leafref
+  grouping component-ref:
+    +-- node-ref?   leafref
+    +-- ne-ref?     leafref
