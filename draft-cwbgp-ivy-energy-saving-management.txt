@@ -289,13 +289,35 @@ Table of Contents
    The structure of the ESM Network Inventory Model is depicted in
    Figure 3.
 
-   module: ietf-ni-energy-saving
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
 
+   module: ietf-ni-energy-saving
      grouping network-element-ref:
        +-- ne-ref?   leafref
      grouping component-ref:
        +-- node-ref?   leafref
        +-- ne-ref?     leafref
+
+     augment /ni:network-inventory/ni:network-elements/ni:network-\
+                                                                element:
+       +--ro energy-management {esm-common:energy-saving}?
+          +--ro energy-monitoring-capability?   boolean
+          +--ro energy-saving-modes
+             +--ro energy-saving-mode* [mode]
+                +--ro mode                    identityref
+                +--ro energy-saving-method*   identityref
+     augment /ni:network-inventory/ni:network-elements/ni:network-\
+                                     element/ni:components/ni:component:
+       +--ro power-parameters {esm-common:energy-saving}?
+          +--ro temperature-upper-bound?    int32
+          +--ro temperature-middle-bound?   int32
+          +--ro temperature-lower-bound?    int32
+          +--ro rated-power?                yang:gauge64
+          +--ro expected-volts?             int32
+          +--ro low-volts-bound?            int32
+          +--ro low-volts-fatal?            int32
+          +--ro high-volts-bound?           int32
+          +--ro high-volts-fatal?           int32
 
                 Figure 3: ESM Inventory Model Tree Structure
 
