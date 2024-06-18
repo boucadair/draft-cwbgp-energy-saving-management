@@ -1,11 +1,25 @@
 module: ietf-ntw-energy-saving
-
   augment /nw:networks/nw:network/nw:node:
     +--ro energy-power-consumption {esm-common:energy-saving}?
     |  +--ro total-energy-consumption?   yang:gauge64
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
     +--rw energy-saving-modes {esm-common:energy-saving}?
-       +--rw energy-saving-mode* [mode]
-          +--rw mode                    identityref
-          +--rw energy-saving-method*   identityref
+    |  +--rw energy-saving-mode* [mode]
+    |     +--rw mode                    identityref
+    |     +--rw energy-saving-method*   identityref
+    +--rw component* [name] {esm-common:energy-saving}?
+       +--rw name                 string
+       +--rw class                identityref
+       +--rw energy-monitoring
+          +--rw energy-consumption
+          |  +--rw average-power?    yang:gauge64
+          |  +--rw saved-power?      yang:gauge64
+          |  +--rw real-power?       yang:gauge64
+          |  +--rw actual-volts?     int32
+          |  +--rw actual-amperes?   int32
+          |  +--rw actual-celsius?   int32
+          +--rw energy-saving
+             +--rw enabled?       boolean
+             +--rw power-state?   identityref
+
