@@ -6,12 +6,12 @@ module ietf-ntw-energy-saving {
   import ietf-energy-saving-common {
     prefix esm-common;
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
   /*import ietf-yang-types {
     prefix yang;
     reference
-      "RFC 6021: Common YANG Types";
+      "RFC 6991: Common YANG Types";
   }*/
   import ietf-network {
     prefix nw;
@@ -55,7 +55,7 @@ module ietf-ntw-energy-saving {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
 
   augment "/nw:networks/nw:network/nw:node" {
