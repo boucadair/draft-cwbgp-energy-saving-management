@@ -1,0 +1,27 @@
+module: ietf-energy-saving-common
+
+  grouping energy-consumption-data:
+    +-- average-power?    yang:gauge64
+    +-- saved-power?      yang:gauge64
+    +-- real-power?       yang:gauge64
+    +-- actual-volts?     int32
+    +-- actual-amperes?   int32
+    +-- actual-celsius?   int32
+  grouping energy-saving-modes:
+    +-- energy-saving-mode* [mode]
+       +-- mode?                   identityref
+       +-- energy-saving-method*   identityref
+  grouping power-parameters:
+    +-- temperature-upper-bound?    int32
+    +-- temperature-middle-bound?   int32
+    +-- temperature-lower-bound?    int32
+    +-- rated-power?                yang:gauge64
+    +-- expected-volts?             int32
+    +-- low-volts-bound?            int32
+    +-- low-volts-fatal?            int32
+    +-- high-volts-bound?           int32
+    +-- high-volts-fatal?           int32
+  grouping energy-power-consumption-stats:
+    +-- total-energy-consumption?   yang:gauge64
+    +-- saved-energy?               yang:gauge64
+    +-- eer?                        decimal64
