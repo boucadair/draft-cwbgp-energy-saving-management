@@ -8,11 +8,6 @@ module ietf-ntw-energy-saving {
     reference
       "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
-  /*import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 6991: Common YANG Types";
-  }*/
   import ietf-network {
     prefix nw;
     reference
@@ -74,40 +69,4 @@ module ietf-ntw-energy-saving {
       uses esm-common:energy-saving-modes;
     }
   }
-
-/*
-  container component-energy-monitoring {
-    description
-      "Energy monitoring data for components.";
-    container energy-consumption {
-      description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description
-        "Controls energy saving parameters of a component.";
-      leaf enabled {
-        type boolean;
-        default "true";
-        description
-          "Controls whether the energy-saving
-           of the component is enabled (when set to true)
-           or disabled (set to false).";
-      }
-      leaf power-state {
-        type identityref {
-          base energy-saving-power-state;
-        }
-        description
-          "The device energy saving operator state.";
-      }
-    }
-    container inventory-component-ref {
-      description
-        "The reference of the component from which this
-         termination point is abstracted.";
-      uses component-ref;
-    }
-  }*/
 }
