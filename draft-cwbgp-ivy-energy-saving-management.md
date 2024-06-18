@@ -12,9 +12,9 @@ v: 3
 area: "Operations and Management"
 workgroup: "Network Inventory YANG"
 keyword:
- - xxx
- - xxx
- - xxxx
+ - energy efficiency
+ - energy saving
+ - energy management
 
 author:
  -
