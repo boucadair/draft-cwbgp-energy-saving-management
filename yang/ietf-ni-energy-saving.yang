@@ -6,7 +6,7 @@ module ietf-ni-energy-saving {
   import ietf-energy-saving-common {
     prefix esm-common;
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
   import ietf-network-inventory {
     prefix ni;
@@ -16,7 +16,7 @@ module ietf-ni-energy-saving {
   /*import ietf-yang-types {
     prefix yang;
     reference
-      "RFC 6021: Common YANG Types";
+      "RFC 6991: Common YANG Types";
   }*/
 
   organization
@@ -55,7 +55,7 @@ module ietf-ni-energy-saving {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
 
   grouping network-element-ref {
