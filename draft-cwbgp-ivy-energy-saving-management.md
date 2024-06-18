@@ -188,41 +188,38 @@ informative:
    state of each component within the network device. It also includes threshold
    related power parameters such as rated power, expected volts.
 
-##  Energy Saving Management Module Structure
+##  Common Energy Saving Management Module Structure
 
   {{e-tree}} shows the tree diagram of the YANG data model defined in {{sec-module}}.
 
 ~~~~
-{::include-fold ./yang/trees/full-tree.txt}
+{::include-fold ./yang/trees/common-tree.txt}
 ~~~~
-{: #e-tree title="Energy Saving Management Tree Structure"}
+{: #e-tree title="Common Energy Saving Management Tree Structure"}
 
-## Network Element Specific Information
+## Energy Saving Management Network Model
 
-   Network element specific attributes can be defined in the network
-   element list node as shown in {{ne-tree}}.
-
-~~~~
-{::include-fold ./yang/trees/ne-tree.txt}
-~~~~
-{: #ne-tree title="Network Element Specific Energy Tree Structure"}
-
-
-##  Component Specific Information
-
-   Component-specific attributes can be defined under the component list
-   node as shown in {{cs-tree}}.
+   The structure of the ESM Network Model is depicted in {{ne-tree}}.
 
 ~~~~
-{::include-fold ./yang/trees/cs-tree.txt}
+{::include-fold ./yang/trees/esm-ntw-tree.txt}
 ~~~~
-{: #cs-tree title="Component-Specifc Energy Tree Structure"}
+{: #ne-tree title="ESM Network Model Tree Structure"}
+
+##  ESM Inventory Model
+
+   The structure of the ESM Network Inventory Model is depicted in {{cs-tree}}.
+
+~~~~
+{::include-fold ./yang/trees/esm-ni-tree.txt}
+~~~~
+{: #cs-tree title="ESM Inventory Model Tree Structure"}
 
 # YANG Modules {#sec-module}
 
 ## Common Module {#sec-common}
 
-The module imports XXX and uses types defined in XXX.
+The module imports types defined in {{!RFC6991}}.
 
 ~~~~ yang
 <CODE BEGINS> file "ietf-energy-saving-common@2024-01-23.yang"
@@ -232,7 +229,7 @@ The module imports XXX and uses types defined in XXX.
 
 ## Network Module {#sec-ntw}
 
-The module imports XXX and uses types defined in XXX.
+The module imports "ietf-network" {{!RFC8345}} and "ietf-energy-saving-common".
 
 ~~~~ yang
 <CODE BEGINS> file "ietf-ntw-energy-saving@2024-01-23.yang"
@@ -242,7 +239,7 @@ The module imports XXX and uses types defined in XXX.
 
 ## Network Inventory Module {#sec-ni}
 
-The module imports XXX and uses types defined in XXX.
+The module imports "ietf-network-inventory" {{!I-D.ietf-ivy-network-inventory-yang}} and "ietf-energy-saving-common".
 
 ~~~~ yang
 <CODE BEGINS> file "ietf-ni-energy-saving@2024-01-23.yang"
@@ -275,10 +272,10 @@ The module imports XXX and uses types defined in XXX.
    effect on network operations. Specifically, the following subtrees and data nodes have particular
 sensitivities/vulnerabilities:
 
- /em:energy-management/em:energy-saving-mode:
+ /esm:energy-management/esm:energy-saving-mode:
  : This leaf specifies the energy saving mode set globally on a device.
 
- /em:energy-saving/em:enable:
+ /esm:energy-saving/esm:enable:
  : This leaf enable/disables energy saving state of specific component.
 
    Some of the readable data nodes in this YANG module may be considered
