@@ -174,34 +174,36 @@ module ietf-ntw-energy-saving {
       uses esm-common:energy-saving-modes;
     }
     list component {
-	  key name;
+      key name;
       description
       "List of components.";
-	  leaf name {
+      leaf name {
         type string;
+        config false;
         description
           "The name assigned to this component.
            This name is not required to be the same as
            entPhysicalName.";
       }
       leaf class {
-		type identityref {
-	      base ianahw:hardware-class;
-		}
-		mandatory true;
-		description
-		  "An indication of the general hardware type of the
-		   component.";
-		  reference
-			"RFC 6933: Entity MIB (Version 4) - entPhysicalClass";
-	  }
-	  container energy-monitoring {
+	type identityref {
+	  base ianahw:hardware-class;
+	}
+        config flase;
+	mandatory true;
+	description
+	  "An indication of the general hardware type of the
+	   component.";
+	reference
+	  "RFC 6933: Entity MIB (Version 4) - entPhysicalClass";
+        }
+      container energy-monitoring {
         description
           "Energy monitoring data for components.";
         container energy-consumption {
           description
           "Statistics of component about energy monitoring.";
-          uses esm-common::energy-consumption-data;
+          uses esm-common:energy-consumption-data;
         }
        container energy-saving {
         description
