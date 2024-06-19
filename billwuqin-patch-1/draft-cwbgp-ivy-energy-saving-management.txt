@@ -854,6 +854,7 @@ Table of Contents
              re-initialized, as specified in the sysUpTime RFC 3418.
              It specifies the start time of the energy measurement
              results collection.";
+         }
        }
        container energy-saving-modes {
          description
@@ -911,7 +912,7 @@ Table of Contents
             }
           }
         }
-           }
+      }
      }
    }
    <CODE ENDS>
