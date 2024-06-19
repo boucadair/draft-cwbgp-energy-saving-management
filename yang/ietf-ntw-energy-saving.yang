@@ -16,7 +16,7 @@ module ietf-ntw-energy-saving {
   import ietf-yang-types {
    prefix yang;
    reference
-	 "RFC 6021: Common YANG Types";
+	 "RFC 6991: Common YANG Types";
   }
   import iana-hardware {
    prefix ianahw;
