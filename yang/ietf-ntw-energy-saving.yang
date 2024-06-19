@@ -61,102 +61,6 @@ module ietf-ntw-energy-saving {
     reference
       "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
-  /*
-  Identity
-  */
-  identity energy-saving-power-state {
-    description
-      "Base identity for power state.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity off-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that the component typically
-       requires a complete boot when awakened.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity sleep-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that a component with energy management support
-       is not functional but immediately available such as
-       wake up mechanism.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity low-power-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that some components with energy management
-       support are available and can take measures to use less
-       energy.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity full-power-state {
-       base energy-saving-power-state;
-       description
-         "Indicates that all components with energy management
-          support are available and may use maximum power.";
-       reference
-         "RFC 7326: Energy Management Framework";
-  }
-  /*
-   Grouping
-  */   
-  grouping energy-consumption-data {
-       description
-         "Grouping for energy monitoring.";
-       leaf average-power {
-         type yang:gauge64;
-         units "mW";
-         description
-           "The average consumed power.";
-       }
-       leaf saved-power {
-         type yang:gauge64;
-         units "mW";
-         description
-           "The saved power.";
-       }
-       leaf real-power {
-         type yang:gauge64;
-         units "mW";
-         description
-           "The actual observed consumed power.";
-         reference
-           "RFC 6988: Requirements for Energy Management";
-       }
-       leaf actual-volts {
-         type int32;
-         units "mV";
-         description
-           "The actual observed voltage.";
-         reference
-           "RFC 6988: Requirements for Energy Management";
-       }
-       leaf actual-amperes {
-         type int32;
-         units "mA";
-         description
-           "The actual observed current.";
-         reference
-           "RFC 6988: Requirements for Energy Management";
-       }
-       leaf actual-celsius {
-         type int32;
-         units "0.01 C";
-         description
-           "The actual observed temperature.";
-       }
-     }
   
   augment "/nw:networks/nw:network/nw:node" {
     if-feature "esm-common:energy-saving";
@@ -189,7 +93,7 @@ module ietf-ntw-energy-saving {
 	type identityref {
 	  base ianahw:hardware-class;
 	}
-        config flase;
+        config false;
 	mandatory true;
 	description
 	  "An indication of the general hardware type of the
