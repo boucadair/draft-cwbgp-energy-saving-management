@@ -19,7 +19,7 @@ module ietf-ntw-energy-saving {
      "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
   }
   organization
-    "IETF IVY Working Group.";
+    "IETF XXX Working Group.";
   contact
     "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
      WG List:  <mailto:opsawg@ietf.org>
