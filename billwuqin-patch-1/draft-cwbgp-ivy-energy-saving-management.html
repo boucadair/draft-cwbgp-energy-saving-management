@@ -1460,16 +1460,30 @@ module: ietf-energy-saving-common
           <div class="alignLeft art-text artwork" id="section-4.2-2.1">
 <pre>
 module: ietf-ntw-energy-saving
-
   augment /nw:networks/nw:network/nw:node:
     +--ro energy-power-consumption {esm-common:energy-saving}?
     |  +--ro total-energy-consumption?   yang:gauge64
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
     +--rw energy-saving-modes {esm-common:energy-saving}?
-       +--rw energy-saving-mode* [mode]
-          +--rw mode                    identityref
-          +--rw energy-saving-method*   identityref
+    |  +--rw energy-saving-mode* [mode]
+    |     +--rw mode                    identityref
+    |     +--rw energy-saving-method*   identityref
+    +--ro component* [name] {esm-common:energy-saving}?
+       +--ro name                 string
+       +--ro class                identityref
+       +--ro energy-monitoring
+          +--ro energy-consumption
+          |  +--ro average-power?    yang:gauge64
+          |  +--ro saved-power?      yang:gauge64
+          |  +--ro real-power?       yang:gauge64
+          |  +--ro actual-volts?     int32
+          |  +--ro actual-amperes?   int32
+          |  +--ro actual-celsius?   int32
+          +--ro energy-saving
+             +--ro enabled?       boolean
+             +--ro power-state?   identityref
+
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1551,10 +1565,10 @@ module ietf-energy-saving-common {
   }
 
   organization
-    "IETF IVY Working Group.";
+    "IETF xxx Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -1994,6 +2008,11 @@ module ietf-ntw-energy-saving {
     reference
       "RFC 8345: A YANG Data Model for Network Topologies";
   }
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6991: Common YANG Types";
+  }
   import iana-hardware {
    prefix ianahw;
    reference
@@ -2002,8 +2021,8 @@ module ietf-ntw-energy-saving {
   organization
     "IETF XXX Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -2047,6 +2066,14 @@ module ietf-ntw-energy-saving {
       description
         "Statistics data about energy and power monitoring.";
       uses esm-common:energy-power-consumption-stats;
+      leaf start-time {
+        type yang:date-and-time;
+        description
+          "The time (in hundredths of a second) since the
+          network management portion of the system was last
+          re-initialized, as specified in the sysUpTime RFC 3418.
+          It specifies the start time of the energy measurement
+          results collection.";
     }
     container energy-saving-modes {
       description
@@ -2136,17 +2163,12 @@ module ietf-ni-energy-saving {
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-  /*import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 6991: Common YANG Types";
-  }*/
 
   organization
-    "IETF IVY Working Group.";
+    "IETF xxx Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -2247,41 +2269,6 @@ module ietf-ni-energy-saving {
       uses esm-common:power-parameters;
     }
   }
-
-/*  container component-energy-monitoring {
-    description
-      "Energy monitoring data for components.";
-    container energy-consumption {
-      description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description
-        "Controls energy saving parameters of a component.";
-      leaf enabled {
-        type boolean;
-        default "true";
-        description
-          "Controls whether the energy-saving
-           of the component is enabled (when set to true)
-           or disabled (set to false).";
-      }
-      leaf power-state {
-        type identityref {
-          base energy-saving-power-state;
-        }
-        description
-          "The device energy saving operator state.";
-      }
-    }
-    container inventory-component-ref {
-      description
-        "The reference of the component from which this
-         termination point is abstracted.";
-      uses component-ref;
-    }
-  }*/
 }
 &lt;CODE ENDS&gt;
 </pre><a href="#section-5.3-2" class="pilcrow">¶</a>
