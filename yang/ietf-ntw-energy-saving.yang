@@ -13,11 +13,6 @@ module ietf-ntw-energy-saving {
     reference
       "RFC 8345: A YANG Data Model for Network Topologies";
   }
-  import ietf-yang-types {
-   prefix yang;
-   reference
-	 "RFC 6991: Common YANG Types";
-  }
   import iana-hardware {
    prefix ianahw;
    reference
@@ -83,7 +78,6 @@ module ietf-ntw-energy-saving {
       "List of components.";
       leaf name {
         type string;
-        config false;
         description
           "The name assigned to this component.
            This name is not required to be the same as
@@ -93,7 +87,6 @@ module ietf-ntw-energy-saving {
 	type identityref {
 	  base ianahw:hardware-class;
 	}
-        config false;
 	mandatory true;
 	description
 	  "An indication of the general hardware type of the
@@ -122,7 +115,7 @@ module ietf-ntw-energy-saving {
          }
          leaf power-state {
           type identityref {
-            base energy-saving-power-state;
+            base esm-common:energy-saving-power-state;
           }
           description
             "The device energy saving operator state.";
