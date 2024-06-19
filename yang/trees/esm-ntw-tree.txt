@@ -8,18 +8,18 @@ module: ietf-ntw-energy-saving
     |  +--rw energy-saving-mode* [mode]
     |     +--rw mode                    identityref
     |     +--rw energy-saving-method*   identityref
-    +--rw component* [name] {esm-common:energy-saving}?
-       +--rw name                 string
-       +--rw class                identityref
-       +--rw energy-monitoring
-          +--rw energy-consumption
-          |  +--rw average-power?    yang:gauge64
-          |  +--rw saved-power?      yang:gauge64
-          |  +--rw real-power?       yang:gauge64
-          |  +--rw actual-volts?     int32
-          |  +--rw actual-amperes?   int32
-          |  +--rw actual-celsius?   int32
-          +--rw energy-saving
-             +--rw enabled?       boolean
-             +--rw power-state?   identityref
+    +--ro component* [name] {esm-common:energy-saving}?
+       +--ro name                 string
+       +--ro class                identityref
+       +--ro energy-monitoring
+          +--ro energy-consumption
+          |  +--ro average-power?    yang:gauge64
+          |  +--ro saved-power?      yang:gauge64
+          |  +--ro real-power?       yang:gauge64
+          |  +--ro actual-volts?     int32
+          |  +--ro actual-amperes?   int32
+          |  +--ro actual-celsius?   int32
+          +--ro energy-saving
+             +--ro enabled?       boolean
+             +--ro power-state?   identityref
 
