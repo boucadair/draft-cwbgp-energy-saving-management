@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 20 December 2024                                   M. Boucadair
+Expires: 21 December 2024                                   M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                            18 June 2024
+                                                            19 June 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 December 2024.
+   This Internet-Draft will expire on 21 December 2024.
 
 Copyright Notice
 
@@ -271,16 +271,29 @@ Table of Contents
    The structure of the ESM Network Model is depicted in Figure 2.
 
    module: ietf-ntw-energy-saving
-
      augment /nw:networks/nw:network/nw:node:
        +--ro energy-power-consumption {esm-common:energy-saving}?
        |  +--ro total-energy-consumption?   yang:gauge64
        |  +--ro saved-energy?               yang:gauge64
        |  +--ro eer?                        decimal64
        +--rw energy-saving-modes {esm-common:energy-saving}?
-          +--rw energy-saving-mode* [mode]
-             +--rw mode                    identityref
-             +--rw energy-saving-method*   identityref
+       |  +--rw energy-saving-mode* [mode]
+       |     +--rw mode                    identityref
+       |     +--rw energy-saving-method*   identityref
+       +--ro component* [name] {esm-common:energy-saving}?
+          +--ro name                 string
+          +--ro class                identityref
+          +--ro energy-monitoring
+             +--ro energy-consumption
+             |  +--ro average-power?    yang:gauge64
+             |  +--ro saved-power?      yang:gauge64
+             |  +--ro real-power?       yang:gauge64
+             |  +--ro actual-volts?     int32
+             |  +--ro actual-amperes?   int32
+             |  +--ro actual-celsius?   int32
+             +--ro energy-saving
+                +--ro enabled?       boolean
+                +--ro power-state?   identityref
 
                  Figure 2: ESM Network Model Tree Structure
 
