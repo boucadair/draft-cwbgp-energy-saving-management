@@ -796,8 +796,8 @@ Table of Contents
      organization
        "IETF XXX Working Group.";
      contact
-       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
-        WG List:  <mailto:opsawg@ietf.org>
+       "WG Web:   <https://datatracker.ietf.org/wg/xxx/>;
+        WG List:  <mailto:xxxx@ietf.org>
 
         Author:   Gen Chen
                   <mailto:chengen@huawei.com>
