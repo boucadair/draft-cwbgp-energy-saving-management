@@ -963,7 +963,7 @@ Table of Contents
            container energy-consumption {
              description
              "Statistics of component about energy monitoring.";
-             uses energy-consumption-data;
+             uses esm-common::energy-consumption-data;
            }
           container energy-saving {
            description
