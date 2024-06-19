@@ -13,6 +13,11 @@ module ietf-ntw-energy-saving {
     reference
       "RFC 8345: A YANG Data Model for Network Topologies";
   }
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6991: Common YANG Types";
+  }
   import iana-hardware {
    prefix ianahw;
    reference
@@ -66,6 +71,14 @@ module ietf-ntw-energy-saving {
       description
         "Statistics data about energy and power monitoring.";
       uses esm-common:energy-power-consumption-stats;
+      leaf start-time {
+        type yang:date-and-time;
+        description
+          "The time (in hundredths of a second) since the
+          network management portion of the system was last
+          re-initialized, as specified in the sysUpTime RFC 3418.
+          It specifies the start time of the energy measurement
+          results collection.";
     }
     container energy-saving-modes {
       description
