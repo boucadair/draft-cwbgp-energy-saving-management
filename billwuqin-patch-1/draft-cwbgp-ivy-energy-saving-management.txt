@@ -783,7 +783,7 @@ Table of Contents
      import iana-hardware {
       prefix ianahw;
       reference
-        "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml"
+        "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
      }
      organization
        "IETF IVY Working Group.";
