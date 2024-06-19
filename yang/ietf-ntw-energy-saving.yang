@@ -74,6 +74,7 @@ module ietf-ntw-energy-saving {
     }
     list component {
       key name;
+      config false;
       description
       "List of components.";
       leaf name {
