@@ -20,6 +20,8 @@ module ietf-ntw-energy-saving {
   }
   import iana-hardware {
    prefix ianahw;
+   reference
+     "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml"
   }
   organization
     "IETF IVY Working Group.";
