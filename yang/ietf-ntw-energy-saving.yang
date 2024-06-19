@@ -79,6 +79,7 @@ module ietf-ntw-energy-saving {
           re-initialized, as specified in the sysUpTime RFC 3418.
           It specifies the start time of the energy measurement
           results collection.";
+      }
     }
     container energy-saving-modes {
       description
@@ -136,6 +137,6 @@ module ietf-ntw-energy-saving {
          }
        }
      } 
-	}
+   }
   }
 }
