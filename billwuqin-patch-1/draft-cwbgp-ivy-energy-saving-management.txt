@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 21 December 2024                                   M. Boucadair
+Expires: 23 December 2024                                   M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                            19 June 2024
+                                                            21 June 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 December 2024.
+   This Internet-Draft will expire on 23 December 2024.
 
 Copyright Notice
 
@@ -851,7 +851,7 @@ Table of Contents
            description
              "The time (in hundredths of a second) since the
              network management portion of the system was last
-             re-initialized, as specified in the sysUpTime RFC 3418.
+             re-initialized. It corresponds to the sysUpTime MIB object.
              It specifies the start time of the energy measurement
              results collection.";
          }
