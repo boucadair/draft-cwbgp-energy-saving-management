@@ -81,7 +81,7 @@ module ietf-ntw-energy-saving {
           results collection.";
       reference
         "RFC 3418:   Management Information Base (MIB) for the
-                            Simple Network Management Protocol (SNMP)";
+                     Simple Network Management Protocol (SNMP)";
       }
     }
     container energy-saving-modes {
