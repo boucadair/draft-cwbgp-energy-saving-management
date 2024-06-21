@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 20 December 2024                                   M. Boucadair
+Expires: 23 December 2024                                   M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                            18 June 2024
+                                                            21 June 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 December 2024.
+   This Internet-Draft will expire on 23 December 2024.
 
 Copyright Notice
 
@@ -136,6 +136,8 @@ Table of Contents
       behaviors are added to the network topology as this allows
       operator to better assess the implications on node-specific action
       on the overall network.
+
+   The document leverages types defined in [RFC3418] and [RFC6933].
 
 2.  Conventions and Definitions
 
@@ -271,16 +273,29 @@ Table of Contents
    The structure of the ESM Network Model is depicted in Figure 2.
 
    module: ietf-ntw-energy-saving
-
      augment /nw:networks/nw:network/nw:node:
        +--ro energy-power-consumption {esm-common:energy-saving}?
        |  +--ro total-energy-consumption?   yang:gauge64
        |  +--ro saved-energy?               yang:gauge64
        |  +--ro eer?                        decimal64
        +--rw energy-saving-modes {esm-common:energy-saving}?
-          +--rw energy-saving-mode* [mode]
-             +--rw mode                    identityref
-             +--rw energy-saving-method*   identityref
+       |  +--rw energy-saving-mode* [mode]
+       |     +--rw mode                    identityref
+       |     +--rw energy-saving-method*   identityref
+       +--ro component* [name] {esm-common:energy-saving}?
+          +--ro name                 string
+          +--ro class                identityref
+          +--ro energy-monitoring
+             +--ro energy-consumption
+             |  +--ro average-power?    yang:gauge64
+             |  +--ro saved-power?      yang:gauge64
+             |  +--ro real-power?       yang:gauge64
+             |  +--ro actual-volts?     int32
+             |  +--ro actual-amperes?   int32
+             |  +--ro actual-celsius?   int32
+             +--ro energy-saving
+                +--ro enabled?       boolean
+                +--ro power-state?   identityref
 
                  Figure 2: ESM Network Model Tree Structure
 
@@ -290,12 +305,32 @@ Table of Contents
    Figure 3.
 
    module: ietf-ni-energy-saving
-
      grouping network-element-ref:
        +-- ne-ref?   leafref
      grouping component-ref:
        +-- node-ref?   leafref
        +-- ne-ref?     leafref
+
+     augment /ni:network-inventory/ni:network-elements
+             /ni:network-element:
+       +--ro energy-management {esm-common:energy-saving}?
+          +--ro energy-monitoring-capability?   boolean
+          +--ro energy-saving-modes
+             +--ro energy-saving-mode* [mode]
+                +--ro mode                    identityref
+                +--ro energy-saving-method*   identityref
+     augment /ni:network-inventory/ni:network-elements
+             /ni:network-element/ni:components/ni:component:
+       +--ro power-parameters {esm-common:energy-saving}?
+          +--ro temperature-upper-bound?    int32
+          +--ro temperature-middle-bound?   int32
+          +--ro temperature-lower-bound?    int32
+          +--ro rated-power?                yang:gauge64
+          +--ro expected-volts?             int32
+          +--ro low-volts-bound?            int32
+          +--ro low-volts-fatal?            int32
+          +--ro high-volts-bound?           int32
+          +--ro high-volts-fatal?           int32
 
                 Figure 3: ESM Inventory Model Tree Structure
 
@@ -314,14 +349,14 @@ Table of Contents
      import ietf-yang-types {
        prefix yang;
        reference
-         "RFC 6021: Common YANG Types";
+         "RFC 6991: Common YANG Types";
      }
 
      organization
-       "IETF IVY Working Group.";
+       "IETF xxx Working Group.";
      contact
-       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
-        WG List:  <mailto:opsawg@ietf.org>
+       "WG Web:   <https://datatracker.ietf.org/wg/xxx/>;
+        WG List:  <mailto:xxxx@ietf.org>
 
         Author:   Gen Chen
                   <mailto:chengen@huawei.com>
@@ -748,24 +783,23 @@ Table of Contents
      import ietf-energy-saving-common {
        prefix esm-common;
        reference
-         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+         "RFC XXXX: YANG Data Models for Energy Saving Management";
      }
-     /*import ietf-yang-types {
-       prefix yang;
-       reference
-         "RFC 6021: Common YANG Types";
-     }*/
      import ietf-network {
        prefix nw;
        reference
          "RFC 8345: A YANG Data Model for Network Topologies";
      }
-
+     import iana-hardware {
+      prefix ianahw;
+      reference
+        "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
+     }
      organization
-       "IETF IVY Working Group.";
+       "IETF XXX Working Group.";
      contact
-       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
-        WG List:  <mailto:opsawg@ietf.org>
+       "WG Web:   <https://datatracker.ietf.org/wg/xxx/>;
+        WG List:  <mailto:xxxx@ietf.org>
 
         Author:   Gen Chen
                   <mailto:chengen@huawei.com>
@@ -797,7 +831,7 @@ Table of Contents
        description
          "Initial revision.";
        reference
-         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+         "RFC XXXX: YANG Data Models for Energy Saving Management";
      }
 
      augment "/nw:networks/nw:network/nw:node" {
@@ -815,43 +849,59 @@ Table of Contents
            "List of the energy saving mode.";
          uses esm-common:energy-saving-modes;
        }
-     }
-
-   /*
-     container component-energy-monitoring {
-       description
-         "Energy monitoring data for components.";
-       container energy-consumption {
+       list component {
+         key name;
+         config false;
          description
-           "Statistics of component about energy monitoring.";
-         uses energy-consumption-data;
-       }
-       container energy-saving {
-         description
-           "Controls energy saving parameters of a component.";
-         leaf enabled {
-           type boolean;
-           default "true";
+         "List of components.";
+         leaf name {
+           type string;
            description
-             "Controls whether the energy-saving
-              of the component is enabled (when set to true)
-              or disabled (set to false).";
+             "The name assigned to this component.
+              This name is not required to be the same as
+              entPhysicalName.";
          }
-         leaf power-state {
+         leaf class {
            type identityref {
-             base energy-saving-power-state;
+             base ianahw:hardware-class;
            }
+           mandatory true;
            description
-             "The device energy saving operator state.";
-         }
-       }
-       container inventory-component-ref {
-         description
-           "The reference of the component from which this
-            termination point is abstracted.";
-         uses component-ref;
-       }
-     }*/
+             "An indication of the general hardware type of the
+              component.";
+           reference
+             "RFC 6933: Entity MIB (Version 4) - entPhysicalClass";
+           }
+         container energy-monitoring {
+           description
+             "Energy monitoring data for components.";
+           container energy-consumption {
+             description
+             "Statistics of component about energy monitoring.";
+             uses esm-common:energy-consumption-data;
+           }
+          container energy-saving {
+           description
+           "Controls energy saving parameters of a component.";
+            leaf enabled {
+             type boolean;
+             default "true";
+              description
+                "Controls whether the energy-saving
+                of the component is enabled (when set to true)
+                 or disabled (set to false).";
+            }
+            leaf power-state {
+             type identityref {
+               base esm-common:energy-saving-power-state;
+             }
+             description
+               "The device energy saving operator state.";
+            }
+          }
+        }
+           }
+     }
    }
    <CODE ENDS>
 
@@ -870,24 +920,19 @@ Table of Contents
      import ietf-energy-saving-common {
        prefix esm-common;
        reference
-         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+         "RFC XXXX: YANG Data Models for Energy Saving Management";
      }
      import ietf-network-inventory {
        prefix ni;
        reference
          "RFC IIII: A YANG Data Model for Network Inventory";
      }
-     /*import ietf-yang-types {
-       prefix yang;
-       reference
-         "RFC 6021: Common YANG Types";
-     }*/
 
      organization
-       "IETF IVY Working Group.";
+       "IETF xxx Working Group.";
      contact
-       "WG Web:   <https://datatracker.ietf.org/wg/opsawg/>;
-        WG List:  <mailto:opsawg@ietf.org>
+       "WG Web:   <https://datatracker.ietf.org/wg/xxx/>;
+        WG List:  <mailto:xxxx@ietf.org>
 
         Author:   Gen Chen
                   <mailto:chengen@huawei.com>
@@ -919,7 +964,7 @@ Table of Contents
        description
          "Initial revision.";
        reference
-         "RFC XXXX: A YANG Data Model for Energy Saving Management";
+         "RFC XXXX: YANG Data Models for Energy Saving Management";
      }
 
      grouping network-element-ref {
@@ -988,41 +1033,6 @@ Table of Contents
          uses esm-common:power-parameters;
        }
      }
-
-   /*  container component-energy-monitoring {
-       description
-         "Energy monitoring data for components.";
-       container energy-consumption {
-         description
-           "Statistics of component about energy monitoring.";
-         uses energy-consumption-data;
-       }
-       container energy-saving {
-         description
-           "Controls energy saving parameters of a component.";
-         leaf enabled {
-           type boolean;
-           default "true";
-           description
-             "Controls whether the energy-saving
-              of the component is enabled (when set to true)
-              or disabled (set to false).";
-         }
-         leaf power-state {
-           type identityref {
-             base energy-saving-power-state;
-           }
-           description
-             "The device energy saving operator state.";
-         }
-       }
-       container inventory-component-ref {
-         description
-           "The reference of the component from which this
-            termination point is abstracted.";
-         uses component-ref;
-       }
-     }*/
    }
    <CODE ENDS>
 
@@ -1195,6 +1205,16 @@ Table of Contents
               Progress, Internet-Draft, draft-manral-bmwg-power-usage-
               04, 12 March 2013, <https://datatracker.ietf.org/doc/html/
               draft-manral-bmwg-power-usage-04>.
+
+   [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
+              the Simple Network Management Protocol (SNMP)", STD 62,
+              RFC 3418, DOI 10.17487/RFC3418, December 2002,
+              <https://www.rfc-editor.org/rfc/rfc3418>.
+
+   [RFC6933]  Bierman, A., Romascanu, D., Quittek, J., and M.
+              Chandramouli, "Entity MIB (Version 4)", RFC 6933,
+              DOI 10.17487/RFC6933, May 2013,
+              <https://www.rfc-editor.org/rfc/rfc6933>.
 
    [RFC6988]  Quittek, J., Ed., Chandramouli, M., Winter, R., Dietz, T.,
               and B. Claise, "Requirements for Energy Management",

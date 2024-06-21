@@ -1037,7 +1037,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Chen, et al.</td>
-<td class="center">Expires 20 December 2024</td>
+<td class="center">Expires 23 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-cwbgp-ivy-energy-saving-management-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-06-18" class="published">18 June 2024</time>
+<time datetime="2024-06-21" class="published">21 June 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-20">20 December 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-23">23 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1118,7 +1118,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1269,6 +1269,7 @@ are added to the network topology as this allows operator to better assess
 the implications on node-specific action on the overall network.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
+<p id="section-1-7">The document leverages types defined in <span>[<a href="#RFC3418" class="cite xref">RFC3418</a>]</span> and <span>[<a href="#RFC6933" class="cite xref">RFC6933</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1460,16 +1461,30 @@ module: ietf-energy-saving-common
           <div class="alignLeft art-text artwork" id="section-4.2-2.1">
 <pre>
 module: ietf-ntw-energy-saving
-
   augment /nw:networks/nw:network/nw:node:
     +--ro energy-power-consumption {esm-common:energy-saving}?
     |  +--ro total-energy-consumption?   yang:gauge64
     |  +--ro saved-energy?               yang:gauge64
     |  +--ro eer?                        decimal64
     +--rw energy-saving-modes {esm-common:energy-saving}?
-       +--rw energy-saving-mode* [mode]
-          +--rw mode                    identityref
-          +--rw energy-saving-method*   identityref
+    |  +--rw energy-saving-mode* [mode]
+    |     +--rw mode                    identityref
+    |     +--rw energy-saving-method*   identityref
+    +--ro component* [name] {esm-common:energy-saving}?
+       +--ro name                 string
+       +--ro class                identityref
+       +--ro energy-monitoring
+          +--ro energy-consumption
+          |  +--ro average-power?    yang:gauge64
+          |  +--ro saved-power?      yang:gauge64
+          |  +--ro real-power?       yang:gauge64
+          |  +--ro actual-volts?     int32
+          |  +--ro actual-amperes?   int32
+          |  +--ro actual-celsius?   int32
+          +--ro energy-saving
+             +--ro enabled?       boolean
+             +--ro power-state?   identityref
+
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1489,12 +1504,32 @@ module: ietf-ntw-energy-saving
           <div class="alignLeft art-text artwork" id="section-4.3-2.1">
 <pre>
 module: ietf-ni-energy-saving
-
   grouping network-element-ref:
     +-- ne-ref?   leafref
   grouping component-ref:
     +-- node-ref?   leafref
     +-- ne-ref?     leafref
+
+  augment /ni:network-inventory/ni:network-elements
+          /ni:network-element:
+    +--ro energy-management {esm-common:energy-saving}?
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode                    identityref
+             +--ro energy-saving-method*   identityref
+  augment /ni:network-inventory/ni:network-elements
+          /ni:network-element/ni:components/ni:component:
+    +--ro power-parameters {esm-common:energy-saving}?
+       +--ro temperature-upper-bound?    int32
+       +--ro temperature-middle-bound?   int32
+       +--ro temperature-lower-bound?    int32
+       +--ro rated-power?                yang:gauge64
+       +--ro expected-volts?             int32
+       +--ro low-volts-bound?            int32
+       +--ro low-volts-fatal?            int32
+       +--ro high-volts-bound?           int32
+       +--ro high-volts-fatal?           int32
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
@@ -1527,14 +1562,14 @@ module ietf-energy-saving-common {
   import ietf-yang-types {
     prefix yang;
     reference
-      "RFC 6021: Common YANG Types";
+      "RFC 6991: Common YANG Types";
   }
 
   organization
-    "IETF IVY Working Group.";
+    "IETF xxx Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -1967,24 +2002,23 @@ module ietf-ntw-energy-saving {
   import ietf-energy-saving-common {
     prefix esm-common;
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
-  /*import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 6021: Common YANG Types";
-  }*/
   import ietf-network {
     prefix nw;
     reference
       "RFC 8345: A YANG Data Model for Network Topologies";
   }
-
+  import iana-hardware {
+   prefix ianahw;
+   reference
+     "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
+  }
   organization
-    "IETF IVY Working Group.";
+    "IETF XXX Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -2016,7 +2050,7 @@ module ietf-ntw-energy-saving {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
 
   augment "/nw:networks/nw:network/nw:node" {
@@ -2034,43 +2068,59 @@ module ietf-ntw-energy-saving {
         "List of the energy saving mode.";
       uses esm-common:energy-saving-modes;
     }
-  }
-
-/*
-  container component-energy-monitoring {
-    description
-      "Energy monitoring data for components.";
-    container energy-consumption {
+    list component {
+      key name;
+      config false;
       description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description
-        "Controls energy saving parameters of a component.";
-      leaf enabled {
-        type boolean;
-        default "true";
+      "List of components.";
+      leaf name {
+        type string;
         description
-          "Controls whether the energy-saving
-           of the component is enabled (when set to true)
-           or disabled (set to false).";
+          "The name assigned to this component.
+           This name is not required to be the same as
+           entPhysicalName.";
       }
-      leaf power-state {
+      leaf class {
         type identityref {
-          base energy-saving-power-state;
+          base ianahw:hardware-class;
         }
+        mandatory true;
         description
-          "The device energy saving operator state.";
-      }
-    }
-    container inventory-component-ref {
-      description
-        "The reference of the component from which this
-         termination point is abstracted.";
-      uses component-ref;
-    }
-  }*/
+          "An indication of the general hardware type of the
+           component.";
+        reference
+          "RFC 6933: Entity MIB (Version 4) - entPhysicalClass";
+        }
+      container energy-monitoring {
+        description
+          "Energy monitoring data for components.";
+        container energy-consumption {
+          description
+          "Statistics of component about energy monitoring.";
+          uses esm-common:energy-consumption-data;
+        }
+       container energy-saving {
+        description
+        "Controls energy saving parameters of a component.";
+         leaf enabled {
+          type boolean;
+          default "true";
+           description
+             "Controls whether the energy-saving
+             of the component is enabled (when set to true)
+              or disabled (set to false).";
+         }
+         leaf power-state {
+          type identityref {
+            base esm-common:energy-saving-power-state;
+          }
+          description
+            "The device energy saving operator state.";
+         }
+       }
+     }
+        }
+  }
 }
 &lt;CODE ENDS&gt;
 </pre><a href="#section-5.2-2" class="pilcrow">¶</a>
@@ -2094,24 +2144,19 @@ module ietf-ni-energy-saving {
   import ietf-energy-saving-common {
     prefix esm-common;
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
   import ietf-network-inventory {
     prefix ni;
     reference
       "RFC IIII: A YANG Data Model for Network Inventory";
   }
-  /*import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 6021: Common YANG Types";
-  }*/
 
   organization
-    "IETF IVY Working Group.";
+    "IETF xxx Working Group.";
   contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/opsawg/&gt;;
-     WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
 
      Author:   Gen Chen
                &lt;mailto:chengen@huawei.com&gt;
@@ -2143,7 +2188,7 @@ module ietf-ni-energy-saving {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: A YANG Data Model for Energy Saving Management";
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
   }
 
   grouping network-element-ref {
@@ -2212,41 +2257,6 @@ module ietf-ni-energy-saving {
       uses esm-common:power-parameters;
     }
   }
-
-/*  container component-energy-monitoring {
-    description
-      "Energy monitoring data for components.";
-    container energy-consumption {
-      description
-        "Statistics of component about energy monitoring.";
-      uses energy-consumption-data;
-    }
-    container energy-saving {
-      description
-        "Controls energy saving parameters of a component.";
-      leaf enabled {
-        type boolean;
-        default "true";
-        description
-          "Controls whether the energy-saving
-           of the component is enabled (when set to true)
-           or disabled (set to false).";
-      }
-      leaf power-state {
-        type identityref {
-          base energy-saving-power-state;
-        }
-        description
-          "The device energy saving operator state.";
-      }
-    }
-    container inventory-component-ref {
-      description
-        "The reference of the component from which this
-         termination point is abstracted.";
-      uses component-ref;
-    }
-  }*/
 }
 &lt;CODE ENDS&gt;
 </pre><a href="#section-5.3-2" class="pilcrow">¶</a>
@@ -2445,6 +2455,14 @@ in the "ns" subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688"
 <dt id="I-D.manral-bmwg-power-usage">[I-D.manral-bmwg-power-usage]</dt>
         <dd>
 <span class="refAuthor">Manral, V.</span>, <span class="refAuthor">Sharma, P.</span>, <span class="refAuthor">Banerjee, S.</span>, and <span class="refAuthor">Y. Ping</span>, <span class="refTitle">"Benchmarking Power usage of networking devices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-manral-bmwg-power-usage-04</span>, <time datetime="2013-03-12" class="refDate">12 March 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04">https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3418">[RFC3418]</dt>
+        <dd>
+<span class="refAuthor">Presuhn, R., Ed.</span>, <span class="refTitle">"Management Information Base (MIB) for the Simple Network Management Protocol (SNMP)"</span>, <span class="seriesInfo">STD 62</span>, <span class="seriesInfo">RFC 3418</span>, <span class="seriesInfo">DOI 10.17487/RFC3418</span>, <time datetime="2002-12" class="refDate">December 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3418">https://www.rfc-editor.org/rfc/rfc3418</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6933">[RFC6933]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Romascanu, D.</span>, <span class="refAuthor">Quittek, J.</span>, and <span class="refAuthor">M. Chandramouli</span>, <span class="refTitle">"Entity MIB (Version 4)"</span>, <span class="seriesInfo">RFC 6933</span>, <span class="seriesInfo">DOI 10.17487/RFC6933</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6933">https://www.rfc-editor.org/rfc/rfc6933</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6988">[RFC6988]</dt>
         <dd>
