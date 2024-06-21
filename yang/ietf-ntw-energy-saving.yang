@@ -79,6 +79,9 @@ module ietf-ntw-energy-saving {
           re-initialized. It corresponds to the sysUpTime MIB object.
           It specifies the start time of the energy measurement
           results collection.";
+      reference
+        "RFC 3418:   Management Information Base (MIB) for the
+                            Simple Network Management Protocol (SNMP)";
       }
     }
     container energy-saving-modes {
