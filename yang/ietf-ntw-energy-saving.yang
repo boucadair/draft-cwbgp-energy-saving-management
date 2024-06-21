@@ -76,7 +76,7 @@ module ietf-ntw-energy-saving {
         description
           "The time (in hundredths of a second) since the
           network management portion of the system was last
-          re-initialized, as specified in the sysUpTime RFC 3418.
+          re-initialized. It corresponds to the sysUpTime MIB object.
           It specifies the start time of the energy measurement
           results collection.";
       }
