@@ -100,6 +100,8 @@ informative:
      are added to the network topology as this allows operator to better assess
      the implications on node-specific action on the overall network.
 
+The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
+
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
