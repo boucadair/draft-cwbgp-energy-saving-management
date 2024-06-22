@@ -137,6 +137,8 @@ Table of Contents
       operator to better assess the implications on node-specific action
       on the overall network.
 
+   The document leverages types defined in [RFC3418] and [RFC6933].
+
 2.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -1220,6 +1222,16 @@ Table of Contents
               Progress, Internet-Draft, draft-manral-bmwg-power-usage-
               04, 12 March 2013, <https://datatracker.ietf.org/doc/html/
               draft-manral-bmwg-power-usage-04>.
+
+   [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
+              the Simple Network Management Protocol (SNMP)", STD 62,
+              RFC 3418, DOI 10.17487/RFC3418, December 2002,
+              <https://www.rfc-editor.org/rfc/rfc3418>.
+
+   [RFC6933]  Bierman, A., Romascanu, D., Quittek, J., and M.
+              Chandramouli, "Entity MIB (Version 4)", RFC 6933,
+              DOI 10.17487/RFC6933, May 2013,
+              <https://www.rfc-editor.org/rfc/rfc6933>.
 
    [RFC6988]  Quittek, J., Ed., Chandramouli, M., Winter, R., Dietz, T.,
               and B. Claise, "Requirements for Energy Management",
