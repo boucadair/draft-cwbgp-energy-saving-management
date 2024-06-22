@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 21 December 2024                                   M. Boucadair
+Expires: 24 December 2024                                   M. Boucadair
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                            19 June 2024
+                                                            22 June 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 December 2024.
+   This Internet-Draft will expire on 24 December 2024.
 
 Copyright Notice
 
@@ -788,6 +788,11 @@ Table of Contents
        reference
          "RFC 8345: A YANG Data Model for Network Topologies";
      }
+     import ietf-yang-types {
+       prefix yang;
+       reference
+         "RFC 6991: Common YANG Types";
+     }
      import iana-hardware {
       prefix ianahw;
       reference
@@ -841,6 +846,18 @@ Table of Contents
          description
            "Statistics data about energy and power monitoring.";
          uses esm-common:energy-power-consumption-stats;
+         leaf start-time {
+           type yang:date-and-time;
+           description
+             "The time (in hundredths of a second) since the
+             network management portion of the system was last
+             re-initialized. It corresponds to the sysUpTime MIB object.
+             It specifies the start time of the energy measurement
+             results collection.";
+         reference
+           "RFC 3418:   Management Information Base (MIB) for the
+                        Simple Network Management Protocol (SNMP)";
+         }
        }
        container energy-saving-modes {
          description
@@ -898,7 +915,7 @@ Table of Contents
             }
           }
         }
-           }
+      }
      }
    }
    <CODE ENDS>
@@ -1193,9 +1210,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-11, 18 April 2024,
+              netmod-rfc8407bis-12, 21 June 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-11>.
+              rfc8407bis-12>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
