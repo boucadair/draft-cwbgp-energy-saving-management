@@ -1,11 +1,11 @@
 # A YANG Data Model for Energy Saving Management
 
-This is the working area for the individual Internet-Draft, "A YANG Data Model for Energy Saving Management".
+This is the working area for the individual Internet-Draft, "YANG Data Models for Energy Saving Management".
 
-* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-ivy-energy-saving-management.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-ivy-energy-saving-management)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-ivy-energy-saving-management)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-ivy-energy-saving-management.diff)
+* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-energy-saving-management.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-green-energy-saving-management)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-green-energy-saving-management)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-energy-saving-management.diff)
 
 
 ## Contributing
