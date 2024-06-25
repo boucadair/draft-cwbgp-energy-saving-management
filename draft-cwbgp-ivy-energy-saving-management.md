@@ -24,11 +24,13 @@ author:
    email: chengen@huawei.com
  -
    fullname: Qin Wu
+   role: editor
    organization: Huawei
    country: China
    email: bill.wu@huawei.com
  -
    fullname: Mohamed Boucadair
+   role: editor
    organization: Orange
    country: France
    email:  mohamed.boucadair@orange.com
@@ -51,8 +53,7 @@ informative:
 
 --- abstract
 
-   This document defines YANG modules for energy saving management.
-   The document covers both device and network levels. Also, the document specifies
+   This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
    a common module that is used independent of the model layer.
 
 --- middle
@@ -66,14 +67,12 @@ informative:
    and the contribution of involved nodes. As described in {{Section 3.4 of ?RFC6988}},
    monitoring energy, power can be required for purposes such as:
 
-    o designing control loops for energy saving
-    o investigating energy-saving potential
-    o evaluating the effectiveness of energy-saving policies and
-      measures
-    o accounting for the total power received and provided by an entity,
-      a network, or a service
-    o predicting an entity's reliability based on power usage
-    o planning for the next maintenance cycle for an entity
+   * designing control loops for energy saving,
+   * investigating energy-saving potential,
+   * evaluating the effectiveness of energy-saving policies and  measures,
+   * accounting for the total power received and provided by an entity, a network, or a service,
+   * predicting an entity's reliability based on power usage, and
+   * planning for the next maintenance cycle for an entity
 
    However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
@@ -84,15 +83,16 @@ informative:
    scale, e.g., by selectively disabling ports or cards on specific network
    nodes based on (forecast) traffic patterns.
 
-   This document defines a YANG data model for use in energy management
-   of network devices.  Such model can be used for monitoring the energy
+   This document defines YANG modules for use in energy management within a newtork.
+   The modules covers both network and device levels ({{Section 3.5.1 of ?I-D.ietf-netmod-rfc8407bis}}).
+   The modules can be used, e.g., for monitoring the energy
    consumption of network devices, such as (but are not limited to)
    routers, switches, security gateways, hosts, or servers.  Where
    applicable, device monitoring extends to the individual components of
    the device.
 
-   The document augments both "ietf-network" {{!RFC8345}} and
-   "ietf-network-inventory" {{!I-D.ietf-ivy-network-inventory-yang}} with the following rationale:
+   The network model augments the "ietf-network" module {{!RFC8345}}, while the inventory model augments
+   the "ietf-network-inventory" module {{!I-D.ietf-ivy-network-inventory-yang}} with the following rationale:
 
    * Parameters that reflect the saving modes and methods are considered
      as capabilities, and are thus maintained in the inventory.
@@ -101,6 +101,20 @@ informative:
      the implications on node-specific action on the overall network.
 
 The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
+
+## Notes to the RFC Editor
+
+   > Note to the RFC Editor: This section is to be removed prior to publication.
+
+   This document contains placeholder values that need to be replaced
+   with finalized values at the time of publication.  This note
+   summarizes all of the substitutions that are needed.
+
+   Please apply the following replacements:
+
+   * XXXX --> the RFC number assigned to this I-D
+   * IIII --> the RFC number assigned to {{!I-D.ietf-ivy-network-inventory-yang}}
+   * 2024-01-23 --> the actual date of the publication of this document
 
 # Conventions and Definitions
 
@@ -151,27 +165,28 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
 
 | Prefix | YANG Module |  Reference   |
 | ianahw | iana-hardware          | [IANA_YANG] |
-| ni     | ietf-network-inventory | RFC IIII    |
+| ni     | ietf-network-inventory | {{!I-D.ietf-ivy-network-inventory-yang}}    |
+| yang   | ietf-yang-types | {{!RFC6991}}    |
 {: #pref title="Prefixes and Corresponding YANG modules"}
 
-> RFC Editor Note: Please replace IIII with the RFC number assigned to {{!I-D.ietf-ivy-network-inventory-yang}}.
 
 # Energy Saving Management Data Model Overview
 
+## Overview
+
    As described in {{!I-D.ietf-ivy-network-inventory-yang}}, the Network
    Inventory YANG data model is used to maintain the base network
-   inventory information.  This document defines the YANG module "ietf-
-   energy-saving-mgt", which augments network element of the
+   inventory information.  This document defines the YANG module "ietf-ni-energy-saving",
+   which augments network element of the
    network Inventory base model with energy saving modes, associated
    energy saving methods and augments the component of the network
-   inventory base model with capability related power attributes. In
-   addition, "ietf-energy-saving-mgt" also augments the node of asbstract
-   network model defined in {{!RFC8345}} with energy consumption and
-   power usage related attributes.
+   inventory base model with capability related power attributes.
 
-   At the network element level, the data model covers configuration of
+   "ietf-ntw-energy-saving" augments the node of asbstract
+   network model defined in {{!RFC8345}} with energy consumption and
+   power usage related attributes. At the network element level, the data model covers configuration of
    the energy saving mode and a set of related parameters to manage
-   (e.g., retrieve, adjust) the status of power units, fans, boards,
+   (e.g., retrieve or adjust) the status of power units, fans, boards,
    cards, ports, processors, and links.  For example, the adjustment
    methods include frequency tuning, shutdown, or sleep mode.  In
    addition, the methods also support the energy saving configuration
@@ -181,7 +196,7 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
    scheduled events).
 
    The data model defines energy saving modes representing some energy
-   consumption levels, which are basic, standard, deep.  For each
+   consumption levels, which are basic, standard, or deep.  For each
    consumption level, there is a combination of methods to reach the energy
    saving target level.
 
@@ -189,6 +204,11 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
    statistics for energy consumption and energy saving operational
    state of each component within the network device. It also includes threshold
    related power parameters such as rated power, expected volts.
+
+   In order to ease reuse of various paramters independent of the module layer,
+   this document alos defines a common model: "ietf-energy-saving-common".
+
+The structure of each module is provided in the following subsections.
 
 ##  Common Energy Saving Management Module Structure
 
@@ -255,11 +275,11 @@ The module imports "ietf-network-inventory" {{!I-D.ietf-ivy-network-inventory-ya
 
    The YANG modules specified in this document define a schema for data
    that is designed to be accessed via network management protocol such
-   as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.  The lowest NETCONF layer
-   is the secure transport layer, and the mandatory-to-implement secure
-   transport is Secure Shell (SSH) {{!RFC6242}}.  The lowest RESTCONF layer
-   is HTTPS, and the mandatory-to-implement secure transport is TLS
-   {{!RFC8446}}.
+   as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.These network management
+   protocols are required to use a secure transport layer and mutual
+   authentication, e.g., SSH {{?RFC6242}} without the "none" authentication
+   option, Transport Layer Security (TLS) {{?RFC8446}} with mutual X.509
+   authentication, and HTTPS with HTTP authentication ({{Section 11 of ?RFC9110}}).
 
    The Network Configuration Access Control Model (NACM) {{!RFC8341}}
    provides the means to restrict access for particular NETCONF or
@@ -274,10 +294,10 @@ The module imports "ietf-network-inventory" {{!I-D.ietf-ivy-network-inventory-ya
    effect on network operations. Specifically, the following subtrees and data nodes have particular
 sensitivities/vulnerabilities:
 
- /esm:energy-management/esm:energy-saving-mode:
+ energy-saving-modes:
  : This leaf specifies the energy saving mode set globally on a device.
 
- /esm:energy-saving/esm:enable:
+ esm-ntw:energy-saving/esm-ntw:enabled:
  : This leaf enable/disables energy saving state of specific component.
 
    Some of the readable data nodes in this YANG module may be considered
