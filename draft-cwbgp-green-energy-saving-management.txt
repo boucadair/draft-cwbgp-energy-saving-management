@@ -15,7 +15,7 @@ Expires: 27 December 2024                              M. Boucadair, Ed.
 
 
              YANG Data Models for Energy Saving Management
-            draft-cwbgp-ivy-energy-saving-management-latest
+           draft-cwbgp-green-energy-saving-management-latest
 
 Abstract
 
