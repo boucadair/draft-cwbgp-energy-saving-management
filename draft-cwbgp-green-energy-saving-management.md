@@ -3,7 +3,7 @@ title: "YANG Data Models for Energy Saving Management"
 abbrev: "Energy Saving Management"
 category: std
 
-docname: draft-cwbgp-ivy-energy-saving-management-latest
+docname: draft-cwbgp-green-energy-saving-management-latest
 submissiontype: IETF
 number:
 date:
