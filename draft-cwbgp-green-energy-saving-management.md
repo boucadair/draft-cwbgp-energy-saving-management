@@ -64,8 +64,8 @@ informative:
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes. 
-   
+   and the contribution of involved nodes.
+
    However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
    different network configuration and conditions.  For example, in
