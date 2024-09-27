@@ -88,7 +88,7 @@ informative:
 
    * Parameters that reflect the saving modes and methods are considered
      as capabilities, and are thus maintained in the inventory.
-   * Required parameters to monitor, control and adjust nodes and components behaviors
+   * Required parameters to monitor, control, and adjust nodes and components behaviors
      are added to the network topology as this allows operator to better assess
      the implications on node-specific action on the overall network.
 
