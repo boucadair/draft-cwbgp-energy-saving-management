@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>YANG Data Models for Energy Saving Management</title>
+<meta content="Gen Chen" name="author">
+<meta content="Qin Wu" name="author">
+<meta content="Mohamed Boucadair" name="author">
+<meta content="Oscar Gonzales de Dios" name="author">
+<meta content="Carlos Pignataro" name="author">
+<meta content="
+       This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
+   a common module that is used independent of the model layer. 
+    " name="description">
+<meta content="xml2rfc 3.23.1" name="generator">
+<meta content="energy efficiency" name="keyword">
+<meta content="energy saving" name="keyword">
+<meta content="energy management" name="keyword">
+<meta content="draft-cwbgp-green-energy-saving-management-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.23.1
+    Python 3.12.6
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.3.6
+    pycountry 22.3.5
+    PyYAML 6.0.1
+    requests 2.32.3
+    setuptools 70.3.0
+    wcwidth 0.2.13
+-->
+<link href="draft-cwbgp-green-energy-saving-management.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cabin Condensed", sans-serif;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+}
+:is(ol, ul) :is(ol, ul) {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  line-height: 1;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+}
+dl.olPercent {
+  --indent: 5ch;
+}
+dl > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
+  margin-top: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
+  margin-bottom: 0;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    overflow-x: auto;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+}
+a.pilcrow[href] { color: var(--pilcrow-weak); }
+a.pilcrow[href]:hover { text-decoration: none; }
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+}
+#identifiers dt {
+  width: var(--identifier-width);
+  min-width: var(--identifier-width);
+  clear: left;
+  float: left;
+  text-align: right;
+  margin-right: 1ch;
+}
+#identifiers dd {
+  margin: 0;
+  margin-left: calc(1em + var(--identifier-width)) !important;
+  min-width: 5em;
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+#toc nav ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+#toc nav li {
+  line-height: 1.3em;
+  margin: 2px 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+#toc a.xref {
+  white-space: normal;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 10ch;
+  margin-right: 1.5ch;
+}
+.references dt:target::before {
+  content: "⇒";
+  width: 15px;
+  margin: 0 10px 0 -25px;
+}
+.references dd {
+  margin-left: 12ch !important;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc.active {
+      opacity: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 8px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active nav {
+    display: block;
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin-top: 2px;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  #toc nav > ul  {
+    margin-bottom: 2em;
+  }
+  #toc ul {
+    margin: 0 0 0 4px;
+    font-size: var(--small-font-size);
+  }
+  #toc ul :is(p, li) {
+    margin: 2px 0;
+    line-height: 22px;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Changes introduced to fix issues found during implementation */
+
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin: 8px 0.5em 0;
+}
+
+/* Provide styling for table cell text alignment */
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 20em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">Energy Saving Management</td>
+<td class="right">September 2024</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Chen, et al.</td>
+<td class="center">Expires 31 March 2025</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Network Inventory YANG</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-cwbgp-green-energy-saving-management-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2024-09-27" class="published">27 September 2024</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Standards Track</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2025-03-31">31 March 2025</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">G. Chen</div>
+<div class="org">Huawei</div>
+</div>
+<div class="author">
+      <div class="author-name">Q. Wu, <span class="editor">Ed.</span>
+</div>
+<div class="org">Huawei</div>
+</div>
+<div class="author">
+      <div class="author-name">M. Boucadair, <span class="editor">Ed.</span>
+</div>
+<div class="org">Orange</div>
+</div>
+<div class="author">
+      <div class="author-name">O. G. D. Dios</div>
+<div class="org">Telefonica I+D</div>
+</div>
+<div class="author">
+      <div class="author-name">C. Pignataro</div>
+<div class="org">North Carolina State University</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">YANG Data Models for Energy Saving Management</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
+   a common module that is used independent of the model layer.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venues">
+<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+    Network Inventory YANG Working Group mailing list (inventory-yang@ietf.org),
+    which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/inventory-yang/">https://mailarchive.ietf.org/arch/browse/inventory-yang/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+    <span><a href="https://github.com/boucadair/draft-cwbgp-energy-saving-management">https://github.com/boucadair/draft-cwbgp-energy-saving-management</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 31 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2024 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-notes-to-the-rfc-editor" class="internal xref">Notes to the RFC Editor</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-yang-prefixes" class="internal xref">YANG Prefixes</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-energy-saving-management-da" class="internal xref">Energy Saving Management Data Model Overview</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-common-energy-saving-manage" class="internal xref">Common Energy Saving Management Module Structure</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-energy-saving-management-ne" class="internal xref">Energy Saving Management Network Model</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-esm-inventory-model" class="internal xref">ESM Inventory Model</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-yang-modules" class="internal xref">YANG Modules</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-common-module" class="internal xref">Common Module</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-network-module" class="internal xref">Network Module</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-network-inventory-module" class="internal xref">Network Inventory Module</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-the-ietf-xml-registry" class="internal xref">The "IETF XML" Registry</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-the-yang-module-names-regis" class="internal xref">The "YANG Module Names" Registry</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">With the growth of networks and the increase of awareness about the
+   environmental impact, it is important to ensure energy efficiency in
+   the operation of network infrastructures.  Operators are thus seeking
+   for more information to reflect the power consumption of a network
+   and the contribution of involved nodes. As described in <span><a href="https://rfc-editor.org/rfc/rfc6988#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC6988" class="cite xref">RFC6988</a>]</span>,
+   monitoring energy, power can be required for purposes such as:<a href="#section-1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-2.1">
+          <p id="section-1-2.1.1">Designing control loops for energy saving,<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-2.2">
+          <p id="section-1-2.2.1">investigating energy-saving potential,<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-2.3">
+          <p id="section-1-2.3.1">evaluating the effectiveness of energy-saving policies and  measures,<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-2.4">
+          <p id="section-1-2.4.1">accounting for the total power received and provided by an entity, a network, or a service,<a href="#section-1-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-2.5">
+          <p id="section-1-2.5.1">predicting an entity's reliability based on power usage, and<a href="#section-1-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-2.6">
+          <p id="section-1-2.6.1">planning for the next maintenance cycle for an entity.<a href="#section-1-2.6.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-3">However, there are no standard mechanisms to report and control power
+   usage or energy consumption of different networking equipment under
+   different network configuration and conditions.  For example, in
+   a 'Tidal network' in which traffic volume undergoes significant
+   fluctuations at different times, various energy management methods
+   might be envisaged to optimize the energy efficiency at the network
+   scale, e.g., by selectively disabling ports or cards on specific network
+   nodes based on (forecast) traffic patterns.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">This document defines YANG modules for use in energy management within a network.
+   The modules cover both network and device levels (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16#section-3.5.1" class="relref">Section 3.5.1</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>).
+   The modules can be used, e.g., for monitoring the energy
+   consumption of network devices, such as (but are not limited to)
+   routers, switches, security gateways, hosts, or servers.  Where
+   applicable, device monitoring extends to the individual components of
+   the device.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">The network model augments the "ietf-network" module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, while the inventory model augments
+   the "ietf-network-inventory" module <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> with the following rationale:<a href="#section-1-5" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-6.1">
+          <p id="section-1-6.1.1">Parameters that reflect the saving modes and methods are considered
+as capabilities and thus are maintained in the inventory.<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-6.2">
+          <p id="section-1-6.2.1">Required parameters to control and adjust nodes and components behaviors
+are added to the network topology as this allows operator to better assess
+the implications on node-specific action on the overall network.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-7">The document leverages types defined in <span>[<a href="#RFC3418" class="cite xref">RFC3418</a>]</span> and <span>[<a href="#RFC6933" class="cite xref">RFC6933</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<div id="notes-to-the-rfc-editor">
+<section id="section-1.1">
+        <h3 id="name-notes-to-the-rfc-editor">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-notes-to-the-rfc-editor" class="section-name selfRef">Notes to the RFC Editor</a>
+        </h3>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-1.1-1.1">
+            <p id="section-1.1-1.1.1">Note to the RFC Editor: This section is to be removed prior to publication.<a href="#section-1.1-1.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-1.1-2">This document contains placeholder values that need to be replaced
+   with finalized values at the time of publication.  This note
+   summarizes all the substitutions that are needed.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+<p id="section-1.1-3">Please apply the following replacements:<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1.1-4.1">
+            <p id="section-1.1-4.1.1">XXXX --&gt; the RFC number assigned to this I-D<a href="#section-1.1-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-1.1-4.2">
+            <p id="section-1.1-4.2.1">IIII --&gt; the RFC number assigned to <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span><a href="#section-1.1-4.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-1.1-4.3">
+            <p id="section-1.1-4.3.1">2024-01-23 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+</section>
+</div>
+<div id="conventions-and-definitions">
+<section id="section-2">
+      <h2 id="name-conventions-and-definitions">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      </h2>
+<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">The meanings of the symbols in the YANG tree diagrams are defined in
+   <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">The following terms are used in the document:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2-4">
+        <dt id="section-2-4.1">Network Inventory:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.2">
+          <p id="section-2-4.2.1">A collection of data for network devices and
+their components managed by a specific management system
+<span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-4.3">Chassis:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.4">
+          <p id="section-2-4.4.1">A physical container that allows installation of power
+modules, fan modules, and various types of boards and cards
+<span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-4.5">Network Element:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.6">
+          <p id="section-2-4.6.1">A manageable network entity that contains hardware
+and software units, e.g., a network device installed on one or
+several chassis <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-4.7">Board and Card:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.8">
+          <p id="section-2-4.8.1">A pluggable equipment can be inserted into one or
+ several slots/ sub-slots and can afford a specific transmission
+ function independently <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>. The
+ core modular units for processing data.  Depending on functions,
+ they can be classified into Main Processing Unit (MPU), Switch
+ Fabric Unit (SFU), Line Processing Unit (LPU), and other types.
+ MPU is responsible for system control, management, and monitoring.
+ SFU is responsible for line-rate data switching on the data plane.
+ LPU is responsible for data packet processing and traffic
+ management.<a href="#section-2-4.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-4.9">Port and Interface:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.10">
+          <p id="section-2-4.10.1">A port is a physical entity that is used for
+connections.  While an interface is a logical entity for
+connections.<a href="#section-2-4.10.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="yang-prefixes">
+<section id="section-3">
+      <h2 id="name-yang-prefixes">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-yang-prefixes" class="section-name selfRef">YANG Prefixes</a>
+      </h2>
+<p id="section-3-1">Names of data nodes and other data model objects are prefixed using
+   the standard prefix associated with the corresponding YANG imported
+   modules, as shown in <a href="#pref" class="auto internal xref">Table 1</a>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<span id="name-prefixes-and-corresponding-"></span><div id="pref">
+<table class="center" id="table-1">
+        <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-prefixes-and-corresponding-" class="selfRef">Prefixes and Corresponding YANG modules</a>
+        </caption>
+<thead>
+          <tr>
+            <th class="text-left" rowspan="1" colspan="1">Prefix</th>
+            <th class="text-left" rowspan="1" colspan="1">YANG Module</th>
+            <th class="text-left" rowspan="1" colspan="1">Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">ianahw</td>
+            <td class="text-left" rowspan="1" colspan="1">iana-hardware</td>
+            <td class="text-left" rowspan="1" colspan="1">[IANA_YANG]</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">ni</td>
+            <td class="text-left" rowspan="1" colspan="1">ietf-network-inventory</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">yang</td>
+            <td class="text-left" rowspan="1" colspan="1">ietf-yang-types</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>
+</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+</section>
+</div>
+<div id="energy-saving-management-data-model-overview">
+<section id="section-4">
+      <h2 id="name-energy-saving-management-da">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-energy-saving-management-da" class="section-name selfRef">Energy Saving Management Data Model Overview</a>
+      </h2>
+<div id="overview">
+<section id="section-4.1">
+        <h3 id="name-overview">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
+        </h3>
+<p id="section-4.1-1">As described in <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>, the Network
+   Inventory YANG data model is used to maintain the base network
+   inventory information.  This document defines the YANG module "ietf-ni-energy-saving",
+   which augments network element of the
+   network Inventory base model with energy saving modes, associated
+   energy saving methods and augments the component of the network
+   inventory base model with capability related power attributes.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">"ietf-ntw-energy-saving" augments the node of abstract
+   network model defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> with energy consumption and
+   power usage related attributes. At the network element level, the data model covers configuration of
+   the energy saving mode and a set of related parameters to manage
+   (e.g., retrieve or adjust) the status of power units, fans, boards,
+   cards, ports, processors, and links.  For example, the adjustment
+   methods include frequency tuning, shutdown, or sleep mode.  In
+   addition, the methods also support the energy saving configuration
+   for the 'tidal' traffic flow, where related components can be turned
+   off, e.g., during "idle" hours to optimize the energy consumption and
+   then woken up based on some triggered (e.g., busy hours or other
+   scheduled events).<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">The data model defines energy saving modes representing some energy
+   consumption levels, which are basic, standard, or deep.  For each
+   consumption level, there is a combination of methods to reach the energy
+   saving target level.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">At the component level, the data model includes a set of monitoring
+   statistics for energy consumption and energy saving operational
+   state of each component within the network device. It also includes threshold
+   related power parameters such as rated power, expected volts.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<p id="section-4.1-5">In order to ease reuse of various parameters independent of the module layer,
+   this document also defines a common model: "ietf-energy-saving-common".<a href="#section-4.1-5" class="pilcrow">¶</a></p>
+<p id="section-4.1-6">The structure of each module is provided in the following subsections.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="common-energy-saving-management-module-structure">
+<section id="section-4.2">
+        <h3 id="name-common-energy-saving-manage">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-common-energy-saving-manage" class="section-name selfRef">Common Energy Saving Management Module Structure</a>
+        </h3>
+<p id="section-4.2-1"><a href="#e-tree" class="auto internal xref">Figure 1</a> shows the tree diagram of the YANG data model defined in <a href="#sec-module" class="auto internal xref">Section 5</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<span id="name-common-energy-saving-managem"></span><div id="e-tree">
+<figure id="figure-1">
+          <div class="alignLeft art-text artwork" id="section-4.2-2.1">
+<pre>
+module: ietf-energy-saving-common
+
+  grouping energy-consumption-data:
+    +-- average-power?    yang:gauge64
+    +-- saved-power?      yang:gauge64
+    +-- real-power?       yang:gauge64
+    +-- actual-volts?     int32
+    +-- actual-amperes?   int32
+    +-- actual-celsius?   int32
+  grouping energy-saving-modes:
+    +-- energy-saving-mode* [mode]
+       +-- mode?                   identityref
+       +-- energy-saving-method*   identityref
+  grouping power-parameters:
+    +-- temperature-upper-bound?    int32
+    +-- temperature-middle-bound?   int32
+    +-- temperature-lower-bound?    int32
+    +-- rated-power?                yang:gauge64
+    +-- expected-volts?             int32
+    +-- low-volts-bound?            int32
+    +-- low-volts-fatal?            int32
+    +-- high-volts-bound?           int32
+    +-- high-volts-fatal?           int32
+  grouping energy-power-consumption-stats:
+    +-- total-energy-consumption?   yang:gauge64
+    +-- saved-energy?               yang:gauge64
+    +-- eer?                        decimal64
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-common-energy-saving-managem" class="selfRef">Common Energy Saving Management Tree Structure</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="energy-saving-management-network-model">
+<section id="section-4.3">
+        <h3 id="name-energy-saving-management-ne">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-energy-saving-management-ne" class="section-name selfRef">Energy Saving Management Network Model</a>
+        </h3>
+<p id="section-4.3-1">The structure of the ESM Network Model is depicted in <a href="#ne-tree" class="auto internal xref">Figure 2</a>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<span id="name-esm-network-model-tree-stru"></span><div id="ne-tree">
+<figure id="figure-2">
+          <div class="alignLeft art-text artwork" id="section-4.3-2.1">
+<pre>
+module: ietf-ntw-energy-saving
+  augment /nw:networks/nw:network/nw:node:
+    +--ro energy-power-consumption {esm-common:energy-saving}?
+    |  +--ro total-energy-consumption?   yang:gauge64
+    |  +--ro saved-energy?               yang:gauge64
+    |  +--ro eer?                        decimal64
+    +--rw energy-saving-modes {esm-common:energy-saving}?
+    |  +--rw energy-saving-mode* [mode]
+    |     +--rw mode                    identityref
+    |     +--rw energy-saving-method*   identityref
+    +--ro component* [name] {esm-common:energy-saving}?
+       +--ro name                 string
+       +--ro class                identityref
+       +--ro energy-monitoring
+          +--ro energy-consumption
+          |  +--ro average-power?    yang:gauge64
+          |  +--ro saved-power?      yang:gauge64
+          |  +--ro real-power?       yang:gauge64
+          |  +--ro actual-volts?     int32
+          |  +--ro actual-amperes?   int32
+          |  +--ro actual-celsius?   int32
+          +--ro energy-saving
+             +--ro enabled?       boolean
+             +--ro power-state?   identityref
+
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-esm-network-model-tree-stru" class="selfRef">ESM Network Model Tree Structure</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="esm-inventory-model">
+<section id="section-4.4">
+        <h3 id="name-esm-inventory-model">
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-esm-inventory-model" class="section-name selfRef">ESM Inventory Model</a>
+        </h3>
+<p id="section-4.4-1">The structure of the ESM Network Inventory Model is depicted in <a href="#cs-tree" class="auto internal xref">Figure 3</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<span id="name-esm-inventory-model-tree-st"></span><div id="cs-tree">
+<figure id="figure-3">
+          <div class="alignLeft art-text artwork" id="section-4.4-2.1">
+<pre>
+module: ietf-ni-energy-saving
+  grouping network-element-ref:
+    +-- ne-ref?   leafref
+  grouping component-ref:
+    +-- node-ref?   leafref
+    +-- ne-ref?     leafref
+
+  augment /ni:network-inventory/ni:network-elements
+          /ni:network-element:
+    +--ro energy-management {esm-common:energy-saving}?
+       +--ro energy-monitoring-capability?   boolean
+       +--ro energy-saving-modes
+          +--ro energy-saving-mode* [mode]
+             +--ro mode                    identityref
+             +--ro energy-saving-method*   identityref
+  augment /ni:network-inventory/ni:network-elements
+          /ni:network-element/ni:components/ni:component:
+    +--ro power-parameters {esm-common:energy-saving}?
+       +--ro temperature-upper-bound?    int32
+       +--ro temperature-middle-bound?   int32
+       +--ro temperature-lower-bound?    int32
+       +--ro rated-power?                yang:gauge64
+       +--ro expected-volts?             int32
+       +--ro low-volts-bound?            int32
+       +--ro low-volts-fatal?            int32
+       +--ro high-volts-bound?           int32
+       +--ro high-volts-fatal?           int32
+</pre>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<a href="#name-esm-inventory-model-tree-st" class="selfRef">ESM Inventory Model Tree Structure</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="sec-module">
+<section id="section-5">
+      <h2 id="name-yang-modules">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-yang-modules" class="section-name selfRef">YANG Modules</a>
+      </h2>
+<div id="sec-common">
+<section id="section-5.1">
+        <h3 id="name-common-module">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-common-module" class="section-name selfRef">Common Module</a>
+        </h3>
+<p id="section-5.1-1">The module imports types defined in <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<div class="breakable lang-yang sourcecode" id="section-5.1-2">
+<pre>
+&lt;CODE BEGINS&gt; file "ietf-energy-saving-common@2024-01-23.yang"
+module ietf-energy-saving-common {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-common";
+  prefix esm-common;
+
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6991: Common YANG Types";
+  }
+
+  organization
+    "IETF xxx Working Group.";
+  contact
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
+
+     Author:   Gen Chen
+               &lt;mailto:chengen@huawei.com&gt;
+     Editor:   Qin Wu
+               &lt;mailto:bill.wu@huawei.com&gt;
+     Editor:   Mohamed Boucadair
+               &lt;mailto:mohamed.boucadair@orange.com&gt;
+     Author:   Carlos Pignataro
+               &lt;mailto:cpignata@gmail.com&gt;";
+  description
+    "This module contains a collection of YANG definitions for power
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2024-01-23 {
+    description
+      "Initial revision.";
+    reference
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
+  }
+
+  feature energy-saving {
+    description
+      "Specifies support of energy saving management.";
+  }
+
+  identity energy-saving-mode {
+    description
+      "Base identity for energy saving mode.";
+  }
+
+  identity basic {
+    base energy-saving-mode;
+    description
+      "Basic energy saving mode.
+
+       In this mode, the system will shut down idle modules
+       and put them in a sleep mode.";
+  }
+
+  identity standard {
+    base energy-saving-mode;
+    description
+      "Standard energy saving mode.
+
+       In this mode, the system extends basic energy saving
+       mode with more advanced Lossless energy saving features,
+       e.g., power module schedule.";
+  }
+
+  identity deep {
+    base energy-saving-mode;
+    description
+      "Deep energy saving mode.
+
+       In this mode, the system extends standard energy saving
+       mode with more advanced system level energy saving features,
+       e.g., board scheduling.";
+  }
+
+  identity energy-saving-method {
+    description
+      "Base identity for energy saving method.";
+  }
+
+  identity zone-based-fan-speed-adjustment {
+    base energy-saving-method;
+    description
+      "The system collects information about the
+       temperatures of the service boards in the chassis
+       and the zones where the service boards reside.
+
+       According to the current temperature and target
+       temperature of each board, the system implements
+       stepless speed adjustment in different zones.";
+  }
+
+  identity unused-high-speed-interface-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused high-speed interface, the
+       system shuts down the interface to reduce power consumption
+       of the interface circuits.
+
+       When the interface needs to run service, the
+       system will automatically wake up the interface and
+       restore the interface to the normal working state.";
+  }
+
+  identity unused-port-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused user port, the system automatically
+       or manually shuts down the interface circuits and optical
+       module of the port to reduce port power consumption. When
+       detecting that the port needs to run service, the system
+       automatically enables the port and restores the port to the
+       normal running state, without affecting application of the
+       board.";
+  }
+
+  identity unused-board-shutdown {
+    base energy-saving-method;
+    description
+      "When detecting an unused board, the system automatically
+       shuts down the power supply of the board, ensuring zero
+       power consumption of an unused board.
+
+       When detecting that the board needs to run service, the system
+       automatically powers on the board and restores the board
+       to the normalrunning state, without affecting application of
+       the whole device.";
+  }
+
+  identity dynamic-frequency-adjustment {
+    base energy-saving-method;
+    description
+      "When detecting that a service board is carrying a small
+       service load, the system automatically reduces the working
+       frequency of the service processing module of the board
+       while maintaining the service quality. In doing so, power
+       consumption of the service processing module is reduced.
+       When the service load of the board increases, the system
+       automatically increases the working frequency of the service
+       processing module to meet service needs.";
+  }
+
+  identity unused-channel-shutdown {
+    base energy-saving-method;
+    description
+      "When an unused channel is detected, the unused channel is
+       closed. Dynamically open the channel when detecting that
+       there are services on the channel.";
+  }
+
+  identity load-based-power-module-scheduling {
+    base energy-saving-method;
+    description
+      "Power modules intelligently schedule internal power supply
+       based on the power load. When the power load decreases,
+       some power supplies are automatically disabled.
+
+       When the power load increases, the disabled power supplies
+       are enabled again. ";
+  }
+
+  identity load-based-board-scheduling {
+    base energy-saving-method;
+    description
+      "Boards intelligently schedule internal forwarding resources
+       based on the service load. When the service load decreases,
+       some forwarding resources are automatically disabled or the
+       working frequency of the forwarding resources is reduced.
+
+       When the service load increases, the disabled forwarding
+       resources are enabled again or the working frequency of
+       forwarding resources is improved. In the case of burst
+       traffic, packet forwarding may be delayed, but packets
+       will not be lost.";
+  }
+
+  identity energy-saving-power-state {
+    description
+      "Base identity for power state.";
+    reference
+      "RFC 7326: Energy Management Framework";
+  }
+
+  identity off-state {
+    base energy-saving-power-state;
+    description
+      "Indicates that the component typically
+             requires a complete boot when awakened.";
+    reference
+      "RFC 7326: Energy Management Framework";
+  }
+
+  identity sleep-state {
+    base energy-saving-power-state;
+    description
+      "Indicates that a component with energy management support
+       is not functional but immediately available such as
+       wake up mechanism.";
+    reference
+      "RFC 7326: Energy Management Framework";
+  }
+
+  identity low-power-state {
+    base energy-saving-power-state;
+    description
+      "Indicates that some components with energy management
+       support are not available and these components can
+       take measures to use less energy.";
+    reference
+      "RFC 7326: Energy Management Framework";
+  }
+
+  identity full-power-state {
+    base energy-saving-power-state;
+    description
+      "Indicates that all components with energy management
+       support are available and may use maximum power.";
+    reference
+      "RFC 7326: Energy Management Framework";
+  }
+
+  typedef energy-saving-operator {
+    type enumeration {
+      enum on {
+        value 1;
+        description
+          "Power-on for energy saving.";
+      }
+      enum off {
+        value 2;
+        description
+          "Power-off for energy saving.";
+      }
+    }
+    description
+      "Energy saving operator.";
+  }
+
+  grouping energy-consumption-data {
+    description
+      "Grouping for energy monitoring.";
+    leaf average-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The average consumed power.";
+    }
+    leaf saved-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The saved power.";
+    }
+    leaf real-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The actual observed consumed power.";
+      reference
+        "RFC 6988: Requirements for Energy Management";
+    }
+    leaf actual-volts {
+      type int32;
+      units "mV";
+      description
+        "The actual observed voltage.";
+      reference
+        "RFC 6988: Requirements for Energy Management";
+    }
+    leaf actual-amperes {
+      type int32;
+      units "mA";
+      description
+        "The actual observed current.";
+      reference
+        "RFC 6988: Requirements for Energy Management";
+    }
+    leaf actual-celsius {
+      type int32;
+      units "0.01 C";
+      description
+        "The actual observed temperature.";
+    }
+  }
+
+  grouping energy-saving-modes {
+    description
+      "Grouping for energy saving mode and methods.";
+    list energy-saving-mode {
+      key "mode";
+      description
+        "The energy saving mode.";
+      leaf mode {
+        type identityref {
+          base energy-saving-mode;
+        }
+        description
+          "The energy saving mode.";
+      }
+      leaf-list energy-saving-method {
+        type identityref {
+          base energy-saving-method;
+        }
+        description
+          "The energy saving method.";
+      }
+    }
+  }
+
+  grouping power-parameters {
+    description
+      "Grouping for energy paramters.";
+    leaf temperature-upper-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The upper bound overheat temperature of the component.
+         Upon the upper bound is exceeded, an alarm will be
+         triggered to indicate fatal failure.";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
+    }
+    leaf temperature-middle-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The middle bound overheat temperature of the component.
+         Upon the middle bound is exceeded, an alarm will be
+         triggered.";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
+    }
+    leaf temperature-lower-bound {
+      type int32;
+      units "0.01 C";
+      description
+        "The lower bound overheat temperature of the component.
+         Upon the lower bound is exceeded, the alarm will be
+         triggered.";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
+    }
+    leaf rated-power {
+      type yang:gauge64;
+      units "mW";
+      description
+        "The rated power.";
+    }
+    leaf expected-volts {
+      type int32;
+      units "mV";
+      description
+        "The expected volts.";
+    }
+    leaf low-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The lower volts bound which might cause equipment
+         misbehavior or even damage.";
+    }
+    leaf low-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The lowest volts bound which might cause equipment fatal
+         damage.";
+    }
+    leaf high-volts-bound {
+      type int32;
+      units "mV";
+      description
+        "The higher volts bound which should trigger an alarm.";
+      reference
+        "RFC 8632: A YANG Data Model for Alarm Management";
+    }
+    leaf high-volts-fatal {
+      type int32;
+      units "mV";
+      description
+        "The highest volts bound of monitoring class which
+         will cause fatal failure.";
+    }
+  }
+
+    grouping energy-power-consumption-stats {
+      description
+        "Statistics data about energy and power monitoring.";
+      leaf total-energy-consumption {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Accumulated energy consumption of equipment.";
+      }
+      leaf saved-energy {
+        type yang:gauge64;
+        units "Wh";
+        description
+          "Saved energy consumption of equipment.";
+      }
+      leaf eer {
+        type decimal64 {
+          fraction-digits 18;
+        }
+        units "Gbps/Watt";
+        description
+          "The energy efficiency rating (EER) is a metric
+           generally defined as a functional unit divided by
+           the energy used.";
+      }
+    }
+}
+&lt;CODE ENDS&gt;
+</pre><a href="#section-5.1-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="sec-ntw">
+<section id="section-5.2">
+        <h3 id="name-network-module">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-network-module" class="section-name selfRef">Network Module</a>
+        </h3>
+<p id="section-5.2-1">The module imports "ietf-network" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "ietf-energy-saving-common".<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<div class="breakable lang-yang sourcecode" id="section-5.2-2">
+<pre>
+&lt;CODE BEGINS&gt; file "ietf-ntw-energy-saving@2024-01-23.yang"
+module ietf-ntw-energy-saving {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving";
+  prefix esm-ntw;
+
+  import ietf-energy-saving-common {
+    prefix esm-common;
+    reference
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
+  }
+  import ietf-network {
+    prefix nw;
+    reference
+      "RFC 8345: A YANG Data Model for Network Topologies";
+  }
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6991: Common YANG Types";
+  }
+  import iana-hardware {
+   prefix ianahw;
+   reference
+     "https://www.iana.org/assignments/iana-hardware/iana-hardware.xhtml";
+  }
+  organization
+    "IETF XXX Working Group.";
+  contact
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
+
+     Author:   Gen Chen
+               &lt;mailto:chengen@huawei.com&gt;
+     Editor:   Qin Wu
+               &lt;mailto:bill.wu@huawei.com&gt;
+     Editor:   Mohamed Boucadair
+               &lt;mailto:mohamed.boucadair@orange.com&gt;
+     Author:   Carlos Pignataro
+               &lt;mailto:cpignata@gmail.com&gt;";
+  description
+    "This module contains a collection of YANG definitions for power
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2024-01-23 {
+    description
+      "Initial revision.";
+    reference
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
+  }
+
+  augment "/nw:networks/nw:network/nw:node" {
+    if-feature "esm-common:energy-saving";
+    description
+      "Energy monitoring data for network elements.";
+    container energy-power-consumption {
+      config false;
+      description
+        "Statistics data about energy and power monitoring.";
+      uses esm-common:energy-power-consumption-stats;
+      leaf start-time {
+        type yang:date-and-time;
+        description
+          "The time (in hundredths of a second) since the
+          network management portion of the system was last
+          re-initialized. It corresponds to the sysUpTime MIB object.
+          It specifies the start time of the energy measurement
+          results collection.";
+      reference
+        "RFC 3418:   Management Information Base (MIB) for the
+                     Simple Network Management Protocol (SNMP)";
+      }
+    }
+    container energy-saving-modes {
+      description
+        "List of the energy saving mode.";
+      uses esm-common:energy-saving-modes;
+    }
+    list component {
+      key name;
+      config false;
+      description
+      "List of components.";
+      leaf name {
+        type string;
+        description
+          "The name assigned to this component.
+           This name is not required to be the same as
+           entPhysicalName.";
+      }
+      leaf class {
+        type identityref {
+          base ianahw:hardware-class;
+        }
+        mandatory true;
+        description
+          "An indication of the general hardware type of the
+           component.";
+        reference
+          "RFC 6933: Entity MIB (Version 4) - entPhysicalClass";
+        }
+      container energy-monitoring {
+        description
+          "Energy monitoring data for components.";
+        container energy-consumption {
+          description
+          "Statistics of component about energy monitoring.";
+          uses esm-common:energy-consumption-data;
+        }
+       container energy-saving {
+        description
+        "Controls energy saving parameters of a component.";
+         leaf enabled {
+          type boolean;
+          default "true";
+           description
+             "Controls whether the energy-saving
+             of the component is enabled (when set to true)
+              or disabled (set to false).";
+         }
+         leaf power-state {
+          type identityref {
+            base esm-common:energy-saving-power-state;
+          }
+          description
+            "The device energy saving operator state.";
+         }
+       }
+     }
+   }
+  }
+}
+&lt;CODE ENDS&gt;
+</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="sec-ni">
+<section id="section-5.3">
+        <h3 id="name-network-inventory-module">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-network-inventory-module" class="section-name selfRef">Network Inventory Module</a>
+        </h3>
+<p id="section-5.3-1">The module imports "ietf-network-inventory" <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> and "ietf-energy-saving-common".<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<div class="breakable lang-yang sourcecode" id="section-5.3-2">
+<pre>
+&lt;CODE BEGINS&gt; file "ietf-ni-energy-saving@2024-01-23.yang"
+module ietf-ni-energy-saving {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving";
+  prefix esm-ni;
+
+  import ietf-energy-saving-common {
+    prefix esm-common;
+    reference
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
+  }
+  import ietf-network-inventory {
+    prefix ni;
+    reference
+      "RFC IIII: A YANG Data Model for Network Inventory";
+  }
+
+  organization
+    "IETF xxx Working Group.";
+  contact
+    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
+     WG List:  &lt;mailto:xxxx@ietf.org&gt;
+
+     Author:   Gen Chen
+               &lt;mailto:chengen@huawei.com&gt;
+     Editor:   Qin Wu
+               &lt;mailto:bill.wu@huawei.com&gt;
+     Editor:   Mohamed Boucadair
+               &lt;mailto:mohamed.boucadair@orange.com&gt;
+     Author:   Carlos Pignataro
+               &lt;mailto:cpignata@gmail.com&gt;";
+  description
+    "This module contains a collection of YANG definitions for power
+     and energy management of devices. It also augments both the
+     network topology and inventory models.
+
+     Copyright (c) 2024 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2024-01-23 {
+    description
+      "Initial revision.";
+    reference
+      "RFC XXXX: YANG Data Models for Energy Saving Management";
+  }
+
+  grouping network-element-ref {
+    description
+      "Contains the information necessary to reference a network
+       element.";
+    leaf ne-ref {
+      type leafref {
+        path "/ni:network-inventory/ni:network-elements"
+           + "/ni:network-element/ni:ne-id";
+        require-instance false;
+      }
+      description
+        "Used to reference a network element.";
+    }
+  }
+
+  grouping component-ref {
+    description
+      "Contains the information necessary to reference a component.";
+    leaf node-ref {
+      type leafref {
+        path "/ni:network-inventory/ni:network-elements"
+           + "/ni:network-element[ni:ne-id="
+           + "current()/../ne-ref]/ni:components/ni:component"
+           + "/ni:component-id";
+        require-instance false;
+      }
+      description
+        "Used to reference a component.";
+    }
+    uses network-element-ref;
+  }
+
+  augment "/ni:network-inventory/ni:network-elements"
+        + "/ni:network-element" {
+    if-feature "esm-common:energy-saving";
+    description
+      "Energy management static data for network element.";
+    container energy-management {
+      config false;
+      description
+        "Statistics of the energy management.";
+      leaf energy-monitoring-capability {
+        type boolean;
+        description
+          "Indicates whether monitoring can be performed.";
+      }
+      container energy-saving-modes {
+        description
+          "List of supported energy saving modes.";
+        uses esm-common:energy-saving-modes;
+      }
+    }
+  }
+
+  augment "/ni:network-inventory/ni:network-elements"
+        + "/ni:network-element/ni:components/ni:component" {
+    if-feature "esm-common:energy-saving";
+    description
+      "Energy management static data for component.";
+    container power-parameters {
+      config false;
+      description
+        "Power parameter monitoring.";
+      uses esm-common:power-parameters;
+    }
+  }
+}
+&lt;CODE ENDS&gt;
+</pre><a href="#section-5.3-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">This section uses the template described in Section 3.7 of <span>[<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The YANG modules specified in this document define a schema for data
+   that is designed to be accessed via network management protocol such
+   as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.These network management
+   protocols are required to use a secure transport layer and mutual
+   authentication, e.g., SSH <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span> without the "none" authentication
+   option, Transport Layer Security (TLS) <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> with mutual X.509
+   authentication, and HTTPS with HTTP authentication (<span><a href="https://rfc-editor.org/rfc/rfc9110#section-11" class="relref">Section 11</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>).<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
+   provides the means to restrict access for particular NETCONF or
+   RESTCONF users to a preconfigured subset of all available NETCONF or
+   RESTCONF protocol operations and content.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">There are several data nodes defined in this YANG module that are
+   writable/creatable/deletable (i.e., config true, which is the
+   default).  These data nodes may be considered sensitive or vulnerable
+   in some network environments.  Write operations (e.g., edit-config)
+   to these data nodes without proper protection can have a negative
+   effect on network operations. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:<a href="#section-6-4" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-6-5">
+        <dt id="section-6-5.1">energy-saving-modes:</dt>
+        <dd style="margin-left: 1.5em" id="section-6-5.2">
+          <p id="section-6-5.2.1">This leaf specifies the energy saving mode set globally on a device.<a href="#section-6-5.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-6-5.3">esm-ntw:energy-saving/esm-ntw:enabled:</dt>
+        <dd style="margin-left: 1.5em" id="section-6-5.4">
+          <p id="section-6-5.4.1">This leaf enable/disables energy saving state of specific component.<a href="#section-6-5.4.1" class="pilcrow">¶</a></p>
+<p id="section-6-5.4.2">Some of the readable data nodes in this YANG module may be considered
+sensitive or vulnerable in some network environments.  It is thus
+important to control read access (e.g., via get, get-config, or
+notification) to these data nodes. Specifically, the following subtrees and data nodes have particular
+sensitivities/vulnerabilities:<a href="#section-6-5.4.2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-6-5.4.3">
+            <dt id="section-6-5.4.3.1">'TBC':</dt>
+            <dd style="margin-left: 1.5em" id="section-6-5.4.3.2">
+              <p id="section-6-5.4.3.2.1">....<a href="#section-6-5.4.3.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</dd>
+      <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-7">
+      <h2 id="name-iana-considerations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<div id="the-ietf-xml-registry">
+<section id="section-7.1">
+        <h3 id="name-the-ietf-xml-registry">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-the-ietf-xml-registry" class="section-name selfRef">The "IETF XML" Registry</a>
+        </h3>
+<p id="section-7.1-1">This document requests IANA to register the following URIs
+in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-7.1-2">
+<pre>
+   URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
+   Registrant Contact: The IESG.
+   XML: N/A, the requested URIs are XML namespaces.
+
+   URI: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
+   Registrant Contact: The IESG.
+   XML: N/A, the requested URIs are XML namespaces.
+
+   URI: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
+   Registrant Contact: The IESG.
+   XML: N/A, the requested URIs are XML namespaces.
+</pre><a href="#section-7.1-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="the-yang-module-names-registry">
+<section id="section-7.2">
+        <h3 id="name-the-yang-module-names-regis">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-the-yang-module-names-regis" class="section-name selfRef">The "YANG Module Names" Registry</a>
+        </h3>
+<p id="section-7.2-1">This document requests IANA to register the following YANG modules
+   in the "YANG Module Names" registry <span>[<a href="#RFC6020" class="cite xref">RFC6020</a>]</span> within
+   the "YANG Parameters" registry group.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-7.2-2">
+<pre>
+   name: ietf-energy-saving-common
+   prefix: esm-common
+   namespace: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
+   Maintained by IANA? N
+   Reference: RFC XXXX
+
+   name: ietf-ntw-energy-saving
+   prefix: esm-ntw
+   namespace: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
+   Maintained by IANA? N
+   Reference: RFC XXXX
+
+   name: ietf-ni-energy-saving
+   prefix: esm-ni
+   namespace: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
+   Maintained by IANA? N
+   Reference: RFC XXXX
+</pre><a href="#section-7.2-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="sec-combined-references">
+<section id="section-8">
+      <h2 id="name-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<div id="sec-normative-references">
+<section id="section-8.1">
+        <h3 id="name-normative-references">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.ietf-ivy-network-inventory-yang">[I-D.ietf-ivy-network-inventory-yang]</dt>
+        <dd>
+<span class="refAuthor">Yu, C.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Bouquier, J.</span>, <span class="refAuthor">Peruzzini, F.</span>, and <span class="refAuthor">P. Bedard</span>, <span class="refTitle">"A YANG Data Model for Network Inventory"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ivy-network-inventory-yang-03</span>, <time datetime="2024-07-07" class="refDate">7 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ivy-network-inventory-yang-03">https://datatracker.ietf.org/doc/html/draft-ietf-ivy-network-inventory-yang-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3688">[RFC3688]</dt>
+        <dd>
+<span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01" class="refDate">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3688">https://www.rfc-editor.org/rfc/rfc3688</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6020">[RFC6020]</dt>
+        <dd>
+<span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6020">https://www.rfc-editor.org/rfc/rfc6020</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6241">[RFC6241]</dt>
+        <dd>
+<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6991">[RFC6991]</dt>
+        <dd>
+<span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6991">https://www.rfc-editor.org/rfc/rfc6991</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8040">[RFC8040]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+        <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8341">[RFC8341]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8345">[RFC8345]</dt>
+      <dd>
+<span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Medved, J.</span>, <span class="refAuthor">Varga, R.</span>, <span class="refAuthor">Bahadur, N.</span>, <span class="refAuthor">Ananthakrishnan, H.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"A YANG Data Model for Network Topologies"</span>, <span class="seriesInfo">RFC 8345</span>, <span class="seriesInfo">DOI 10.17487/RFC8345</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8345">https://www.rfc-editor.org/rfc/rfc8345</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-8.2">
+        <h3 id="name-informative-references">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.cprjgf-bmwg-powerbench">[I-D.cprjgf-bmwg-powerbench]</dt>
+        <dd>
+<span class="refAuthor">Pignataro, C.</span>, <span class="refAuthor">Jacob, R.</span>, <span class="refAuthor">Fioccola, G.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Characterization and Benchmarking Methodology for Power in Networking Devices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cprjgf-bmwg-powerbench-02</span>, <time datetime="2024-07-06" class="refDate">6 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-powerbench-02">https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-powerbench-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.cx-opsawg-green-metrics">[I-D.cx-opsawg-green-metrics]</dt>
+        <dd>
+<span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Dong, L.</span>, <span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Ciavaglia, L.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Odini, M.</span>, <span class="refAuthor">Schooler, E.</span>, <span class="refAuthor">Rezaki, A.</span>, and <span class="refAuthor">C. Pignataro</span>, <span class="refTitle">"Green Networking Metrics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cx-opsawg-green-metrics-02</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cx-opsawg-green-metrics-02">https://datatracker.ietf.org/doc/html/draft-cx-opsawg-green-metrics-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-netmod-rfc8407bis">[I-D.ietf-netmod-rfc8407bis]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-16</span>, <time datetime="2024-09-20" class="refDate">20 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.manral-bmwg-power-usage">[I-D.manral-bmwg-power-usage]</dt>
+        <dd>
+<span class="refAuthor">Manral, V.</span>, <span class="refAuthor">Sharma, P.</span>, <span class="refAuthor">Banerjee, S.</span>, and <span class="refAuthor">Y. Ping</span>, <span class="refTitle">"Benchmarking Power usage of networking devices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-manral-bmwg-power-usage-04</span>, <time datetime="2013-03-12" class="refDate">12 March 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04">https://datatracker.ietf.org/doc/html/draft-manral-bmwg-power-usage-04</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3418">[RFC3418]</dt>
+        <dd>
+<span class="refAuthor">Presuhn, R., Ed.</span>, <span class="refTitle">"Management Information Base (MIB) for the Simple Network Management Protocol (SNMP)"</span>, <span class="seriesInfo">STD 62</span>, <span class="seriesInfo">RFC 3418</span>, <span class="seriesInfo">DOI 10.17487/RFC3418</span>, <time datetime="2002-12" class="refDate">December 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3418">https://www.rfc-editor.org/rfc/rfc3418</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6242">[RFC6242]</dt>
+        <dd>
+<span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6242">https://www.rfc-editor.org/rfc/rfc6242</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6933">[RFC6933]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Romascanu, D.</span>, <span class="refAuthor">Quittek, J.</span>, and <span class="refAuthor">M. Chandramouli</span>, <span class="refTitle">"Entity MIB (Version 4)"</span>, <span class="seriesInfo">RFC 6933</span>, <span class="seriesInfo">DOI 10.17487/RFC6933</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6933">https://www.rfc-editor.org/rfc/rfc6933</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6988">[RFC6988]</dt>
+        <dd>
+<span class="refAuthor">Quittek, J., Ed.</span>, <span class="refAuthor">Chandramouli, M.</span>, <span class="refAuthor">Winter, R.</span>, <span class="refAuthor">Dietz, T.</span>, and <span class="refAuthor">B. Claise</span>, <span class="refTitle">"Requirements for Energy Management"</span>, <span class="seriesInfo">RFC 6988</span>, <span class="seriesInfo">DOI 10.17487/RFC6988</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6988">https://www.rfc-editor.org/rfc/rfc6988</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8340">[RFC8340]</dt>
+        <dd>
+<span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8340">https://www.rfc-editor.org/rfc/rfc8340</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8446">[RFC8446]</dt>
+        <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9110">[RFC9110]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-A">
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="appendix-A-1">This work has benefited from the discussions that occurred during the Sustainable
+   Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
+   particular, <span>[<a href="#I-D.cx-opsawg-green-metrics" class="cite xref">I-D.cx-opsawg-green-metrics</a>]</span> assess several
+   sustainability-related attributes such as power consumption, energy
+   efficiency, and carbon footprint associated with a network, its
+   equipment, and the services that are provided over it and suggest a
+   set of metrics that provide network observability and can be used to
+   optimize a network's "greenness". <span>[<a href="#I-D.manral-bmwg-power-usage" class="cite xref">I-D.manral-bmwg-power-usage</a>]</span>
+   and <span>[<a href="#I-D.cprjgf-bmwg-powerbench" class="cite xref">I-D.cprjgf-bmwg-powerbench</a>]</span>
+   provide suggestions for measuring power usage of live networks under
+   different traffic loads and various switch router configuration
+   settings.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-B">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Gen Chen</span></div>
+<div dir="auto" class="left"><span class="org">Huawei</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:chengen@huawei.com" class="email">chengen@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Qin Wu (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="org">Huawei</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:bill.wu@huawei.com" class="email">bill.wu@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Mohamed Boucadair (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="org">Orange</span></div>
+<div dir="auto" class="left"><span class="country-name">France</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:mohamed.boucadair@orange.com" class="email">mohamed.boucadair@orange.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Oscar Gonzales de Dios</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica I+D</span></div>
+<div dir="auto" class="left"><span class="country-name">Spain</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:oscar.gonzalezdedios@telefonica.com" class="email">oscar.gonzalezdedios@telefonica.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Carlos Pignataro</span></div>
+<div dir="auto" class="left"><span class="org">North Carolina State University</span></div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:cpignata@gmail.com,%20cmpignat@ncsu.edu" class="email">cpignata@gmail.com, cmpignat@ncsu.edu</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
