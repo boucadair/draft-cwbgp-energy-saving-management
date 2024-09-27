@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                Q. Wu, Ed.
 Intended status: Standards Track                                  Huawei
-Expires: 30 March 2025                                 M. Boucadair, Ed.
+Expires: 31 March 2025                                 M. Boucadair, Ed.
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                       26 September 2024
+                                                       27 September 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 March 2025.
+   This Internet-Draft will expire on 31 March 2025.
 
 Copyright Notice
 
@@ -123,7 +123,7 @@ Table of Contents
       considered as capabilities, and are thus maintained in the
       inventory.
 
-   *  Required parameters to monitor, control and adjust nodes and
+   *  Required parameters to monitor, control, and adjust nodes and
       components behaviors are added to the network topology as this
       allows operator to better assess the implications on node-specific
       action on the overall network.
