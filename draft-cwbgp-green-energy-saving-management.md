@@ -64,15 +64,7 @@ informative:
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes. As described in {{Section 3.4 of ?RFC6988}},
-   monitoring energy, power can be required for purposes such as:
-
-   * Designing control loops for energy saving,
-   * investigating energy-saving potential,
-   * evaluating the effectiveness of energy-saving policies and  measures,
-   * accounting for the total power received and provided by an entity, a network, or a service,
-   * predicting an entity's reliability based on power usage, and
-   * planning for the next maintenance cycle for an entity.
+   and the contribution of involved nodes.
 
    However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
@@ -95,8 +87,8 @@ informative:
    the "ietf-network-inventory" module {{!I-D.ietf-ivy-network-inventory-yang}} with the following rationale:
 
    * Parameters that reflect the saving modes and methods are considered
-     as capabilities and thus are maintained in the inventory.
-   * Required parameters to control and adjust nodes and components behaviors
+     as capabilities, and are thus maintained in the inventory.
+   * Required parameters to monitor, control, and adjust nodes and components behaviors
      are added to the network topology as this allows operator to better assess
      the implications on node-specific action on the overall network.
 
