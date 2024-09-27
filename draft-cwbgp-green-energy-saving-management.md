@@ -69,14 +69,14 @@ informative:
    However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
    different network configuration and conditions.  For example, in
-   'tidal network' in which traffic volume undergoes significant
+   a 'Tidal network' in which traffic volume undergoes significant
    fluctuations at different times, various energy management methods
    might be envisaged to optimize the energy efficiency at the network
    scale, e.g., by selectively disabling ports or cards on specific network
    nodes based on (forecast) traffic patterns.
 
-   This document defines YANG modules for use in energy management within a newtork.
-   The modules covers both network and device levels ({{Section 3.5.1 of ?I-D.ietf-netmod-rfc8407bis}}).
+   This document defines YANG modules for use in energy management within a network.
+   The modules cover both network and device levels ({{Section 3.5.1 of ?I-D.ietf-netmod-rfc8407bis}}).
    The modules can be used, e.g., for monitoring the energy
    consumption of network devices, such as (but are not limited to)
    routers, switches, security gateways, hosts, or servers.  Where
@@ -100,7 +100,7 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
 
    This document contains placeholder values that need to be replaced
    with finalized values at the time of publication.  This note
-   summarizes all of the substitutions that are needed.
+   summarizes all the substitutions that are needed.
 
    Please apply the following replacements:
 
@@ -174,7 +174,7 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
    energy saving methods and augments the component of the network
    inventory base model with capability related power attributes.
 
-   "ietf-ntw-energy-saving" augments the node of asbstract
+   "ietf-ntw-energy-saving" augments the node of abstract
    network model defined in {{!RFC8345}} with energy consumption and
    power usage related attributes. At the network element level, the data model covers configuration of
    the energy saving mode and a set of related parameters to manage
@@ -197,7 +197,7 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
    state of each component within the network device. It also includes threshold
    related power parameters such as rated power, expected volts.
 
-   In order to ease reuse of various paramters independent of the module layer,
+   In order to ease reuse of various parameters independent of the module layer,
    this document also defines a common model: "ietf-energy-saving-common".
 
 The structure of each module is provided in the following subsections.
@@ -306,7 +306,7 @@ sensitivities/vulnerabilities:
 ## The "IETF XML" Registry
 
 This document requests IANA to register the following URIs
-in the "ns" subregistry within the "IETF XML Registry" {{!RFC3688}}:
+in the "ns" sub-registry within the "IETF XML Registry" {{!RFC3688}}:
 
 ~~~~
    URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
@@ -353,7 +353,7 @@ in the "ns" subregistry within the "IETF XML Registry" {{!RFC3688}}:
 # Acknowledgments
 {:numbered="false"}
 
-   This work has benefited from the discussions that occured during the Sustainable
+   This work has benefited from the discussions that occurred during the Sustainable
    Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
    particular, {{?I-D.cx-opsawg-green-metrics}} assess several
    sustainability-related attributes such as power consumption, energy
@@ -361,6 +361,7 @@ in the "ns" subregistry within the "IETF XML Registry" {{!RFC3688}}:
    equipment, and the services that are provided over it and suggest a
    set of metrics that provide network observability and can be used to
    optimize a network's "greenness". {{?I-D.manral-bmwg-power-usage}}
-   provides suggestions for measuring power usage of live networks under
+   and {{?I-D.cprjgf-bmwg-powerbench}}
+   provide suggestions for measuring power usage of live networks under
    different traffic loads and various switch router configuration
    settings.
