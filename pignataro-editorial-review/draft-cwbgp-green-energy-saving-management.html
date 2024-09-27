@@ -1235,57 +1235,36 @@ svg :is([fill="white"], [fill^="#fff"]) {
    environmental impact, it is important to ensure energy efficiency in
    the operation of network infrastructures.  Operators are thus seeking
    for more information to reflect the power consumption of a network
-   and the contribution of involved nodes. As described in <span><a href="https://rfc-editor.org/rfc/rfc6988#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC6988" class="cite xref">RFC6988</a>]</span>,
-   monitoring energy, power can be required for purposes such as:<a href="#section-1-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-1-2.1">
-          <p id="section-1-2.1.1">Designing control loops for energy saving,<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-2.2">
-          <p id="section-1-2.2.1">investigating energy-saving potential,<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-2.3">
-          <p id="section-1-2.3.1">evaluating the effectiveness of energy-saving policies and  measures,<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-2.4">
-          <p id="section-1-2.4.1">accounting for the total power received and provided by an entity, a network, or a service,<a href="#section-1-2.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-2.5">
-          <p id="section-1-2.5.1">predicting an entity's reliability based on power usage, and<a href="#section-1-2.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-2.6">
-          <p id="section-1-2.6.1">planning for the next maintenance cycle for an entity.<a href="#section-1-2.6.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-1-3">However, there are no standard mechanisms to report and control power
+   and the contribution of involved nodes.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">However, there are no standard mechanisms to report and control power
    usage or energy consumption of different networking equipment under
    different network configuration and conditions.  For example, in
    a 'Tidal network' in which traffic volume undergoes significant
    fluctuations at different times, various energy management methods
    might be envisaged to optimize the energy efficiency at the network
    scale, e.g., by selectively disabling ports or cards on specific network
-   nodes based on (forecast) traffic patterns.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">This document defines YANG modules for use in energy management within a network.
+   nodes based on (forecast) traffic patterns.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">This document defines YANG modules for use in energy management within a network.
    The modules cover both network and device levels (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16#section-3.5.1" class="relref">Section 3.5.1</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>).
    The modules can be used, e.g., for monitoring the energy
    consumption of network devices, such as (but are not limited to)
    routers, switches, security gateways, hosts, or servers.  Where
    applicable, device monitoring extends to the individual components of
-   the device.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">The network model augments the "ietf-network" module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, while the inventory model augments
-   the "ietf-network-inventory" module <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> with the following rationale:<a href="#section-1-5" class="pilcrow">¶</a></p>
+   the device.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">The network model augments the "ietf-network" module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, while the inventory model augments
+   the "ietf-network-inventory" module <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> with the following rationale:<a href="#section-1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-1-6.1">
-          <p id="section-1-6.1.1">Parameters that reflect the saving modes and methods are considered
-as capabilities and thus are maintained in the inventory.<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-1-5.1">
+          <p id="section-1-5.1.1">Parameters that reflect the saving modes and methods are considered
+as capabilities, and are thus maintained in the inventory.<a href="#section-1-5.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-6.2">
-          <p id="section-1-6.2.1">Required parameters to control and adjust nodes and components behaviors
+        <li class="normal" id="section-1-5.2">
+          <p id="section-1-5.2.1">Required parameters to monitor, control, and adjust nodes and components behaviors
 are added to the network topology as this allows operator to better assess
-the implications on node-specific action on the overall network.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
+the implications on node-specific action on the overall network.<a href="#section-1-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-1-7">The document leverages types defined in <span>[<a href="#RFC3418" class="cite xref">RFC3418</a>]</span> and <span>[<a href="#RFC6933" class="cite xref">RFC6933</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-6">The document leverages types defined in <span>[<a href="#RFC3418" class="cite xref">RFC3418</a>]</span> and <span>[<a href="#RFC6933" class="cite xref">RFC6933</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <div id="notes-to-the-rfc-editor">
 <section id="section-1.1">
         <h3 id="name-notes-to-the-rfc-editor">
@@ -2537,10 +2516,6 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
 <dt id="RFC6933">[RFC6933]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Romascanu, D.</span>, <span class="refAuthor">Quittek, J.</span>, and <span class="refAuthor">M. Chandramouli</span>, <span class="refTitle">"Entity MIB (Version 4)"</span>, <span class="seriesInfo">RFC 6933</span>, <span class="seriesInfo">DOI 10.17487/RFC6933</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6933">https://www.rfc-editor.org/rfc/rfc6933</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6988">[RFC6988]</dt>
-        <dd>
-<span class="refAuthor">Quittek, J., Ed.</span>, <span class="refAuthor">Chandramouli, M.</span>, <span class="refAuthor">Winter, R.</span>, <span class="refAuthor">Dietz, T.</span>, and <span class="refAuthor">B. Claise</span>, <span class="refTitle">"Requirements for Energy Management"</span>, <span class="seriesInfo">RFC 6988</span>, <span class="seriesInfo">DOI 10.17487/RFC6988</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6988">https://www.rfc-editor.org/rfc/rfc6988</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8340">[RFC8340]</dt>
         <dd>
