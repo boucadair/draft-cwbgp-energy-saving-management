@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-26T00:58:05.507453+00:00",
+  "timestamp": "2024-09-29T01:03:24.814086+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -297,15 +297,15 @@
       "id": "I_kwDOLPL1Dc6MpcjE",
       "title": "component-energy-monitoring",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/37",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/main/yang/ietf-ni-energy-saving.yang includes \"/*  container component-energy-monitoring {..\" \r\n\r\n* is this module the right place to plug this container? \r\n",
       "createdAt": "2024-06-18T11:51:43Z",
-      "updatedAt": "2024-06-18T13:51:52Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-26T07:32:13Z",
+      "closedAt": "2024-09-26T07:32:13Z",
       "comments": [
         {
           "author": "billwuqin",
@@ -313,6 +313,13 @@
           "body": "No, Should move to network model extension part.",
           "createdAt": "2024-06-18T13:51:51Z",
           "updatedAt": "2024-06-18T13:51:51Z"
+        },
+        {
+          "author": "billwuqin",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I believe this issue can be closed.",
+          "createdAt": "2024-09-26T07:32:10Z",
+          "updatedAt": "2024-09-26T07:32:10Z"
         }
       ]
     }
@@ -2328,6 +2335,110 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOLPL1Dc58v3si",
+      "title": "Some Editorial changes to align with the charter",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/45",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-26T06:55:33Z",
+      "updatedAt": "2024-09-27T08:21:07Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "6bf5058e6c5cf88d1dde47a54309467824f4d0f2",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "billwuqin-patch-1",
+      "headRefOid": "3691cd2c0a4f8aa1fd1bc288540e622a94a59635",
+      "closedAt": "2024-09-27T08:21:06Z",
+      "mergedAt": "2024-09-27T08:21:06Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "17b980cf080ba053366d121e7d90a296663965d6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6K6t6N",
+          "commit": {
+            "abbreviatedOid": "e6e34ae"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-26T09:26:28Z",
+          "updatedAt": "2024-09-26T09:26:53Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\n   * Required parameters to monitor, control, and adjust nodes and components behaviors\r\n```",
+              "createdAt": "2024-09-26T09:26:29Z",
+              "updatedAt": "2024-09-26T09:26:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6LCQns",
+          "commit": {
+            "abbreviatedOid": "e6e34ae"
+          },
+          "author": "cpignata",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-27T02:14:50Z",
+          "updatedAt": "2024-09-27T02:14:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOLPL1Dc583WlC",
+      "title": "Update draft-cwbgp-green-energy-saving-management.md",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/46",
+      "state": "MERGED",
+      "author": "cpignata",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Several editorial and grammar fixes.",
+      "createdAt": "2024-09-27T02:31:21Z",
+      "updatedAt": "2024-09-27T08:32:03Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "17b980cf080ba053366d121e7d90a296663965d6",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "pignataro-editorial-review",
+      "headRefOid": "68f1042b5e325dd2bf7b4976422e123058e4bcec",
+      "closedAt": "2024-09-27T08:32:01Z",
+      "mergedAt": "2024-09-27T08:32:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "6756e24441a8c52e75856f55bc28c2915e23f1fb"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6LEDwc",
+          "commit": {
+            "abbreviatedOid": "68f1042"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-27T08:23:42Z",
+          "updatedAt": "2024-09-27T08:23:42Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
