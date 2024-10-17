@@ -115,39 +115,7 @@ The document leverages types defined in {{?RFC3418}} and {{?RFC6933}}.
    The meanings of the symbols in the YANG tree diagrams are defined in
    {{?RFC8340}}.
 
-   The following terms are used in the document:
-
-   Network Inventory:
-   :  A collection of data for network devices and
-      their components managed by a specific management system
-      {{!I-D.ietf-ivy-network-inventory-yang}}.
-
-   Chassis:
-   :  A physical container that allows installation of power
-      modules, fan modules, and various types of boards and cards
-      {{!I-D.ietf-ivy-network-inventory-yang}}.
-
-   Network Element:
-   :  A manageable network entity that contains hardware
-      and software units, e.g., a network device installed on one or
-      several chassis {{!I-D.ietf-ivy-network-inventory-yang}}.
-
-   Board and Card:
-   : A pluggable equipment can be inserted into one or
-      several slots/ sub-slots and can afford a specific transmission
-      function independently {{!I-D.ietf-ivy-network-inventory-yang}}. The
-      core modular units for processing data.  Depending on functions,
-      they can be classified into Main Processing Unit (MPU), Switch
-      Fabric Unit (SFU), Line Processing Unit (LPU), and other types.
-      MPU is responsible for system control, management, and monitoring.
-      SFU is responsible for line-rate data switching on the data plane.
-      LPU is responsible for data packet processing and traffic
-      management.
-
-   Port and Interface:
-   :  A port is a physical entity that is used for
-      connections.  While an interface is a logical entity for
-      connections.
+   The document uses the terms defined in {{?I-D.bclp-green-terminology}} and {{?I-D.ietf-ivy-network-inventory-yang}}.
 
 # YANG Prefixes
 
