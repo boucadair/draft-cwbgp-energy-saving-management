@@ -14,14 +14,14 @@
        This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
    a common module that is used independent of the model layer. 
     " name="description">
-<meta content="xml2rfc 3.23.1" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="energy efficiency" name="keyword">
 <meta content="energy saving" name="keyword">
 <meta content="energy management" name="keyword">
 <meta content="draft-cwbgp-green-energy-saving-management-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.1
-    Python 3.12.6
+  xml2rfc 3.23.2
+    Python 3.12.7
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -1031,11 +1031,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Energy Saving Management</td>
-<td class="right">September 2024</td>
+<td class="right">October 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Chen, et al.</td>
-<td class="center">Expires 31 March 2025</td>
+<td class="center">Expires 20 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-cwbgp-green-energy-saving-management-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-27" class="published">27 September 2024</time>
+<time datetime="2024-10-17" class="published">17 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-31">31 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-20">20 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 31 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 20 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1245,7 +1245,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    scale, e.g., by selectively disabling ports or cards on specific network
    nodes based on (forecast) traffic patterns.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document defines YANG modules for use in energy management within a network.
-   The modules cover both network and device levels (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16#section-3.5.1" class="relref">Section 3.5.1</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>).
+   The modules cover both network and device levels (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-18#section-3.5.1" class="relref">Section 3.5.1</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>).
    The modules can be used, e.g., for monitoring the energy
    consumption of network devices, such as (but are not limited to)
    routers, switches, security gateways, hosts, or servers.  Where
@@ -1305,51 +1305,7 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">The meanings of the symbols in the YANG tree diagrams are defined in
    <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">The following terms are used in the document:<a href="#section-2-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-2-4">
-        <dt id="section-2-4.1">Network Inventory:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-4.2">
-          <p id="section-2-4.2.1">A collection of data for network devices and
-their components managed by a specific management system
-<span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-4.3">Chassis:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-4.4">
-          <p id="section-2-4.4.1">A physical container that allows installation of power
-modules, fan modules, and various types of boards and cards
-<span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.4.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-4.5">Network Element:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-4.6">
-          <p id="section-2-4.6.1">A manageable network entity that contains hardware
-and software units, e.g., a network device installed on one or
-several chassis <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-4.6.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-4.7">Board and Card:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-4.8">
-          <p id="section-2-4.8.1">A pluggable equipment can be inserted into one or
- several slots/ sub-slots and can afford a specific transmission
- function independently <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>. The
- core modular units for processing data.  Depending on functions,
- they can be classified into Main Processing Unit (MPU), Switch
- Fabric Unit (SFU), Line Processing Unit (LPU), and other types.
- MPU is responsible for system control, management, and monitoring.
- SFU is responsible for line-rate data switching on the data plane.
- LPU is responsible for data packet processing and traffic
- management.<a href="#section-2-4.8.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-4.9">Port and Interface:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-4.10">
-          <p id="section-2-4.10.1">A port is a physical entity that is used for
-connections.  While an interface is a logical entity for
-connections.<a href="#section-2-4.10.1" class="pilcrow">¶</a></p>
-</dd>
-      <dd class="break"></dd>
-</dl>
+<p id="section-2-3">The document uses the terms defined in <span>[<a href="#I-D.bclp-green-terminology" class="cite xref">I-D.bclp-green-terminology</a>]</span> and <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="yang-prefixes">
@@ -2489,6 +2445,10 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.bclp-green-terminology">[I-D.bclp-green-terminology]</dt>
+        <dd>
+<span class="refAuthor">Liu, P. C.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Contreras, L. M.</span>, and <span class="refAuthor">M. Palmero</span>, <span class="refTitle">"Terminology for Energy Efficiency Network Management"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-bclp-green-terminology-00</span>, <time datetime="2024-10-10" class="refDate">10 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-bclp-green-terminology-00">https://datatracker.ietf.org/doc/html/draft-bclp-green-terminology-00</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.cprjgf-bmwg-powerbench">[I-D.cprjgf-bmwg-powerbench]</dt>
         <dd>
 <span class="refAuthor">Pignataro, C.</span>, <span class="refAuthor">Jacob, R.</span>, <span class="refAuthor">Fioccola, G.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Characterization and Benchmarking Methodology for Power in Networking Devices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cprjgf-bmwg-powerbench-02</span>, <time datetime="2024-07-06" class="refDate">6 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-powerbench-02">https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-powerbench-02</a>&gt;</span>. </dd>
@@ -2499,7 +2459,7 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
 <dd class="break"></dd>
 <dt id="I-D.ietf-netmod-rfc8407bis">[I-D.ietf-netmod-rfc8407bis]</dt>
         <dd>
-<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-16</span>, <time datetime="2024-09-20" class="refDate">20 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-16</a>&gt;</span>. </dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-18</span>, <time datetime="2024-10-11" class="refDate">11 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-18">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-18</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.manral-bmwg-power-usage">[I-D.manral-bmwg-power-usage]</dt>
         <dd>

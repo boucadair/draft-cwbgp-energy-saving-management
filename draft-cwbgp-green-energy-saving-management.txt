@@ -5,13 +5,13 @@
 Network Inventory YANG                                           G. Chen
 Internet-Draft                                                Q. Wu, Ed.
 Intended status: Standards Track                                  Huawei
-Expires: 31 March 2025                                 M. Boucadair, Ed.
+Expires: 20 April 2025                                 M. Boucadair, Ed.
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                       27 September 2024
+                                                         17 October 2024
 
 
              YANG Data Models for Energy Saving Management
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 March 2025.
+   This Internet-Draft will expire on 20 April 2025.
 
 Copyright Notice
 
@@ -159,34 +159,8 @@ Table of Contents
    The meanings of the symbols in the YANG tree diagrams are defined in
    [RFC8340].
 
-   The following terms are used in the document:
-
-   Network Inventory:  A collection of data for network devices and
-      their components managed by a specific management system
-      [I-D.ietf-ivy-network-inventory-yang].
-
-   Chassis:  A physical container that allows installation of power
-      modules, fan modules, and various types of boards and cards
-      [I-D.ietf-ivy-network-inventory-yang].
-
-   Network Element:  A manageable network entity that contains hardware
-      and software units, e.g., a network device installed on one or
-      several chassis [I-D.ietf-ivy-network-inventory-yang].
-
-   Board and Card:  A pluggable equipment can be inserted into one or
-      several slots/ sub-slots and can afford a specific transmission
-      function independently [I-D.ietf-ivy-network-inventory-yang].  The
-      core modular units for processing data.  Depending on functions,
-      they can be classified into Main Processing Unit (MPU), Switch
-      Fabric Unit (SFU), Line Processing Unit (LPU), and other types.
-      MPU is responsible for system control, management, and monitoring.
-      SFU is responsible for line-rate data switching on the data plane.
-      LPU is responsible for data packet processing and traffic
-      management.
-
-   Port and Interface:  A port is a physical entity that is used for
-      connections.  While an interface is a logical entity for
-      connections.
+   The document uses the terms defined in [I-D.bclp-green-terminology]
+   and [I-D.ietf-ivy-network-inventory-yang].
 
 3.  YANG Prefixes
 
@@ -1209,6 +1183,14 @@ Table of Contents
 
 8.2.  Informative References
 
+   [I-D.bclp-green-terminology]
+              Liu, P. C., Boucadair, M., Wu, Q., Contreras, L. M., and
+              M. Palmero, "Terminology for Energy Efficiency Network
+              Management", Work in Progress, Internet-Draft, draft-bclp-
+              green-terminology-00, 10 October 2024,
+              <https://datatracker.ietf.org/doc/html/draft-bclp-green-
+              terminology-00>.
+
    [I-D.cprjgf-bmwg-powerbench]
               Pignataro, C., Jacob, R., Fioccola, G., and Q. Wu,
               "Characterization and Benchmarking Methodology for Power
@@ -1229,9 +1211,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-16, 20 September 2024,
+              netmod-rfc8407bis-18, 11 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-16>.
+              rfc8407bis-18>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
