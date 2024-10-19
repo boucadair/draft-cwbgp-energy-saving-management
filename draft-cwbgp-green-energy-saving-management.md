@@ -43,7 +43,7 @@ author:
    fullname: Carlos Pignataro
    organization: North Carolina State University
    country: United States of America
-   email: cpignata@gmail.com, cmpignat@ncsu.edu
+   email: cpignata@gmail.com
 
 
 normative:
