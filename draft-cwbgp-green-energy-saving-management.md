@@ -45,7 +45,6 @@ author:
    country: United States of America
    email: cpignata@gmail.com
 
-
 normative:
 
 informative:
