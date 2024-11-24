@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-21T01:01:35.483592+00:00",
+  "timestamp": "2024-11-24T01:06:09.741678+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -322,6 +322,22 @@
           "updatedAt": "2024-09-26T07:32:10Z"
         }
       ]
+    },
+    {
+      "number": 47,
+      "id": "I_kwDOLPL1Dc6fswm0",
+      "title": "Comments from Jeffi",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/47",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "> Hi Med,\r\n> \r\n> Thank you for quick clarification. The configuration data is clear now that it can be used by device model also.\r\n> [Med] Greats. Thanks.\r\n> \r\n> I have still got further questions on the following state data.\r\n> \r\n>           +--ro energy-saving\r\n>              +--ro enabled?       boolean\r\n>              +--ro power-state?   identityref\r\n> \r\n> I assume that these nodes would probably augment ietf-hardware.yang\u2019s /hardware-state/container/.\r\n> Please comment.\r\n> [Med] This can augment directly the component node.\r\n> \r\n> While a component is admin-state locked (and consequently oper-state is disabled), and enery-saving is also enabled for that component, what would be the power-state?\r\n> [Med] The power-state can take one of the mode values (off-state, sleep-state, etc.).\r\n> Is power-state dependent/independent on admin-state/oper-state?\r\n> Please clarify.\r\n> [Med] Good question. No, it is independent of admin-state/oper-state. Added a note so that we clarify this in the text.\r\n> \r\n> Thanks a lot.\r\n> \r\n> Regards,\r\n> Jeffi\r\n\r\n> From: [mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com) <[mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com)> \r\n> Sent: Wednesday, November 20, 2024 7:53 PM\r\n> To: Jeffi Edward Holding (Nokia) <[jeffi_edward.holding@nokia.com](mailto:jeffi_edward.holding@nokia.com)>\r\n> Cc: [draft-cwbgp-green-energy-saving-management@ietf.org](mailto:draft-cwbgp-green-energy-saving-management@ietf.org)\r\n> Subject: RE: YANG Data Model for Energy Saving Management Reg.\r\n> \r\n> Hi Jeffi,\r\n> \r\n> FWIW, the latest version of the spec is available at: [https://datatracker.ietf.org/doc/draft-cwbgp-green-energy-saving-management/](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fdraft-cwbgp-green-energy-saving-management%2F&data=05%7C02%7Cmohamed.boucadair%40orange.com%7C112f456392a745b960c908dd0a26fa96%7C90c7a20af34b40bfbc48b9253b6f5d20%7C0%7C0%7C638677884748496954%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=ta0mC8jtGwJjTd6msGPILTTYadqBiOLVb9Q8JG3%2FTRk%3D&reserved=0) \r\n> \r\n> The nodes that you listed below are applicable actually at both the network and device levels. This is why we define them in a common model, ietf-energy-saving-common.\r\n> \r\n> So far, that grouping is reused at both the network and inventory models. The inventory model reflects the actual capabilities of NEs. We do expect that the same structure can be used by a device model to tweak the saving modes.\r\n> \r\n> We are pushing to have the same structure at both network/device level to ease mapping and ensure lossless mapping when it comes to touching NEs.\r\n> \r\n> Hope this clarifies your concern.\r\n> \r\n> Please let me know if you think that adding some words to spec is needed.\r\n> \r\n> Thank you.\r\n> \r\n> Cheers,\r\n> Med\r\n> \r\n> De : Jeffi Edward Holding (Nokia) <[jeffi_edward.holding@nokia.com](mailto:jeffi_edward.holding@nokia.com)> \r\n> Envoy\u00e9 : mercredi 20 novembre 2024 11:42\r\n> \u00c0 : BOUCADAIR Mohamed INNOV/NET <[mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com)>\r\n> Objet : YANG Data Model for Energy Saving Management Reg.\r\n> \r\n> Hi Mohamed,\r\n> \r\n> I was looking at the IETF draft proposed by you for energy saving.\r\n> [draft-cwbgp-ivy-energy-saving-management-01 - A YANG Data Model for Energy Saving Management](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fdraft-cwbgp-ivy-energy-saving-management%2F01%2F&data=05%7C02%7Cmohamed.boucadair%40orange.com%7C112f456392a745b960c908dd0a26fa96%7C90c7a20af34b40bfbc48b9253b6f5d20%7C0%7C0%7C638677884748520482%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=hw%2B9WhDc3h6BeIMINWLdnbtyTB1UX3dY2JarvipIagc%3D&reserved=0)\r\n> \r\n> The power saving modes, methods & state defined in the draft are very clear.\r\n> But I still could not get if this model is applicable for network elements (NE) or network controllers (NC).\r\n> I understand that the base modules on which the energy saving module augments are applicable only for NC (ietf-network & ietf-network-inventory).\r\n> \r\n>           +--rw energy-saving-modes\r\n>              +--rw energy-saving-mode* [mode]\r\n>                 +--rw mode                    identityref\r\n>                 +--rw energy-saving-method*   identityref\r\n> \r\n> However, looking at the above configuration, I assume that energy saving modes and methods are configured to the NE.\r\n> If then, the above part should be part of NE\u2019s YANG model?\r\n> \r\n> Please clarify which one implements this YANG model, the NE or the NC?\r\n> \r\n> Thanks and Regards,\r\n> Jeffi\r\n> ",
+      "createdAt": "2024-11-21T12:35:56Z",
+      "updatedAt": "2024-11-21T12:35:56Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
