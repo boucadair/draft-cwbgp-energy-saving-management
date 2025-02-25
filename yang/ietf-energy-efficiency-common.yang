@@ -1,6 +1,6 @@
-module ietf-energy-saving-common {
+module ietf-energy-efficiency-common {
   yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-common";
+  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-efficiency-common";
   prefix esm-common;
 
   import ietf-yang-types {
@@ -10,10 +10,10 @@ module ietf-energy-saving-common {
   }
 
   organization
-    "IETF xxx Working Group.";
+    "IETF GREEN Working Group.";
   contact
-    "WG Web:   <https://datatracker.ietf.org/wg/xxx/>;
-     WG List:  <mailto:xxxx@ietf.org>
+    "WG Web:   <https://datatracker.ietf.org/wg/green/>;
+     WG List:  <mailto:green@ietf.org>
 
      Author:   Gen Chen
                <mailto:chengen@huawei.com>
@@ -50,7 +50,7 @@ module ietf-energy-saving-common {
 
   feature energy-saving {
     description
-      "Specifies support of energy saving management.";
+      "Specifies support of energy efficiency management.";
   }
 
   identity energy-saving-mode {
@@ -73,7 +73,7 @@ module ietf-energy-saving-common {
       "Standard energy saving mode.
 
        In this mode, the system extends basic energy saving
-       mode with more advanced Lossless energy saving features,
+       mode with more advanced lossless energy saving features,
        e.g., power module schedule.";
   }
 
@@ -170,7 +170,7 @@ module ietf-energy-saving-common {
        some power supplies are automatically disabled.
 
        When the power load increases, the disabled power supplies
-       are enabled again. ";
+       are enabled again.";
   }
 
   identity load-based-board-scheduling {
@@ -199,7 +199,7 @@ module ietf-energy-saving-common {
     base energy-saving-power-state;
     description
       "Indicates that the component typically
-             requires a complete boot when awakened.";
+       requires a complete boot when awakened.";
     reference
       "RFC 7326: Energy Management Framework";
   }
@@ -397,30 +397,30 @@ module ietf-energy-saving-common {
     }
   } 
 
-    grouping energy-power-consumption-stats {
+  grouping energy-power-consumption-stats {
+    description
+      "Statistics data about energy and power monitoring.";
+    leaf total-energy-consumption {
+      type yang:gauge64;
+      units "Wh";
       description
-        "Statistics data about energy and power monitoring.";
-      leaf total-energy-consumption {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Accumulated energy consumption of equipment.";
-      }
-      leaf saved-energy {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Saved energy consumption of equipment.";
-      }
-      leaf eer {
-        type decimal64 {
-          fraction-digits 18;
-        }
-        units "Gbps/Watt";
-        description
-          "The energy efficiency rating (EER) is a metric
-           generally defined as a functional unit divided by
-           the energy used.";
-      }
+        "Accumulated energy consumption of equipment.";
     }
+    leaf saved-energy {
+      type yang:gauge64;
+      units "Wh";
+      description
+        "Saved energy consumption of equipment.";
+    }
+    leaf eer {
+      type decimal64 {
+      fraction-digits 18;
+      }
+      units "Gbps/Watt";
+      description
+        "The energy efficiency rating (EER) is a metric
+         generally defined as a functional unit divided by
+         the energy used.";
+    }
+  }
 }
