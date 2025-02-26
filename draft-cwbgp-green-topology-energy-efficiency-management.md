@@ -1,5 +1,5 @@
 ---
-title: "A YANG Network Topology Data Model for Energy Efficiency Management"
+title: "A Network Topology Data Model for Energy Efficiency Management"
 abbrev: "Energy Saving Management"
 category: std
 
