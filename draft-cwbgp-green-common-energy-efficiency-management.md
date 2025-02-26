@@ -18,10 +18,10 @@ keyword:
 
 author:
  -
-   fullname: Gen Chen
+   fullname: Qiufang Ma
    organization:  Huawei
    country: China
-   email: chengen@huawei.com
+   email: maqiufang1@huawei.com
  -
    fullname: Qin Wu
    role: editor
