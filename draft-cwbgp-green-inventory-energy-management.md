@@ -29,11 +29,11 @@ author:
     country: China
     email: bill.wu@huawei.com
  -
-    fullname: Mohamed Boucadair
+    fullname: Emile Stephan
     role: editor
     organization: Orange
     country: France
-    email:  mohamed.boucadair@orange.com
+    email:  emile.stephan@orange.com
  -
     fullname: Oscar Gonzales de Dios
     organization: Telefonica I+D
