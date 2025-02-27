@@ -3,9 +3,9 @@
 
 
 GREEN                                                              Q. Ma
-Internet-Draft                                                Q. Wu, Ed.
+Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 31 August 2025                                M. Boucadair, Ed.
+Expires: 31 August 2025                                       E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -941,16 +941,16 @@ Authors' Addresses
    Email: maqiufang1@huawei.com
 
 
-   Qin Wu (editor)
+   Qin Wu
    Huawei
    China
    Email: bill.wu@huawei.com
 
 
-   Mohamed Boucadair (editor)
+   Emile Stephan
    Orange
    France
-   Email: mohamed.boucadair@orange.com
+   Email: emile.stephan@orange.com
 
 
    Oscar Gonzales de Dios
