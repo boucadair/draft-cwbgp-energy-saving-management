@@ -1,12 +1,29 @@
-# A YANG Data Model for Energy Saving Management
+# A Common YANG Data Model for Energy Efficiency Network Management
 
-This is the working area for the individual Internet-Draft, "YANG Data Models for Energy Saving Management".
+This is the working area for the individual Internet-Draft, "A Common YANG Data Model for Energy Efficiency Network Management".
 
-* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-energy-saving-management.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-green-energy-saving-management)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-green-energy-saving-management)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-energy-saving-management.diff)
+* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-common-energy-efficiency-management.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-green-common-energy-efficiency-management)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-green-common-energy-efficiency-management)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-common-energy-efficiency-management.diff)
 
+# A Network Inventory Data Model for Energy Efficiency Management
+
+This is the working area for the individual Internet-Draft, "A Network Inventory Data Model for Energy Efficiency Management".
+
+* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-inventory-energy-management.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-green-inventory-energy-management)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-green-inventory-energy-management)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-inventory-energy-management.diff)
+
+#  A Network Topology Data Model for Energy Efficiency Management
+
+This is the working area for the individual Internet-Draft, " A Network Topology Data Model for Energy Efficiency Management".
+
+* [Editor's Copy](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-topology-energy-efficiency-management.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cwbgp-green-topology-energy-efficiency-management)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cwbgp-green-topology-energy-efficiency-management)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/draft-cwbgp-energy-saving-management/#go.draft-cwbgp-green-topology-energy-efficiency-management.diff)
 
 ## Contributing
 
