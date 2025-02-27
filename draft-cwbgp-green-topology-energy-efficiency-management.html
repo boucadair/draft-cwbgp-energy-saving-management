@@ -4,24 +4,26 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>YANG Data Models for Energy Saving Management</title>
+<title>A Network Topology Data Model for Energy Efficiency Management</title>
 <meta content="Gen Chen" name="author">
 <meta content="Qin Wu" name="author">
 <meta content="Mohamed Boucadair" name="author">
 <meta content="Oscar Gonzales de Dios" name="author">
 <meta content="Carlos Pignataro" name="author">
 <meta content="
-       This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
-   a common module that is used independent of the model layer. 
+       This document defines a YANG Network Topology Data Model that can be used for
+   Energy Efficiency Management within a network. The model provides both
+   network-centric view of energy consumption of network devices and device view
+   of energy consumption of individual components within network devices. 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.27.0" name="generator">
 <meta content="energy efficiency" name="keyword">
 <meta content="energy saving" name="keyword">
 <meta content="energy management" name="keyword">
-<meta content="draft-cwbgp-green-energy-saving-management-latest" name="ietf.draft">
+<meta content="draft-cwbgp-green-topology-energy-efficiency-management-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
-    Python 3.12.8
+  xml2rfc 3.27.0
+    Python 3.12.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -34,7 +36,7 @@
     setuptools 70.3.0
     wcwidth 0.2.13
 -->
-<link href="draft-cwbgp-green-energy-saving-management.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-cwbgp-green-topology-energy-efficiency-management.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -442,7 +444,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -1055,7 +1057,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Chen, et al.</td>
-<td class="center">Expires 8 August 2025</td>
+<td class="center">Expires 31 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,17 +1065,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">Network Inventory YANG</dd>
+<dd class="workgroup">green</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-cwbgp-green-energy-saving-management-latest</dd>
+<dd class="internet-draft">draft-cwbgp-green-topology-energy-efficiency-management-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-04" class="published">4 February 2025</time>
+<time datetime="2025-02-27" class="published">27 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-08">8 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-31">31 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1101,11 +1103,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">YANG Data Models for Energy Saving Management</h1>
+<h1 id="title">A Network Topology Data Model for Energy Efficiency Management</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines YANG modules for energy saving management at both device and network levels. Also, the document specifies
-   a common module that is used independent of the model layer.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines a YANG Network Topology Data Model that can be used for
+   Energy Efficiency Management within a network. The model provides both
+   network-centric view of energy consumption of network devices and device view
+   of energy consumption of individual components within network devices.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1137,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 31 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1187,29 +1191,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-common-energy-saving-manage" class="internal xref">Common Energy Saving Management Module Structure</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-energy-saving-management-ne" class="internal xref">Energy Saving Management Network Model</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
-                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-esm-inventory-model" class="internal xref">ESM Inventory Model</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-energy-saving-management-ne" class="internal xref">Energy Saving Management Network Model</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-yang-modules" class="internal xref">YANG Modules</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-common-module" class="internal xref">Common Module</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-network-module" class="internal xref">Network Module</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-network-inventory-module" class="internal xref">Network Inventory Module</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-network-topology-energy-eff" class="internal xref">Network Topology Energy Efficiency Management YANG Module</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1251,37 +1238,29 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">With the growth of networks and the increase of awareness about the
-   environmental impact, it is important to ensure energy efficiency in
-   the operation of network infrastructures.  Operators are thus seeking
-   for more information to reflect the power consumption of a network
-   and the contribution of involved nodes.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">However, there are no standard mechanisms to report and control power
-   usage or energy consumption of different networking equipment under
-   different network configuration and conditions.  For example, in
-   a 'Tidal network' in which traffic volume undergoes significant
-   fluctuations at different times, various energy management methods
-   might be envisaged to optimize the energy efficiency at the network
-   scale, e.g., by selectively disabling ports or cards on specific network
-   nodes based on (forecast) traffic patterns.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">With the growth of networks and the increase of awareness about the environmental
+   impact, it is important to ensure energy efficiency in the operation of network
+   infrastructures. Operators are thus seeking for more information to reflect the
+   power consumption of a network and the contribution of involved nodes.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">However, there are no standard mechanisms to report and control dynamic power
+  usage or energy consumption of different networking equipment under different
+  network configuration and conditions. For example, in a 'Tidal network' in which
+  traffic volume undergoes significant fluctuations at different times, various
+  energy management methods might be envisaged to optimize the energy efficiency
+  at the network scale, e.g., by selectively disabling ports or cards on specific
+  network nodes based on (forecast) traffic patterns.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document defines YANG modules for use in energy management within a network.
    The modules cover both network and device levels (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-22#section-3.5.1" class="relref">Section 3.5.1</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>).
-   The modules can be used, e.g., for monitoring the energy
-   consumption of network devices, such as (but are not limited to)
-   routers, switches, security gateways, hosts, or servers.  Where
-   applicable, device monitoring extends to the individual components of
-   the device.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">The network model augments the "ietf-network" module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, while the inventory model augments
-   the "ietf-network-inventory" module <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> with the following rationale:<a href="#section-1-4" class="pilcrow">¶</a></p>
+   The modules can be used, e.g., for monitoring the energy consumption of network
+   devices, such as (but are not limited to) routers, switches, security gateways,
+   hosts, or servers. Where applicable, device monitoring extends to the individual
+   components of the device.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">The network model augments the "ietf-network" module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, with the following rationale:<a href="#section-1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-5.1">
-          <p id="section-1-5.1.1">Parameters that reflect the saving modes and methods are considered
-as capabilities, and are thus maintained in the inventory.<a href="#section-1-5.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-5.2">
-          <p id="section-1-5.2.1">Required parameters to monitor, control, and adjust nodes and components behaviors
+          <p id="section-1-5.1.1">Required parameters to monitor, control, and adjust nodes and components behaviors
 are added to the network topology as this allows operator to better assess
-the implications on node-specific action on the overall network.<a href="#section-1-5.2.1" class="pilcrow">¶</a></p>
+the implications on node-specific action on the overall network.<a href="#section-1-5.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-1-6">The document leverages types defined in <span>[<a href="#RFC3418" class="cite xref">RFC3418</a>]</span> and <span>[<a href="#RFC6933" class="cite xref">RFC6933</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
@@ -1304,10 +1283,7 @@ the implications on node-specific action on the overall network.<a href="#sectio
             <p id="section-1.1-4.1.1">XXXX --&gt; the RFC number assigned to this I-D<a href="#section-1.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-4.2">
-            <p id="section-1.1-4.2.1">IIII --&gt; the RFC number assigned to <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span><a href="#section-1.1-4.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-1.1-4.3">
-            <p id="section-1.1-4.3.1">2024-01-23 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-4.2.1">2024-01-23 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1325,7 +1301,8 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">The meanings of the symbols in the YANG tree diagrams are defined in
    <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">The document uses the terms defined in <span>[<a href="#I-D.bclp-green-terminology" class="cite xref">I-D.bclp-green-terminology</a>]</span> and <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-3">The document uses the terms defined in <span>[<a href="#I-D.bclp-green-terminology" class="cite xref">I-D.bclp-green-terminology</a>]</span>
+   and <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="yang-prefixes">
@@ -1384,92 +1361,34 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-overview">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-4.1-1">As described in <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span>, the Network
-   Inventory YANG data model is used to maintain the base network
-   inventory information.  This document defines the YANG module "ietf-ni-energy-saving",
-   which augments network element of the
-   network Inventory base model with energy saving modes, associated
-   energy saving methods and augments the component of the network
-   inventory base model with capability related power attributes.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">"ietf-ntw-energy-saving" augments the node of abstract
-   network model defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> with energy consumption and
-   power usage related attributes. At the network element level, the data model covers configuration of
-   the energy saving mode and a set of related parameters to manage
-   (e.g., retrieve or adjust) the status of power units, fans, boards,
-   cards, ports, processors, and links.  For example, the adjustment
-   methods include frequency tuning, shutdown, or sleep mode.  In
-   addition, the methods also support the energy saving configuration
-   for the 'tidal' traffic flow, where related components can be turned
-   off, e.g., during "idle" hours to optimize the energy consumption and
-   then woken up based on some triggered (e.g., busy hours or other
-   scheduled events).<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1-3">The data model defines energy saving modes representing some energy
+<p id="section-4.1-1">"ietf-ntw-energy-saving" augments the node of abstract network model defined
+   in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> with energy consumption and power usage related attributes.
+   At the network element level, the data model covers configuration of the energy
+   saving mode and a set of related parameters to manage (e.g., retrieve or adjust)
+   the status of power units, fans, boards, cards, ports, processors, and links.
+   For example, the adjustment methods include frequency tuning, shutdown,
+   or sleep mode. In addition, the methods also support the energy saving
+   configuration for the 'tidal' traffic flow, where related components can be
+   turned off, e.g., during "idle" hours to optimize the energy consumption and
+   then woken up based on some triggered (e.g., busy hours or other scheduled events).<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">The data model defines energy saving modes representing some energy
    consumption levels, which are basic, standard, or deep.  For each
    consumption level, there is a combination of methods to reach the energy
-   saving target level.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.1-4">At the component level, the data model includes a set of monitoring
-   statistics for energy consumption and energy saving operational
-   state of each component within the network device. It also includes threshold
-   related power parameters such as rated power, expected volts.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
-<p id="section-4.1-5">In order to ease reuse of various parameters independent of the module layer,
-   this document also defines a common model: "ietf-energy-saving-common".<a href="#section-4.1-5" class="pilcrow">¶</a></p>
-<p id="section-4.1-6">The structure of each module is provided in the following subsections.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="common-energy-saving-management-module-structure">
-<section id="section-4.2">
-        <h3 id="name-common-energy-saving-manage">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-common-energy-saving-manage" class="section-name selfRef">Common Energy Saving Management Module Structure</a>
-        </h3>
-<p id="section-4.2-1"><a href="#e-tree" class="auto internal xref">Figure 1</a> shows the tree diagram of the YANG data model defined in <a href="#sec-module" class="auto internal xref">Section 5</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<span id="name-common-energy-saving-managem"></span><div id="e-tree">
-<figure id="figure-1">
-          <div class="alignLeft art-text artwork" id="section-4.2-2.1">
-<pre>
-module: ietf-energy-saving-common
-
-  grouping energy-consumption-data:
-    +-- average-power?    yang:gauge64
-    +-- saved-power?      yang:gauge64
-    +-- real-power?       yang:gauge64
-    +-- actual-volts?     int32
-    +-- actual-amperes?   int32
-    +-- actual-celsius?   int32
-  grouping energy-saving-modes:
-    +-- energy-saving-mode* [mode]
-       +-- mode?                   identityref
-       +-- energy-saving-method*   identityref
-  grouping power-parameters:
-    +-- temperature-upper-bound?    int32
-    +-- temperature-middle-bound?   int32
-    +-- temperature-lower-bound?    int32
-    +-- rated-power?                yang:gauge64
-    +-- expected-volts?             int32
-    +-- low-volts-bound?            int32
-    +-- low-volts-fatal?            int32
-    +-- high-volts-bound?           int32
-    +-- high-volts-fatal?           int32
-  grouping energy-power-consumption-stats:
-    +-- total-energy-consumption?   yang:gauge64
-    +-- saved-energy?               yang:gauge64
-    +-- eer?                        decimal64
-</pre>
-</div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-common-energy-saving-managem" class="selfRef">Common Energy Saving Management Tree Structure</a>
-          </figcaption></figure>
-</div>
+   saving target level.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">At the component level, the data model includes a set of monitoring statistics
+   for energy consumption and energy saving operational state of each component
+   within the network device.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="energy-saving-management-network-model">
-<section id="section-4.3">
+<section id="section-4.2">
         <h3 id="name-energy-saving-management-ne">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-energy-saving-management-ne" class="section-name selfRef">Energy Saving Management Network Model</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-energy-saving-management-ne" class="section-name selfRef">Energy Saving Management Network Model</a>
         </h3>
-<p id="section-4.3-1">The structure of the ESM Network Model is depicted in <a href="#ne-tree" class="auto internal xref">Figure 2</a>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The structure of the ESM Network Model is depicted in <a href="#ne-tree" class="auto internal xref">Figure 1</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <span id="name-esm-network-model-tree-stru"></span><div id="ne-tree">
-<figure id="figure-2">
-          <div class="alignLeft art-text artwork" id="section-4.3-2.1">
+<figure id="figure-1">
+          <div class="alignLeft art-text artwork" id="section-4.2-2.1">
 <pre>
 module: ietf-ntw-energy-saving
   augment /nw:networks/nw:network/nw:node:
@@ -1498,53 +1417,8 @@ module: ietf-ntw-energy-saving
 
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-esm-network-model-tree-stru" class="selfRef">ESM Network Model Tree Structure</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
-<div id="esm-inventory-model">
-<section id="section-4.4">
-        <h3 id="name-esm-inventory-model">
-<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-esm-inventory-model" class="section-name selfRef">ESM Inventory Model</a>
-        </h3>
-<p id="section-4.4-1">The structure of the ESM Network Inventory Model is depicted in <a href="#cs-tree" class="auto internal xref">Figure 3</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<span id="name-esm-inventory-model-tree-st"></span><div id="cs-tree">
-<figure id="figure-3">
-          <div class="alignLeft art-text artwork" id="section-4.4-2.1">
-<pre>
-module: ietf-ni-energy-saving
-  grouping network-element-ref:
-    +-- ne-ref?   leafref
-  grouping component-ref:
-    +-- node-ref?   leafref
-    +-- ne-ref?     leafref
-
-  augment /ni:network-inventory/ni:network-elements
-          /ni:network-element:
-    +--ro energy-management {esm-common:energy-saving}?
-       +--ro energy-monitoring-capability?   boolean
-       +--ro energy-saving-modes
-          +--ro energy-saving-mode* [mode]
-             +--ro mode                    identityref
-             +--ro energy-saving-method*   identityref
-  augment /ni:network-inventory/ni:network-elements
-          /ni:network-element/ni:components/ni:component:
-    +--ro power-parameters {esm-common:energy-saving}?
-       +--ro temperature-upper-bound?    int32
-       +--ro temperature-middle-bound?   int32
-       +--ro temperature-lower-bound?    int32
-       +--ro rated-power?                yang:gauge64
-       +--ro expected-volts?             int32
-       +--ro low-volts-bound?            int32
-       +--ro low-volts-fatal?            int32
-       +--ro high-volts-bound?           int32
-       +--ro high-volts-fatal?           int32
-</pre>
-</div>
-<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-esm-inventory-model-tree-st" class="selfRef">ESM Inventory Model Tree Structure</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1553,456 +1427,11 @@ module: ietf-ni-energy-saving
 </div>
 <div id="sec-module">
 <section id="section-5">
-      <h2 id="name-yang-modules">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-yang-modules" class="section-name selfRef">YANG Modules</a>
+      <h2 id="name-network-topology-energy-eff">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-network-topology-energy-eff" class="section-name selfRef">Network Topology Energy Efficiency Management YANG Module</a>
       </h2>
-<div id="sec-common">
-<section id="section-5.1">
-        <h3 id="name-common-module">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-common-module" class="section-name selfRef">Common Module</a>
-        </h3>
-<p id="section-5.1-1">The module imports types defined in <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<div class="breakable lang-yang sourcecode" id="section-5.1-2">
-<pre>
-&lt;CODE BEGINS&gt; file "ietf-energy-saving-common@2024-01-23.yang"
-module ietf-energy-saving-common {
-  yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-energy-saving-common";
-  prefix esm-common;
-
-  import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 6991: Common YANG Types";
-  }
-
-  organization
-    "IETF xxx Working Group.";
-  contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
-     WG List:  &lt;mailto:xxxx@ietf.org&gt;
-
-     Author:   Gen Chen
-               &lt;mailto:chengen@huawei.com&gt;
-     Editor:   Qin Wu
-               &lt;mailto:bill.wu@huawei.com&gt;
-     Editor:   Mohamed Boucadair
-               &lt;mailto:mohamed.boucadair@orange.com&gt;
-     Author:   Carlos Pignataro
-               &lt;mailto:cpignata@gmail.com&gt;";
-  description
-    "This module contains a collection of YANG definitions for power
-     and energy management of devices. It also augments both the
-     network topology and inventory models.
-
-     Copyright (c) 2024 IETF Trust and the persons
-     identified as authors of the code.  All rights reserved.
-
-     Redistribution and use in source and binary forms, with or
-     without modification, is permitted pursuant to, and subject
-     to the license terms contained in, the Revised BSD License
-     set forth in Section 4.c of the IETF Trust's Legal Provisions
-     Relating to IETF Documents
-     (https://trustee.ietf.org/license-info).
-
-     This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.";
-
-  revision 2024-01-23 {
-    description
-      "Initial revision.";
-    reference
-      "RFC XXXX: YANG Data Models for Energy Saving Management";
-  }
-
-  feature energy-saving {
-    description
-      "Specifies support of energy saving management.";
-  }
-
-  identity energy-saving-mode {
-    description
-      "Base identity for energy saving mode.";
-  }
-
-  identity basic {
-    base energy-saving-mode;
-    description
-      "Basic energy saving mode.
-
-       In this mode, the system will shut down idle modules
-       and put them in a sleep mode.";
-  }
-
-  identity standard {
-    base energy-saving-mode;
-    description
-      "Standard energy saving mode.
-
-       In this mode, the system extends basic energy saving
-       mode with more advanced Lossless energy saving features,
-       e.g., power module schedule.";
-  }
-
-  identity deep {
-    base energy-saving-mode;
-    description
-      "Deep energy saving mode.
-
-       In this mode, the system extends standard energy saving
-       mode with more advanced system level energy saving features,
-       e.g., board scheduling.";
-  }
-
-  identity energy-saving-method {
-    description
-      "Base identity for energy saving method.";
-  }
-
-  identity zone-based-fan-speed-adjustment {
-    base energy-saving-method;
-    description
-      "The system collects information about the
-       temperatures of the service boards in the chassis
-       and the zones where the service boards reside.
-
-       According to the current temperature and target
-       temperature of each board, the system implements
-       stepless speed adjustment in different zones.";
-  }
-
-  identity unused-high-speed-interface-shutdown {
-    base energy-saving-method;
-    description
-      "When detecting an unused high-speed interface, the
-       system shuts down the interface to reduce power consumption
-       of the interface circuits.
-
-       When the interface needs to run service, the
-       system will automatically wake up the interface and
-       restore the interface to the normal working state.";
-  }
-
-  identity unused-port-shutdown {
-    base energy-saving-method;
-    description
-      "When detecting an unused user port, the system automatically
-       or manually shuts down the interface circuits and optical
-       module of the port to reduce port power consumption. When
-       detecting that the port needs to run service, the system
-       automatically enables the port and restores the port to the
-       normal running state, without affecting application of the
-       board.";
-  }
-
-  identity unused-board-shutdown {
-    base energy-saving-method;
-    description
-      "When detecting an unused board, the system automatically
-       shuts down the power supply of the board, ensuring zero
-       power consumption of an unused board.
-
-       When detecting that the board needs to run service, the system
-       automatically powers on the board and restores the board
-       to the normalrunning state, without affecting application of
-       the whole device.";
-  }
-
-  identity dynamic-frequency-adjustment {
-    base energy-saving-method;
-    description
-      "When detecting that a service board is carrying a small
-       service load, the system automatically reduces the working
-       frequency of the service processing module of the board
-       while maintaining the service quality. In doing so, power
-       consumption of the service processing module is reduced.
-       When the service load of the board increases, the system
-       automatically increases the working frequency of the service
-       processing module to meet service needs.";
-  }
-
-  identity unused-channel-shutdown {
-    base energy-saving-method;
-    description
-      "When an unused channel is detected, the unused channel is
-       closed. Dynamically open the channel when detecting that
-       there are services on the channel.";
-  }
-
-  identity load-based-power-module-scheduling {
-    base energy-saving-method;
-    description
-      "Power modules intelligently schedule internal power supply
-       based on the power load. When the power load decreases,
-       some power supplies are automatically disabled.
-
-       When the power load increases, the disabled power supplies
-       are enabled again. ";
-  }
-
-  identity load-based-board-scheduling {
-    base energy-saving-method;
-    description
-      "Boards intelligently schedule internal forwarding resources
-       based on the service load. When the service load decreases,
-       some forwarding resources are automatically disabled or the
-       working frequency of the forwarding resources is reduced.
-
-       When the service load increases, the disabled forwarding
-       resources are enabled again or the working frequency of
-       forwarding resources is improved. In the case of burst
-       traffic, packet forwarding may be delayed, but packets
-       will not be lost.";
-  }
-
-  identity energy-saving-power-state {
-    description
-      "Base identity for power state.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity off-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that the component typically
-             requires a complete boot when awakened.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity sleep-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that a component with energy management support
-       is not functional but immediately available such as
-       wake up mechanism.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity low-power-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that some components with energy management
-       support are not available and these components can
-       take measures to use less energy.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  identity full-power-state {
-    base energy-saving-power-state;
-    description
-      "Indicates that all components with energy management
-       support are available and may use maximum power.";
-    reference
-      "RFC 7326: Energy Management Framework";
-  }
-
-  typedef energy-saving-operator {
-    type enumeration {
-      enum on {
-        value 1;
-        description
-          "Power-on for energy saving.";
-      }
-      enum off {
-        value 2;
-        description
-          "Power-off for energy saving.";
-      }
-    }
-    description
-      "Energy saving operator.";
-  }
-
-  grouping energy-consumption-data {
-    description
-      "Grouping for energy monitoring.";
-    leaf average-power {
-      type yang:gauge64;
-      units "mW";
-      description
-        "The average consumed power.";
-    }
-    leaf saved-power {
-      type yang:gauge64;
-      units "mW";
-      description
-        "The saved power.";
-    }
-    leaf real-power {
-      type yang:gauge64;
-      units "mW";
-      description
-        "The actual observed consumed power.";
-      reference
-        "RFC 6988: Requirements for Energy Management";
-    }
-    leaf actual-volts {
-      type int32;
-      units "mV";
-      description
-        "The actual observed voltage.";
-      reference
-        "RFC 6988: Requirements for Energy Management";
-    }
-    leaf actual-amperes {
-      type int32;
-      units "mA";
-      description
-        "The actual observed current.";
-      reference
-        "RFC 6988: Requirements for Energy Management";
-    }
-    leaf actual-celsius {
-      type int32;
-      units "0.01 C";
-      description
-        "The actual observed temperature.";
-    }
-  }
-
-  grouping energy-saving-modes {
-    description
-      "Grouping for energy saving mode and methods.";
-    list energy-saving-mode {
-      key "mode";
-      description
-        "The energy saving mode.";
-      leaf mode {
-        type identityref {
-          base energy-saving-mode;
-        }
-        description
-          "The energy saving mode.";
-      }
-      leaf-list energy-saving-method {
-        type identityref {
-          base energy-saving-method;
-        }
-        description
-          "The energy saving method.";
-      }
-    }
-  }
-
-  grouping power-parameters {
-    description
-      "Grouping for energy paramters.";
-    leaf temperature-upper-bound {
-      type int32;
-      units "0.01 C";
-      description
-        "The upper bound overheat temperature of the component.
-         Upon the upper bound is exceeded, an alarm will be
-         triggered to indicate fatal failure.";
-      reference
-        "RFC 8632: A YANG Data Model for Alarm Management";
-    }
-    leaf temperature-middle-bound {
-      type int32;
-      units "0.01 C";
-      description
-        "The middle bound overheat temperature of the component.
-         Upon the middle bound is exceeded, an alarm will be
-         triggered.";
-      reference
-        "RFC 8632: A YANG Data Model for Alarm Management";
-    }
-    leaf temperature-lower-bound {
-      type int32;
-      units "0.01 C";
-      description
-        "The lower bound overheat temperature of the component.
-         Upon the lower bound is exceeded, the alarm will be
-         triggered.";
-      reference
-        "RFC 8632: A YANG Data Model for Alarm Management";
-    }
-    leaf rated-power {
-      type yang:gauge64;
-      units "mW";
-      description
-        "The rated power.";
-    }
-    leaf expected-volts {
-      type int32;
-      units "mV";
-      description
-        "The expected volts.";
-    }
-    leaf low-volts-bound {
-      type int32;
-      units "mV";
-      description
-        "The lower volts bound which might cause equipment
-         misbehavior or even damage.";
-    }
-    leaf low-volts-fatal {
-      type int32;
-      units "mV";
-      description
-        "The lowest volts bound which might cause equipment fatal
-         damage.";
-    }
-    leaf high-volts-bound {
-      type int32;
-      units "mV";
-      description
-        "The higher volts bound which should trigger an alarm.";
-      reference
-        "RFC 8632: A YANG Data Model for Alarm Management";
-    }
-    leaf high-volts-fatal {
-      type int32;
-      units "mV";
-      description
-        "The highest volts bound of monitoring class which
-         will cause fatal failure.";
-    }
-  }
-
-    grouping energy-power-consumption-stats {
-      description
-        "Statistics data about energy and power monitoring.";
-      leaf total-energy-consumption {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Accumulated energy consumption of equipment.";
-      }
-      leaf saved-energy {
-        type yang:gauge64;
-        units "Wh";
-        description
-          "Saved energy consumption of equipment.";
-      }
-      leaf eer {
-        type decimal64 {
-          fraction-digits 18;
-        }
-        units "Gbps/Watt";
-        description
-          "The energy efficiency rating (EER) is a metric
-           generally defined as a functional unit divided by
-           the energy used.";
-      }
-    }
-}
-&lt;CODE ENDS&gt;
-</pre><a href="#section-5.1-2" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-<div id="sec-ntw">
-<section id="section-5.2">
-        <h3 id="name-network-module">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-network-module" class="section-name selfRef">Network Module</a>
-        </h3>
-<p id="section-5.2-1">The module imports "ietf-network" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "ietf-energy-saving-common".<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<div class="breakable lang-yang sourcecode" id="section-5.2-2">
+<p id="section-5-1">The module imports "ietf-network" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "ietf-energy-saving-common".<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div class="breakable lang-yang sourcecode" id="section-5-2">
 <pre>
 &lt;CODE BEGINS&gt; file "ietf-ntw-energy-saving@2024-01-23.yang"
 module ietf-ntw-energy-saving {
@@ -2010,7 +1439,7 @@ module ietf-ntw-energy-saving {
   namespace "urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving";
   prefix esm-ntw;
 
-  import ietf-energy-saving-common {
+  import ietf-energy-efficiency-common {
     prefix esm-common;
     reference
       "RFC XXXX: YANG Data Models for Energy Saving Management";
@@ -2151,145 +1580,7 @@ module ietf-ntw-energy-saving {
   }
 }
 &lt;CODE ENDS&gt;
-</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-<div id="sec-ni">
-<section id="section-5.3">
-        <h3 id="name-network-inventory-module">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-network-inventory-module" class="section-name selfRef">Network Inventory Module</a>
-        </h3>
-<p id="section-5.3-1">The module imports "ietf-network-inventory" <span>[<a href="#I-D.ietf-ivy-network-inventory-yang" class="cite xref">I-D.ietf-ivy-network-inventory-yang</a>]</span> and "ietf-energy-saving-common".<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<div class="breakable lang-yang sourcecode" id="section-5.3-2">
-<pre>
-&lt;CODE BEGINS&gt; file "ietf-ni-energy-saving@2024-01-23.yang"
-module ietf-ni-energy-saving {
-  yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving";
-  prefix esm-ni;
-
-  import ietf-energy-saving-common {
-    prefix esm-common;
-    reference
-      "RFC XXXX: YANG Data Models for Energy Saving Management";
-  }
-  import ietf-network-inventory {
-    prefix ni;
-    reference
-      "RFC IIII: A YANG Data Model for Network Inventory";
-  }
-
-  organization
-    "IETF xxx Working Group.";
-  contact
-    "WG Web:   &lt;https://datatracker.ietf.org/wg/xxx/&gt;;
-     WG List:  &lt;mailto:xxxx@ietf.org&gt;
-
-     Author:   Gen Chen
-               &lt;mailto:chengen@huawei.com&gt;
-     Editor:   Qin Wu
-               &lt;mailto:bill.wu@huawei.com&gt;
-     Editor:   Mohamed Boucadair
-               &lt;mailto:mohamed.boucadair@orange.com&gt;
-     Author:   Carlos Pignataro
-               &lt;mailto:cpignata@gmail.com&gt;";
-  description
-    "This module contains a collection of YANG definitions for power
-     and energy management of devices. It also augments both the
-     network topology and inventory models.
-
-     Copyright (c) 2024 IETF Trust and the persons
-     identified as authors of the code.  All rights reserved.
-
-     Redistribution and use in source and binary forms, with or
-     without modification, is permitted pursuant to, and subject
-     to the license terms contained in, the Revised BSD License
-     set forth in Section 4.c of the IETF Trust's Legal Provisions
-     Relating to IETF Documents
-     (https://trustee.ietf.org/license-info).
-
-     This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.";
-
-  revision 2024-01-23 {
-    description
-      "Initial revision.";
-    reference
-      "RFC XXXX: YANG Data Models for Energy Saving Management";
-  }
-
-  grouping network-element-ref {
-    description
-      "Contains the information necessary to reference a network
-       element.";
-    leaf ne-ref {
-      type leafref {
-        path "/ni:network-inventory/ni:network-elements"
-           + "/ni:network-element/ni:ne-id";
-        require-instance false;
-      }
-      description
-        "Used to reference a network element.";
-    }
-  }
-
-  grouping component-ref {
-    description
-      "Contains the information necessary to reference a component.";
-    leaf node-ref {
-      type leafref {
-        path "/ni:network-inventory/ni:network-elements"
-           + "/ni:network-element[ni:ne-id="
-           + "current()/../ne-ref]/ni:components/ni:component"
-           + "/ni:component-id";
-        require-instance false;
-      }
-      description
-        "Used to reference a component.";
-    }
-    uses network-element-ref;
-  }
-
-  augment "/ni:network-inventory/ni:network-elements"
-        + "/ni:network-element" {
-    if-feature "esm-common:energy-saving";
-    description
-      "Energy management static data for network element.";
-    container energy-management {
-      config false;
-      description
-        "Statistics of the energy management.";
-      leaf energy-monitoring-capability {
-        type boolean;
-        description
-          "Indicates whether monitoring can be performed.";
-      }
-      container energy-saving-modes {
-        description
-          "List of supported energy saving modes.";
-        uses esm-common:energy-saving-modes;
-      }
-    }
-  }
-
-  augment "/ni:network-inventory/ni:network-elements"
-        + "/ni:network-element/ni:components/ni:component" {
-    if-feature "esm-common:energy-saving";
-    description
-      "Energy management static data for component.";
-    container power-parameters {
-      config false;
-      description
-        "Power parameter monitoring.";
-      uses esm-common:power-parameters;
-    }
-  }
-}
-&lt;CODE ENDS&gt;
-</pre><a href="#section-5.3-2" class="pilcrow">¶</a>
-</div>
-</section>
+</pre><a href="#section-5-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2298,18 +1589,15 @@ module ietf-ni-energy-saving {
       <h2 id="name-security-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">This section uses the template described in Section 3.7 of <span>[<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">The YANG modules specified in this document define a schema for data
-   that is designed to be accessed via network management protocol such
-   as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.These network management
-   protocols are required to use a secure transport layer and mutual
-   authentication, e.g., SSH <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span> without the "none" authentication
-   option, Transport Layer Security (TLS) <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> with mutual X.509
-   authentication, and HTTPS with HTTP authentication (<span><a href="https://rfc-editor.org/rfc/rfc9110#section-11" class="relref">Section 11</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>).<a href="#section-6-2" class="pilcrow">¶</a></p>
-<p id="section-6-3">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
-   provides the means to restrict access for particular NETCONF or
-   RESTCONF users to a preconfigured subset of all available NETCONF or
-   RESTCONF protocol operations and content.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-1">This section is modeled after the template described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-22#section-3.7" class="relref">Section 3.7</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The "ietf-ntw-energy-saving" YANG module defines a data model that is designed
+   to be accessed via YANG-based management protocols, such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span>
+   and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These protocols have to use a secure transport layer
+   (e.g., SSH <span>[<a href="#RFC4252" class="cite xref">RFC4252</a>]</span>, TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, and QUIC <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>) and have to use
+   mutual authentication.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means
+   to restrict access for  particular NETCONF or RESTCONF users to a preconfigured
+   subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <p id="section-6-4">There are several data nodes defined in this YANG module that are
    writable/creatable/deletable (i.e., config true, which is the
    default).  These data nodes may be considered sensitive or vulnerable
@@ -2357,15 +1645,7 @@ sensitivities/vulnerabilities:<a href="#section-6-5.4.2" class="pilcrow">¶</a><
 in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.1-2">
 <pre>
-   URI: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
-   Registrant Contact: The IESG.
-   XML: N/A, the requested URIs are XML namespaces.
-
    URI: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
-   Registrant Contact: The IESG.
-   XML: N/A, the requested URIs are XML namespaces.
-
-   URI: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
    Registrant Contact: The IESG.
    XML: N/A, the requested URIs are XML namespaces.
 </pre><a href="#section-7.1-2" class="pilcrow">¶</a>
@@ -2382,21 +1662,9 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
    the "YANG Parameters" registry group.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.2-2">
 <pre>
-   name: ietf-energy-saving-common
-   prefix: esm-common
-   namespace: urn:ietf:params:xml:ns:yang:ietf-energy-saving-common
-   Maintained by IANA? N
-   Reference: RFC XXXX
-
    name: ietf-ntw-energy-saving
    prefix: esm-ntw
    namespace: urn:ietf:params:xml:ns:yang:ietf-ntw-energy-saving
-   Maintained by IANA? N
-   Reference: RFC XXXX
-
-   name: ietf-ni-energy-saving
-   prefix: esm-ni
-   namespace: urn:ietf:params:xml:ns:yang:ietf-ni-energy-saving
    Maintained by IANA? N
    Reference: RFC XXXX
 </pre><a href="#section-7.2-2" class="pilcrow">¶</a>
@@ -2432,17 +1700,9 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
         <dd>
 <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6020">https://www.rfc-editor.org/rfc/rfc6020</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6241">[RFC6241]</dt>
-        <dd>
-<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC6991">[RFC6991]</dt>
         <dd>
 <span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6991">https://www.rfc-editor.org/rfc/rfc6991</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8040">[RFC8040]</dt>
-        <dd>
-<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
@@ -2489,13 +1749,21 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
         <dd>
 <span class="refAuthor">Presuhn, R., Ed.</span>, <span class="refTitle">"Management Information Base (MIB) for the Simple Network Management Protocol (SNMP)"</span>, <span class="seriesInfo">STD 62</span>, <span class="seriesInfo">RFC 3418</span>, <span class="seriesInfo">DOI 10.17487/RFC3418</span>, <time datetime="2002-12" class="refDate">December 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3418">https://www.rfc-editor.org/rfc/rfc3418</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6242">[RFC6242]</dt>
+<dt id="RFC4252">[RFC4252]</dt>
         <dd>
-<span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6242">https://www.rfc-editor.org/rfc/rfc6242</a>&gt;</span>. </dd>
+<span class="refAuthor">Ylonen, T.</span> and <span class="refAuthor">C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Authentication Protocol"</span>, <span class="seriesInfo">RFC 4252</span>, <span class="seriesInfo">DOI 10.17487/RFC4252</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4252">https://www.rfc-editor.org/rfc/rfc4252</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6241">[RFC6241]</dt>
+        <dd>
+<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6933">[RFC6933]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Romascanu, D.</span>, <span class="refAuthor">Quittek, J.</span>, and <span class="refAuthor">M. Chandramouli</span>, <span class="refTitle">"Entity MIB (Version 4)"</span>, <span class="seriesInfo">RFC 6933</span>, <span class="seriesInfo">DOI 10.17487/RFC6933</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6933">https://www.rfc-editor.org/rfc/rfc6933</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8040">[RFC8040]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8340">[RFC8340]</dt>
         <dd>
@@ -2505,9 +1773,9 @@ in the "ns" sub-registry within the "IETF XML Registry" <span>[<a href="#RFC3688
         <dd>
 <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC9110">[RFC9110]</dt>
+<dt id="RFC9000">[RFC9000]</dt>
       <dd>
-<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>&gt;</span>. </dd>
+<span class="refAuthor">Iyengar, J., Ed.</span> and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="seriesInfo">RFC 9000</span>, <span class="seriesInfo">DOI 10.17487/RFC9000</span>, <time datetime="2021-05" class="refDate">May 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9000">https://www.rfc-editor.org/rfc/rfc9000</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
