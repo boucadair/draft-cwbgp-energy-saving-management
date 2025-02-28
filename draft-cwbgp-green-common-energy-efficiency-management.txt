@@ -5,13 +5,15 @@
 GREEN                                                              Q. Ma
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 31 August 2025                                       E. Stephan
+Expires: 1 September 2025                                     E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
                                                             C. Pignataro
                                          North Carolina State University
-                                                        27 February 2025
+                                                                  S. Han
+                                                            China Unicom
+                                                        28 February 2025
 
 
    A Common YANG Data Model for Energy Efficiency Network Management
@@ -50,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2025.
+   This Internet-Draft will expire on 1 September 2025.
 
 Copyright Notice
 
@@ -963,3 +965,9 @@ Authors' Addresses
    North Carolina State University
    United States of America
    Email: cpignata@gmail.com
+
+
+   San Han
+   China Unicom
+   China
+   Email: hans29@chinaunicom.cn
