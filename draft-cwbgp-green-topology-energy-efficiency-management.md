@@ -42,6 +42,11 @@ author:
    organization: North Carolina State University
    country: United States of America
    email: cpignata@gmail.com
+ -
+   fullname: San Han
+   organization: China Unicom
+   country: China
+   email: hans29@chinaunicom.cn
 
 normative:
 
