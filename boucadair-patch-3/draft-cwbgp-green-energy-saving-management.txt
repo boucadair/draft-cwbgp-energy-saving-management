@@ -352,8 +352,8 @@ Table of Contents
                   <mailto:chengen@huawei.com>
         Editor:   Qin Wu
                   <mailto:bill.wu@huawei.com>
-        Editor:   Mohamed Boucadair
-                  <mailto:mohamed.boucadair@orange.com>
+        Editor:   XXX XXXX
+                  <mailto:xxx.xxx@orange.com>
         Author:   Carlos Pignataro
                   <mailto:cpignata@gmail.com>";
      description
