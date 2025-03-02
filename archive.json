@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-27T01:00:45.757312+00:00",
+  "timestamp": "2025-03-02T01:04:44.633379+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -326,7 +326,7 @@
     {
       "number": 47,
       "id": "I_kwDOLPL1Dc6fswm0",
-      "title": "Comments from Jeffi",
+      "title": "Comments from Jeffi (Device Model)",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/47",
       "state": "OPEN",
       "author": "boucadair",
@@ -335,7 +335,23 @@
       "labels": [],
       "body": "> Hi Med,\r\n> \r\n> Thank you for quick clarification. The configuration data is clear now that it can be used by device model also.\r\n> [Med] Greats. Thanks.\r\n> \r\n> I have still got further questions on the following state data.\r\n> \r\n>           +--ro energy-saving\r\n>              +--ro enabled?       boolean\r\n>              +--ro power-state?   identityref\r\n> \r\n> I assume that these nodes would probably augment ietf-hardware.yang\u2019s /hardware-state/container/.\r\n> Please comment.\r\n> [Med] This can augment directly the component node.\r\n> \r\n> While a component is admin-state locked (and consequently oper-state is disabled), and enery-saving is also enabled for that component, what would be the power-state?\r\n> [Med] The power-state can take one of the mode values (off-state, sleep-state, etc.).\r\n> Is power-state dependent/independent on admin-state/oper-state?\r\n> Please clarify.\r\n> [Med] Good question. No, it is independent of admin-state/oper-state. Added a note so that we clarify this in the text.\r\n> \r\n> Thanks a lot.\r\n> \r\n> Regards,\r\n> Jeffi\r\n\r\n> From: [mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com) <[mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com)> \r\n> Sent: Wednesday, November 20, 2024 7:53 PM\r\n> To: Jeffi Edward Holding (Nokia) <[jeffi_edward.holding@nokia.com](mailto:jeffi_edward.holding@nokia.com)>\r\n> Cc: [draft-cwbgp-green-energy-saving-management@ietf.org](mailto:draft-cwbgp-green-energy-saving-management@ietf.org)\r\n> Subject: RE: YANG Data Model for Energy Saving Management Reg.\r\n> \r\n> Hi Jeffi,\r\n> \r\n> FWIW, the latest version of the spec is available at: [https://datatracker.ietf.org/doc/draft-cwbgp-green-energy-saving-management/](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fdraft-cwbgp-green-energy-saving-management%2F&data=05%7C02%7Cmohamed.boucadair%40orange.com%7C112f456392a745b960c908dd0a26fa96%7C90c7a20af34b40bfbc48b9253b6f5d20%7C0%7C0%7C638677884748496954%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=ta0mC8jtGwJjTd6msGPILTTYadqBiOLVb9Q8JG3%2FTRk%3D&reserved=0) \r\n> \r\n> The nodes that you listed below are applicable actually at both the network and device levels. This is why we define them in a common model, ietf-energy-saving-common.\r\n> \r\n> So far, that grouping is reused at both the network and inventory models. The inventory model reflects the actual capabilities of NEs. We do expect that the same structure can be used by a device model to tweak the saving modes.\r\n> \r\n> We are pushing to have the same structure at both network/device level to ease mapping and ensure lossless mapping when it comes to touching NEs.\r\n> \r\n> Hope this clarifies your concern.\r\n> \r\n> Please let me know if you think that adding some words to spec is needed.\r\n> \r\n> Thank you.\r\n> \r\n> Cheers,\r\n> Med\r\n> \r\n> De : Jeffi Edward Holding (Nokia) <[jeffi_edward.holding@nokia.com](mailto:jeffi_edward.holding@nokia.com)> \r\n> Envoy\u00e9 : mercredi 20 novembre 2024 11:42\r\n> \u00c0 : BOUCADAIR Mohamed INNOV/NET <[mohamed.boucadair@orange.com](mailto:mohamed.boucadair@orange.com)>\r\n> Objet : YANG Data Model for Energy Saving Management Reg.\r\n> \r\n> Hi Mohamed,\r\n> \r\n> I was looking at the IETF draft proposed by you for energy saving.\r\n> [draft-cwbgp-ivy-energy-saving-management-01 - A YANG Data Model for Energy Saving Management](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fdraft-cwbgp-ivy-energy-saving-management%2F01%2F&data=05%7C02%7Cmohamed.boucadair%40orange.com%7C112f456392a745b960c908dd0a26fa96%7C90c7a20af34b40bfbc48b9253b6f5d20%7C0%7C0%7C638677884748520482%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=hw%2B9WhDc3h6BeIMINWLdnbtyTB1UX3dY2JarvipIagc%3D&reserved=0)\r\n> \r\n> The power saving modes, methods & state defined in the draft are very clear.\r\n> But I still could not get if this model is applicable for network elements (NE) or network controllers (NC).\r\n> I understand that the base modules on which the energy saving module augments are applicable only for NC (ietf-network & ietf-network-inventory).\r\n> \r\n>           +--rw energy-saving-modes\r\n>              +--rw energy-saving-mode* [mode]\r\n>                 +--rw mode                    identityref\r\n>                 +--rw energy-saving-method*   identityref\r\n> \r\n> However, looking at the above configuration, I assume that energy saving modes and methods are configured to the NE.\r\n> If then, the above part should be part of NE\u2019s YANG model?\r\n> \r\n> Please clarify which one implements this YANG model, the NE or the NC?\r\n> \r\n> Thanks and Regards,\r\n> Jeffi\r\n> ",
       "createdAt": "2024-11-21T12:35:56Z",
-      "updatedAt": "2024-11-21T12:35:56Z",
+      "updatedAt": "2025-02-28T07:47:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 52,
+      "id": "I_kwDOLPL1Dc6sC1X4",
+      "title": "avoid RFC 8792 folding for yang",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/52",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/84f69fbb784eab62208e477f434ac29c56f86e96/draft-cwbgp-green-common-energy-efficiency-management.md?plain=1#L223\n\nA short name should be used to avoid RFC 8792 folding of the common yang file",
+      "createdAt": "2025-02-28T07:30:29Z",
+      "updatedAt": "2025-02-28T07:30:29Z",
       "closedAt": null,
       "comments": []
     }
@@ -2479,6 +2495,90 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 49,
+      "id": "PR_kwDOLPL1Dc6Mu19i",
+      "title": "set up: to split the draft into 3 ones for better focus",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/49",
+      "state": "MERGED",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-27T02:39:03Z",
+      "updatedAt": "2025-02-27T02:43:04Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "f1e3705c6a214bd2356cb5d027426bb38682e9d2",
+      "headRepository": "QiufangMa/green-energy-efficiency-management-yang",
+      "headRefName": "main",
+      "headRefOid": "c920342dcb3a6721ecbecf8c262115f260f078dc",
+      "closedAt": "2025-02-27T02:43:03Z",
+      "mergedAt": "2025-02-27T02:43:03Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "b742501f5b7925f4fc55e267f57130ec9ffa8670"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOLPL1Dc6Mu5vR",
+      "title": "add back origin md and yang files",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/50",
+      "state": "MERGED",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-27T02:54:41Z",
+      "updatedAt": "2025-02-27T02:56:30Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "b742501f5b7925f4fc55e267f57130ec9ffa8670",
+      "headRepository": "QiufangMa/green-energy-efficiency-management-yang",
+      "headRefName": "main",
+      "headRefOid": "7a267553c61db4f6a8a3f1069083ab889ec7f030",
+      "closedAt": "2025-02-27T02:56:30Z",
+      "mergedAt": "2025-02-27T02:56:30Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "018d1ec3312fa3a6774fedd0bacc7cc884e393df"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOLPL1Dc6M5ml-",
+      "title": "update authorship of yang files",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/51",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-28T07:26:31Z",
+      "updatedAt": "2025-02-28T09:24:11Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "84f69fbb784eab62208e477f434ac29c56f86e96",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "65e710d9ad8a7f294744986d0ccdf71023192591",
+      "closedAt": "2025-02-28T09:24:10Z",
+      "mergedAt": "2025-02-28T09:24:10Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "eeebdbdb7012cbcf2cd741392e428a3b959ef25d"
+      },
       "comments": [],
       "reviews": []
     }
