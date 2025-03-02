@@ -5,7 +5,7 @@
 Getting Ready for Energy-Efficient Networking                    G. Chen
 Internet-Draft                                                Q. Wu, Ed.
 Intended status: Standards Track                                  Huawei
-Expires: 1 September 2025                                E. Stephan, Ed.
+Expires: 3 September 2025                                E. Stephan, Ed.
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 1 September 2025                                E. Stephan, Ed.
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                        28 February 2025
+                                                            2 March 2025
 
 
     A Network Inventory Data Model for Energy Efficiency Management
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 September 2025.
+   This Internet-Draft will expire on 3 September 2025.
 
 Copyright Notice
 
@@ -421,9 +421,9 @@ Table of Contents
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
               Bedard, "A Base YANG Data Model for Network Inventory",
               Work in Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-yang-04, 5 November 2024,
+              inventory-yang-05, 28 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-yang-04>.
+              network-inventory-yang-05>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
