@@ -609,7 +609,7 @@ Authors' Addresses
    Carlos Pignataro
    North Carolina State University
    United States of America
-   Email: cpignata@gmail.com, cmpignat@ncsu.edu
+   Email: cpignata@gmail.com
 
 
    Sai Han
