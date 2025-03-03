@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: ""
-workgroup: "Getting Ready for Energy-Efficient Networking"
+area: "Operations and Management"
+workgroup: "GREEN"
 keyword:
  - energy efficiency
  - energy management
@@ -43,7 +43,7 @@ author:
     fullname: Carlos Pignataro
     organization: North Carolina State University
     country: United States of America
-    email: cpignata@gmail.com
+    email: cpignata@gmail.com, cmpignat@ncsu.edu
  -
    fullname: Sai Han
    organization: China Unicom
@@ -116,7 +116,7 @@ The document leverages types defined in {{!RFC3418}} and {{!RFC6933}}.
    The meanings of the symbols in the YANG tree diagrams are defined in
    {{?RFC8340}}.
 
-   The document uses the terms defined in {{!I-D.bclp-green-terminology}} and
+   The document uses the terms defined in {{?I-D.bclp-green-terminology}} and
    {{!I-D.ietf-ivy-network-inventory-yang}}.
 
 # YANG Prefixes
@@ -229,7 +229,7 @@ in the "ns" sub-registry within the "IETF XML Registry" {{!RFC3688}}:
 
    This work has benefited from the discussions that occurred during the Sustainable
    Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
-   particular, {{?I-D.cx-opsawg-green-metrics}} assess several
+   particular, {{?I-D.cx-green-green-metrics}} assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a
