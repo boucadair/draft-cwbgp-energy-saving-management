@@ -2,10 +2,10 @@
 
 
 
-green                                                            G. Chen
+GREEN                                                            G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 3 September 2025                                     E. Stephan
+Expires: 4 September 2025                                     E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 3 September 2025                                     E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                            2 March 2025
+                                                            3 March 2025
 
 
      A Network Topology Data Model for Energy Efficiency Management
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 September 2025.
+   This Internet-Draft will expire on 4 September 2025.
 
 Copyright Notice
 
@@ -506,13 +506,14 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-
               powerbench-04>.
 
-   [I-D.cx-opsawg-green-metrics]
-              Clemm, A., Dong, L., Mirsky, G., Ciavaglia, L., Tantsura,
-              J., Odini, M., Schooler, E., Rezaki, A., and C. Pignataro,
-              "Green Networking Metrics", Work in Progress, Internet-
-              Draft, draft-cx-opsawg-green-metrics-02, 4 March 2024,
-              <https://datatracker.ietf.org/doc/html/draft-cx-opsawg-
-              green-metrics-02>.
+   [I-D.cx-green-green-metrics]
+              Clemm, A., Pignataro, C., Schooler, E., Ciavaglia, L.,
+              Rezaki, A., Mirsky, G., and J. Tantsura, "Green Networking
+              Metrics for Environmentally Sustainable Networking", Work
+              in Progress, Internet-Draft, draft-cx-green-green-metrics-
+              00, 21 October 2024,
+              <https://datatracker.ietf.org/doc/html/draft-cx-green-
+              green-metrics-00>.
 
    [I-D.ietf-netmod-rfc8407bis]
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
@@ -569,7 +570,7 @@ Acknowledgments
 
    This work has benefited from the discussions that occurred during the
    Sustainable Networking Side Meeting in IETF#117 and the "e-impact"
-   IAB workshop.  In particular, [I-D.cx-opsawg-green-metrics] assess
+   IAB workshop.  In particular, [I-D.cx-green-green-metrics] assess
    several sustainability-related attributes such as power consumption,
    energy efficiency, and carbon footprint associated with a network,
    its equipment, and the services that are provided over it and suggest
