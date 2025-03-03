@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Operations and Management"
-workgroup: "Network Inventory YANG"
+workgroup: "GREEN"
 keyword:
  - energy efficiency
  - energy saving
@@ -322,7 +322,7 @@ in the "ns" sub-registry within the "IETF XML Registry" {{!RFC3688}}:
 
    This work has benefited from the discussions that occurred during the Sustainable
    Networking Side Meeting in IETF#117 and the "e-impact" IAB workshop. In
-   particular, {{?I-D.cx-opsawg-green-metrics}} assess several
+   particular, {{?I-D.cx-green-green-metrics}} assess several
    sustainability-related attributes such as power consumption, energy
    efficiency, and carbon footprint associated with a network, its
    equipment, and the services that are provided over it and suggest a
