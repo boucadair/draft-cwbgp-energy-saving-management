@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-02T01:04:44.633379+00:00",
+  "timestamp": "2025-03-04T01:01:53.838317+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -2510,7 +2510,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-02-27T02:39:03Z",
-      "updatedAt": "2025-02-27T02:43:04Z",
+      "updatedAt": "2025-03-03T15:08:06Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "f1e3705c6a214bd2356cb5d027426bb38682e9d2",
@@ -2524,7 +2524,21 @@
         "oid": "b742501f5b7925f4fc55e267f57130ec9ffa8670"
       },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6eNxjg",
+          "commit": {
+            "abbreviatedOid": "c920342"
+          },
+          "author": "cpignata",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "lgtm! thanks!",
+          "createdAt": "2025-03-03T15:08:06Z",
+          "updatedAt": "2025-03-03T15:08:06Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 50,
@@ -2581,6 +2595,80 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 53,
+      "id": "PR_kwDOLPL1Dc6NKKcQ",
+      "title": "Editorial pass",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/53",
+      "state": "MERGED",
+      "author": "cpignata",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixing various markdown values and some nits. Adding Carlos' NCSU email address.",
+      "createdAt": "2025-03-03T14:11:37Z",
+      "updatedAt": "2025-03-03T15:05:35Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "f112c523a0d3b5a572b7e71dee3942d246829b28",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "pignataro-editorial-review",
+      "headRefOid": "6d01a3885746f9e1dd594f45ee7e8917236a0026",
+      "closedAt": "2025-03-03T15:05:33Z",
+      "mergedAt": "2025-03-03T15:05:33Z",
+      "mergedBy": "cpignata",
+      "mergeCommit": {
+        "oid": "e355b6594b6691d995d2199ccd64ebb1079d5cb5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6eNLc6",
+          "commit": {
+            "abbreviatedOid": "86e7efd"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-03-03T14:17:13Z",
+          "updatedAt": "2025-03-03T14:17:56Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "For some reason, a similar change in the past induced an error in the submission API. We had at the time to revert back to one single email. Please pick the @ you prefer but please keep only one. Thanks.",
+              "createdAt": "2025-03-03T14:17:13Z",
+              "updatedAt": "2025-03-03T14:17:56Z"
+            },
+            {
+              "originalPosition": 16,
+              "body": "Idem as previous comment",
+              "createdAt": "2025-03-03T14:17:31Z",
+              "updatedAt": "2025-03-03T14:17:56Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "Idem as previous comment",
+              "createdAt": "2025-03-03T14:17:49Z",
+              "updatedAt": "2025-03-03T14:17:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6eNvFK",
+          "commit": {
+            "abbreviatedOid": "6d01a38"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-03T15:04:30Z",
+          "updatedAt": "2025-03-03T15:04:30Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
