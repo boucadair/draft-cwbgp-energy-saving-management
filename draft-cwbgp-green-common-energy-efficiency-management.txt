@@ -5,7 +5,7 @@
 GREEN                                                              Q. Ma
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 4 September 2025                                     E. Stephan
+Expires: 13 September 2025                                    E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 4 September 2025                                     E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                            3 March 2025
+                                                           12 March 2025
 
 
    A Common YANG Data Model for Energy Efficiency Network Management
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 September 2025.
+   This Internet-Draft will expire on 13 September 2025.
 
 Copyright Notice
 
