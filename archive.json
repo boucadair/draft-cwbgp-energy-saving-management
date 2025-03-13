@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-11T01:02:29.855701+00:00",
+  "timestamp": "2025-03-13T01:02:38.307109+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -2477,24 +2477,26 @@
       "id": "PR_kwDOLPL1Dc6JMy_t",
       "title": "won't be available to contribute to this spec",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/48",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-01-28T10:07:34Z",
-      "updatedAt": "2025-01-28T10:07:34Z",
+      "updatedAt": "2025-03-12T11:41:14Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "050d3e2bb90120a7feac3f7c0c8fb0db250fa95f",
       "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "headRefName": "boucadair-patch-2",
       "headRefOid": "005b11b4a55a84d0b04694fed5395fe6a7258f09",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-03-12T11:41:13Z",
+      "mergedAt": "2025-03-12T11:41:13Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "2d2e55644f8f7f5deafb94294809e1b4055c509d"
+      },
       "comments": [],
       "reviews": []
     },
