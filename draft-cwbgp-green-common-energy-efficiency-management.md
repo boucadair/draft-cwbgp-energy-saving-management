@@ -72,17 +72,18 @@ and Network Inventory Base Model {{?I-D.ietf-ivy-network-inventory-yang}}.
 There are common data nodes and structures that
 are present in all of these models or at least a subset of them.
 
-This document defines a common YANG module that is meant to be reused
-by various energy efficiency-related modules such as energy saving
-Network models, energy saving network inventory model and energy saving
-device models.
+This document defines a common YANG module for energy efficiency metrics and
+energy efficiency capabilities that is meant to be reused by various energy
+efficiency-related modules such as energy saving Network models, energy saving
+network inventory model and energy saving device models.
 
 The "ietf-energy-efficiency-common" module includes a set of identities, types, and
-groupings that are meant to be reused by other energy efficiency-related YANG
-modules independently of their characteristics (e.g., variable, invariable) and the
-type of the module (e.g., network model, device model), including
-possible future revisions of existing models (e.g., the Network Topology
-{{?RFC8345}} or the Network Inventory {{?I-D.ietf-ivy-network-inventory-yang}}).
+groupings for energy efficiency metrics and energy efficiency capabilities that are
+meant to be reused by other energy efficiency-related YANG modules independently of
+their characteristics (e.g., variable, invariable) and the type of the module
+(e.g., network model, device model), including possible future revisions of existing
+models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
+{{?I-D.ietf-ivy-network-inventory-yang}}).
 
 ## Notes to the RFC Editor
 
