@@ -5,7 +5,7 @@
 GREEN                                                            G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 13 September 2025                                    E. Stephan
+Expires: 4 November 2025                                      E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 13 September 2025                                    E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                           12 March 2025
+                                                              3 May 2025
 
 
      A Network Topology Data Model for Energy Efficiency Management
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 September 2025.
+   This Internet-Draft will expire on 4 November 2025.
 
 Copyright Notice
 
@@ -494,9 +494,9 @@ Table of Contents
               Liu, P. C., Boucadair, M., Wu, Q., Contreras, L. M., and
               M. Palmero, "Terminology for Energy Efficiency Network
               Management", Work in Progress, Internet-Draft, draft-bclp-
-              green-terminology-00, 10 October 2024,
+              green-terminology-01, 23 April 2025,
               <https://datatracker.ietf.org/doc/html/draft-bclp-green-
-              terminology-00>.
+              terminology-01>.
 
    [I-D.cprjgf-bmwg-powerbench]
               Pignataro, C., Jacob, R., Fioccola, G., and Q. Wu,
@@ -519,9 +519,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-22, 14 January 2025,
+              netmod-rfc8407bis-24, 18 April 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-22>.
+              rfc8407bis-24>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
