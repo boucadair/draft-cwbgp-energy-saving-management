@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T01:11:46.383907+00:00",
+  "timestamp": "2025-05-04T01:13:28.732590+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -351,9 +351,17 @@
       "labels": [],
       "body": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/blob/84f69fbb784eab62208e477f434ac29c56f86e96/draft-cwbgp-green-common-energy-efficiency-management.md?plain=1#L223\n\nA short name should be used to avoid RFC 8792 folding of the common yang file",
       "createdAt": "2025-02-28T07:30:29Z",
-      "updatedAt": "2025-02-28T07:30:29Z",
+      "updatedAt": "2025-05-03T09:56:16Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "billwuqin",
+          "authorAssociation": "COLLABORATOR",
+          "body": "## {::include-fold ./yang/ietf-energy-efficiency-common.yang}\nDo you suggest to change yang file name? ietf-ee-common",
+          "createdAt": "2025-05-03T09:56:15Z",
+          "updatedAt": "2025-05-03T09:56:15Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -2671,6 +2679,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOLPL1Dc6U0elh",
+      "title": "Clarify the energy efficiency metrics and energy efficiency capabilit\u2026",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/54",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026ies part of this common YANG data module",
+      "createdAt": "2025-05-03T09:49:39Z",
+      "updatedAt": "2025-05-03T09:50:56Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "2d2e55644f8f7f5deafb94294809e1b4055c509d",
+      "headRepository": "billwuqin/draft-cwbgp-energy-saving-management",
+      "headRefName": "patch-13",
+      "headRefOid": "e6f94490bb8af920ede60d18b5ec2d938a07b2ac",
+      "closedAt": "2025-05-03T09:50:56Z",
+      "mergedAt": "2025-05-03T09:50:56Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "32de5c88ee5993a82ae95f763be842af7de7ebee"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
