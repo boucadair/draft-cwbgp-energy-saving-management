@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-04T01:13:28.732590+00:00",
+  "timestamp": "2025-05-13T01:09:12.898877+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -2705,6 +2705,32 @@
       "mergeCommit": {
         "oid": "32de5c88ee5993a82ae95f763be842af7de7ebee"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 55,
+      "id": "PR_kwDOLPL1Dc6V60Go",
+      "title": "Various fixes and editorials",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/55",
+      "state": "OPEN",
+      "author": "cpignata",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Various fixes and editorials",
+      "createdAt": "2025-05-13T01:01:36Z",
+      "updatedAt": "2025-05-13T01:08:34Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "32de5c88ee5993a82ae95f763be842af7de7ebee",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "carlos-patch1",
+      "headRefOid": "890eec62be99bd8ef8dd549337cb463263579e7c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
