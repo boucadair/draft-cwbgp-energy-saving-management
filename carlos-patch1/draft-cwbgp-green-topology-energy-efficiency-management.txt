@@ -158,7 +158,7 @@ Table of Contents
    +======+======================+=====================================+
    |Prefix|YANG Module           |Reference                            |
    +======+======================+=====================================+
-   |ianahw|iana-hardware         |[RFC8348]                            |
+   |ianahw|iana-hardware         |[IANA.yang-parameters]               |
    +------+----------------------+-------------------------------------+
    |ni    |ietf-network-inventory|[I-D.ietf-ivy-network-inventory-yang]|
    +------+----------------------+-------------------------------------+
@@ -451,6 +451,10 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
               network-inventory-yang-05>.
 
+   [IANA.yang-parameters]
+              IANA, "YANG Parameters", 1 May 2025,
+              <https://www.iana.org/assignments/yang-parameters>.
+
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
               <https://www.rfc-editor.org/rfc/rfc3688>.
@@ -473,11 +477,6 @@ Table of Contents
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/rfc/rfc8345>.
-
-   [RFC8348]  Bierman, A., Bjorklund, M., Dong, J., and D. Romascanu, "A
-              YANG Data Model for Hardware Management", RFC 8348,
-              DOI 10.17487/RFC8348, March 2018,
-              <https://www.rfc-editor.org/rfc/rfc8348>.
 
 8.2.  Informative References
 
