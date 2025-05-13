@@ -21,3 +21,4 @@ draft-cwbgp-ivy-energy-saving-management.xml
 package-lock.json
 report.xml
 !requirements.txt
+go
