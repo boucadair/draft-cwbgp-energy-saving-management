@@ -23,3 +23,4 @@ report.xml
 !requirements.txt
 go
 .DS_Store
+package.json
