@@ -13,8 +13,9 @@ area: "Operations and Management"
 workgroup: "GREEN"
 keyword:
  - energy efficiency
+ - energy saving
  - energy management
- - Network Inventory
+ - network inventory
 
 author:
  -
@@ -51,6 +52,12 @@ author:
    email: hans29@chinaunicom.cn
 
 normative:
+  IANA.yang-parameters:
+    title: YANG Parameters
+    author:
+      - org: IANA
+    date: 2025-05-01
+    target: https://www.iana.org/assignments/yang-parameters
 
 informative:
 
@@ -111,7 +118,7 @@ The document leverages types defined in {{!RFC3418}} and {{!RFC6933}}.
 
 # Conventions and Definitions
 
-{::boilerplate bcp14-tagged}
+{::comment}{::boilerplate bcp14-tagged}{:/comment}
 
    The meanings of the symbols in the YANG tree diagrams are defined in
    {{?RFC8340}}.
@@ -126,7 +133,7 @@ The document leverages types defined in {{!RFC3418}} and {{!RFC6933}}.
     modules, as shown in {{pref}}.
 
    | Prefix | YANG Module |  Reference   |
-   | ianahw | iana-hardware          | [IANA_YANG] |
+   | ianahw | iana-hardware          | {{IANA.yang-parameters}} |
    | ni     | ietf-network-inventory | {{!I-D.ietf-ivy-network-inventory-yang}} |
    | yang   | ietf-yang-types | {{!RFC6991}} |
    {: #pref title="Prefixes and Corresponding YANG modules"}

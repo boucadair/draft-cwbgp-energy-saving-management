@@ -100,7 +100,7 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
 
 # Conventions and Definitions
 
-{::boilerplate bcp14-tagged}
+{::comment}{::boilerplate bcp14-tagged}{:/comment}
 
    The terminology for describing YANG modules is defined in {{!RFC7950}}.
    The meanings of the symbols in the YANG tree diagrams are defined in

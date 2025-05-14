@@ -1,4 +1,5 @@
 *.html
+*.xml
 *.pdf
 *.redxml
 *.swp
@@ -21,3 +22,6 @@ draft-cwbgp-ivy-energy-saving-management.xml
 package-lock.json
 report.xml
 !requirements.txt
+go
+.DS_Store
+package.json
