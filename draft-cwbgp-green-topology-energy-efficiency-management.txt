@@ -5,7 +5,7 @@
 GREEN                                                            G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 4 November 2025                                      E. Stephan
+Expires: 15 November 2025                                     E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 4 November 2025                                      E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                              3 May 2025
+                                                             14 May 2025
 
 
      A Network Topology Data Model for Energy Efficiency Management
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 November 2025.
+   This Internet-Draft will expire on 15 November 2025.
 
 Copyright Notice
 
@@ -142,11 +142,6 @@ Table of Contents
 
 2.  Conventions and Definitions
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
 
    The meanings of the symbols in the YANG tree diagrams are defined in
    [RFC8340].
@@ -163,7 +158,7 @@ Table of Contents
    +======+======================+=====================================+
    |Prefix|YANG Module           |Reference                            |
    +======+======================+=====================================+
-   |ianahw|iana-hardware         |[IANA_YANG]                          |
+   |ianahw|iana-hardware         |[IANA.yang-parameters]               |
    +------+----------------------+-------------------------------------+
    |ni    |ietf-network-inventory|[I-D.ietf-ivy-network-inventory-yang]|
    +------+----------------------+-------------------------------------+
@@ -456,10 +451,9 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
               network-inventory-yang-05>.
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
+   [IANA.yang-parameters]
+              IANA, "YANG Parameters", 1 May 2025,
+              <https://www.iana.org/assignments/yang-parameters>.
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
@@ -473,10 +467,6 @@ Table of Contents
    [RFC6991]  Schoenwaelder, J., Ed., "Common YANG Data Types",
               RFC 6991, DOI 10.17487/RFC6991, July 2013,
               <https://www.rfc-editor.org/rfc/rfc6991>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
    [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
               Access Control Model", STD 91, RFC 8341,
@@ -519,9 +509,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-24, 18 April 2025,
+              netmod-rfc8407bis-25, 5 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-24>.
+              rfc8407bis-25>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
