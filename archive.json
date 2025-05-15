@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-13T01:09:12.898877+00:00",
+  "timestamp": "2025-05-15T01:05:31.746347+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -2713,26 +2713,144 @@
       "id": "PR_kwDOLPL1Dc6V60Go",
       "title": "Various fixes and editorials",
       "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/55",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cpignata",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "cpignata"
+      ],
       "labels": [],
       "body": "Various fixes and editorials",
       "createdAt": "2025-05-13T01:01:36Z",
-      "updatedAt": "2025-05-13T01:08:34Z",
+      "updatedAt": "2025-05-14T23:05:13Z",
       "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "baseRefName": "main",
       "baseRefOid": "32de5c88ee5993a82ae95f763be842af7de7ebee",
       "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
       "headRefName": "carlos-patch1",
-      "headRefOid": "890eec62be99bd8ef8dd549337cb463263579e7c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "850bc8a99d5ec0c289ab044db9c41b072f0908a1",
+      "closedAt": "2025-05-14T04:06:01Z",
+      "mergedAt": "2025-05-14T04:06:01Z",
+      "mergedBy": "cpignata",
+      "mergeCommit": {
+        "oid": "045d30da68549ce24853e2e7efa82f2a0a13e5f8"
+      },
+      "comments": [
+        {
+          "author": "cpignata",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@boucadair , @QiufangMa , I think I addressed all comments -- please check it out",
+          "createdAt": "2025-05-13T18:26:17Z",
+          "updatedAt": "2025-05-13T18:26:17Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6o_yuf",
+          "commit": {
+            "abbreviatedOid": "890eec6"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-13T05:19:19Z",
+          "updatedAt": "2025-05-13T05:21:42Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "The OLD is correct as RFC8348 is only about the initial IANA module; the authoritative per rfc8407bis is the IANA URL.\r\n\r\nPlease see https://datatracker.ietf.org/doc/html/[draft-ietf-netmod-rfc8407bis-25](https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-25#name-iana-maintained-modules)#name-iana-maintained-modules for more details",
+              "createdAt": "2025-05-13T05:19:19Z",
+              "updatedAt": "2025-05-13T05:21:54Z"
+            },
+            {
+              "originalPosition": 25,
+              "body": "Idem as previous comment on the IANA module.",
+              "createdAt": "2025-05-13T05:19:35Z",
+              "updatedAt": "2025-05-13T05:21:42Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "Idem as well :-)",
+              "createdAt": "2025-05-13T05:19:47Z",
+              "updatedAt": "2025-05-13T05:21:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6pCcpA",
+          "commit": {
+            "abbreviatedOid": "890eec6"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-13T09:35:42Z",
+          "updatedAt": "2025-05-13T09:35:42Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "draft-cwbgp-green-energy-saving-management is split into the following three:\r\n1. draft-cwbgp-green-common-energy-management \r\n2. draft-cwbgp-green-inventory-energy-management \r\n3.  draft-cwbgp-green-topology-energy-management \r\n\r\nI guess no need to maintain draft-cwbgp-green-energy-saving-management.md any longer;-)",
+              "createdAt": "2025-05-13T09:35:42Z",
+              "updatedAt": "2025-05-13T09:35:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6pCdOs",
+          "commit": {
+            "abbreviatedOid": "890eec6"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-13T09:36:27Z",
+          "updatedAt": "2025-05-13T09:36:27Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "It seems that the draft is missing IANA_YANG in the reference list.",
+              "createdAt": "2025-05-13T09:36:27Z",
+              "updatedAt": "2025-05-13T09:36:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6pIaMc",
+          "commit": {
+            "abbreviatedOid": "890eec6"
+          },
+          "author": "cpignata",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-13T17:12:43Z",
+          "updatedAt": "2025-05-13T17:12:44Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "@QiufangMa , indeed. I had an old set of diffs but will update now a new approach.",
+              "createdAt": "2025-05-13T17:12:44Z",
+              "updatedAt": "2025-05-13T17:12:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPL1Dc6pL2sS",
+          "commit": {
+            "abbreviatedOid": "850bc8a"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good to me. Thanks.",
+          "createdAt": "2025-05-14T01:07:01Z",
+          "updatedAt": "2025-05-14T01:07:01Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
