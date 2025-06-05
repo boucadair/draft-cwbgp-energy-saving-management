@@ -452,7 +452,7 @@ Table of Contents
               network-inventory-yang-06>.
 
    [IANA.yang-parameters]
-              IANA, "YANG Parameters", 1 May 2025,
+              IANA, "YANG Parameters",
               <https://www.iana.org/assignments/yang-parameters>.
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
