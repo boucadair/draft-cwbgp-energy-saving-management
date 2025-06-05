@@ -5,7 +5,7 @@
 GREEN                                                            G. Chen
 Internet-Draft                                                Q. Wu, Ed.
 Intended status: Standards Track                                  Huawei
-Expires: 15 November 2025                                E. Stephan, Ed.
+Expires: 7 December 2025                                 E. Stephan, Ed.
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 15 November 2025                                E. Stephan, Ed.
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                             14 May 2025
+                                                             5 June 2025
 
 
     A Network Inventory Data Model for Energy Efficiency Management
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 November 2025.
+   This Internet-Draft will expire on 7 December 2025.
 
 Copyright Notice
 
@@ -408,12 +408,12 @@ Table of Contents
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
               Bedard, "A Base YANG Data Model for Network Inventory",
               Work in Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-yang-05, 28 February 2025,
+              inventory-yang-06, 21 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-yang-05>.
+              network-inventory-yang-06>.
 
    [IANA.yang-parameters]
-              IANA, "YANG Parameters", 1 May 2025,
+              IANA, "YANG Parameters",
               <https://www.iana.org/assignments/yang-parameters>.
 
    [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
@@ -483,9 +483,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-25, 5 May 2025,
+              netmod-rfc8407bis-26, 4 June 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-25>.
+              rfc8407bis-26>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,
