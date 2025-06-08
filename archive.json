@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-15T01:05:31.746347+00:00",
+  "timestamp": "2025-06-08T01:16:15.712414+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -2848,6 +2848,48 @@
           "body": "Looks good to me. Thanks.",
           "createdAt": "2025-05-14T01:07:01Z",
           "updatedAt": "2025-05-14T01:07:01Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOLPL1Dc6ZH0ZN",
+      "title": "Fixing IANA Parameters reference and citation",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/pull/56",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-05T03:00:58Z",
+      "updatedAt": "2025-06-05T23:02:35Z",
+      "baseRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "baseRefName": "main",
+      "baseRefOid": "3c7ab4cd9a2f05430e785756b7c7974966bb8bb8",
+      "headRepository": "boucadair/draft-cwbgp-energy-saving-management",
+      "headRefName": "billwuqin-patch-1",
+      "headRefOid": "a3c72cb108461951c207f1e5bdf10bcfc01d6e12",
+      "closedAt": "2025-06-05T04:04:03Z",
+      "mergedAt": "2025-06-05T04:04:03Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "66d6b4ec0c233bbb7a9b12cf994d62f2c75c3148"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPL1Dc6tBoU1",
+          "commit": {
+            "abbreviatedOid": "a3c72cb"
+          },
+          "author": "cpignata",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Looks good!",
+          "createdAt": "2025-06-05T23:02:35Z",
+          "updatedAt": "2025-06-05T23:02:35Z",
           "comments": []
         }
       ]
