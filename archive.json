@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-08T01:16:15.712414+00:00",
+  "timestamp": "2025-06-12T01:09:54.565384+00:00",
   "repo": "boucadair/draft-cwbgp-energy-saving-management",
   "labels": [
     {
@@ -362,6 +362,22 @@
           "updatedAt": "2025-05-03T09:56:15Z"
         }
       ]
+    },
+    {
+      "number": 57,
+      "id": "I_kwDOLPL1Dc66uQ7I",
+      "title": "Power state vs Energy saving Mode",
+      "url": "https://github.com/boucadair/draft-cwbgp-energy-saving-management/issues/57",
+      "state": "OPEN",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Energy-saving-mode\nbasic/standard/deep\n\nEnergy-saving-power-state\noff-state/sleep-state/low-power-state/full-power-state\n\nTry to understand the key difference between energy saving mode and energy saving power state?",
+      "createdAt": "2025-06-10T08:41:37Z",
+      "updatedAt": "2025-06-10T08:41:37Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
