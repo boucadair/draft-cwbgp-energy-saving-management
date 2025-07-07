@@ -284,7 +284,7 @@ in the "ns" sub-registry within the "IETF XML Registry" {{!RFC3688}}:
    the "YANG Parameters" registry group.
 
 ~~~~
-   name: ietf-energy-saving-common
+   name: ietf-energy-efficiency-common
    prefix: esm-common
    namespace: urn:ietf:params:xml:ns:yang:ietf-energy-efficiency-common
    Maintained by IANA? N
