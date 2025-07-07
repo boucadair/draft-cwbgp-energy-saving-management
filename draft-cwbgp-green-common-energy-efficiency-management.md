@@ -213,7 +213,7 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
 ~~~~
 {::include-fold ./yang/trees/common-tree.txt}
 ~~~~
-{: #e-tree title="Common Energy Saving Management Tree Structure"}
+{: #e-tree title="Common Energy Efficiency Management Tree Structure"}
 
   The description of the common groupings are provided below:
 
