@@ -124,10 +124,28 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
      energy saving modes are as follows:
 
     * "basic": The system will shut down idle modules and put them in a sleep power state.
+
     * "standard": The system extends basic energy saving mode with more advanced
       lossless energy saving features, e.g., power module schedule.
+
     * "deep": The system extends standard energy saving mode with more advanced
       system level energy saving features, e.g., board scheduling.
+
+
+  * "energy-saving-power-state": Specifies the energy saving power state. Examples
+    of supported energy saving power state are as follows:
+
+    * "off-state": The component typically requires a complete boot when awakened.
+
+    * "sleep-state": The component with energy management support is not functional
+      but immediately available such as wake up mechanism.
+
+    * "low-power-state": Some components with energy management support are not
+      available and these components can take measures to use less energy.
+
+    * "full-power-state": All components with energy management support are
+      available and may use maximum power.
+
 
   * "energy-saving-method": Specifies the energy saving method. Examples of supported
     energy saving methods are as follows:
@@ -182,17 +200,6 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
        forwarding resources is improved. In the case of burst
        traffic, packet forwarding may be delayed, but packets
        will not be lost.
-
-  * "energy-saving-power-state": Specifies the energy saving power state. Examples
-    of supported energy saving power state are as follows:
-
-    * "off-state": The component typically requires a complete boot when awakened.
-    * "sleep-state": The component with energy management support is not functional
-      but immediately available such as wake up mechanism.
-    * "low-power-state": Some components with energy management support are not
-      available and these components can take measures to use less energy.
-    * "full-power-state": All components with energy management support are
-      available and may use maximum power.
 
   In addition, it defines the following types:
 
