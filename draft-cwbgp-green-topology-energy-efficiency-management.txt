@@ -5,7 +5,7 @@
 GREEN                                                            G. Chen
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 7 December 2025                                      E. Stephan
+Expires: 8 January 2026                                       E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 7 December 2025                                      E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                             5 June 2025
+                                                             7 July 2025
 
 
      A Network Topology Data Model for Energy Efficiency Management
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 December 2025.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -447,9 +447,9 @@ Table of Contents
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
               Bedard, "A Base YANG Data Model for Network Inventory",
               Work in Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-yang-06, 21 May 2025,
+              inventory-yang-07, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-yang-06>.
+              network-inventory-yang-07>.
 
    [IANA.yang-parameters]
               IANA, "YANG Parameters",
@@ -482,19 +482,19 @@ Table of Contents
 
    [I-D.bclp-green-terminology]
               Liu, P. C., Boucadair, M., Wu, Q., Contreras, L. M., and
-              M. Palmero, "Terminology for Energy Efficiency Network
+              M. P. Palmero, "Terminology for Energy Efficiency Network
               Management", Work in Progress, Internet-Draft, draft-bclp-
-              green-terminology-01, 23 April 2025,
+              green-terminology-03, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-bclp-green-
-              terminology-01>.
+              terminology-03>.
 
    [I-D.cprjgf-bmwg-powerbench]
               Pignataro, C., Jacob, R., Fioccola, G., and Q. Wu,
               "Characterization and Benchmarking Methodology for Power
               in Networking Devices", Work in Progress, Internet-Draft,
-              draft-cprjgf-bmwg-powerbench-04, 30 January 2025,
+              draft-cprjgf-bmwg-powerbench-05, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-
-              powerbench-04>.
+              powerbench-05>.
 
    [I-D.cx-green-green-metrics]
               Clemm, A., Pignataro, C., Schooler, E., Ciavaglia, L.,
@@ -509,9 +509,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-26, 4 June 2025,
+              netmod-rfc8407bis-28, 5 June 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-26>.
+              rfc8407bis-28>.
 
    [I-D.manral-bmwg-power-usage]
               Manral, V., Sharma, P., Banerjee, S., and Y. Ping,

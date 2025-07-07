@@ -5,7 +5,7 @@
 GREEN                                                              Q. Ma
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 7 December 2025                                      E. Stephan
+Expires: 8 January 2026                                       E. Stephan
                                                                   Orange
                                                            O. G. D. Dios
                                                           Telefonica I+D
@@ -13,7 +13,7 @@ Expires: 7 December 2025                                      E. Stephan
                                          North Carolina State University
                                                                   S. Han
                                                             China Unicom
-                                                             5 June 2025
+                                                             7 July 2025
 
 
    A Common YANG Data Model for Energy Efficiency Network Management
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 December 2025.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -124,7 +124,7 @@ Table of Contents
 
    *  XXXX --> the RFC number assigned to this I-D
 
-   *  2024-01-23 --> the actual date of the publication of this document
+   *  2025-07-07 --> the actual date of the publication of this document
 
 2.  Conventions and Definitions
 
@@ -153,7 +153,7 @@ Table of Contents
       of supported energy saving modes are as follows:
 
       -  "basic": The system will shut down idle modules and put them in
-         a sleep mode.
+         a sleep power state.
 
       -  "standard": The system extends basic energy saving mode with
          more advanced lossless energy saving features, e.g., power
@@ -814,19 +814,19 @@ Table of Contents
 
    [I-D.bclp-green-terminology]
               Liu, P. C., Boucadair, M., Wu, Q., Contreras, L. M., and
-              M. Palmero, "Terminology for Energy Efficiency Network
+              M. P. Palmero, "Terminology for Energy Efficiency Network
               Management", Work in Progress, Internet-Draft, draft-bclp-
-              green-terminology-01, 23 April 2025,
+              green-terminology-03, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-bclp-green-
-              terminology-01>.
+              terminology-03>.
 
    [I-D.cprjgf-bmwg-powerbench]
               Pignataro, C., Jacob, R., Fioccola, G., and Q. Wu,
               "Characterization and Benchmarking Methodology for Power
               in Networking Devices", Work in Progress, Internet-Draft,
-              draft-cprjgf-bmwg-powerbench-04, 30 January 2025,
+              draft-cprjgf-bmwg-powerbench-05, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-cprjgf-bmwg-
-              powerbench-04>.
+              powerbench-05>.
 
    [I-D.cwbgp-green-energy-saving-management]
               Chen, G., Wu, Q., Boucadair, M., de Dios, O. G., and C.
@@ -849,17 +849,17 @@ Table of Contents
               Yu, C., Belotti, S., Bouquier, J., Peruzzini, F., and P.
               Bedard, "A Base YANG Data Model for Network Inventory",
               Work in Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-yang-06, 21 May 2025,
+              inventory-yang-07, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-yang-06>.
+              network-inventory-yang-07>.
 
    [I-D.ietf-netmod-rfc8407bis]
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-26, 4 June 2025,
+              netmod-rfc8407bis-28, 5 June 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-26>.
+              rfc8407bis-28>.
 
    [I-D.li-green-power]
               Li, T. and R. Bonica, "A YANG model for Power Management",
