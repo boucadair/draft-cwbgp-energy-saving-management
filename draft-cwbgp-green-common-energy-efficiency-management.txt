@@ -283,7 +283,7 @@ Table of Contents
        +-- saved-energy?               yang:gauge64
        +-- eer?                        decimal64
 
-          Figure 1: Common Energy Saving Management Tree Structure
+        Figure 1: Common Energy Efficiency Management Tree Structure
 
    The description of the common groupings are provided below:
 
