@@ -96,7 +96,7 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
    Please apply the following replacements:
 
    * XXXX --> the RFC number assigned to this I-D
-   * 2024-01-23 --> the actual date of the publication of this document
+   * 2025-07-07 --> the actual date of the publication of this document
 
 # Conventions and Definitions
 
@@ -123,7 +123,7 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
   * "energy-saving-mode": Specifies the energy saving mode. Examples of supported
      energy saving modes are as follows:
 
-    * "basic": The system will shut down idle modules and put them in a sleep mode.
+    * "basic": The system will shut down idle modules and put them in a sleep power state.
     * "standard": The system extends basic energy saving mode with more advanced
       lossless energy saving features, e.g., power module schedule.
     * "deep": The system extends standard energy saving mode with more advanced
@@ -137,21 +137,25 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
        service boards reside. According to the current temperature and target
        temperature of each board, the system implements stepless speed adjustment in
        different zones.
+
     * "unused-high-speed-interface-shutdown": When detecting an unused high-speed
       interface, the system shuts down the interface to reduce power consumption
       of the interface circuits. When the interface needs to run service, the
       system will automatically wake up the interface and restore the interface
       to the normal working state.
+
     * "unused-port-shutdown": When detecting an unused user port, the system automatically
        or manually shuts down the interface circuits and optical module of the port
        to reduce port power consumption. When detecting that the port needs to run
        service, the system automatically enables the port and restores the port to the
        normal running state, without affecting application of the board.
+
     * "unused-board-shutdown": When detecting an unused board, the system automatically
        shuts down the power supply of the board, ensuring zero power consumption of an unused board.
        When detecting that the board needs to run service, the system automatically
        powers on the board and restores the board to the normalrunning state, without
        affecting application of the whole device.
+
     * "dynamic-frequency-adjustment": When detecting that a service board is carrying a small
        service load, the system automatically reduces the working frequency of the
        service processing module of the board while maintaining the service
@@ -159,13 +163,16 @@ models (e.g., the Network Topology {{?RFC8345}} or the Network Inventory
        is reduced. When the service load of the board increases, the system
        automatically increases the working frequency of the service processing
        module to meet service needs.
+
     * "unused-channel-shutdown": When an unused channel is detected, the unused
       channel is closed. Dynamically open the channel when detecting that there
       are services on the channel.
+
     * "load-based-power-module-scheduling": Power modules intelligently schedule
       internal power supply based on the power load. When the power load decreases,
       some power supplies are automatically disabled. When the power load increases,
       the disabled power supplies are enabled again.
+
     * "load-based-board-scheduling": Boards intelligently schedule internal forwarding resources
        based on the service load. When the service load decreases,
        some forwarding resources are automatically disabled or the
