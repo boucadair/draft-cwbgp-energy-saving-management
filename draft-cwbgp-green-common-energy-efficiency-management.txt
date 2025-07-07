@@ -255,7 +255,7 @@ Table of Contents
    tree diagram that depicts the common groupings for the "ietf-energy-
    efficiency-common" module.
 
-   module: ietf-energy-saving-common
+   module: ietf-energy-efficiency-common
 
      grouping energy-consumption-data:
        +-- average-power?    yang:gauge64
@@ -264,10 +264,12 @@ Table of Contents
        +-- actual-volts?     int32
        +-- actual-amperes?   int32
        +-- actual-celsius?   int32
+
      grouping energy-saving-modes:
        +-- energy-saving-mode* [mode]
           +-- mode?                   identityref
           +-- energy-saving-method*   identityref
+
      grouping power-parameters:
        +-- temperature-upper-bound?    int32
        +-- temperature-middle-bound?   int32
@@ -278,6 +280,7 @@ Table of Contents
        +-- low-volts-fatal?            int32
        +-- high-volts-bound?           int32
        +-- high-volts-fatal?           int32
+
      grouping energy-power-consumption-stats:
        +-- total-energy-consumption?   yang:gauge64
        +-- saved-energy?               yang:gauge64
