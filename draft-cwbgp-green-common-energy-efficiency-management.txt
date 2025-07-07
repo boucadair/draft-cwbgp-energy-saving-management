@@ -781,7 +781,7 @@ Table of Contents
    the "YANG Module Names" registry [RFC6020] within the "YANG
    Parameters" registry group.
 
-    name: ietf-energy-saving-common
+    name: ietf-energy-efficiency-common
     prefix: esm-common
     namespace: urn:ietf:params:xml:ns:yang:ietf-energy-efficiency-common
     Maintained by IANA? N
