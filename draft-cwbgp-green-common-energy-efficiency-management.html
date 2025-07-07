@@ -1320,59 +1320,80 @@ system level energy saving features, e.g., board scheduling.<a href="#section-3-
           </ul>
 </li>
         <li class="normal" id="section-3-4.2">
-          <p id="section-3-4.2.1">"energy-saving-method": Specifies the energy saving method. Examples of supported
-energy saving methods are as follows:<a href="#section-3-4.2.1" class="pilcrow">¶</a></p>
+          <p id="section-3-4.2.1">"energy-saving-power-state": Specifies the energy saving power state. Examples
+of supported energy saving power state are as follows:<a href="#section-3-4.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-4.2.2.1">
-              <p id="section-3-4.2.2.1.1">"zone-based-fan-speed-adjustment": The system collects information about the
+              <p id="section-3-4.2.2.1.1">"off-state": The component typically requires a complete boot when awakened.<a href="#section-3-4.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3-4.2.2.2">
+              <p id="section-3-4.2.2.2.1">"sleep-state": The component with energy management support is not functional
+but immediately available such as wake up mechanism.<a href="#section-3-4.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3-4.2.2.3">
+              <p id="section-3-4.2.2.3.1">"low-power-state": Some components with energy management support are not
+available and these components can take measures to use less energy.<a href="#section-3-4.2.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3-4.2.2.4">
+              <p id="section-3-4.2.2.4.1">"full-power-state": All components with energy management support are
+available and may use maximum power.<a href="#section-3-4.2.2.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="section-3-4.3">
+          <p id="section-3-4.3.1">"energy-saving-method": Specifies the energy saving method. Examples of supported
+energy saving methods are as follows:<a href="#section-3-4.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-4.3.2.1">
+              <p id="section-3-4.3.2.1.1">"zone-based-fan-speed-adjustment": The system collects information about the
  temperatures of the service boards in the chassis and the zones where the
  service boards reside. According to the current temperature and target
  temperature of each board, the system implements stepless speed adjustment in
- different zones.<a href="#section-3-4.2.2.1.1" class="pilcrow">¶</a></p>
+ different zones.<a href="#section-3-4.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.2">
-              <p id="section-3-4.2.2.2.1">"unused-high-speed-interface-shutdown": When detecting an unused high-speed
+            <li class="normal" id="section-3-4.3.2.2">
+              <p id="section-3-4.3.2.2.1">"unused-high-speed-interface-shutdown": When detecting an unused high-speed
 interface, the system shuts down the interface to reduce power consumption
 of the interface circuits. When the interface needs to run service, the
 system will automatically wake up the interface and restore the interface
-to the normal working state.<a href="#section-3-4.2.2.2.1" class="pilcrow">¶</a></p>
+to the normal working state.<a href="#section-3-4.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.3">
-              <p id="section-3-4.2.2.3.1">"unused-port-shutdown": When detecting an unused user port, the system automatically
+            <li class="normal" id="section-3-4.3.2.3">
+              <p id="section-3-4.3.2.3.1">"unused-port-shutdown": When detecting an unused user port, the system automatically
  or manually shuts down the interface circuits and optical module of the port
  to reduce port power consumption. When detecting that the port needs to run
  service, the system automatically enables the port and restores the port to the
- normal running state, without affecting application of the board.<a href="#section-3-4.2.2.3.1" class="pilcrow">¶</a></p>
+ normal running state, without affecting application of the board.<a href="#section-3-4.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.4">
-              <p id="section-3-4.2.2.4.1">"unused-board-shutdown": When detecting an unused board, the system automatically
+            <li class="normal" id="section-3-4.3.2.4">
+              <p id="section-3-4.3.2.4.1">"unused-board-shutdown": When detecting an unused board, the system automatically
  shuts down the power supply of the board, ensuring zero power consumption of an unused board.
  When detecting that the board needs to run service, the system automatically
  powers on the board and restores the board to the normalrunning state, without
- affecting application of the whole device.<a href="#section-3-4.2.2.4.1" class="pilcrow">¶</a></p>
+ affecting application of the whole device.<a href="#section-3-4.3.2.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.5">
-              <p id="section-3-4.2.2.5.1">"dynamic-frequency-adjustment": When detecting that a service board is carrying a small
+            <li class="normal" id="section-3-4.3.2.5">
+              <p id="section-3-4.3.2.5.1">"dynamic-frequency-adjustment": When detecting that a service board is carrying a small
  service load, the system automatically reduces the working frequency of the
  service processing module of the board while maintaining the service
  quality. In doing so, power consumption of the service processing module
  is reduced. When the service load of the board increases, the system
  automatically increases the working frequency of the service processing
- module to meet service needs.<a href="#section-3-4.2.2.5.1" class="pilcrow">¶</a></p>
+ module to meet service needs.<a href="#section-3-4.3.2.5.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.6">
-              <p id="section-3-4.2.2.6.1">"unused-channel-shutdown": When an unused channel is detected, the unused
+            <li class="normal" id="section-3-4.3.2.6">
+              <p id="section-3-4.3.2.6.1">"unused-channel-shutdown": When an unused channel is detected, the unused
 channel is closed. Dynamically open the channel when detecting that there
-are services on the channel.<a href="#section-3-4.2.2.6.1" class="pilcrow">¶</a></p>
+are services on the channel.<a href="#section-3-4.3.2.6.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.7">
-              <p id="section-3-4.2.2.7.1">"load-based-power-module-scheduling": Power modules intelligently schedule
+            <li class="normal" id="section-3-4.3.2.7">
+              <p id="section-3-4.3.2.7.1">"load-based-power-module-scheduling": Power modules intelligently schedule
 internal power supply based on the power load. When the power load decreases,
 some power supplies are automatically disabled. When the power load increases,
-the disabled power supplies are enabled again.<a href="#section-3-4.2.2.7.1" class="pilcrow">¶</a></p>
+the disabled power supplies are enabled again.<a href="#section-3-4.3.2.7.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.2.2.8">
-              <p id="section-3-4.2.2.8.1">"load-based-board-scheduling": Boards intelligently schedule internal forwarding resources
+            <li class="normal" id="section-3-4.3.2.8">
+              <p id="section-3-4.3.2.8.1">"load-based-board-scheduling": Boards intelligently schedule internal forwarding resources
  based on the service load. When the service load decreases,
  some forwarding resources are automatically disabled or the
  working frequency of the forwarding resources is reduced.
@@ -1380,28 +1401,7 @@ the disabled power supplies are enabled again.<a href="#section-3-4.2.2.7.1" cla
  resources are enabled again or the working frequency of
  forwarding resources is improved. In the case of burst
  traffic, packet forwarding may be delayed, but packets
- will not be lost.<a href="#section-3-4.2.2.8.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-</li>
-        <li class="normal" id="section-3-4.3">
-          <p id="section-3-4.3.1">"energy-saving-power-state": Specifies the energy saving power state. Examples
-of supported energy saving power state are as follows:<a href="#section-3-4.3.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3-4.3.2.1">
-              <p id="section-3-4.3.2.1.1">"off-state": The component typically requires a complete boot when awakened.<a href="#section-3-4.3.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3-4.3.2.2">
-              <p id="section-3-4.3.2.2.1">"sleep-state": The component with energy management support is not functional
-but immediately available such as wake up mechanism.<a href="#section-3-4.3.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3-4.3.2.3">
-              <p id="section-3-4.3.2.3.1">"low-power-state": Some components with energy management support are not
-available and these components can take measures to use less energy.<a href="#section-3-4.3.2.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3-4.3.2.4">
-              <p id="section-3-4.3.2.4.1">"full-power-state": All components with energy management support are
-available and may use maximum power.<a href="#section-3-4.3.2.4.1" class="pilcrow">¶</a></p>
+ will not be lost.<a href="#section-3-4.3.2.8.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>

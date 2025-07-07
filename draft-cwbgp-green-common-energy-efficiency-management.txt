@@ -163,6 +163,24 @@ Table of Contents
          more advanced system level energy saving features, e.g., board
          scheduling.
 
+   *  "energy-saving-power-state": Specifies the energy saving power
+      state.  Examples of supported energy saving power state are as
+      follows:
+
+      -  "off-state": The component typically requires a complete boot
+         when awakened.
+
+      -  "sleep-state": The component with energy management support is
+         not functional but immediately available such as wake up
+         mechanism.
+
+      -  "low-power-state": Some components with energy management
+         support are not available and these components can take
+         measures to use less energy.
+
+      -  "full-power-state": All components with energy management
+         support are available and may use maximum power.
+
    *  "energy-saving-method": Specifies the energy saving method.
       Examples of supported energy saving methods are as follows:
 
@@ -225,24 +243,6 @@ Table of Contents
          or the working frequency of forwarding resources is improved.
          In the case of burst traffic, packet forwarding may be delayed,
          but packets will not be lost.
-
-   *  "energy-saving-power-state": Specifies the energy saving power
-      state.  Examples of supported energy saving power state are as
-      follows:
-
-      -  "off-state": The component typically requires a complete boot
-         when awakened.
-
-      -  "sleep-state": The component with energy management support is
-         not functional but immediately available such as wake up
-         mechanism.
-
-      -  "low-power-state": Some components with energy management
-         support are not available and these components can take
-         measures to use less energy.
-
-      -  "full-power-state": All components with energy management
-         support are available and may use maximum power.
 
    In addition, it defines the following types:
 
